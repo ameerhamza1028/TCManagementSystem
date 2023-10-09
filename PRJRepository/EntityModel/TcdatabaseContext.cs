@@ -1,0 +1,156 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+
+namespace PRJRepository.EntityModel;
+
+public partial class TcdatabaseContext : DbContext
+{
+    public TcdatabaseContext()
+    {
+    }
+
+    public TcdatabaseContext(DbContextOptions<TcdatabaseContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<Appointment> Appointments { get; set; }
+
+    public virtual DbSet<AvailableSlot> AvailableSlots { get; set; }
+
+    public virtual DbSet<Clinic> Clinics { get; set; }
+
+    public virtual DbSet<ClinicLocation> ClinicLocations { get; set; }
+
+    public virtual DbSet<Invoice> Invoices { get; set; }
+
+    public virtual DbSet<Organization> Organizations { get; set; }
+
+    public virtual DbSet<Tcuser> Tcusers { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=DESKTOP-018QP73\\SQLEXPRESS;Database=TCDatabase;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;encrypt=False");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Appointment>(entity =>
+        {
+            entity.ToTable("Appointment");
+
+            entity.Property(e => e.Date).HasColumnType("date");
+            entity.Property(e => e.Duration)
+                .IsRowVersion()
+                .IsConcurrencyToken();
+            entity.Property(e => e.Title).HasMaxLength(200);
+            entity.Property(e => e.Type).HasMaxLength(20);
+
+            entity.HasOne(d => d.Client).WithMany(p => p.Appointments)
+                .HasForeignKey(d => d.ClientId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Appointment_TCUser");
+        });
+
+        modelBuilder.Entity<AvailableSlot>(entity =>
+        {
+            entity.HasKey(e => e.AppointmntSlotId);
+
+            entity.ToTable("AvailableSlot");
+
+            entity.Property(e => e.Duration).HasPrecision(2);
+            entity.Property(e => e.Name).HasMaxLength(200);
+            entity.Property(e => e.SlotDate).HasColumnType("date");
+            entity.Property(e => e.Time).HasPrecision(2);
+        });
+
+        modelBuilder.Entity<Clinic>(entity =>
+        {
+            entity.ToTable("Clinic");
+
+            entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.BillingAddress).HasMaxLength(200);
+            entity.Property(e => e.ContactEmail).HasMaxLength(200);
+            entity.Property(e => e.ContactName).HasMaxLength(200);
+            entity.Property(e => e.ContactPhone).HasMaxLength(20);
+            entity.Property(e => e.Email).HasMaxLength(200);
+            entity.Property(e => e.ExpirationDate).HasColumnType("date");
+            entity.Property(e => e.Fax).HasMaxLength(20);
+            entity.Property(e => e.LongFacultyName).HasMaxLength(200);
+            entity.Property(e => e.Npi).HasColumnName("NPI");
+            entity.Property(e => e.Phone).HasMaxLength(20);
+            entity.Property(e => e.ShortFacultyName).HasMaxLength(200);
+            entity.Property(e => e.ZipCode).HasMaxLength(50);
+
+            entity.HasOne(d => d.Org).WithMany(p => p.Clinics)
+                .HasForeignKey(d => d.OrgId)
+                .HasConstraintName("FK_Clinic_Organization");
+        });
+
+        modelBuilder.Entity<ClinicLocation>(entity =>
+        {
+            entity.HasKey(e => e.LocationId);
+
+            entity.ToTable("ClinicLocation");
+
+            entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.BillingAddress).HasMaxLength(50);
+            entity.Property(e => e.Email).HasMaxLength(200);
+            entity.Property(e => e.ExpirationDate).HasColumnType("date");
+            entity.Property(e => e.Fax).HasMaxLength(20);
+            entity.Property(e => e.IndividualOffice).HasMaxLength(50);
+            entity.Property(e => e.LongName).HasMaxLength(200);
+            entity.Property(e => e.Npi).HasColumnName("NPI");
+            entity.Property(e => e.Phone).HasMaxLength(20);
+            entity.Property(e => e.ShortName).HasMaxLength(200);
+            entity.Property(e => e.ZipCode).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<Invoice>(entity =>
+        {
+            entity.HasKey(e => e.InvoiveId);
+
+            entity.ToTable("Invoice");
+
+            entity.Property(e => e.InvoiceType).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Organization>(entity =>
+        {
+            entity.HasKey(e => e.OrgId);
+
+            entity.ToTable("Organization");
+
+            entity.Property(e => e.OrgAddress).HasMaxLength(200);
+            entity.Property(e => e.OrgDescription).HasMaxLength(200);
+            entity.Property(e => e.OrgName).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<Tcuser>(entity =>
+        {
+            entity.HasKey(e => e.ClientId);
+
+            entity.ToTable("TCUser");
+
+            entity.Property(e => e.BilingType).HasMaxLength(50);
+            entity.Property(e => e.BillResponsible)
+                .HasMaxLength(10)
+                .IsFixedLength();
+            entity.Property(e => e.ClientType).HasMaxLength(20);
+            entity.Property(e => e.Email1).HasMaxLength(200);
+            entity.Property(e => e.Email2).HasMaxLength(200);
+            entity.Property(e => e.FirstName1).HasMaxLength(200);
+            entity.Property(e => e.FirstName2).HasMaxLength(200);
+            entity.Property(e => e.LastName1).HasMaxLength(200);
+            entity.Property(e => e.LastName2).HasMaxLength(200);
+            entity.Property(e => e.Phone1).HasMaxLength(20);
+            entity.Property(e => e.Phone2).HasMaxLength(20);
+            entity.Property(e => e.Relationship).HasMaxLength(50);
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}

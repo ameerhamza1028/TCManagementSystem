@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCManagementSystem", "TCManagementSystem\TCManagementSystem.csproj", "{8892CB5A-15F1-40F4-B2BE-BB4721B6500C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PRJRepository", "PRJRepository\PRJRepository.csproj", "{255B28C5-058B-47CD-BB8D-F217B9ED8451}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8892CB5A-15F1-40F4-B2BE-BB4721B6500C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8892CB5A-15F1-40F4-B2BE-BB4721B6500C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8892CB5A-15F1-40F4-B2BE-BB4721B6500C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8892CB5A-15F1-40F4-B2BE-BB4721B6500C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{255B28C5-058B-47CD-BB8D-F217B9ED8451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{255B28C5-058B-47CD-BB8D-F217B9ED8451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{255B28C5-058B-47CD-BB8D-F217B9ED8451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{255B28C5-058B-47CD-BB8D-F217B9ED8451}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {331013BB-00B4-42A2-972E-D47B0ACE84A6}
+	EndGlobalSection
+EndGlobal
