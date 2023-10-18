@@ -1,6 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 using PRJRepository.Repo;
 using TCManagementSystem.AutoMapper;
 
@@ -24,6 +24,30 @@ internal class Program
         builder.Services.AddTransient<IAvailableSlotRepo, AvailableSlotRepo>();
         builder.Services.AddTransient<IInvoiceRepo, InvoiceRepo>();
         builder.Services.AddTransient<IClinicLocationRepo, ClinicLocationRepo>();
+        builder.Services.AddTransient<IBillingSettingRepo, BillingSettingRepo>();
+        builder.Services.AddTransient<IServiceSettingRepo, ServiceSettingRepo>();
+        builder.Services.AddTransient<IInsurranceSettingRepo, InsurranceSettingRepo>();
+        builder.Services.AddTransient<ICalenderSettingRepo, CalenderSettingRepo>();
+        builder.Services.AddTransient<IForm1Repo, Form1Repo>();
+        builder.Services.AddTransient<IForm2Repo, Form2Repo>();
+        builder.Services.AddTransient<IForm3Repo, Form3Repo>();
+        builder.Services.AddTransient<IForm4Repo, Form4Repo>();
+        builder.Services.AddTransient<IForm5Repo, Form5Repo>();
+        builder.Services.AddTransient<IForm6Repo, Form6Repo>();
+        builder.Services.AddTransient<IForm7Repo, Form7Repo>();
+        builder.Services.AddTransient<IForm8Repo, Form8Repo>();
+        builder.Services.AddTransient<IForm9Repo, Form9Repo>();
+        builder.Services.AddTransient<IForm10Repo, Form10Repo>();
+        builder.Services.AddTransient<IForm11Repo, Form11Repo>();
+        builder.Services.AddTransient<IForm12Repo, Form12Repo>();
+        builder.Services.AddTransient<IForm13Repo, Form13Repo>();
+        builder.Services.AddTransient<IForm14Repo, Form14Repo>();
+        builder.Services.AddTransient<IForm15Repo, Form15Repo>();
+        builder.Services.AddTransient<IForm16Repo, Form16Repo>();
+        builder.Services.AddTransient<IForm17Repo, Form17Repo>();
+        builder.Services.AddTransient<IForm18Repo, Form18Repo>();
+        builder.Services.AddTransient<IForm19Repo, Form19Repo>();
+        builder.Services.AddTransient<IForm20Repo, Form20Repo>();
 
         var mapperConfiguration = new MapperConfiguration(mc =>
         {
