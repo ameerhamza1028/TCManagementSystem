@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PRJRepository.EntityModel;
+namespace PRJRepository.Models;
 
 public partial class ClinicLocation
 {
-    public int LocationId { get; set; }
+    public long LocationId { get; set; }
 
     public string? ShortName { get; set; }
 
@@ -40,4 +40,8 @@ public partial class ClinicLocation
     public int? ServicePlace { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public DateTime? CreationDate { get; set; }
+
+    public long? CreatedBy { get; set; }
 }

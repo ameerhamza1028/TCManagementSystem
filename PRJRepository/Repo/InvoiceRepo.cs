@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace PRJRepository.Repo
 {
@@ -22,10 +22,10 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllInvoiceResponseDTO GetInvoiceById(long id)
+        public GetAllInvoiceResponseDTO GetInvoiceById(long Id)
         {
             GetAllInvoiceResponseDTO response = new GetAllInvoiceResponseDTO();
-            Invoice item = _context.Invoices.Where(x => x.InvoiveId == id).FirstOrDefault();
+            Invoice item = _context.Invoices.Where(x => x.InvoiveId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllInvoiceResponseDTO>(item);
             return response;
         }
@@ -55,13 +55,12 @@ namespace PRJRepository.Repo
             }
         }
 
-        public bool DeleteInvoice(long id)
+        public bool DeleteInvoice(long Id)
         {
             try
             {
-                var Invoice = _context.Invoices.FirstOrDefault(x => x.InvoiveId == id);
-                _context.Invoices.Remove(Invoice);
-                _context.SaveChanges();
+                Invoice invoice = _context.Invoices.FirstOrDefault(x => x.InvoiveId == Id);
+                invoice.IsActive = false;
                 return true;
             }
             catch

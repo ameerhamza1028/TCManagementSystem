@@ -1,40 +1,40 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PRJRepository.Repo;
 using PRJRepository.DTO;
+using PRJRepository.Repo;
 using TCManagementSystem.Helper;
 
 namespace TCManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class ServiceSettingController : ControllerBase
     {
         public IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        private readonly IUserRepo _IUserRepo;
+        private readonly IServiceSettingRepo _IServiceSettingRepo;
 
-        public UserController(
+        public ServiceSettingController(
             IConfiguration config,
             IMapper IMapper,
-            IUserRepo IUserRepo)
+            IServiceSettingRepo IServiceSettingRepo)
         {
             _configuration = config;
             _mapper = IMapper;
-            _IUserRepo = IUserRepo;
+            _IServiceSettingRepo = IServiceSettingRepo;
         }
 
         [HttpGet]
-        [Route("GetAllUser")]
-        public ApiResponse<List<GetAllResponseDTO>> GetAllUser()
+        [Route("GetAllServiceSetting")]
+        public ApiResponse<List<GetAllServiceSettingResponseDTO>> GetAllServicesSetting()
         {
-            ApiResponse<List<GetAllResponseDTO>> response = new ApiResponse<List<GetAllResponseDTO>>();
+            ApiResponse<List<GetAllServiceSettingResponseDTO>> response = new ApiResponse<List<GetAllServiceSettingResponseDTO>>();
             try
             {
-                List<GetAllResponseDTO> result = new List<GetAllResponseDTO>();
-                result = _IUserRepo.GetAllUser();
+                List<GetAllServiceSettingResponseDTO> result = new List<GetAllServiceSettingResponseDTO>();
+                result = _IServiceSettingRepo.GetAllServiceSetting();
                 response.Data = result;
             }
             catch (Exception ex)
@@ -43,15 +43,16 @@ namespace TCManagementSystem.Controllers
             }
             return response;
         }
+
         [HttpGet]
-        [Route("GetUserById")]
-        public ApiResponse<GetAllResponseDTO> GetUserById(int id)
+        [Route("GetServiceSettingById")]
+        public ApiResponse<GetAllServiceSettingResponseDTO> GetServiceSettingById(long Id)
         {
-            ApiResponse<GetAllResponseDTO> response = new ApiResponse<GetAllResponseDTO>();
+            ApiResponse<GetAllServiceSettingResponseDTO> response = new ApiResponse<GetAllServiceSettingResponseDTO>();
             try
             {
-                GetAllResponseDTO result = new GetAllResponseDTO();
-                result = _IUserRepo.GetUserById(id);
+                GetAllServiceSettingResponseDTO result = new GetAllServiceSettingResponseDTO();
+                result = _IServiceSettingRepo.GetServiceSettingById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -62,13 +63,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Route("SaveUser")]
-        public ApiResponse<bool> SaveUser([FromBody] GetAllRequestDTO request)
+        [Route("SaveServiceSetting")]
+        public ApiResponse<bool> SaveServiceSetting([FromBody] GetAllServiceSettingRequestDTO request)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IUserRepo.SaveUser(request);
+                _IServiceSettingRepo.SaveServiceSetting(request);
                 response.Data = true;
             }
             catch (Exception ex)
@@ -79,13 +80,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteUser")]
-        public ApiResponse<bool> DeleteUser(int id)
+        [Route("DeleteServiceSetting")]
+        public ApiResponse<bool> DeleteServiceSetting(long Id)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IUserRepo.DeleteUser(id);
+                _IServiceSettingRepo.DeleteServiceSetting(Id);
                 response.Data = true;
             }
             catch (Exception ex)
@@ -95,5 +96,4 @@ namespace TCManagementSystem.Controllers
             return response;
         }
     }
-
 }

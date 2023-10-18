@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace PRJRepository.Repo
 {
@@ -22,10 +22,10 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllSlotResponseDTO GetAvailableSlotById(int id)
+        public GetAllSlotResponseDTO GetAvailableSlotById(long Id)
         {
             GetAllSlotResponseDTO response = new GetAllSlotResponseDTO();
-            AvailableSlot item = _context.AvailableSlots.Where(x => x.AppointmntSlotId == id).FirstOrDefault();
+            AvailableSlot item = _context.AvailableSlots.Where(x => x.AppointmntSlotId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllSlotResponseDTO>(item);
             return response;
         }
@@ -55,13 +55,12 @@ namespace PRJRepository.Repo
             }
         }
 
-        public bool DeleteAvailableSlot(int id)
+        public bool DeleteAvailableSlot(long Id)
         {
             try
             {
-                var availableSlot = _context.AvailableSlots.FirstOrDefault(x => x.AppointmntSlotId == id);
-                _context.AvailableSlots.Remove(availableSlot);
-                _context.SaveChanges();
+                AvailableSlot availableSlot = _context.AvailableSlots.FirstOrDefault(x => x.AppointmntSlotId == Id);
+                availableSlot.IsActive = false;
                 return true;
             }
             catch

@@ -9,32 +9,32 @@ namespace TCManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClinicController : ControllerBase
+    public class CalenderSettingController : ControllerBase
     {
         public IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        private readonly IClinicRepo _IClinicRepo;
+        private readonly ICalenderSettingRepo _ICalenderSettingRepo;
 
-        public ClinicController(
+        public CalenderSettingController(
             IConfiguration config,
             IMapper IMapper,
-            IClinicRepo IClinicRepo)
+            ICalenderSettingRepo ICalenderSettingRepo)
         {
             _configuration = config;
             _mapper = IMapper;
-            _IClinicRepo = IClinicRepo;
+            _ICalenderSettingRepo = ICalenderSettingRepo;
         }
 
         [HttpGet]
-        [Route("GetAllClinic")]
-        public ApiResponse<List<GetAllClinicResponseDTO>> GetAllClinic()
+        [Route("GetAllCalenderSetting")]
+        public ApiResponse<List<GetAllCalenderSettingResponseDTO>> GetAllCalenderSetting()
         {
-            ApiResponse<List<GetAllClinicResponseDTO>> response = new ApiResponse<List<GetAllClinicResponseDTO>>();
+            ApiResponse<List<GetAllCalenderSettingResponseDTO>> response = new ApiResponse<List<GetAllCalenderSettingResponseDTO>>();
             try
             {
-                List<GetAllClinicResponseDTO> result = new List<GetAllClinicResponseDTO>();
-                result = _IClinicRepo.GetAllClinic();
+                List<GetAllCalenderSettingResponseDTO> result = new List<GetAllCalenderSettingResponseDTO>();
+                result = _ICalenderSettingRepo.GetAllCalenderSetting();
                 response.Data = result;
             }
             catch (Exception ex)
@@ -45,14 +45,14 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetClinicById")]
-        public ApiResponse<GetAllClinicResponseDTO> GetClinicById(long Id)
+        [Route("GetCalenderSettingById")]
+        public ApiResponse<GetAllCalenderSettingResponseDTO> GetCalenderSettingById(long Id)
         {
-            ApiResponse<GetAllClinicResponseDTO> response = new ApiResponse<GetAllClinicResponseDTO>();
+            ApiResponse<GetAllCalenderSettingResponseDTO> response = new ApiResponse<GetAllCalenderSettingResponseDTO>();
             try
             {
-                GetAllClinicResponseDTO result = new GetAllClinicResponseDTO();
-                result = _IClinicRepo.GetClinicById(Id);
+                GetAllCalenderSettingResponseDTO result = new GetAllCalenderSettingResponseDTO();
+                result = _ICalenderSettingRepo.GetCalenderSettingById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -63,13 +63,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Route("SaveClinic")]
-        public ApiResponse<bool> SaveClinic([FromBody] GetAllClinicRequestDTO request)
+        [Route("SaveCalenderSetting")]
+        public ApiResponse<bool> SaveCalenderSetting([FromBody] GetAllCalenderSettingRequestDTO request)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IClinicRepo.SaveClinic(request);
+                _ICalenderSettingRepo.SaveCalenderSetting(request);
                 response.Data = true;
             }
             catch (Exception ex)
@@ -80,13 +80,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteClinic")]
-        public ApiResponse<bool> DeleteClinic(long Id)
+        [Route("DeleteCalenderSetting")]
+        public ApiResponse<bool> DeleteCalenderSetting(long Id)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IClinicRepo.DeleteClinic(Id);
+                _ICalenderSettingRepo.DeleteCalenderSetting(Id);
                 response.Data = true;
             }
             catch (Exception ex)

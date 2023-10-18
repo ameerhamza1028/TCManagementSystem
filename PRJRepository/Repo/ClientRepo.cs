@@ -1,50 +1,50 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace PRJRepository.Repo
 {
-    public class UserRepo : IUserRepo
+    public class ClientRepo : IClientRepo
     {
         private readonly TcdatabaseContext _context;
         private readonly IMapper _mapper;
-        public UserRepo(TcdatabaseContext context, IMapper mapper)
+        public ClientRepo(TcdatabaseContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public List<GetAllResponseDTO> GetAllUser()
+        public List<GetAllResponseDTO> GetAllClient()
         {
             List<GetAllResponseDTO> response = new List<GetAllResponseDTO>();
-            List<Tcuser> list = _context.Tcusers.ToList();
+            List<Models.Client> list = _context.Clients.ToList();
             response = _mapper.Map<List<GetAllResponseDTO>>(list);
             return response;
         }
 
-        public GetAllResponseDTO GetUserById(int id)
+        public GetAllResponseDTO GetClientById(long Id)
         {
             GetAllResponseDTO response = new GetAllResponseDTO();
-            Tcuser item = _context.Tcusers.Where(x => x.ClientId == id).FirstOrDefault();
+            Models.Client item = _context.Clients.Where(x => x.ClientId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllResponseDTO>(item);
             return response;
         }
 
-        public bool SaveUser(GetAllRequestDTO request)
+        public bool SaveClient(GetAllRequestDTO request)
         {
             try
             {
-                Tcuser tcuser = new Tcuser();
+                Models.Client client = new Models.Client();
                 if (request.ClientId == 0)
                 {
-                    tcuser = _mapper.Map<Tcuser>(request);
-                    _context.Tcusers.Add(tcuser);
+                    client = _mapper.Map<Models.Client>(request);
+                    _context.Clients.Add(client);
                     _context.SaveChanges();
                 }
                 else
                 {
-                    tcuser = _context.Tcusers.Where(x => x.ClientId == request.ClientId).FirstOrDefault();
-                    tcuser = _mapper.Map(request, tcuser);
+                    client = _context.Clients.Where(x => x.ClientId == request.ClientId).FirstOrDefault();
+                    client = _mapper.Map(request, client);
                     _context.SaveChanges();
                 }
                 return true;
@@ -55,14 +55,12 @@ namespace PRJRepository.Repo
             }
         }
 
-        public bool DeleteUser(int id)
+        public bool DeleteClient(long Id)
         {
             try
             {
-                var tcuser = _context.Tcusers.FirstOrDefault(x => x.ClientId == id);
-               // tcuser = _mapper.Map<Tcuser>(id);
-                _context.Tcusers.Remove(tcuser);
-                _context.SaveChanges();
+               Client client = _context.Clients.FirstOrDefault(x => x.ClientId == Id);
+               client.IsActive = false;
                 return true;
             }
             catch

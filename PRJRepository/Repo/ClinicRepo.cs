@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace PRJRepository.Repo
 {
@@ -22,10 +22,10 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllClinicResponseDTO GetClinicById(int id)
+        public GetAllClinicResponseDTO GetClinicById(long Id)
         {
             GetAllClinicResponseDTO response = new GetAllClinicResponseDTO();
-            Clinic item = _context.Clinics.Where(x => x.ClinicId == id).FirstOrDefault();
+            Clinic item = _context.Clinics.Where(x => x.ClinicId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllClinicResponseDTO>(item);
             return response;
         }
@@ -55,13 +55,12 @@ namespace PRJRepository.Repo
             }
         }
 
-        public bool DeleteClinic(int id)
+        public bool DeleteClinic(long Id)
         {
             try
             {
-                var clinic = _context.Clinics.FirstOrDefault(x => x.ClinicId == id);
-                _context.Clinics.Remove(clinic);
-                _context.SaveChanges();
+                Clinic clinic = _context.Clinics.FirstOrDefault(x => x.ClinicId == Id);
+                clinic.IsActive = false;
                 return true;
             }
             catch

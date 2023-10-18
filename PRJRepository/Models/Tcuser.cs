@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PRJRepository.EntityModel;
+namespace PRJRepository.Models;
 
 public partial class Tcuser
 {

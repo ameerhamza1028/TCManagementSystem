@@ -1,6 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 using PRJRepository.Repo;
 using TCManagementSystem.AutoMapper;
 
@@ -17,13 +17,18 @@ internal class Program
 
         builder.Services.AddDbContext<TcdatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
 
-        builder.Services.AddTransient<IUserRepo, UserRepo>();
+        builder.Services.AddTransient<IClientRepo, ClientRepo>();
         builder.Services.AddTransient<IOrganizationRepo, OrganizationRepo>();
         builder.Services.AddTransient<IClinicRepo, ClinicRepo>();
         builder.Services.AddTransient<IAppointmentRepo, AppointmentRepo>();
         builder.Services.AddTransient<IAvailableSlotRepo, AvailableSlotRepo>();
         builder.Services.AddTransient<IInvoiceRepo, InvoiceRepo>();
         builder.Services.AddTransient<IClinicLocationRepo, ClinicLocationRepo>();
+        builder.Services.AddTransient<IBillingSettingRepo, BillingSettingRepo>();
+        builder.Services.AddTransient<IServiceSettingRepo, ServiceSettingRepo>();
+        builder.Services.AddTransient<IInsurranceSettingRepo, InsurranceSettingRepo>();
+        builder.Services.AddTransient<ICalenderSettingRepo, CalenderSettingRepo>();
+        builder.Services.AddTransient<IClientFormRepo, ClientFormRepo>();
 
         var mapperConfiguration = new MapperConfiguration(mc =>
         {

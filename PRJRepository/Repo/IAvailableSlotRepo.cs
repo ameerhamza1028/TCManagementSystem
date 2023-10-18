@@ -10,8 +10,8 @@ namespace PRJRepository.Repo
     public interface IAvailableSlotRepo
     {
         public List<GetAllSlotResponseDTO> GetAllAllAvailableSlot();
-        public GetAllSlotResponseDTO GetAvailableSlotById(int id);
+        public GetAllSlotResponseDTO GetAvailableSlotById(long Id);
         public bool SaveAvailableSlot(GetAllSlotRequestDTO request);
-        public bool DeleteAvailableSlot(int id);
+        public bool DeleteAvailableSlot(long Id);
     }
 }

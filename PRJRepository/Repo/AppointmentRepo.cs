@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace PRJRepository.Repo
 {
@@ -22,10 +22,10 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllAppointmentResponseDTO GetAppointmentById(int id)
+        public GetAllAppointmentResponseDTO GetAppointmentById(long Id)
         {
             GetAllAppointmentResponseDTO response = new GetAllAppointmentResponseDTO();
-            Appointment item = _context.Appointments.Where(x => x.AppointmentId == id).FirstOrDefault();
+            Appointment item = _context.Appointments.Where(x => x.AppointmentId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllAppointmentResponseDTO>(item);
             return response;
         }
@@ -55,13 +55,12 @@ namespace PRJRepository.Repo
             }
         }
 
-        public bool DeleteAppointment(int id)
+        public bool DeleteAppointment(long Id)
         {
             try
             {
-                var appointment = _context.Appointments.FirstOrDefault(x => x.AppointmentId == id);
-                _context.Appointments.Remove(appointment);
-                _context.SaveChanges();
+                Appointment appointment = _context.Appointments.FirstOrDefault(x => x.AppointmentId == Id);
+                appointment.IsActive=false;
                 return true;
             }
             catch

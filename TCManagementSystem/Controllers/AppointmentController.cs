@@ -28,7 +28,7 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllAppointment")]
-        public ApiResponse<List<GetAllAppointmentResponseDTO>> GetAllUser()
+        public ApiResponse<List<GetAllAppointmentResponseDTO>> GetAllAppointment()
         {
             ApiResponse<List<GetAllAppointmentResponseDTO>> response = new ApiResponse<List<GetAllAppointmentResponseDTO>>();
             try
@@ -46,13 +46,13 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAppointmentById")]
-        public ApiResponse<GetAllAppointmentResponseDTO> GetClinicById(int id)
+        public ApiResponse<GetAllAppointmentResponseDTO> GetAppointmentById(long Id)
         {
             ApiResponse<GetAllAppointmentResponseDTO> response = new ApiResponse<GetAllAppointmentResponseDTO>();
             try
             {
                 GetAllAppointmentResponseDTO result = new GetAllAppointmentResponseDTO();
-                result = _IAppointmentRepo.GetAppointmentById(id);
+                result = _IAppointmentRepo.GetAppointmentById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -63,8 +63,8 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Route("SaveClinic")]
-        public ApiResponse<bool> SaveClinic([FromBody] GetAllAppointmentRequestDTO request)
+        [Route("SaveAppointment")]
+        public ApiResponse<bool> SaveAppointment([FromBody] GetAllAppointmentRequestDTO request)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
@@ -80,13 +80,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteClinic")]
-        public ApiResponse<bool> DeleteClinic(int id)
+        [Route("DeleteAppointment")]
+        public ApiResponse<bool> DeleteAppointment(long Id)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IAppointmentRepo.DeleteAppointment(id);
+                _IAppointmentRepo.DeleteAppointment(Id);
                 response.Data = true;
             }
             catch (Exception ex)

@@ -10,8 +10,8 @@ namespace PRJRepository.Repo
     public interface IInvoiceRepo
     {
         public List<GetAllInvoiceResponseDTO> GetAllInvoice();
-        public GetAllInvoiceResponseDTO GetInvoiceById(long id);
+        public GetAllInvoiceResponseDTO GetInvoiceById(long Id);
         public bool SaveInvoice(GetAllInvoiceRequestDTO request);
-        public bool DeleteInvoice(long id);
+        public bool DeleteInvoice(long Id);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace TCManagementSystem.AutoMapper
 {
@@ -22,6 +22,16 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Invoice, GetAllInvoiceRequestDTO>().ReverseMap();
             CreateMap<ClinicLocation, GetAllClinicLocationResponseDTO>().ReverseMap();
             CreateMap<ClinicLocation, GetAllClinicLocationRequestDTO>().ReverseMap();
+            CreateMap<BillingSetting, GetAllBillingSettingResponseDTO>().ReverseMap();
+            CreateMap<BillingSetting, GetAllBillingSettingRequestDTO>().ReverseMap();
+            CreateMap<ServiceSetting, GetAllServiceSettingResponseDTO>().ReverseMap();
+            CreateMap<ServiceSetting, GetAllServiceSettingRequestDTO>().ReverseMap();
+            CreateMap<InsurranceSetting, GetAllInsurranceSettingResponseDTO>().ReverseMap();
+            CreateMap<InsurranceSetting, GetAllInsurranceSettingRequestDTO>().ReverseMap();
+            CreateMap<CalenderSetting, GetAllCalenderSettingResponseDTO>().ReverseMap();
+            CreateMap<CalenderSetting, GetAllCalenderSettingRequestDTO>().ReverseMap();
+            CreateMap<ClientForm, GetAllClientFormResponseDTO>().ReverseMap();
+            CreateMap<ClientForm, GetAllClientFormRequestDTO>().ReverseMap();
         }
     }
 }

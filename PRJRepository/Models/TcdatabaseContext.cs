@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace PRJRepository.EntityModel;
+namespace PRJRepository.Models;
 
 public partial class TcdatabaseContext : DbContext
 {
@@ -19,15 +19,25 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<AvailableSlot> AvailableSlots { get; set; }
 
+    public virtual DbSet<BillingSetting> BillingSettings { get; set; }
+
+    public virtual DbSet<CalenderSetting> CalenderSettings { get; set; }
+
+    public virtual DbSet<Client> Clients { get; set; }
+
+    public virtual DbSet<ClientForm> ClientForms { get; set; }
+
     public virtual DbSet<Clinic> Clinics { get; set; }
 
     public virtual DbSet<ClinicLocation> ClinicLocations { get; set; }
+
+    public virtual DbSet<InsurranceSetting> InsurranceSettings { get; set; }
 
     public virtual DbSet<Invoice> Invoices { get; set; }
 
     public virtual DbSet<Organization> Organizations { get; set; }
 
-    public virtual DbSet<Tcuser> Tcusers { get; set; }
+    public virtual DbSet<ServiceSetting> ServiceSettings { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -40,17 +50,9 @@ public partial class TcdatabaseContext : DbContext
         {
             entity.ToTable("Appointment");
 
+            entity.Property(e => e.ClientName).HasMaxLength(200);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Date).HasColumnType("date");
-            entity.Property(e => e.Duration)
-                .IsRowVersion()
-                .IsConcurrencyToken();
-            entity.Property(e => e.Title).HasMaxLength(200);
-            entity.Property(e => e.Type).HasMaxLength(20);
-
-            entity.HasOne(d => d.Client).WithMany(p => p.Appointments)
-                .HasForeignKey(d => d.ClientId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Appointment_TCUser");
         });
 
         modelBuilder.Entity<AvailableSlot>(entity =>
@@ -59,10 +61,60 @@ public partial class TcdatabaseContext : DbContext
 
             entity.ToTable("AvailableSlot");
 
-            entity.Property(e => e.Duration).HasPrecision(2);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Name).HasMaxLength(200);
             entity.Property(e => e.SlotDate).HasColumnType("date");
             entity.Property(e => e.Time).HasPrecision(2);
+        });
+
+        modelBuilder.Entity<BillingSetting>(entity =>
+        {
+            entity.HasKey(e => e.BillingId);
+
+            entity.ToTable("BillingSetting");
+
+            entity.Property(e => e.BillingCurrency).HasColumnType("money");
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.OrgNpi).HasColumnName("OrgNPI");
+        });
+
+        modelBuilder.Entity<CalenderSetting>(entity =>
+        {
+            entity.HasKey(e => e.CalenderId);
+
+            entity.ToTable("CalenderSetting");
+
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+        });
+
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.HasKey(e => e.ClientId).HasName("PK_TCUser");
+
+            entity.ToTable("Client");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("date");
+            entity.Property(e => e.Email1).HasMaxLength(200);
+            entity.Property(e => e.Email2).HasMaxLength(200);
+            entity.Property(e => e.FirstName1).HasMaxLength(200);
+            entity.Property(e => e.FirstName2).HasMaxLength(200);
+            entity.Property(e => e.LastName1).HasMaxLength(200);
+            entity.Property(e => e.LastName2).HasMaxLength(200);
+            entity.Property(e => e.Phone1).HasMaxLength(20);
+            entity.Property(e => e.Phone2).HasMaxLength(20);
+            entity.Property(e => e.Relationship).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<ClientForm>(entity =>
+        {
+            entity.HasKey(e => e.FormId);
+
+            entity.ToTable("ClientForm");
+
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.FormJson)
+                .IsUnicode(false)
+                .HasColumnName("FormJSON");
         });
 
         modelBuilder.Entity<Clinic>(entity =>
@@ -74,6 +126,7 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.ContactEmail).HasMaxLength(200);
             entity.Property(e => e.ContactName).HasMaxLength(200);
             entity.Property(e => e.ContactPhone).HasMaxLength(20);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Email).HasMaxLength(200);
             entity.Property(e => e.ExpirationDate).HasColumnType("date");
             entity.Property(e => e.Fax).HasMaxLength(20);
@@ -82,10 +135,6 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.ShortFacultyName).HasMaxLength(200);
             entity.Property(e => e.ZipCode).HasMaxLength(50);
-
-            entity.HasOne(d => d.Org).WithMany(p => p.Clinics)
-                .HasForeignKey(d => d.OrgId)
-                .HasConstraintName("FK_Clinic_Organization");
         });
 
         modelBuilder.Entity<ClinicLocation>(entity =>
@@ -96,6 +145,7 @@ public partial class TcdatabaseContext : DbContext
 
             entity.Property(e => e.Address).HasMaxLength(200);
             entity.Property(e => e.BillingAddress).HasMaxLength(50);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Email).HasMaxLength(200);
             entity.Property(e => e.ExpirationDate).HasColumnType("date");
             entity.Property(e => e.Fax).HasMaxLength(20);
@@ -107,12 +157,26 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.ZipCode).HasMaxLength(20);
         });
 
+        modelBuilder.Entity<InsurranceSetting>(entity =>
+        {
+            entity.HasKey(e => e.InsurranceId);
+
+            entity.ToTable("InsurranceSetting");
+
+            entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.Npi).HasColumnName("NPI");
+            entity.Property(e => e.PracticeName).HasMaxLength(200);
+            entity.Property(e => e.Street).HasMaxLength(200);
+        });
+
         modelBuilder.Entity<Invoice>(entity =>
         {
             entity.HasKey(e => e.InvoiveId);
 
             entity.ToTable("Invoice");
 
+            entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.InvoiceType).HasMaxLength(50);
         });
 
@@ -127,26 +191,16 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.OrgName).HasMaxLength(200);
         });
 
-        modelBuilder.Entity<Tcuser>(entity =>
+        modelBuilder.Entity<ServiceSetting>(entity =>
         {
-            entity.HasKey(e => e.ClientId);
+            entity.HasKey(e => e.ServiceId);
 
-            entity.ToTable("TCUser");
+            entity.ToTable("ServiceSetting");
 
-            entity.Property(e => e.BilingType).HasMaxLength(50);
-            entity.Property(e => e.BillResponsible)
-                .HasMaxLength(10)
-                .IsFixedLength();
-            entity.Property(e => e.ClientType).HasMaxLength(20);
-            entity.Property(e => e.Email1).HasMaxLength(200);
-            entity.Property(e => e.Email2).HasMaxLength(200);
-            entity.Property(e => e.FirstName1).HasMaxLength(200);
-            entity.Property(e => e.FirstName2).HasMaxLength(200);
-            entity.Property(e => e.LastName1).HasMaxLength(200);
-            entity.Property(e => e.LastName2).HasMaxLength(200);
-            entity.Property(e => e.Phone1).HasMaxLength(20);
-            entity.Property(e => e.Phone2).HasMaxLength(20);
-            entity.Property(e => e.Relationship).HasMaxLength(50);
+            entity.Property(e => e.Cptcode).HasColumnName("CPTCode");
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.ServiceDescription).HasMaxLength(300);
+            entity.Property(e => e.ServiceName).HasMaxLength(200);
         });
 
         OnModelCreatingPartial(modelBuilder);

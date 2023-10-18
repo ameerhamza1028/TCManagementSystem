@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PRJRepository.EntityModel;
+namespace PRJRepository.Models;
 
 public partial class Clinic
 {
-    public int? OrgId { get; set; }
-
-    public int ClinicId { get; set; }
+    public long ClinicId { get; set; }
 
     public string? LongFacultyName { get; set; }
 
@@ -43,9 +41,11 @@ public partial class Clinic
 
     public DateTime? ExpirationDate { get; set; }
 
-    public int? ServicePlaceId { get; set; }
+    public long? ServicePlaceId { get; set; }
 
     public bool? IsActive { get; set; }
 
-    public virtual Organization? Org { get; set; }
+    public DateTime? CreationDate { get; set; }
+
+    public long? CreatedBy { get; set; }
 }

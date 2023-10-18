@@ -11,7 +11,7 @@ namespace PRJRepository.Repo
     {
         public List<GetAllAppointmentResponseDTO> GetAllAppointment();
         public bool SaveAppointment(GetAllAppointmentRequestDTO request);
-        public GetAllAppointmentResponseDTO GetAppointmentById(int id);
-        public bool DeleteAppointment(int id);
+        public GetAllAppointmentResponseDTO GetAppointmentById(long Id);
+        public bool DeleteAppointment(long Id);
     }
 }

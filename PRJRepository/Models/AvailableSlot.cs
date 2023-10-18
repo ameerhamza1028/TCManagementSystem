@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PRJRepository.EntityModel;
+namespace PRJRepository.Models;
 
 public partial class AvailableSlot
 {
@@ -17,7 +17,7 @@ public partial class AvailableSlot
 
     public TimeSpan? Time { get; set; }
 
-    public TimeSpan? Duration { get; set; }
+    public int? Duration { get; set; }
 
     public bool? Repeat { get; set; }
 
@@ -32,4 +32,14 @@ public partial class AvailableSlot
     public bool? Telehealth { get; set; }
 
     public long? LocationId { get; set; }
+
+    public long? ServiceId { get; set; }
+
+    public int? ServiceDuration { get; set; }
+
+    public DateTime? CreationDate { get; set; }
+
+    public long? CreatedBy { get; set; }
+
+    public bool? IsActive { get; set; }
 }

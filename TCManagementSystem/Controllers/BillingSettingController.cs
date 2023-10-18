@@ -9,32 +9,32 @@ namespace TCManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoiceController : ControllerBase
+    public class BillingSettingController : ControllerBase
     {
             public IConfiguration _configuration;
             private readonly IMapper _mapper;
 
-            private readonly IInvoiceRepo _IInvoiceRepo;
+            private readonly IBillingSettingRepo _IBillingSettingRepo;
 
-            public InvoiceController(
+            public BillingSettingController(
                 IConfiguration config,
                 IMapper IMapper,
-                IInvoiceRepo IInvoiceRepo)
+                IBillingSettingRepo IBillingSettingRepo)
             {
                 _configuration = config;
                 _mapper = IMapper;
-                _IInvoiceRepo = IInvoiceRepo;
+                _IBillingSettingRepo = IBillingSettingRepo;
             }
 
             [HttpGet]
-            [Route("GetAllInvoice")]
-            public ApiResponse<List<GetAllInvoiceResponseDTO>> GetAllInvoice()
+            [Route("GetAllBillingSetting")]
+            public ApiResponse<List<GetAllBillingSettingResponseDTO>> GetAllBillingSetting()
             {
-                ApiResponse<List<GetAllInvoiceResponseDTO>> response = new ApiResponse<List<GetAllInvoiceResponseDTO>>();
+                ApiResponse<List<GetAllBillingSettingResponseDTO>> response = new ApiResponse<List<GetAllBillingSettingResponseDTO>>();
                 try
                 {
-                    List<GetAllInvoiceResponseDTO> result = new List<GetAllInvoiceResponseDTO>();
-                    result = _IInvoiceRepo.GetAllInvoice();
+                    List<GetAllBillingSettingResponseDTO> result = new List<GetAllBillingSettingResponseDTO>();
+                    result = _IBillingSettingRepo.GetAllBillingSetting();
                     response.Data = result;
                 }
                 catch (Exception ex)
@@ -45,14 +45,14 @@ namespace TCManagementSystem.Controllers
             }
 
             [HttpGet]
-            [Route("GetInvoiceById")]
-            public ApiResponse<GetAllInvoiceResponseDTO> GetInvoiceById(long Id)
+            [Route("GetBillingSettingById")]
+            public ApiResponse<GetAllBillingSettingResponseDTO> GetBillingSettingById(long Id)
             {
-                ApiResponse<GetAllInvoiceResponseDTO> response = new ApiResponse<GetAllInvoiceResponseDTO>();
+                ApiResponse<GetAllBillingSettingResponseDTO> response = new ApiResponse<GetAllBillingSettingResponseDTO>();
                 try
                 {
-                    GetAllInvoiceResponseDTO result = new GetAllInvoiceResponseDTO();
-                    result = _IInvoiceRepo.GetInvoiceById(Id);
+                    GetAllBillingSettingResponseDTO result = new GetAllBillingSettingResponseDTO();
+                    result = _IBillingSettingRepo.GetBillingSettingById(Id);
                     response.Data = result;
                 }
                 catch (Exception ex)
@@ -63,13 +63,13 @@ namespace TCManagementSystem.Controllers
             }
 
             [HttpPost]
-            [Route("SaveInvoice")]
-            public ApiResponse<bool> SaveInvoice([FromBody] GetAllInvoiceRequestDTO request)
+            [Route("SaveBillingSetting")]
+            public ApiResponse<bool> SaveBillingSetting([FromBody] GetAllBillingSettingRequestDTO request)
             {
                 ApiResponse<bool> response = new ApiResponse<bool>();
                 try
                 {
-                    _IInvoiceRepo.SaveInvoice(request);
+                    _IBillingSettingRepo.SaveBillingSetting(request);
                     response.Data = true;
                 }
                 catch (Exception ex)
@@ -80,13 +80,13 @@ namespace TCManagementSystem.Controllers
             }
 
             [HttpDelete]
-            [Route("DeleteInvoice")]
-            public ApiResponse<bool> DeleteInvoice(long Id)
+            [Route("DeleteBillingSetting")]
+            public ApiResponse<bool> DeleteBillingSetting(long Id)
             {
                 ApiResponse<bool> response = new ApiResponse<bool>();
                 try
                 {
-                    _IInvoiceRepo.DeleteInvoice(Id);
+                    _IBillingSettingRepo.DeleteBillingSetting(Id);
                     response.Data = true;
                 }
                 catch (Exception ex)
@@ -95,5 +95,5 @@ namespace TCManagementSystem.Controllers
                 }
                 return response;
             }
-    }
+     }
 }

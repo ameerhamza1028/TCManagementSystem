@@ -28,7 +28,7 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllAvailableSlot")]
-        public ApiResponse<List<GetAllSlotResponseDTO>> GetAllUser()
+        public ApiResponse<List<GetAllSlotResponseDTO>> GetAllAvailableSlot()
         {
             ApiResponse<List<GetAllSlotResponseDTO>> response = new ApiResponse<List<GetAllSlotResponseDTO>>();
             try
@@ -46,13 +46,13 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAvailableSlotById")]
-        public ApiResponse<GetAllSlotResponseDTO> GetAvailableSlotById(int id)
+        public ApiResponse<GetAllSlotResponseDTO> GetAvailableSlotById(long Id)
         {
             ApiResponse<GetAllSlotResponseDTO> response = new ApiResponse<GetAllSlotResponseDTO>();
             try
             {
                 GetAllSlotResponseDTO result = new GetAllSlotResponseDTO();
-                result = _IAvailableSlotRepo.GetAvailableSlotById(id);
+                result = _IAvailableSlotRepo.GetAvailableSlotById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -81,12 +81,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpDelete]
         [Route("DeleteAvailableSlot")]
-        public ApiResponse<bool> DeleteAvailableSlot(int id)
+        public ApiResponse<bool> DeleteAvailableSlot(long Id)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IAvailableSlotRepo.DeleteAvailableSlot(id);
+                _IAvailableSlotRepo.DeleteAvailableSlot(Id);
                 response.Data = true;
             }
             catch (Exception ex)

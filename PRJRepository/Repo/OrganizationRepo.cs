@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
-using PRJRepository.EntityModel;
+using PRJRepository.Models;
 
 namespace PRJRepository.Repo
 {
@@ -22,10 +22,10 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllOrganizationResponseDTO GetOrganizationById(int id)
+        public GetAllOrganizationResponseDTO GetOrganizationById(long Id)
         {
             GetAllOrganizationResponseDTO response = new GetAllOrganizationResponseDTO();
-            Organization item = _context.Organizations.Where(x => x.OrgId == id).FirstOrDefault();
+            Organization item = _context.Organizations.Where(x => x.OrgId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllOrganizationResponseDTO>(item);
             return response;
         }
@@ -55,14 +55,12 @@ namespace PRJRepository.Repo
             }
         }
 
-        public bool DeleteOrganization(int id)
+        public bool DeleteOrganization(long Id)
         {
             try
             {
-                var organization = _context.Organizations.Where(x => x.OrgId == id).FirstOrDefault();
-                //organization = _mapper.Map<Organization>(id);
-                _context.Organizations.Remove(organization);
-                _context.SaveChanges();
+                Organization organization = _context.Organizations.Where(x => x.OrgId == Id).FirstOrDefault();
+                organization.IsActive = false;
                 return true;
             }
             catch

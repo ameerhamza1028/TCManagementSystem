@@ -28,7 +28,7 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllClinicLocation")]
-        public ApiResponse<List<GetAllClinicLocationResponseDTO>> GetAllUser()
+        public ApiResponse<List<GetAllClinicLocationResponseDTO>> GetAllClinicLocation()
         {
             ApiResponse<List<GetAllClinicLocationResponseDTO>> response = new ApiResponse<List<GetAllClinicLocationResponseDTO>>();
             try
@@ -46,13 +46,13 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetClinicLocationById")]
-        public ApiResponse<GetAllClinicLocationResponseDTO> GetClinicLocationById(int id)
+        public ApiResponse<GetAllClinicLocationResponseDTO> GetClinicLocationById(long Id)
         {
             ApiResponse<GetAllClinicLocationResponseDTO> response = new ApiResponse<GetAllClinicLocationResponseDTO>();
             try
             {
                 GetAllClinicLocationResponseDTO result = new GetAllClinicLocationResponseDTO();
-                result = _IClinicLocationRepo.GetClinicLocationById(id);
+                result = _IClinicLocationRepo.GetClinicLocationById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -81,12 +81,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpDelete]
         [Route("DeleteClinicLocation")]
-        public ApiResponse<bool> DeleteClinicLocation(int id)
+        public ApiResponse<bool> DeleteClinicLocation(long Id)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IClinicLocationRepo.DeleteClinicLocation(id);
+                _IClinicLocationRepo.DeleteClinicLocation(Id);
                 response.Data = true;
             }
             catch (Exception ex)

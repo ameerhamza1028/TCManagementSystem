@@ -46,13 +46,13 @@ namespace TCManagementSystem.Controllers
 
             [HttpGet]
             [Route("GetOrganizationById")]
-            public ApiResponse<GetAllOrganizationResponseDTO> GetSubscriptionById(int Orgid)
+            public ApiResponse<GetAllOrganizationResponseDTO> GetOrganizationById(long Id)
             {
                 ApiResponse<GetAllOrganizationResponseDTO> response = new ApiResponse<GetAllOrganizationResponseDTO>();
                 try
                 {
                     GetAllOrganizationResponseDTO result = new GetAllOrganizationResponseDTO();
-                    result = _IOrganizationRepo.GetOrganizationById(Orgid);
+                    result = _IOrganizationRepo.GetOrganizationById(Id);
                     response.Data = result;
                 }
                 catch (Exception ex)
@@ -81,12 +81,12 @@ namespace TCManagementSystem.Controllers
 
             [HttpDelete]
             [Route("DeleteOrganization")]
-            public ApiResponse<bool> DeleteOrganization(int Orgid)
+            public ApiResponse<bool> DeleteOrganization(long Id)
             {
                 ApiResponse<bool> response = new ApiResponse<bool>();
                 try
                 {
-                    _IOrganizationRepo.DeleteOrganization(Orgid);
+                    _IOrganizationRepo.DeleteOrganization(Id);
                     response.Data = true;
                 }
                 catch (Exception ex)
