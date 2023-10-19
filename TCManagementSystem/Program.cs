@@ -28,7 +28,30 @@ internal class Program
         builder.Services.AddTransient<IServiceSettingRepo, ServiceSettingRepo>();
         builder.Services.AddTransient<IInsurranceSettingRepo, InsurranceSettingRepo>();
         builder.Services.AddTransient<ICalenderSettingRepo, CalenderSettingRepo>();
+<<<<<<< HEAD
         builder.Services.AddTransient<IClientFormRepo, ClientFormRepo>();
+=======
+        builder.Services.AddTransient<IForm1Repo, Form1Repo>();
+        builder.Services.AddTransient<IForm2Repo, Form2Repo>();
+        builder.Services.AddTransient<IForm3Repo, Form3Repo>();
+        builder.Services.AddTransient<IForm4Repo, Form4Repo>();
+        builder.Services.AddTransient<IForm5Repo, Form5Repo>();
+        builder.Services.AddTransient<IForm6Repo, Form6Repo>();
+        builder.Services.AddTransient<IForm7Repo, Form7Repo>();
+        builder.Services.AddTransient<IForm8Repo, Form8Repo>();
+        builder.Services.AddTransient<IForm9Repo, Form9Repo>();
+        builder.Services.AddTransient<IForm10Repo, Form10Repo>();
+        builder.Services.AddTransient<IForm11Repo, Form11Repo>();
+        builder.Services.AddTransient<IForm12Repo, Form12Repo>();
+        builder.Services.AddTransient<IForm13Repo, Form13Repo>();
+        builder.Services.AddTransient<IForm14Repo, Form14Repo>();
+        builder.Services.AddTransient<IForm15Repo, Form15Repo>();
+        builder.Services.AddTransient<IForm16Repo, Form16Repo>();
+        builder.Services.AddTransient<IForm17Repo, Form17Repo>();
+        builder.Services.AddTransient<IForm18Repo, Form18Repo>();
+        builder.Services.AddTransient<IForm19Repo, Form19Repo>();
+        builder.Services.AddTransient<IForm20Repo, Form20Repo>();
+>>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
 
         var mapperConfiguration = new MapperConfiguration(mc =>
         {

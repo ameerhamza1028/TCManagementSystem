@@ -28,7 +28,11 @@ namespace TCManagementSystem.Controllers
 
             [HttpGet]
             [Route("GetAllBillingSetting")]
+<<<<<<< HEAD
             public ApiResponse<List<GetAllBillingSettingResponseDTO>> GetAllBillingSetting()
+=======
+            public ApiResponse<List<GetAllBillingSettingResponseDTO>> GetAllUser()
+>>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             {
                 ApiResponse<List<GetAllBillingSettingResponseDTO>> response = new ApiResponse<List<GetAllBillingSettingResponseDTO>>();
                 try
@@ -46,13 +50,21 @@ namespace TCManagementSystem.Controllers
 
             [HttpGet]
             [Route("GetBillingSettingById")]
+<<<<<<< HEAD
             public ApiResponse<GetAllBillingSettingResponseDTO> GetBillingSettingById(long Id)
+=======
+            public ApiResponse<GetAllBillingSettingResponseDTO> GetBillingSettingById(int id)
+>>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             {
                 ApiResponse<GetAllBillingSettingResponseDTO> response = new ApiResponse<GetAllBillingSettingResponseDTO>();
                 try
                 {
                     GetAllBillingSettingResponseDTO result = new GetAllBillingSettingResponseDTO();
+<<<<<<< HEAD
                     result = _IBillingSettingRepo.GetBillingSettingById(Id);
+=======
+                    result = _IBillingSettingRepo.GetBillingSettingById(id);
+>>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
                     response.Data = result;
                 }
                 catch (Exception ex)
@@ -81,12 +93,20 @@ namespace TCManagementSystem.Controllers
 
             [HttpDelete]
             [Route("DeleteBillingSetting")]
+<<<<<<< HEAD
             public ApiResponse<bool> DeleteBillingSetting(long Id)
+=======
+            public ApiResponse<bool> DeleteBillingSetting(int id)
+>>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             {
                 ApiResponse<bool> response = new ApiResponse<bool>();
                 try
                 {
+<<<<<<< HEAD
                     _IBillingSettingRepo.DeleteBillingSetting(Id);
+=======
+                    _IBillingSettingRepo.DeleteBillingSetting(id);
+>>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
                     response.Data = true;
                 }
                 catch (Exception ex)
