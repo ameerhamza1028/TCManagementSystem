@@ -5,11 +5,7 @@ namespace PRJRepository.Models;
 
 public partial class InsurranceSetting
 {
-<<<<<<< HEAD
     public long InsurranceId { get; set; }
-=======
-    public int InsurranceId { get; set; }
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
 
     public bool? IsIndividual { get; set; }
 
@@ -36,13 +32,10 @@ public partial class InsurranceSetting
     public bool? IsClaimForm { get; set; }
 
     public bool? IsMultipleDiagnosisCode { get; set; }
-<<<<<<< HEAD
 
     public DateTime? CreationDate { get; set; }
 
     public long? CreatedBy { get; set; }
 
     public bool? IsActive { get; set; }
-=======
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
 }

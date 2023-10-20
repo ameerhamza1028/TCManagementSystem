@@ -22,17 +22,11 @@ namespace PRJRepository.Repo
             return response;
         }
 
-<<<<<<< HEAD
+
         public GetAllInsurranceSettingResponseDTO GetInsurranceSettingById(long Id)
         {
             GetAllInsurranceSettingResponseDTO response = new GetAllInsurranceSettingResponseDTO();
             InsurranceSetting item = _context.InsurranceSettings.Where(x => x.InsurranceId == Id).FirstOrDefault();
-=======
-        public GetAllInsurranceSettingResponseDTO GetInsurranceSettingById(int id)
-        {
-            GetAllInsurranceSettingResponseDTO response = new GetAllInsurranceSettingResponseDTO();
-            InsurranceSetting item = _context.InsurranceSettings.Where(x => x.InsurranceId == id).FirstOrDefault();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             response = _mapper.Map<GetAllInsurranceSettingResponseDTO>(item);
             return response;
         }
@@ -62,22 +56,12 @@ namespace PRJRepository.Repo
             }
         }
 
-<<<<<<< HEAD
         public bool DeleteInsurranceSetting(long Id)
         {
             try
             {
                 InsurranceSetting insurranceSetting = _context.InsurranceSettings.FirstOrDefault(x => x.InsurranceId == Id);
                 insurranceSetting.IsActive = false;
-=======
-        public bool DeleteInsurranceSetting(int id)
-        {
-            try
-            {
-                var InsurranceSetting = _context.InsurranceSettings.FirstOrDefault(x => x.InsurranceId == id);
-                _context.InsurranceSettings.Remove(InsurranceSetting);
-                _context.SaveChanges();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
                 return true;
             }
             catch

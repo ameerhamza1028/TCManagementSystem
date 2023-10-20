@@ -21,18 +21,10 @@ namespace PRJRepository.Repo
             response = _mapper.Map<List<GetAllBillingSettingResponseDTO>>(list);
             return response;
         }
-
-<<<<<<< HEAD
         public GetAllBillingSettingResponseDTO GetBillingSettingById(long Id)
         {
             GetAllBillingSettingResponseDTO response = new GetAllBillingSettingResponseDTO();
             BillingSetting item = _context.BillingSettings.Where(x => x.BillingId == Id).FirstOrDefault();
-=======
-        public GetAllBillingSettingResponseDTO GetBillingSettingById(int id)
-        {
-            GetAllBillingSettingResponseDTO response = new GetAllBillingSettingResponseDTO();
-            BillingSetting item = _context.BillingSettings.Where(x => x.BillingId == id).FirstOrDefault();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             response = _mapper.Map<GetAllBillingSettingResponseDTO>(item);
             return response;
         }
@@ -62,22 +54,12 @@ namespace PRJRepository.Repo
             }
         }
 
-<<<<<<< HEAD
         public bool DeleteBillingSetting(long Id)
         {
             try
             {
                 BillingSetting billingSetting = _context.BillingSettings.FirstOrDefault(x => x.BillingId == Id);
                 billingSetting.IsActive = false;
-=======
-        public bool DeleteBillingSetting(int id)
-        {
-            try
-            {
-                var BillingSetting = _context.BillingSettings.FirstOrDefault(x => x.BillingId == id);
-                _context.BillingSettings.Remove(BillingSetting);
-                _context.SaveChanges();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
                 return true;
             }
             catch

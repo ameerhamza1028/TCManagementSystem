@@ -22,17 +22,10 @@ namespace PRJRepository.Repo
             return response;
         }
 
-<<<<<<< HEAD
         public GetAllCalenderSettingResponseDTO GetCalenderSettingById(long Id)
         {
             GetAllCalenderSettingResponseDTO response = new GetAllCalenderSettingResponseDTO();
             CalenderSetting item = _context.CalenderSettings.Where(x => x.CalenderId == Id).FirstOrDefault();
-=======
-        public GetAllCalenderSettingResponseDTO GetCalenderSettingById(int id)
-        {
-            GetAllCalenderSettingResponseDTO response = new GetAllCalenderSettingResponseDTO();
-            CalenderSetting item = _context.CalenderSettings.Where(x => x.CalenderId == id).FirstOrDefault();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             response = _mapper.Map<GetAllCalenderSettingResponseDTO>(item);
             return response;
         }
@@ -62,22 +55,14 @@ namespace PRJRepository.Repo
             }
         }
 
-<<<<<<< HEAD
+
         public bool DeleteCalenderSetting(long Id)
         {
             try
             {
                 CalenderSetting calenderSetting = _context.CalenderSettings.FirstOrDefault(x => x.CalenderId == Id);
                 calenderSetting.IsActive = false;
-=======
-        public bool DeleteCalenderSetting(int id)
-        {
-            try
-            {
-                var CalenderSetting = _context.CalenderSettings.FirstOrDefault(x => x.CalenderId == id);
-                _context.CalenderSettings.Remove(CalenderSetting);
-                _context.SaveChanges();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
+
                 return true;
             }
             catch

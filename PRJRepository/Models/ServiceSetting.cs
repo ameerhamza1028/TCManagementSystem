@@ -5,11 +5,7 @@ namespace PRJRepository.Models;
 
 public partial class ServiceSetting
 {
-<<<<<<< HEAD
     public long ServiceId { get; set; }
-=======
-    public int ServiceId { get; set; }
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
 
     public string? ServiceName { get; set; }
 
@@ -34,13 +30,10 @@ public partial class ServiceSetting
     public int? MinutesAfter { get; set; }
 
     public int? ClicianId { get; set; }
-<<<<<<< HEAD
 
     public DateTime? CreationDate { get; set; }
 
     public long? CreatedBy { get; set; }
 
     public bool? IsActive { get; set; }
-=======
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
 }

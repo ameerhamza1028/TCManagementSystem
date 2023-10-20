@@ -28,11 +28,8 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllCalenderSetting")]
-<<<<<<< HEAD
+
         public ApiResponse<List<GetAllCalenderSettingResponseDTO>> GetAllCalenderSetting()
-=======
-        public ApiResponse<List<GetAllCalenderSettingResponseDTO>> GetAllUser()
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
         {
             ApiResponse<List<GetAllCalenderSettingResponseDTO>> response = new ApiResponse<List<GetAllCalenderSettingResponseDTO>>();
             try
@@ -50,21 +47,16 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetCalenderSettingById")]
-<<<<<<< HEAD
+
         public ApiResponse<GetAllCalenderSettingResponseDTO> GetCalenderSettingById(long Id)
-=======
-        public ApiResponse<GetAllCalenderSettingResponseDTO> GetCalenderSettingById(int id)
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
         {
             ApiResponse<GetAllCalenderSettingResponseDTO> response = new ApiResponse<GetAllCalenderSettingResponseDTO>();
             try
             {
                 GetAllCalenderSettingResponseDTO result = new GetAllCalenderSettingResponseDTO();
-<<<<<<< HEAD
+
                 result = _ICalenderSettingRepo.GetCalenderSettingById(Id);
-=======
-                result = _ICalenderSettingRepo.GetCalenderSettingById(id);
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
+
                 response.Data = result;
             }
             catch (Exception ex)
@@ -93,20 +85,16 @@ namespace TCManagementSystem.Controllers
 
         [HttpDelete]
         [Route("DeleteCalenderSetting")]
-<<<<<<< HEAD
+
         public ApiResponse<bool> DeleteCalenderSetting(long Id)
-=======
-        public ApiResponse<bool> DeleteCalenderSetting(int id)
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
+
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-<<<<<<< HEAD
+
                 _ICalenderSettingRepo.DeleteCalenderSetting(Id);
-=======
-                _ICalenderSettingRepo.DeleteCalenderSetting(id);
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
+
                 response.Data = true;
             }
             catch (Exception ex)

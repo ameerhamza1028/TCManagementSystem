@@ -24,13 +24,10 @@ public partial class CalenderSetting
     public bool? IsNewContacts { get; set; }
 
     public bool? IsCreditCardRequried { get; set; }
-<<<<<<< HEAD
 
     public DateTime? CreationDate { get; set; }
 
     public bool? CreatedBy { get; set; }
 
     public bool? IsActive { get; set; }
-=======
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
 }

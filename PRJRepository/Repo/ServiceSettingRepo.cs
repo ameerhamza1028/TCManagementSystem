@@ -22,17 +22,11 @@ namespace PRJRepository.Repo
             return response;
         }
 
-<<<<<<< HEAD
+
         public GetAllServiceSettingResponseDTO GetServiceSettingById(long Id)
         {
             GetAllServiceSettingResponseDTO response = new GetAllServiceSettingResponseDTO();
             ServiceSetting item = _context.ServiceSettings.Where(x => x.ServiceId == Id).FirstOrDefault();
-=======
-        public GetAllServiceSettingResponseDTO GetServiceSettingById(int id)
-        {
-            GetAllServiceSettingResponseDTO response = new GetAllServiceSettingResponseDTO();
-            ServiceSetting item = _context.ServiceSettings.Where(x => x.ServiceId == id).FirstOrDefault();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
             response = _mapper.Map<GetAllServiceSettingResponseDTO>(item);
             return response;
         }
@@ -62,22 +56,13 @@ namespace PRJRepository.Repo
             }
         }
 
-<<<<<<< HEAD
+
         public bool DeleteServiceSetting(long Id)
         {
             try
             {
                 ServiceSetting serviceSetting = _context.ServiceSettings.FirstOrDefault(x => x.ServiceId == Id);
                 serviceSetting.IsActive = false;
-=======
-        public bool DeleteServiceSetting(int id)
-        {
-            try
-            {
-                var ServiceSetting = _context.ServiceSettings.FirstOrDefault(x => x.ServiceId == id);
-                _context.ServiceSettings.Remove(ServiceSetting);
-                _context.SaveChanges();
->>>>>>> 913fac8c58a4f093a2d8eaf4f031e037ed49ff40
                 return true;
             }
             catch
