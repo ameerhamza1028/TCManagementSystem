@@ -36,6 +36,8 @@ namespace PRJRepository.Repo
                 if (request.UserId == 0)
                 {
                     User = _mapper.Map<User>(request);
+                    User.IsActive = true;
+                    User.CreationDate = DateTime.UtcNow;
                     _context.Users.Add(User);
                     _context.SaveChanges();
                 }

@@ -39,6 +39,8 @@ namespace PRJRepository.Repo
                 if (request.ClientId == 0)
                 {
                     client = _mapper.Map<Models.Client>(request);
+                    client.IsActive = true;
+                    client.CreatedDate = DateTime.UtcNow;
                     _context.Clients.Add(client);
                     _context.SaveChanges();
                 }

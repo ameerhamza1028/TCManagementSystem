@@ -38,6 +38,8 @@ namespace PRJRepository.Repo
                 if (request.BillingId == 0)
                 {
                     BillingSetting = _mapper.Map<BillingSetting>(request);
+                    BillingSetting.IsActive = true;
+                    BillingSetting.CreationDate = DateTime.UtcNow;
                     _context.BillingSettings.Add(BillingSetting);
                     _context.SaveChanges();
                 }

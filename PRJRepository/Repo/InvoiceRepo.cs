@@ -39,6 +39,8 @@ namespace PRJRepository.Repo
                 if (request.InvoiveId == 0)
                 {
                     Invoice = _mapper.Map<Invoice>(request);
+                    Invoice.IsActive = true;
+                    Invoice.CreationDate = DateTime.UtcNow;
                     _context.Invoices.Add(Invoice);
                     _context.SaveChanges();
                 }

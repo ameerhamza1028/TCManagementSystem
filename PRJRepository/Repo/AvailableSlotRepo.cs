@@ -39,6 +39,8 @@ namespace PRJRepository.Repo
                 if (request.AppointmntSlotId == 0)
                 {
                     availableSlot = _mapper.Map<AvailableSlot>(request);
+                    availableSlot.IsActive = true;
+                    availableSlot.CreationDate = DateTime.UtcNow;
                     _context.AvailableSlots.Add(availableSlot);
                     _context.SaveChanges();
                 }

@@ -39,6 +39,7 @@ namespace PRJRepository.Repo
                 if (request.OrgId == 0)
                 {
                     organization = _mapper.Map<Organization>(request);
+                    organization.IsActive = true;
                     _context.Organizations.Add(organization);
                     _context.SaveChanges();
                 }

@@ -39,6 +39,8 @@ namespace PRJRepository.Repo
                 if (request.AppointmentId == 0)
                 {
                     appointment = _mapper.Map<Appointment>(request);
+                    appointment.IsActive = true;
+                    appointment.CreationDate = DateTime.UtcNow;
                     _context.Appointments.Add(appointment);
                     _context.SaveChanges();
                 }

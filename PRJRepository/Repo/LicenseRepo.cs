@@ -36,6 +36,8 @@ namespace PRJRepository.Repo
                 if (request.LicenseId == 0)
                 {
                     License = _mapper.Map<License>(request);
+                    License.IsActive = true;
+                    License.CreationDate = DateTime.UtcNow;
                     _context.Licenses.Add(License);
                     _context.SaveChanges();
                 }

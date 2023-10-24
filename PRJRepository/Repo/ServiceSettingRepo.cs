@@ -40,6 +40,8 @@ namespace PRJRepository.Repo
                 if (request.ServiceId == 0)
                 {
                     ServiceSetting = _mapper.Map<ServiceSetting>(request);
+                    ServiceSetting.IsActive = true;
+                    ServiceSetting.CreationDate = DateTime.UtcNow;
                     _context.ServiceSettings.Add(ServiceSetting);
                     _context.SaveChanges();
                 }

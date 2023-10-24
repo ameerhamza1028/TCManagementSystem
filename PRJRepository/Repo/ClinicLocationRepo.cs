@@ -39,6 +39,8 @@ namespace PRJRepository.Repo
                 if (request.LocationId == 0)
                 {
                     ClinicLocation = _mapper.Map<ClinicLocation>(request);
+                    ClinicLocation.IsActive = true;
+                    ClinicLocation.CreationDate = DateTime.UtcNow;
                     _context.ClinicLocations.Add(ClinicLocation);
                     _context.SaveChanges();
                 }

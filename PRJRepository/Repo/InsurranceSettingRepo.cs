@@ -40,6 +40,8 @@ namespace PRJRepository.Repo
                 if (request.InsurranceId == 0)
                 {
                     InsurranceSetting = _mapper.Map<InsurranceSetting>(request);
+                    InsurranceSetting.IsActive = true;
+                    InsurranceSetting.CreationDate = DateTime.UtcNow;
                     _context.InsurranceSettings.Add(InsurranceSetting);
                     _context.SaveChanges();
                 }

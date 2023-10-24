@@ -37,6 +37,7 @@ namespace PRJRepository.Repo
                 if (request.FormId == 0)
                 {
                     ClientForm = _mapper.Map<ClientForm>(request);
+                    ClientForm.CreationDate = DateTime.UtcNow;
                     ClientForm.FormJson = JsonSerializer.Serialize(request);
                     _context.ClientForms.Add(ClientForm);
                     _context.SaveChanges();

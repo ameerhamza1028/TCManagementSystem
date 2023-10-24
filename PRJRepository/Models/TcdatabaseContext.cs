@@ -23,6 +23,8 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<CalenderSetting> CalenderSettings { get; set; }
 
+    public virtual DbSet<CheckAvaliability> CheckAvaliabilities { get; set; }
+
     public virtual DbSet<Client> Clients { get; set; }
 
     public virtual DbSet<ClientForm> ClientForms { get; set; }
@@ -44,8 +46,9 @@ public partial class TcdatabaseContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-018QP73\\SQLEXPRESS;Database=TCDatabase;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;encrypt=False");
+    {
+        optionsBuilder.UseSqlServer("Server=DESKTOP-018QP73\\SQLEXPRESS;Database=TCDatabase;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;encrypt=False");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -88,6 +91,15 @@ public partial class TcdatabaseContext : DbContext
             entity.ToTable("CalenderSetting");
 
             entity.Property(e => e.CreationDate).HasColumnType("date");
+        });
+
+        modelBuilder.Entity<CheckAvaliability>(entity =>
+        {
+            entity.HasKey(e => e.CheckAvailabilityId);
+
+            entity.ToTable("CheckAvaliability");
+
+            entity.Property(e => e.SelectDate).HasColumnType("date");
         });
 
         modelBuilder.Entity<Client>(entity =>

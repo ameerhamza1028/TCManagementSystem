@@ -32,6 +32,7 @@ internal class Program
         builder.Services.AddTransient<IClientFormRepo, ClientFormRepo>();
         builder.Services.AddTransient<IUserRepo, UserRepo>();
         builder.Services.AddTransient<ILicenseRepo, LicenseRepo>();
+        builder.Services.AddTransient<ICheckAvailabilityRepo, CheckAvailabilityRepo>();
 
 
         var mapperConfiguration = new MapperConfiguration(mc =>

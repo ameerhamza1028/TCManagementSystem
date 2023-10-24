@@ -39,6 +39,8 @@ namespace PRJRepository.Repo
                 if (request.CalenderId == 0)
                 {
                     CalenderSetting = _mapper.Map<CalenderSetting>(request);
+                    CalenderSetting.IsActive = true;
+                    CalenderSetting.CreationDate = DateTime.UtcNow;
                     _context.CalenderSettings.Add(CalenderSetting);
                     _context.SaveChanges();
                 }
