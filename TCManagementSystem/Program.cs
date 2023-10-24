@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PRJRepository.Interface;
 using PRJRepository.Models;
 using PRJRepository.Repo;
 using TCManagementSystem.AutoMapper;

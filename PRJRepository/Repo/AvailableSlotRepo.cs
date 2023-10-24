@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using PRJRepository.DTO;
+using PRJRepository.DTO.AvailableSlot;
+using PRJRepository.Interface;
 using PRJRepository.Models;
 
 namespace PRJRepository.Repo
@@ -14,23 +15,23 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllSlotResponseDTO> GetAllAllAvailableSlot()
+        public List<GetAllSlotAvailableResponseDTO> GetAllAllAvailableSlot()
         {
-            List<GetAllSlotResponseDTO> response = new List<GetAllSlotResponseDTO>();
+            List<GetAllSlotAvailableResponseDTO> response = new List<GetAllSlotAvailableResponseDTO>();
             List<AvailableSlot> list = _context.AvailableSlots.ToList();
-            response = _mapper.Map<List<GetAllSlotResponseDTO>>(list);
+            response = _mapper.Map<List<GetAllSlotAvailableResponseDTO>>(list);
             return response;
         }
 
-        public GetAllSlotResponseDTO GetAvailableSlotById(long Id)
+        public GetAllSlotAvailableResponseDTO GetAvailableSlotById(long Id)
         {
-            GetAllSlotResponseDTO response = new GetAllSlotResponseDTO();
+            GetAllSlotAvailableResponseDTO response = new GetAllSlotAvailableResponseDTO();
             AvailableSlot item = _context.AvailableSlots.Where(x => x.AppointmntSlotId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllSlotResponseDTO>(item);
+            response = _mapper.Map<GetAllSlotAvailableResponseDTO>(item);
             return response;
         }
 
-        public bool SaveAvailableSlot(GetAllSlotRequestDTO request)
+        public bool SaveAvailableSlot(GetAllAvailableSlotRequestDTO request)
         {
             try
             {

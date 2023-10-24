@@ -1,5 +1,19 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
+using PRJRepository.DTO.Appointment;
+using PRJRepository.DTO.AvailableSlot;
+using PRJRepository.DTO.BillingSetting;
+using PRJRepository.DTO.CalenderSetting;
+using PRJRepository.DTO.Client;
+using PRJRepository.DTO.ClientForm;
+using PRJRepository.DTO.Clinic;
+using PRJRepository.DTO.ClinicLocation;
+using PRJRepository.DTO.InsurranceSetting;
+using PRJRepository.DTO.Invoice;
+using PRJRepository.DTO.License;
+using PRJRepository.DTO.Organization;
+using PRJRepository.DTO.ServiceSetting;
+using PRJRepository.DTO.User;
 using PRJRepository.Models;
 
 namespace TCManagementSystem.AutoMapper
@@ -8,16 +22,16 @@ namespace TCManagementSystem.AutoMapper
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Client, GetAllResponseDTO>().ReverseMap();
-            CreateMap<Client, GetAllRequestDTO>().ReverseMap();
+            CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
+            CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationRequestDTO>().ReverseMap();
             CreateMap<Clinic, GetAllClinicResponseDTO>().ReverseMap();
             CreateMap<Clinic, GetAllClinicRequestDTO>().ReverseMap();
             CreateMap<Appointment, GetAllAppointmentResponseDTO>().ReverseMap();
             CreateMap<Appointment, GetAllAppointmentRequestDTO>().ReverseMap();
-            CreateMap<AvailableSlot, GetAllSlotResponseDTO>().ReverseMap();
-            CreateMap<AvailableSlot, GetAllSlotRequestDTO>().ReverseMap();
+            CreateMap<AvailableSlot, GetAllSlotAvailableResponseDTO>().ReverseMap();
+            CreateMap<AvailableSlot, GetAllAvailableSlotRequestDTO>().ReverseMap();
             CreateMap<Invoice, GetAllInvoiceResponseDTO>().ReverseMap();
             CreateMap<Invoice, GetAllInvoiceRequestDTO>().ReverseMap();
             CreateMap<ClinicLocation, GetAllClinicLocationResponseDTO>().ReverseMap();

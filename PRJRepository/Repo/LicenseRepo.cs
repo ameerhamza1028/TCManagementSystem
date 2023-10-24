@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using PRJRepository.DTO;
+using PRJRepository.DTO.License;
+using PRJRepository.Interface;
 using PRJRepository.Models;
 using System;
 using System.Collections.Generic;

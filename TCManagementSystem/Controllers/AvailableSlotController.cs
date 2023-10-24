@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PRJRepository.DTO;
-using PRJRepository.Repo;
+using PRJRepository.DTO.AvailableSlot;
+using PRJRepository.Interface;
 using TCManagementSystem.Helper;
 
 namespace TCManagementSystem.Controllers
@@ -28,12 +28,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllAvailableSlot")]
-        public ApiResponse<List<GetAllSlotResponseDTO>> GetAllAvailableSlot()
+        public ApiResponse<List<GetAllSlotAvailableResponseDTO>> GetAllAvailableSlot()
         {
-            ApiResponse<List<GetAllSlotResponseDTO>> response = new ApiResponse<List<GetAllSlotResponseDTO>>();
+            ApiResponse<List<GetAllSlotAvailableResponseDTO>> response = new ApiResponse<List<GetAllSlotAvailableResponseDTO>>();
             try
             {
-                List<GetAllSlotResponseDTO> result = new List<GetAllSlotResponseDTO>();
+                List<GetAllSlotAvailableResponseDTO> result = new List<GetAllSlotAvailableResponseDTO>();
                 result = _IAvailableSlotRepo.GetAllAllAvailableSlot();
                 response.Data = result;
             }
@@ -46,12 +46,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAvailableSlotById")]
-        public ApiResponse<GetAllSlotResponseDTO> GetAvailableSlotById(long Id)
+        public ApiResponse<GetAllSlotAvailableResponseDTO> GetAvailableSlotById(long Id)
         {
-            ApiResponse<GetAllSlotResponseDTO> response = new ApiResponse<GetAllSlotResponseDTO>();
+            ApiResponse<GetAllSlotAvailableResponseDTO> response = new ApiResponse<GetAllSlotAvailableResponseDTO>();
             try
             {
-                GetAllSlotResponseDTO result = new GetAllSlotResponseDTO();
+                GetAllSlotAvailableResponseDTO result = new GetAllSlotAvailableResponseDTO();
                 result = _IAvailableSlotRepo.GetAvailableSlotById(Id);
                 response.Data = result;
             }
@@ -64,7 +64,7 @@ namespace TCManagementSystem.Controllers
 
         [HttpPost]
         [Route("SaveAvailableSlot")]
-        public ApiResponse<bool> SaveAvailableSlot([FromBody] GetAllSlotRequestDTO request)
+        public ApiResponse<bool> SaveAvailableSlot([FromBody] GetAllAvailableSlotRequestDTO request)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try

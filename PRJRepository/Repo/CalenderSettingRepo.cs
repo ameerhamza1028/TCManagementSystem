@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using PRJRepository.DTO;
+using PRJRepository.DTO.CalenderSetting;
+using PRJRepository.Interface;
 using PRJRepository.Models;
 
 namespace PRJRepository.Repo

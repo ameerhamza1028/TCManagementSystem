@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using PRJRepository.DTO;
+using PRJRepository.DTO.ServiceSetting;
+using PRJRepository.Interface;
 using PRJRepository.Models;
 
 namespace PRJRepository.Repo

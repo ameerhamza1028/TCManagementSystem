@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PRJRepository.DTO;
-using PRJRepository.Repo;
+using PRJRepository.DTO.License;
+using PRJRepository.Interface;
 using TCManagementSystem.Helper;
 
 namespace TCManagementSystem.Controllers

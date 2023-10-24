@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-using PRJRepository.DTO;
+using PRJRepository.DTO.Client;
+using PRJRepository.Interface;
 using PRJRepository.Models;
 
 namespace PRJRepository.Repo
@@ -14,23 +15,23 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllResponseDTO> GetAllClient()
+        public List<GetAllClientResponseDTO> GetAllClient()
         {
-            List<GetAllResponseDTO> response = new List<GetAllResponseDTO>();
+            List<GetAllClientResponseDTO> response = new List<GetAllClientResponseDTO>();
             List<Models.Client> list = _context.Clients.ToList();
-            response = _mapper.Map<List<GetAllResponseDTO>>(list);
+            response = _mapper.Map<List<GetAllClientResponseDTO>>(list);
             return response;
         }
 
-        public GetAllResponseDTO GetClientById(long Id)
+        public GetAllClientResponseDTO GetClientById(long Id)
         {
-            GetAllResponseDTO response = new GetAllResponseDTO();
+            GetAllClientResponseDTO response = new GetAllClientResponseDTO();
             Models.Client item = _context.Clients.Where(x => x.ClientId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllResponseDTO>(item);
+            response = _mapper.Map<GetAllClientResponseDTO>(item);
             return response;
         }
 
-        public bool SaveClient(GetAllRequestDTO request)
+        public bool SaveClient(GetAllClientRequestDTO request)
         {
             try
             {

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PRJRepository.Repo;
-using PRJRepository.DTO;
 using TCManagementSystem.Helper;
+using PRJRepository.DTO.Client;
+using PRJRepository.Interface;
 
 namespace TCManagementSystem.Controllers
 {
@@ -28,12 +28,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllClients")]
-        public ApiResponse<List<GetAllResponseDTO>> GetAllClient()
+        public ApiResponse<List<GetAllClientResponseDTO>> GetAllClient()
         {
-            ApiResponse<List<GetAllResponseDTO>> response = new ApiResponse<List<GetAllResponseDTO>>();
+            ApiResponse<List<GetAllClientResponseDTO>> response = new ApiResponse<List<GetAllClientResponseDTO>>();
             try
             {
-                List<GetAllResponseDTO> result = new List<GetAllResponseDTO>();
+                List<GetAllClientResponseDTO> result = new List<GetAllClientResponseDTO>();
                 result = _IClientRepo.GetAllClient();
                 response.Data = result;
             }
@@ -45,12 +45,12 @@ namespace TCManagementSystem.Controllers
         }
         [HttpGet]
         [Route("GetClientById")]
-        public ApiResponse<GetAllResponseDTO> GetClientById(long Id)
+        public ApiResponse<GetAllClientResponseDTO> GetClientById(long Id)
         {
-            ApiResponse<GetAllResponseDTO> response = new ApiResponse<GetAllResponseDTO>();
+            ApiResponse<GetAllClientResponseDTO> response = new ApiResponse<GetAllClientResponseDTO>();
             try
             {
-                GetAllResponseDTO result = new GetAllResponseDTO();
+                GetAllClientResponseDTO result = new GetAllClientResponseDTO();
                 result = _IClientRepo.GetClientById(Id);
                 response.Data = result;
             }
@@ -63,7 +63,7 @@ namespace TCManagementSystem.Controllers
 
         [HttpPost]
         [Route("SaveClient")]
-        public ApiResponse<bool> SaveClient([FromBody] GetAllRequestDTO request)
+        public ApiResponse<bool> SaveClient([FromBody] GetAllClientRequestDTO request)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
