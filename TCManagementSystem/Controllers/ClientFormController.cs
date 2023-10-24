@@ -14,27 +14,27 @@ namespace TCManagementSystem.Controllers
         public IConfiguration _configuration;
         private readonly IMapper _mapper;
 
-        private readonly IClientFormRepo _IPatientFormRepo;
+        private readonly IClientFormRepo _IClientFormRepo;
 
         public ClientFormController(
             IConfiguration config,
             IMapper IMapper,
-            IClientFormRepo IPatientFormRepo)
+            IClientFormRepo IClientFormRepo)
         {
             _configuration = config;
             _mapper = IMapper;
-            _IPatientFormRepo = IPatientFormRepo;
+            _IClientFormRepo = IClientFormRepo;
         }
 
         [HttpGet]
-        [Route("GetPatientFormById")]
-        public ApiResponse<GetAllClientFormResponseDTO> GetPatientFormById(long Id)
+        [Route("GetClientFormById")]
+        public ApiResponse<GetAllClientFormResponseDTO> GetClientFormById(long Id)
         {
             ApiResponse<GetAllClientFormResponseDTO> response = new ApiResponse<GetAllClientFormResponseDTO>();
             try
             {
                 GetAllClientFormResponseDTO result = new GetAllClientFormResponseDTO();
-                result = _IPatientFormRepo.GetClientFormById(Id);
+                result = _IClientFormRepo.GetClientFormById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -45,13 +45,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Route("SavePatientForm")]
-        public ApiResponse<bool> SavePatientForm([FromBody] GetAllClientFormRequestDTO request)
+        [Route("SaveClientForm")]
+        public ApiResponse<bool> SaveClientForm([FromBody] GetAllClientFormRequestDTO request)
         {
             ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                _IPatientFormRepo.SaveClientForm(request);
+                _IClientFormRepo.SaveClientForm(request);
                 response.Data = true;
             }
             catch (Exception ex)

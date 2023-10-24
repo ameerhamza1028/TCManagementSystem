@@ -29,7 +29,9 @@ internal class Program
         builder.Services.AddTransient<IInsurranceSettingRepo, InsurranceSettingRepo>();
         builder.Services.AddTransient<ICalenderSettingRepo, CalenderSettingRepo>();
         builder.Services.AddTransient<IClientFormRepo, ClientFormRepo>();
-        
+        builder.Services.AddTransient<IUserRepo, UserRepo>();
+        builder.Services.AddTransient<ILicenseRepo, LicenseRepo>();
+
 
         var mapperConfiguration = new MapperConfiguration(mc =>
         {

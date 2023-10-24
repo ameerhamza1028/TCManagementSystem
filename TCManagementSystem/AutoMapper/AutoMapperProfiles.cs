@@ -32,6 +32,10 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<CalenderSetting, GetAllCalenderSettingRequestDTO>().ReverseMap();
             CreateMap<ClientForm, GetAllClientFormResponseDTO>().ReverseMap();
             CreateMap<ClientForm, GetAllClientFormRequestDTO>().ReverseMap();
+            CreateMap<User, GetAllUserResponseDTO>().ReverseMap();
+            CreateMap<User, GetAllUserRequestDTO>().ReverseMap();
+            CreateMap<License, GetAllLicenseResponseDTO>().ReverseMap();
+            CreateMap<License, GetAllLicenseRequestDTO>().ReverseMap();
         }
     }
 }

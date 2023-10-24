@@ -8,6 +8,7 @@ namespace PRJRepository.DTO
 {
     public class GetAllClinicResponseDTO
     {
+        public long? ClientId { get; set; }
         public int? OrgId { get; set; }
 
         public int ClinicId { get; set; }
