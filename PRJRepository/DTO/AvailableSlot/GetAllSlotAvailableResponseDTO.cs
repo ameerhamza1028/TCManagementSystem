@@ -20,7 +20,7 @@ namespace PRJRepository.DTO.AvailableSlot
 
         public TimeSpan? Time { get; set; }
 
-        public TimeSpan? Duration { get; set; }
+        public int? Duration { get; set; }
 
         public bool? Repeat { get; set; }
 
@@ -34,6 +34,16 @@ namespace PRJRepository.DTO.AvailableSlot
 
         public bool? Telehealth { get; set; }
 
-        public long? LocationId { get; set; }
+        public int? LocationId { get; set; }
+
+        public long? ServiceId { get; set; }
+
+        public int? ServiceDuration { get; set; }
+
+        public DateTime? CreationDate { get; set; }
+
+        public long? CreatedBy { get; set; }
+
+        public bool? IsActive { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace PRJRepository.DTO.ServiceSetting
 {
     public class GetAllServiceSettingResponseDTO
     {
-        public int ServiceId { get; set; }
+        public long ServiceId { get; set; }
 
         public string? ServiceName { get; set; }
 
@@ -33,5 +33,11 @@ namespace PRJRepository.DTO.ServiceSetting
         public int? MinutesAfter { get; set; }
 
         public int? ClicianId { get; set; }
+
+        public DateTime? CreationDate { get; set; }
+
+        public long? CreatedBy { get; set; }
+
+        public bool? IsActive { get; set; }
     }
 }

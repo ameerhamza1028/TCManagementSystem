@@ -27,7 +27,7 @@ public partial class CalenderSetting
 
     public DateTime? CreationDate { get; set; }
 
-    public bool? CreatedBy { get; set; }
+    public long? CreatedBy { get; set; }
 
     public bool? IsActive { get; set; }
 }

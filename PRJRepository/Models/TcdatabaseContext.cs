@@ -213,6 +213,7 @@ public partial class TcdatabaseContext : DbContext
 
             entity.ToTable("Organization");
 
+            entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.OrgAddress).HasMaxLength(200);
             entity.Property(e => e.OrgDescription).HasMaxLength(200);
             entity.Property(e => e.OrgName).HasMaxLength(200);

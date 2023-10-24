@@ -8,7 +8,7 @@ namespace PRJRepository.DTO.User
 {
     public class GetAllUserResponseDTO
     {
-       
+
         public string? UserType { get; set; }
 
         public long UserId { get; set; }
@@ -48,6 +48,7 @@ namespace PRJRepository.DTO.User
         public long? MalpracticePolicy { get; set; }
 
         public DateTime? MalpracticeExpDate { get; set; }
+
         public string? UploadFilePath { get; set; }
 
         public string? School { get; set; }

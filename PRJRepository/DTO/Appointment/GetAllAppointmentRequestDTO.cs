@@ -8,11 +8,15 @@ namespace PRJRepository.DTO.Appointment
 {
     public class GetAllAppointmentRequestDTO
     {
-        public string? Type { get; set; }
-
         public int AppointmentId { get; set; }
 
-        public int ClientId { get; set; }
+        public long ClientId { get; set; }
+
+        public string? ClientName { get; set; }
+
+        public bool? IsClientAppointment { get; set; }
+
+        public bool? IsOther { get; set; }
 
         public bool? AllDay { get; set; }
 
@@ -20,7 +24,7 @@ namespace PRJRepository.DTO.Appointment
 
         public TimeSpan? Time { get; set; }
 
-        public byte[]? Duration { get; set; }
+        public int? Duration { get; set; }
 
         public long? ClicianId { get; set; }
 
@@ -32,6 +36,10 @@ namespace PRJRepository.DTO.Appointment
 
         public int? ServiceId { get; set; }
 
-        public string? Title { get; set; }
+        public DateTime? CreationDate { get; set; }
+
+        public long? CreatedBy { get; set; }
+
+        public bool? IsActive { get; set; }
     }
 }

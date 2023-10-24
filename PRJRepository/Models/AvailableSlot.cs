@@ -31,7 +31,7 @@ public partial class AvailableSlot
 
     public bool? Telehealth { get; set; }
 
-    public long? LocationId { get; set; }
+    public int? LocationId { get; set; }
 
     public long? ServiceId { get; set; }
 

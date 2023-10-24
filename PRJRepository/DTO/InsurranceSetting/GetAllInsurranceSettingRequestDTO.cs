@@ -8,7 +8,7 @@ namespace PRJRepository.DTO.InsurranceSetting
 {
     public class GetAllInsurranceSettingRequestDTO
     {
-        public int InsurranceId { get; set; }
+        public long InsurranceId { get; set; }
 
         public bool? IsIndividual { get; set; }
 
@@ -35,5 +35,11 @@ namespace PRJRepository.DTO.InsurranceSetting
         public bool? IsClaimForm { get; set; }
 
         public bool? IsMultipleDiagnosisCode { get; set; }
+
+        public DateTime? CreationDate { get; set; }
+
+        public long? CreatedBy { get; set; }
+
+        public bool? IsActive { get; set; }
     }
 }

@@ -8,13 +8,18 @@ namespace PRJRepository.DTO.Organization
 {
     public class GetAllOrganizationRequestDTO
     {
-        public int OrgId { get; set; }
-        public string? OrgName { get; set; }
+        public long OrgId { get; set; }
 
-        public string? OrgLogo { get; set; }
+        public string? OrgName { get; set; }
 
         public string? OrgAddress { get; set; }
 
         public string? OrgDescription { get; set; }
+
+        public bool? IsActive { get; set; }
+
+        public DateTime? CreationDate { get; set; }
+
+        public long? CreatedBy { get; set; }
     }
 }

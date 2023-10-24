@@ -27,5 +27,11 @@ namespace PRJRepository.DTO.CalenderSetting
         public bool? IsNewContacts { get; set; }
 
         public bool? IsCreditCardRequried { get; set; }
+
+        public DateTime? CreationDate { get; set; }
+
+        public long? CreatedBy { get; set; }
+
+        public bool? IsActive { get; set; }
     }
 }

@@ -40,6 +40,7 @@ namespace PRJRepository.Repo
                 {
                     organization = _mapper.Map<Organization>(request);
                     organization.IsActive = true;
+                    organization.CreationDate = DateTime.UtcNow;
                     _context.Organizations.Add(organization);
                     _context.SaveChanges();
                 }
