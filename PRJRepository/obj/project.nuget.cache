@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "XdwYu4Dk6fpIPkwEDWtWJqDdgBm/ftE12A6hPZ2UFkCUFx6ukhWOVsPs8BlA67ZJuGksvNU4smDWzGH1zcnV9Q==",
+  "dgSpecHash": "wy09wEk8P2OMou8TbwIP/O0bgO/HX+xCL7sxRJKgBFQ42eL7sASjWWlzOXZPKvscMZhZQrwtVQTYymhM1WGBgg==",
   "success": true,
   "projectFilePath": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\PRJRepository\\PRJRepository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hamza\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
+    "C:\\Users\\hamza\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

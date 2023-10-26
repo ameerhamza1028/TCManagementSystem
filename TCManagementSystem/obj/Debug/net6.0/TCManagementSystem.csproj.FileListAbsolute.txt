@@ -88,3 +88,8 @@ D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Debug\ne
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Debug\net6.0\ref\TCManagementSystem.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\AutoMapper.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\Dapper.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\SendGrid.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\StarkbankEcdsa.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Debug\net6.0\TCManagementSystem.MvcApplicationPartsAssemblyInfo.cs

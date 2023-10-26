@@ -9,7 +9,9 @@ namespace PRJRepository.DTO.Client
     public class GetAllClientResponseDTO
     {
         public long ClientId { get; set; }
+
         public long? CoupleId { get; set; }
+
         public bool? IsAdult { get; set; }
 
         public bool? IsMinor { get; set; }

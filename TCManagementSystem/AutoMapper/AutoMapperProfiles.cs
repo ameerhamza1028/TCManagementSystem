@@ -12,6 +12,7 @@ using PRJRepository.DTO.ClinicLocation;
 using PRJRepository.DTO.InsurranceSetting;
 using PRJRepository.DTO.Invoice;
 using PRJRepository.DTO.License;
+using PRJRepository.DTO.Login;
 using PRJRepository.DTO.Organization;
 using PRJRepository.DTO.ServiceSetting;
 using PRJRepository.DTO.User;
@@ -23,6 +24,8 @@ namespace TCManagementSystem.AutoMapper
     {
         public AutoMapperProfiles()
         {
+            CreateMap<Login, LoginResponseDTO>().ReverseMap();
+            CreateMap<Login, LoginRequestDTO>().ReverseMap();
             CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();

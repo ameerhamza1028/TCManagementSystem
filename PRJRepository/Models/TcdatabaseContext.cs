@@ -41,6 +41,8 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<License> Licenses { get; set; }
 
+    public virtual DbSet<Login> Logins { get; set; }
+
     public virtual DbSet<Organization> Organizations { get; set; }
 
     public virtual DbSet<ServiceSetting> ServiceSettings { get; set; }
@@ -221,6 +223,14 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.LicenseExpirationDate).HasColumnType("date");
             entity.Property(e => e.LicenseState).HasMaxLength(200);
             entity.Property(e => e.LicenseType).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<Login>(entity =>
+        {
+            entity.ToTable("Login");
+
+            entity.Property(e => e.Email).HasMaxLength(200);
+            entity.Property(e => e.Password).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Organization>(entity =>

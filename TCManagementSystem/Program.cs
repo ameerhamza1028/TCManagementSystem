@@ -1,8 +1,12 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using PRJRepository.Interface;
 using PRJRepository.Models;
 using PRJRepository.Repo;
+using System.Text;
 using TCManagementSystem.AutoMapper;
 
 internal class Program
@@ -11,6 +15,56 @@ internal class Program
     {
         var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         var builder = WebApplication.CreateBuilder(args);
+
+        //Add Services
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                RequireExpirationTime = false,
+                ValidateLifetime = true
+            };
+        });
+
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "SFBC.API", Version = "v1" });
+
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "JWT Authorization header using the Bearer scheme."
+            });
+
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+
+                    }
+                });
+        });
 
         // Add services to the container.
         builder.Services.AddDbContext<TcdatabaseContext>
@@ -34,6 +88,8 @@ internal class Program
         builder.Services.AddTransient<ILicenseRepo, LicenseRepo>();
         builder.Services.AddTransient<ICheckAvailabilityRepo, CheckAvailabilityRepo>();
         builder.Services.AddTransient<IAppointmentPaymentRepo, AppointmentPaymentRepo>();
+        builder.Services.AddTransient<ILoginRepo, LoginRepo>();
+
 
 
         var mapperConfiguration = new MapperConfiguration(mc =>
@@ -70,8 +126,8 @@ internal class Program
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors(MyAllowSpecificOrigins);
+        app.UseAuthentication();
         app.UseAuthorization();
-
         app.MapControllers();
 
         app.Run();
