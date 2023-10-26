@@ -49,6 +49,8 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<UserRole> UserRoles { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer("Server=DESKTOP-018QP73\\SQLEXPRESS;Database=TCDatabase;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;encrypt=False");
@@ -287,6 +289,15 @@ public partial class TcdatabaseContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.UserName).HasMaxLength(200);
             entity.Property(e => e.UserType).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<UserRole>(entity =>
+        {
+            entity.HasKey(e => e.RoleId);
+
+            entity.ToTable("UserRole");
+
+            entity.Property(e => e.Title).HasMaxLength(200);
         });
 
         OnModelCreatingPartial(modelBuilder);
