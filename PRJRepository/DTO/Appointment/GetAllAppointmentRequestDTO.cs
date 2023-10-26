@@ -22,7 +22,7 @@ namespace PRJRepository.DTO.Appointment
 
         public DateTime? Date { get; set; }
 
-        public TimeSpan? Time { get; set; }
+        public string? Time { get; set; }
 
         public int? Duration { get; set; }
 
@@ -35,11 +35,6 @@ namespace PRJRepository.DTO.Appointment
         public long? VirtualLocationId { get; set; }
 
         public int? ServiceId { get; set; }
-
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
     }
 }

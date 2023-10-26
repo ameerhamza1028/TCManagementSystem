@@ -36,10 +36,6 @@ namespace PRJRepository.DTO.InsurranceSetting
 
         public bool? IsMultipleDiagnosisCode { get; set; }
 
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
     }
 }

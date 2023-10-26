@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using PRJRepository.DTO.Appointment;
 using PRJRepository.Interface;
 using PRJRepository.Models;
@@ -26,7 +27,7 @@ namespace PRJRepository.Repo
         public GetAllAppointmentResponseDTO GetAppointmentById(long Id)
         {
             GetAllAppointmentResponseDTO response = new GetAllAppointmentResponseDTO();
-            Appointment item = _context.Appointments.Where(x => x.AppointmentId == Id).FirstOrDefault();
+            Appointment item = _context.Appointments.Where(x => x.ClientId == Id).FirstOrDefault();
             response = _mapper.Map<GetAllAppointmentResponseDTO>(item);
             return response;
         }
@@ -35,20 +36,43 @@ namespace PRJRepository.Repo
         {
             try
             {
-                Appointment appointment = new Appointment();
                 if (request.AppointmentId == 0)
                 {
-                    appointment = _mapper.Map<Appointment>(request);
-                    appointment.IsActive = true;
-                    appointment.CreationDate = DateTime.UtcNow;
-                    _context.Appointments.Add(appointment);
-                    _context.SaveChanges();
+                    Appointment appointment = _mapper.Map<Appointment>(request);
+
+                    if (TimeSpan.TryParse(request.Time, out TimeSpan parsedTime))
+                    {
+                        appointment.Time = parsedTime;
+                        appointment.IsActive = true;
+                        appointment.CreationDate = DateTime.UtcNow;
+                        _context.Appointments.Add(appointment);
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                    appointment = _context.Appointments.Where(x => x.AppointmentId == request.AppointmentId).FirstOrDefault();
-                    appointment = _mapper.Map(request, appointment);
-                    _context.SaveChanges();
+                    Appointment appointment = _context.Appointments.FirstOrDefault(x => x.AppointmentId == request.AppointmentId);
+                    if (appointment != null)
+                    {
+                        _mapper.Map(request, appointment);
+                        if (TimeSpan.TryParse(request.Time, out TimeSpan parsedTime))
+                        {
+                            appointment.Time = parsedTime;
+                            _context.SaveChanges();
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 return true;
             }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO;
 using PRJRepository.DTO.Appointment;
+using PRJRepository.DTO.AppointmentPayment;
 using PRJRepository.DTO.AvailableSlot;
 using PRJRepository.DTO.BillingSetting;
 using PRJRepository.DTO.CalenderSetting;
@@ -50,6 +51,8 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<User, GetAllUserRequestDTO>().ReverseMap();
             CreateMap<License, GetAllLicenseResponseDTO>().ReverseMap();
             CreateMap<License, GetAllLicenseRequestDTO>().ReverseMap();
+            CreateMap<AppointmentPayment, GetAllAppointmentPaymentResponseDTO>().ReverseMap();
+            CreateMap<AppointmentPayment, GetAllAppointmentPaymentRequestDTO>().ReverseMap();
         }
     }
 }

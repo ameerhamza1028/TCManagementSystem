@@ -18,7 +18,7 @@ namespace PRJRepository.DTO.AvailableSlot
 
         public DateTime? SlotDate { get; set; }
 
-        public TimeSpan? Time { get; set; }
+        public string? Time { get; set; }
 
         public int? Duration { get; set; }
 
@@ -40,10 +40,6 @@ namespace PRJRepository.DTO.AvailableSlot
 
         public int? ServiceDuration { get; set; }
 
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
     }
 }

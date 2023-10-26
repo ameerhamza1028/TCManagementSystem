@@ -9,7 +9,7 @@ namespace PRJRepository.DTO.Client
     public class GetAllClientRequestDTO
     {
         public long ClientId { get; set; }
-
+        public long? CoupleId { get; set; }
         public bool? IsAdult { get; set; }
 
         public bool? IsMinor { get; set; }
@@ -60,10 +60,6 @@ namespace PRJRepository.DTO.Client
 
         public bool? IsArchivedClient { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
     }
 }

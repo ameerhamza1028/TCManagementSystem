@@ -16,8 +16,6 @@ namespace PRJRepository.DTO.ClientForm
 
         public long? FormNumber { get; set; }
 
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
     }
 }

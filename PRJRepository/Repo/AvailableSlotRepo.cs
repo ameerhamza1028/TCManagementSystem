@@ -35,20 +35,43 @@ namespace PRJRepository.Repo
         {
             try
             {
-                AvailableSlot availableSlot = new AvailableSlot();
                 if (request.AppointmntSlotId == 0)
                 {
-                    availableSlot = _mapper.Map<AvailableSlot>(request);
-                    availableSlot.IsActive = true;
-                    availableSlot.CreationDate = DateTime.UtcNow;
-                    _context.AvailableSlots.Add(availableSlot);
-                    _context.SaveChanges();
+                    AvailableSlot AvailableSlot = _mapper.Map<AvailableSlot>(request);
+
+                    if (TimeSpan.TryParse(request.Time, out TimeSpan parsedTime))
+                    {
+                        AvailableSlot.Time = parsedTime;
+                        AvailableSlot.IsActive = true;
+                        AvailableSlot.CreationDate = DateTime.UtcNow;
+                        _context.AvailableSlots.Add(AvailableSlot);
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 else
                 {
-                    availableSlot = _context.AvailableSlots.Where(x => x.AppointmntSlotId == request.AppointmntSlotId).FirstOrDefault();
-                    availableSlot = _mapper.Map(request, availableSlot);
-                    _context.SaveChanges();
+                    AvailableSlot AvailableSlot = _context.AvailableSlots.FirstOrDefault(x => x.AppointmntSlotId == request.AppointmntSlotId);
+                    if (AvailableSlot != null)
+                    {
+                        _mapper.Map(request, AvailableSlot);
+                        if (TimeSpan.TryParse(request.Time, out TimeSpan parsedTime))
+                        {
+                            AvailableSlot.Time = parsedTime;
+                            _context.SaveChanges();
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 return true;
             }
@@ -57,6 +80,7 @@ namespace PRJRepository.Repo
                 return false;
             }
         }
+
 
         public bool DeleteAvailableSlot(long Id)
         {

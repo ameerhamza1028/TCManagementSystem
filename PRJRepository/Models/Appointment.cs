@@ -5,7 +5,7 @@ namespace PRJRepository.Models;
 
 public partial class Appointment
 {
-    public int AppointmentId { get; set; }
+    public long AppointmentId { get; set; }
 
     public long ClientId { get; set; }
 

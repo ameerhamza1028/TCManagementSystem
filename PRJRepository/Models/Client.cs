@@ -7,6 +7,8 @@ public partial class Client
 {
     public long ClientId { get; set; }
 
+    public long? CoupleId { get; set; }
+
     public bool? IsAdult { get; set; }
 
     public bool? IsMinor { get; set; }

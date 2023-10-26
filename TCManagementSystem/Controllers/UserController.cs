@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PRJRepository.DTO;
 using PRJRepository.DTO.User;
 using PRJRepository.Interface;
+using PRJRepository.Repo;
 using TCManagementSystem.Helper;
 
 namespace TCManagementSystem.Controllers
@@ -44,6 +45,24 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
+        [HttpGet]
+        [Route("GetUserById")]
+        public ApiResponse<GetAllUserResponseDTO> GetUserById(long Id)
+        {
+            ApiResponse<GetAllUserResponseDTO> response = new ApiResponse<GetAllUserResponseDTO>();
+            try
+            {
+                GetAllUserResponseDTO result = new GetAllUserResponseDTO();
+                result = _IUserRepo.GetUserById(Id);
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
         [HttpPost]
         [Route("SaveUser")]
         public ApiResponse<bool> SaveUser([FromBody] GetAllUserRequestDTO request)
@@ -61,36 +80,56 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-            [HttpPost("UploadFiles")]
-            public async Task<IActionResult> UploadFile(IFormFile file)
+        [HttpPost("UploadFiles")]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            try
             {
-                try
-                {
-                
+
 
 
                 if (file == null || file.Length == 0)
-                    {
-                        return BadRequest("No file was selected for upload.");
-                    }
+                {
+                    return BadRequest("No file was selected for upload.");
+                }
 
                 // Specify the path where you want to save the uploaded file.
-                string patientFilesDirectory = "UserUploadFiles"; 
+                string patientFilesDirectory = "UserUploadFiles";
                 string rootPath = "D:\\Web API Using Visual Sudio\\TCManagementSystem";
                 string filePath = Path.Combine(rootPath, patientFilesDirectory, file.FileName);
 
                 // Use a stream to copy the file to the specified path.
                 using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-
-                    return Ok("File uploaded successfully.");
-                }
-                catch (Exception ex)
                 {
-                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                    await file.CopyToAsync(stream);
                 }
+
+                return Ok("File uploaded successfully.");
             }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        [HttpDelete]
+        [Route("DeleteUser")]
+        public ApiResponse<bool> DeleteUser(long Id)
+        {
+            ApiResponse<bool> response = new ApiResponse<bool>();
+            try
+            {
+                _IUserRepo.DeleteUser(Id);
+                response.Data = true;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+
+
     }
 }

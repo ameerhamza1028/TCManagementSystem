@@ -17,6 +17,8 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<Appointment> Appointments { get; set; }
 
+    public virtual DbSet<AppointmentPayment> AppointmentPayments { get; set; }
+
     public virtual DbSet<AvailableSlot> AvailableSlots { get; set; }
 
     public virtual DbSet<BillingSetting> BillingSettings { get; set; }
@@ -59,6 +61,20 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.ClientName).HasMaxLength(200);
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Date).HasColumnType("date");
+        });
+
+        modelBuilder.Entity<AppointmentPayment>(entity =>
+        {
+            entity.ToTable("AppointmentPayment");
+
+            entity.Property(e => e.AppointmentDate).HasColumnType("date");
+            entity.Property(e => e.Billed).HasColumnType("money");
+            entity.Property(e => e.ClientName).HasMaxLength(200);
+            entity.Property(e => e.ClientOwes).HasColumnType("money");
+            entity.Property(e => e.Cptcode).HasColumnName("CPTCode");
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.InsurancePaid).HasColumnType("money");
+            entity.Property(e => e.WriteOff).HasColumnType("money");
         });
 
         modelBuilder.Entity<AvailableSlot>(entity =>

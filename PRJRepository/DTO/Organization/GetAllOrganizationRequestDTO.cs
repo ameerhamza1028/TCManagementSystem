@@ -16,10 +16,6 @@ namespace PRJRepository.DTO.Organization
 
         public string? OrgDescription { get; set; }
 
-        public bool? IsActive { get; set; }
-
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
     }
 }

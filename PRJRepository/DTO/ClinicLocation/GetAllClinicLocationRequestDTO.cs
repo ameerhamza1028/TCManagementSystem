@@ -42,10 +42,6 @@ namespace PRJRepository.DTO.ClinicLocation
 
         public int? ServicePlace { get; set; }
 
-        public bool? IsActive { get; set; }
-
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
     }
 }

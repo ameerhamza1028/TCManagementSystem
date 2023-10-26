@@ -38,10 +38,6 @@ namespace PRJRepository.DTO.BillingSetting
 
         public bool? IsNewClientSuperBills { get; set; }
 
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
     }
 }

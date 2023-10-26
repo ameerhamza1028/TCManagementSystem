@@ -28,6 +28,14 @@ namespace PRJRepository.Repo
             response = _mapper.Map<List<GetAllUserResponseDTO>>(list);
             return response;
         }
+
+        public GetAllUserResponseDTO GetUserById(long Id)
+        {
+            GetAllUserResponseDTO response = new GetAllUserResponseDTO();
+            Models.User item = _context.Users.Where(x => x.UserId == Id).FirstOrDefault();
+            response = _mapper.Map<GetAllUserResponseDTO>(item);
+            return response;
+        }
         public bool SaveUser(GetAllUserRequestDTO request)
         {
             try
@@ -54,5 +62,22 @@ namespace PRJRepository.Repo
                 return false;
             }
         }
+
+        public bool DeleteUser(long Id)
+        {
+            try
+            {
+                User user = _context.Users.FirstOrDefault(x => x.UserId == Id);
+                user.IsActive = false;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
     }
 }

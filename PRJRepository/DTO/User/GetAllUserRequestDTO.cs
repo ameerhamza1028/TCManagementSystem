@@ -69,11 +69,7 @@ namespace PRJRepository.DTO.User
 
         public string? Modifier3 { get; set; }
 
-        public DateTime? CreationDate { get; set; }
-
         public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
 

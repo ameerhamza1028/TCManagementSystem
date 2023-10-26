@@ -18,7 +18,7 @@ namespace PRJRepository.DTO.AvailableSlot
 
         public DateTime? SlotDate { get; set; }
 
-        public TimeSpan? Time { get; set; }
+        public string? Time { get; set; }
 
         public int? Duration { get; set; }
 
