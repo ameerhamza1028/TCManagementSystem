@@ -14,14 +14,14 @@ namespace TCManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class AccountLoginController : ControllerBase
     {
         public IConfiguration _configuration;
         private readonly IMapper _mapper;
 
         private readonly ILoginRepo _ILoginRepo;
 
-        public LoginController(
+        public AccountLoginController(
             IConfiguration config,
             IMapper IMapper,
             ILoginRepo ILoginRepo)
