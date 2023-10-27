@@ -43,6 +43,8 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<Login> Logins { get; set; }
 
+    public virtual DbSet<Message> Messages { get; set; }
+
     public virtual DbSet<Organization> Organizations { get; set; }
 
     public virtual DbSet<ServiceSetting> ServiceSettings { get; set; }
@@ -233,6 +235,14 @@ public partial class TcdatabaseContext : DbContext
 
             entity.Property(e => e.Email).HasMaxLength(200);
             entity.Property(e => e.Password).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Message>(entity =>
+        {
+            entity.ToTable("Message");
+
+            entity.Property(e => e.CreactionDate).HasColumnType("date");
+            entity.Property(e => e.Message1).HasColumnName("Message");
         });
 
         modelBuilder.Entity<Organization>(entity =>

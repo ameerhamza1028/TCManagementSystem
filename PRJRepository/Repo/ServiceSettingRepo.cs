@@ -66,6 +66,7 @@ namespace PRJRepository.Repo
             {
                 ServiceSetting serviceSetting = _context.ServiceSettings.FirstOrDefault(x => x.ServiceId == Id);
                 serviceSetting.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

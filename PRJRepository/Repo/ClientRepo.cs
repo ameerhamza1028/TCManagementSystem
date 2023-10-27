@@ -64,6 +64,9 @@ namespace PRJRepository.Repo
             {
                Client client = _context.Clients.FirstOrDefault(x => x.ClientId == Id);
                client.IsActive = false;
+               _context.SaveChanges();
+
+
                 return true;
             }
             catch

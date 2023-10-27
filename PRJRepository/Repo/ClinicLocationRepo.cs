@@ -64,6 +64,7 @@ namespace PRJRepository.Repo
             {
                 ClinicLocation clinicLocation = _context.ClinicLocations.FirstOrDefault(x => x.LocationId == Id);
                 clinicLocation.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

@@ -65,6 +65,7 @@ namespace PRJRepository.Repo
             {
                 InsurranceSetting insurranceSetting = _context.InsurranceSettings.FirstOrDefault(x => x.InsurranceId == Id);
                 insurranceSetting.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

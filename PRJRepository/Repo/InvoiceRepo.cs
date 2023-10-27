@@ -64,6 +64,7 @@ namespace PRJRepository.Repo
             {
                 Invoice invoice = _context.Invoices.FirstOrDefault(x => x.InvoiveId == Id);
                 invoice.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

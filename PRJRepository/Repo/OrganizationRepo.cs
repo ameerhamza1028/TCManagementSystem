@@ -64,6 +64,7 @@ namespace PRJRepository.Repo
             {
                 Organization organization = _context.Organizations.Where(x => x.OrgId == Id).FirstOrDefault();
                 organization.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

@@ -69,6 +69,7 @@ namespace PRJRepository.Repo
             {
                 AppointmentPayment AppointmentPayment = _context.AppointmentPayments.FirstOrDefault(x => x.AppointmentPaymentId == Id);
                 AppointmentPayment.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

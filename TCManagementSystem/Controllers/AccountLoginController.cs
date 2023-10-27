@@ -49,6 +49,10 @@ namespace TCManagementSystem.Controllers
                         new Claim("RoleId", Convert.ToString(result.RoleId)),
                         new Claim("Email", result.Email),
                         new Claim("LoginId", Convert.ToString(result.LoginId)),
+                        new Claim("CoupleId", Convert.ToString(result.CoupleId)),
+                        new Claim("Email1", result.Email1),
+                        new Claim("Email2", result.Email2),
+
                        // new Claim("OrganizationId", Convert.ToString(result.OrganizationId)),
 
                     };

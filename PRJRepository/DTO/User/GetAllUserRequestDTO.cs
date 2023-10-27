@@ -74,5 +74,6 @@ namespace PRJRepository.DTO.User
         public DateTime? ModifiedDate { get; set; }
 
         public long? ModifiedBy { get; set; }
+        public long? LoginId { get; set; }
     }
 }

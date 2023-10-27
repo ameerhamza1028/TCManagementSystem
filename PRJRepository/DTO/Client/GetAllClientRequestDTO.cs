@@ -61,5 +61,6 @@ namespace PRJRepository.DTO.Client
         public bool? IsArchivedClient { get; set; }
 
         public long? CreatedBy { get; set; }
+        public long? LoginId { get; set; }
     }
 }

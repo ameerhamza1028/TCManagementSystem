@@ -89,6 +89,7 @@ internal class Program
         builder.Services.AddTransient<ICheckAvailabilityRepo, CheckAvailabilityRepo>();
         builder.Services.AddTransient<IAppointmentPaymentRepo, AppointmentPaymentRepo>();
         builder.Services.AddTransient<ILoginRepo, LoginRepo>();
+        builder.Services.AddTransient<IMessageRepo, MessageRepo>();
 
 
 

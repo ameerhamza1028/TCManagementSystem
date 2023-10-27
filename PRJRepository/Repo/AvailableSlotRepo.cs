@@ -88,6 +88,7 @@ namespace PRJRepository.Repo
             {
                 AvailableSlot availableSlot = _context.AvailableSlots.FirstOrDefault(x => x.AppointmntSlotId == Id);
                 availableSlot.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

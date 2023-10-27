@@ -63,6 +63,7 @@ namespace PRJRepository.Repo
             {
                 BillingSetting billingSetting = _context.BillingSettings.FirstOrDefault(x => x.BillingId == Id);
                 billingSetting.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

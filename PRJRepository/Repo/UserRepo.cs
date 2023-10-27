@@ -69,6 +69,7 @@ namespace PRJRepository.Repo
             {
                 User user = _context.Users.FirstOrDefault(x => x.UserId == Id);
                 user.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch

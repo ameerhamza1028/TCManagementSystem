@@ -65,7 +65,7 @@ namespace PRJRepository.Repo
             {
                 CalenderSetting calenderSetting = _context.CalenderSettings.FirstOrDefault(x => x.CalenderId == Id);
                 calenderSetting.IsActive = false;
-
+                _context.SaveChanges();
                 return true;
             }
             catch

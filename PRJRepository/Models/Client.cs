@@ -64,4 +64,6 @@ public partial class Client
     public long? CreatedBy { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public long? LoginId { get; set; }
 }

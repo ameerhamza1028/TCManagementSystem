@@ -13,6 +13,7 @@ using PRJRepository.DTO.InsurranceSetting;
 using PRJRepository.DTO.Invoice;
 using PRJRepository.DTO.License;
 using PRJRepository.DTO.Login;
+using PRJRepository.DTO.Message;
 using PRJRepository.DTO.Organization;
 using PRJRepository.DTO.ServiceSetting;
 using PRJRepository.DTO.User;
@@ -56,6 +57,8 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<License, GetAllLicenseRequestDTO>().ReverseMap();
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentResponseDTO>().ReverseMap();
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentRequestDTO>().ReverseMap();
+            CreateMap<Message, GetMessageResponseDTO>().ReverseMap();
+            CreateMap<Message, GetMessageRequestDTO>().ReverseMap();
         }
     }
 }

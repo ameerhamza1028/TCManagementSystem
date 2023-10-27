@@ -88,6 +88,7 @@ namespace PRJRepository.Repo
             {
                 Appointment appointment = _context.Appointments.FirstOrDefault(x => x.AppointmentId == Id);
                 appointment.IsActive=false;
+                _context.SaveChanges();
                 return true;
             }
             catch

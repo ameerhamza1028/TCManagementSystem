@@ -61,6 +61,7 @@ namespace PRJRepository.Repo
             {
                 License License = _context.Licenses.FirstOrDefault(x => x.LicenseId == Id);
                 License.IsActive = false;
+                _context.SaveChanges();
                 return true;
             }
             catch
