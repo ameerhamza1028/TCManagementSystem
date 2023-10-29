@@ -43,15 +43,14 @@ namespace TCManagementSystem.Controllers
                 response.Data = result;
                 var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                       // new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                       // new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim("UserId", Convert.ToString(result.UserId)),
-                        new Claim("RoleId", Convert.ToString(result.RoleId)),
                         new Claim("Email", result.Email),
                         new Claim("LoginId", Convert.ToString(result.LoginId)),
-                        new Claim("CoupleId", Convert.ToString(result.CoupleId)),
-                        new Claim("Email1", result.Email1),
-                        new Claim("Email2", result.Email2),
+                       // new Claim("CoupleId", Convert.ToString(result.CoupleId)),
+                        //new Claim("Email1", result.Email1),
+                       // new Claim("Email2", result.Email2),
 
                        // new Claim("OrganizationId", Convert.ToString(result.OrganizationId)),
 

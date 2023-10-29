@@ -49,7 +49,7 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<ServiceSetting> ServiceSettings { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<TcUser> TcUsers { get; set; }
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
@@ -269,9 +269,11 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.ServiceName).HasMaxLength(200);
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<TcUser>(entity =>
         {
-            entity.ToTable("User");
+            entity.HasKey(e => e.UserId).HasName("PK_User");
+
+            entity.ToTable("TcUser");
 
             entity.Property(e => e.Address).HasMaxLength(200);
             entity.Property(e => e.AddressType).HasMaxLength(50);
