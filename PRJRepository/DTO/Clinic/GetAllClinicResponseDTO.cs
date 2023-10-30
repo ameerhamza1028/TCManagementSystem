@@ -16,7 +16,6 @@ namespace PRJRepository.DTO.Clinic
 
        // public string? ShortFacilityName { get; set; }
 
-
         public string? Address { get; set; }
 
         //public string? CityName { get; set; }
