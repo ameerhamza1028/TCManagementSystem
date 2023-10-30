@@ -168,10 +168,10 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(200);
             entity.Property(e => e.ExpirationDate).HasColumnType("date");
             entity.Property(e => e.Fax).HasMaxLength(20);
-            entity.Property(e => e.LongFacultyName).HasMaxLength(200);
+            entity.Property(e => e.LongFacilityName).HasMaxLength(200);
             entity.Property(e => e.Npi).HasColumnName("NPI");
             entity.Property(e => e.Phone).HasMaxLength(20);
-            entity.Property(e => e.ShortFacultyName).HasMaxLength(200);
+            entity.Property(e => e.ShortFacilityName).HasMaxLength(200);
             entity.Property(e => e.StateName).HasMaxLength(200);
             entity.Property(e => e.ZipCode).HasMaxLength(50);
         });

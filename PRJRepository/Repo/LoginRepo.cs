@@ -54,6 +54,7 @@ namespace PRJRepository.Repo
                     response.LastName2 = client.LastName2;
                     response.Email2 = client.Email2;
                     response.Phone2 = client.Phone2;
+                    response.RoleName = _context.UserRoles.Where(x => x.RoleId == login.RoleId).Select(x => x.Title).FirstOrDefault();
                 }
             }
             return response; 

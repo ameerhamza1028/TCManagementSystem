@@ -12,9 +12,9 @@ namespace PRJRepository.DTO.Clinic
 
         public long ClinicId { get; set; }
 
-        public string? LongFacultyName { get; set; }
+        public string? LongFacilityName { get; set; }
 
-        public string? ShortFacultyName { get; set; }
+        public string? ShortFacilityName { get; set; }
 
         public string? Address { get; set; }
 
