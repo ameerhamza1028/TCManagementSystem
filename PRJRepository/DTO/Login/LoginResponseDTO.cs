@@ -25,7 +25,7 @@ namespace PRJRepository.DTO.Login
 
         //Client Response
 
-        public long ClientId { get; set; }
+        public long? ClientId { get; set; }
 
         public long? CoupleId { get; set; }
 

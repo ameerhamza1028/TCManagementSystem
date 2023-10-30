@@ -38,15 +38,15 @@ namespace TCManagementSystem.Controllers
         {
             ApiResponse<LoginResponseDTO> response = new ApiResponse<LoginResponseDTO>();
             var result = _ILoginRepo.Login(request);
-            if (result.UserId != null)
+            if (result.UserId != null || result.ClientId != null)
             {
                 response.Data = result;
                 var claims = new[] {
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                        // new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                        // new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", Convert.ToString(result.UserId)),
-                        new Claim("Email", result.Email),
+                       // new Claim("UserId", Convert.ToString(result.UserId)),
+                        //new Claim("Email", result.Email),
                         new Claim("LoginId", Convert.ToString(result.LoginId)),
                        // new Claim("CoupleId", Convert.ToString(result.CoupleId)),
                         //new Claim("Email1", result.Email1),

@@ -25,7 +25,8 @@ namespace PRJRepository.Repo
             LoginResponseDTO response = new LoginResponseDTO();
 
             Login login = _context.Logins.Where(x => x.Email == request.Email && x.Password == request.Password).FirstOrDefault();
-            if(login != null) {
+            if(login != null)
+            {
                 //response = _mapper.Map<LoginResponseDTO>(login);
                 TcUser user = _context.TcUsers.Where(x => x.LoginId == login.LoginId).FirstOrDefault();
                 if (user != null)
@@ -44,6 +45,7 @@ namespace PRJRepository.Repo
                 
                 Client client = _context.Clients.Where(x => x.LoginId == login.LoginId).FirstOrDefault();
                 if (client != null) {
+                    response.ClientId = client.ClientId;
                     response.FirstName1 = client.FirstName1;    
                     response.LastName1 = client.LastName1;
                     response.Email1 = client.Email1;
