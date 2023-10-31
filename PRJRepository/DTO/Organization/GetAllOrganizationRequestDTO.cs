@@ -13,6 +13,8 @@ namespace PRJRepository.DTO.Organization
         public string? OrgName { get; set; }
 
         public string? OrgAddress { get; set; }
+        public string? OrgLogo { get; set; }
+
 
         public string? OrgDescription { get; set; }
 

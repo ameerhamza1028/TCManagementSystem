@@ -95,6 +95,39 @@ namespace TCManagementSystem.Controllers
                 }
                 return response;
             }
+
+            [HttpPost("UploadLogo")]
+            public async Task<IActionResult> UploadFile(IFormFile file)
+            {
+                try
+                {
+
+
+
+                    if (file == null || file.Length == 0)
+                    {
+                        return BadRequest("No file was selected for upload.");
+                    }
+
+                    // Specify the path where you want to save the uploaded file.
+                    string patientFilesDirectory = "UserUploadFiles";
+                    string rootPath = "D:\\Web API Using Visual Sudio\\TCManagementSystem";
+                    string filePath = Path.Combine(rootPath, patientFilesDirectory, file.FileName);
+
+                    // Use a stream to copy the file to the specified path.
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    return Ok("File uploaded successfully.");
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"Internal server error: {ex.Message}");
+                }
+            }
+
         }
-    }
+}
 
