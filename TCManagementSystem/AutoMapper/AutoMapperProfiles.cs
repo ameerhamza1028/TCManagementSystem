@@ -5,16 +5,23 @@ using PRJRepository.DTO.AppointmentPayment;
 using PRJRepository.DTO.AvailableSlot;
 using PRJRepository.DTO.BillingSetting;
 using PRJRepository.DTO.CalenderSetting;
+using PRJRepository.DTO.Card;
 using PRJRepository.DTO.Client;
+using PRJRepository.DTO.ClientAddress;
 using PRJRepository.DTO.ClientForm;
 using PRJRepository.DTO.Clinic;
 using PRJRepository.DTO.ClinicLocation;
+using PRJRepository.DTO.EditClient;
+using PRJRepository.DTO.Email;
+using PRJRepository.DTO.Insurance;
 using PRJRepository.DTO.InsurranceSetting;
 using PRJRepository.DTO.Invoice;
 using PRJRepository.DTO.License;
 using PRJRepository.DTO.Login;
 using PRJRepository.DTO.Message;
 using PRJRepository.DTO.Organization;
+using PRJRepository.DTO.Phone;
+using PRJRepository.DTO.Service;
 using PRJRepository.DTO.ServiceSetting;
 using PRJRepository.DTO.User;
 using PRJRepository.Models;
@@ -59,6 +66,20 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentRequestDTO>().ReverseMap();
             CreateMap<Message, GetMessageResponseDTO>().ReverseMap();
             CreateMap<Message, GetMessageRequestDTO>().ReverseMap();
+            CreateMap<EditClient, SaveEditClientResponseDTO>().ReverseMap();
+            CreateMap<EditClient, SaveEditClientRequestDTO>().ReverseMap();
+            CreateMap<Phone, GetAllPhoneResponseDTO>().ReverseMap();
+            CreateMap<Phone, GetAllPhoneRequestDTO>().ReverseMap();
+            CreateMap<Address, GetAllClientAddressResponseDTO>().ReverseMap();
+            CreateMap<Address, GetAllClientAddressRequestDTO>().ReverseMap();
+            CreateMap<Card, GetAllCardResponseDTO>().ReverseMap();
+            CreateMap<Card, GetAllCardRequestDTO>().ReverseMap();
+            CreateMap<Insurance, GetAllInsuranceResponseDTO>().ReverseMap();
+            CreateMap<Insurance, GetAllInsuranceRequestDTO>().ReverseMap();
+            CreateMap<Service, GetAllServiceResponseDTO>().ReverseMap();
+            CreateMap<Service, GetAllServiceRequestDTO>().ReverseMap();
+            CreateMap<Email, GetAllEmailResponseDTO>().ReverseMap();
+            CreateMap<Email, GetAllEmailRequestDTO>().ReverseMap();
         }
     }
 }

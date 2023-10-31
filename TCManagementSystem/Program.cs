@@ -90,6 +90,13 @@ internal class Program
         builder.Services.AddTransient<IAppointmentPaymentRepo, AppointmentPaymentRepo>();
         builder.Services.AddTransient<ILoginRepo, LoginRepo>();
         builder.Services.AddTransient<IMessageRepo, MessageRepo>();
+        builder.Services.AddTransient<IEditClientRepo, EditClientRepo>();
+        builder.Services.AddTransient<IPhoneRepo, PhoneRepo>();
+        builder.Services.AddTransient<IClientAddressRepo, ClientAddressRepo>();
+        builder.Services.AddTransient<ICardRepo, CardRepo>();
+        builder.Services.AddTransient<IInsuranceRepo, InsuranceRepo>();
+        builder.Services.AddTransient<IServiceRepo, ServiceRepo>();
+        builder.Services.AddTransient<IEmailRepo, EmailRepo>();
 
 
 
@@ -117,13 +124,18 @@ internal class Program
         builder.Services.AddSwaggerGen();
 
         var app = builder.Build();
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "TC.API V1");
+        });
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
+       /* if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
-        }
+        }*/
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors(MyAllowSpecificOrigins);

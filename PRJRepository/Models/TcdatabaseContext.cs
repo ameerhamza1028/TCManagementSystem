@@ -15,6 +15,8 @@ public partial class TcdatabaseContext : DbContext
     {
     }
 
+    public virtual DbSet<Address> Addresses { get; set; }
+
     public virtual DbSet<Appointment> Appointments { get; set; }
 
     public virtual DbSet<AppointmentPayment> AppointmentPayments { get; set; }
@@ -24,6 +26,8 @@ public partial class TcdatabaseContext : DbContext
     public virtual DbSet<BillingSetting> BillingSettings { get; set; }
 
     public virtual DbSet<CalenderSetting> CalenderSettings { get; set; }
+
+    public virtual DbSet<Card> Cards { get; set; }
 
     public virtual DbSet<CheckAvaliability> CheckAvaliabilities { get; set; }
 
@@ -35,17 +39,31 @@ public partial class TcdatabaseContext : DbContext
 
     public virtual DbSet<ClinicLocation> ClinicLocations { get; set; }
 
+    public virtual DbSet<Clinician> Clinicians { get; set; }
+
+    public virtual DbSet<EditClient> EditClients { get; set; }
+
+    public virtual DbSet<Email> Emails { get; set; }
+
+    public virtual DbSet<Insurance> Insurances { get; set; }
+
     public virtual DbSet<InsurranceSetting> InsurranceSettings { get; set; }
 
     public virtual DbSet<Invoice> Invoices { get; set; }
 
     public virtual DbSet<License> Licenses { get; set; }
 
+    public virtual DbSet<Location> Locations { get; set; }
+
     public virtual DbSet<Login> Logins { get; set; }
 
     public virtual DbSet<Message> Messages { get; set; }
 
     public virtual DbSet<Organization> Organizations { get; set; }
+
+    public virtual DbSet<Phone> Phones { get; set; }
+
+    public virtual DbSet<Service> Services { get; set; }
 
     public virtual DbSet<ServiceSetting> ServiceSettings { get; set; }
 
@@ -60,6 +78,16 @@ public partial class TcdatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Address>(entity =>
+        {
+            entity.ToTable("Address");
+
+            entity.Property(e => e.Address1)
+                .HasMaxLength(200)
+                .HasColumnName("Address");
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+        });
+
         modelBuilder.Entity<Appointment>(entity =>
         {
             entity.ToTable("Appointment");
@@ -113,6 +141,17 @@ public partial class TcdatabaseContext : DbContext
             entity.ToTable("CalenderSetting");
 
             entity.Property(e => e.CreationDate).HasColumnType("date");
+        });
+
+        modelBuilder.Entity<Card>(entity =>
+        {
+            entity.HasKey(e => e.CardId).HasName("PK_CreditAndDebitCard");
+
+            entity.ToTable("Card");
+
+            entity.Property(e => e.CardType).HasMaxLength(50);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.DateExpire).HasColumnType("date");
         });
 
         modelBuilder.Entity<CheckAvaliability>(entity =>
@@ -196,6 +235,62 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.ZipCode).HasMaxLength(20);
         });
 
+        modelBuilder.Entity<Clinician>(entity =>
+        {
+            entity.ToTable("Clinician");
+
+            entity.Property(e => e.ClinicianName).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<EditClient>(entity =>
+        {
+            entity.ToTable("EditClient");
+
+            entity.Property(e => e.ClientEmail).HasMaxLength(200);
+            entity.Property(e => e.EmailNotification).HasMaxLength(50);
+            entity.Property(e => e.EmploymentStatus).HasMaxLength(50);
+            entity.Property(e => e.FirstName).HasMaxLength(200);
+            entity.Property(e => e.GenderIdentity).HasMaxLength(100);
+            entity.Property(e => e.LastName).HasMaxLength(200);
+            entity.Property(e => e.MiddleName).HasMaxLength(200);
+            entity.Property(e => e.ModifiedDate).HasColumnType("date");
+            entity.Property(e => e.Month).HasMaxLength(50);
+            entity.Property(e => e.NameToGoBy).HasMaxLength(200);
+            entity.Property(e => e.Notes).HasMaxLength(500);
+            entity.Property(e => e.RelationshipStatus).HasMaxLength(50);
+            entity.Property(e => e.Sex).HasMaxLength(50);
+            entity.Property(e => e.Suffix).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<Email>(entity =>
+        {
+            entity.ToTable("Email");
+
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.EmailAddress).HasMaxLength(200);
+            entity.Property(e => e.EmailType).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Insurance>(entity =>
+        {
+            entity.ToTable("Insurance");
+
+            entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.Copay).HasColumnType("money");
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.Deductible).HasColumnType("money");
+            entity.Property(e => e.EmployerOrSchool).HasMaxLength(200);
+            entity.Property(e => e.FirstName).HasMaxLength(200);
+            entity.Property(e => e.InsurancePayerFax).HasMaxLength(20);
+            entity.Property(e => e.InsurancePayerPhone).HasMaxLength(20);
+            entity.Property(e => e.LastName).HasMaxLength(200);
+            entity.Property(e => e.MiddleName).HasMaxLength(200);
+            entity.Property(e => e.Month).HasMaxLength(50);
+            entity.Property(e => e.Phone).HasMaxLength(20);
+            entity.Property(e => e.SendPayment).HasMaxLength(50);
+            entity.Property(e => e.Sex).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<InsurranceSetting>(entity =>
         {
             entity.HasKey(e => e.InsurranceId);
@@ -229,6 +324,13 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.LicenseType).HasMaxLength(20);
         });
 
+        modelBuilder.Entity<Location>(entity =>
+        {
+            entity.ToTable("Location");
+
+            entity.Property(e => e.LocationType).HasMaxLength(50);
+        });
+
         modelBuilder.Entity<Login>(entity =>
         {
             entity.ToTable("Login");
@@ -255,6 +357,29 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.OrgAddress).HasMaxLength(200);
             entity.Property(e => e.OrgDescription).HasMaxLength(200);
             entity.Property(e => e.OrgName).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<Phone>(entity =>
+        {
+            entity.ToTable("Phone");
+
+            entity.Property(e => e.PhoneId).ValueGeneratedNever();
+            entity.Property(e => e.CreactionDate).HasColumnType("date");
+            entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+            entity.Property(e => e.PhoneType).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Service>(entity =>
+        {
+            entity.ToTable("Service");
+
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.Modifier1).HasMaxLength(50);
+            entity.Property(e => e.Modifier2).HasMaxLength(50);
+            entity.Property(e => e.Modifier3).HasMaxLength(50);
+            entity.Property(e => e.Modifier4).HasMaxLength(50);
+            entity.Property(e => e.RatePerUnit).HasColumnType("money");
+            entity.Property(e => e.ServiceName).HasMaxLength(200);
         });
 
         modelBuilder.Entity<ServiceSetting>(entity =>
