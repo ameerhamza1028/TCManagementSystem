@@ -73,7 +73,7 @@ public partial class TcdatabaseContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=DESKTOP-018QP73\\SQLEXPRESS;Database=TCDatabase;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;encrypt=False");
+        optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -176,6 +176,7 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.FirstName2).HasMaxLength(200);
             entity.Property(e => e.LastName1).HasMaxLength(200);
             entity.Property(e => e.LastName2).HasMaxLength(200);
+            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone1).HasMaxLength(20);
             entity.Property(e => e.Phone2).HasMaxLength(20);
             entity.Property(e => e.Relationship).HasMaxLength(50);
@@ -417,6 +418,7 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.Modifier3).HasMaxLength(200);
             entity.Property(e => e.Month).HasMaxLength(50);
             entity.Property(e => e.Npi).HasColumnName("NPI");
+            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.PrimaryWorkLocation).HasMaxLength(50);
             entity.Property(e => e.School).HasMaxLength(200);

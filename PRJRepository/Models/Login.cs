@@ -16,4 +16,10 @@ public partial class Login
     public bool? IsRememberMe { get; set; }
 
     public bool? IsTermsAndConditions { get; set; }
+
+    public long? CreatedBy { get; set; }
+
+    public DateTime? CreationDate { get; set; }
+
+    public bool? IsActive { get; set; }
 }

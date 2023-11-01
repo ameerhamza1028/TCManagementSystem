@@ -20,6 +20,56 @@ namespace PRJRepository.Repo
             _context = context;
             _mapper = mapper;
         }
+
+        public bool SaveLogin(SaveLoginRequestDTO request)
+        {
+            try
+            {
+                Models.Login Login = new Models.Login();
+                if (request.LoginId == 0)
+                {
+                    Login = _mapper.Map<Models.Login>(request);
+                    Login.Password = GenerateRandomPassword(15);
+                    Login.IsTermsAndConditions = true;
+                    Login.IsRememberMe = true;
+                    Login.IsActive = true;
+                    Login.CreationDate = DateTime.UtcNow;
+                    _context.Logins.Add(Login);
+                    _context.SaveChanges();
+
+                    string email = Login.Email;
+                    string message = Login.Password;
+
+                    SendEmail sendEmail = new SendEmail();
+                    sendEmail.EmailSender(email, message);
+                }
+                else
+                {
+                    Login = _context.Logins.Where(x => x.LoginId == request.LoginId).FirstOrDefault();
+                    Login = _mapper.Map(request, Login);
+                    _context.SaveChanges();
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public string GenerateRandomPassword(int length)
+        {
+            const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%";
+            Random random = new Random();
+            StringBuilder password = new StringBuilder();
+
+            for (int i = 0; i < length; i++)
+            {
+                int index = random.Next(0, allowedChars.Length);
+                password.Append(allowedChars[index]);
+            }
+
+            return password.ToString();
+        }
         public LoginResponseDTO Login(LoginRequestDTO request)
         {
             LoginResponseDTO response = new LoginResponseDTO();

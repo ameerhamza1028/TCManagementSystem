@@ -5,6 +5,7 @@ using PRJRepository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +49,7 @@ namespace PRJRepository.Repo
                     User.CreationDate = DateTime.UtcNow;
                     _context.TcUsers.Add(User);
                     _context.SaveChanges();
+
                 }
                 else
                 {
@@ -62,7 +64,6 @@ namespace PRJRepository.Repo
                 return false;
             }
         }
-
         public bool DeleteUser(long Id)
         {
             try

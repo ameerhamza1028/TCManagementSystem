@@ -1,4 +1,3 @@
-D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\appsettings.Development.json
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\appsettings.json
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\TCManagementSystem.exe
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\TCManagementSystem.deps.json

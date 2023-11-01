@@ -2,6 +2,7 @@
 using PRJRepository.DTO.Client;
 using PRJRepository.Interface;
 using PRJRepository.Models;
+using System.Text;
 
 namespace PRJRepository.Repo
 {
@@ -43,6 +44,7 @@ namespace PRJRepository.Repo
                     client.CreatedDate = DateTime.UtcNow;
                     _context.Clients.Add(client);
                     _context.SaveChanges();
+
                 }
                 else
                 {

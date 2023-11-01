@@ -10,5 +10,6 @@ namespace PRJRepository.Interface
     public interface ILoginRepo
     {
         public LoginResponseDTO Login(LoginRequestDTO request);
+        public bool SaveLogin(SaveLoginRequestDTO request);
     }
 }

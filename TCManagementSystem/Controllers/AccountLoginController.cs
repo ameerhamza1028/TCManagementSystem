@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using PRJRepository.DTO.Login;
 using PRJRepository.Interface;
+using PRJRepository.Repo;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -29,6 +30,23 @@ namespace TCManagementSystem.Controllers
             _configuration = config;
             _mapper = IMapper;
             _ILoginRepo = ILoginRepo;
+        }
+
+        [HttpPost]
+        [Route("SaveLogin")]
+        public ApiResponse<bool> SaveLogin([FromBody] SaveLoginRequestDTO request)
+        {
+            ApiResponse<bool> response = new ApiResponse<bool>();
+            try
+            {
+                _ILoginRepo.SaveLogin(request);
+                response.Data = true;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
         [AllowAnonymous]

@@ -1,0 +1,14 @@
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\bin\Release\net6.0\PRJRepository.deps.json
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\bin\Release\net6.0\PRJRepository.runtimeconfig.json
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\bin\Release\net6.0\PRJRepository.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\bin\Release\net6.0\PRJRepository.pdb
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.csproj.AssemblyReference.cache
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.AssemblyInfoInputs.cache
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.AssemblyInfo.cs
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.csproj.CoreCompileInputs.cache
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\refint\PRJRepository.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.pdb
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\PRJRepository.genruntimeconfig.cache
+D:\Web API Using Visual Sudio\TCManagementSystem\PRJRepository\obj\Release\net6.0\ref\PRJRepository.dll
