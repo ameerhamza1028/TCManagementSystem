@@ -10,5 +10,6 @@ namespace PRJRepository.DTO.Login
     {
         public long LoginId { get; set; }
         public string? Email { get; set; }
+        public int? RoleId { get; set; }
     }
 }

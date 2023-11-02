@@ -8,7 +8,6 @@ namespace PRJRepository.DTO.Clinic
 {
     public class GetAllClinicRequestDTO
     {
-        public long? ClientId { get; set; }
 
         public long ClinicId { get; set; }
 
@@ -18,9 +17,9 @@ namespace PRJRepository.DTO.Clinic
 
         public string? Address { get; set; }
 
-        public string? CityName { get; set; }
+        public int? CityId { get; set; }
 
-        public string? StateName { get; set; }
+        public int? StateId { get; set; }
 
         public string? ZipCode { get; set; }
 

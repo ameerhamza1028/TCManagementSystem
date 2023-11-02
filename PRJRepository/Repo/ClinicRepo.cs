@@ -39,6 +39,7 @@ namespace PRJRepository.Repo
                 if (request.ClinicId == 0)
                 {
                     clinic = _mapper.Map<Clinic>(request);
+                    clinic.Message = true;
                     clinic.IsActive = true;
                     clinic.CreationDate = DateTime.UtcNow;
                     _context.Clinics.Add(clinic);

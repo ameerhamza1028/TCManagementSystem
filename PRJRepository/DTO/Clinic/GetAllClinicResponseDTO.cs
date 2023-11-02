@@ -48,7 +48,10 @@ namespace PRJRepository.DTO.Clinic
 
         //public long? ServicePlaceId { get; set; }
 
+        public bool? Message { get; set; }
+
         public bool? IsActive { get; set; }
+
 
         //public DateTime? CreationDate { get; set; }
 

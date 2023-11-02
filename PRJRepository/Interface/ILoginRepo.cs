@@ -11,5 +11,6 @@ namespace PRJRepository.Interface
     {
         public LoginResponseDTO Login(LoginRequestDTO request);
         public bool SaveLogin(SaveLoginRequestDTO request);
+        public LoginResponseDTO LoginOTP(LoginOTPRequestDTO request);
     }
 }

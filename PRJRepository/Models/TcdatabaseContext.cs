@@ -200,7 +200,7 @@ public partial class TcdatabaseContext : DbContext
 
             entity.Property(e => e.Address).HasMaxLength(200);
             entity.Property(e => e.BillingAddress).HasMaxLength(200);
-            entity.Property(e => e.CityName).HasMaxLength(200);
+            //entity.Property(e => e.CityName).HasMaxLength(200);
             entity.Property(e => e.ContactEmail).HasMaxLength(200);
             entity.Property(e => e.ContactName).HasMaxLength(200);
             entity.Property(e => e.ContactPhone).HasMaxLength(20);
@@ -212,7 +212,7 @@ public partial class TcdatabaseContext : DbContext
             entity.Property(e => e.Npi).HasColumnName("NPI");
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.ShortFacilityName).HasMaxLength(200);
-            entity.Property(e => e.StateName).HasMaxLength(200);
+            //entity.Property(e => e.StateName).HasMaxLength(200);
             entity.Property(e => e.ZipCode).HasMaxLength(50);
         });
 

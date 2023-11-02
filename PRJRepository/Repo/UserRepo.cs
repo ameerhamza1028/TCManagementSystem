@@ -34,7 +34,18 @@ namespace PRJRepository.Repo
         {
             GetAllUserResponseDTO response = new GetAllUserResponseDTO();
             Models.TcUser item = _context.TcUsers.Where(x => x.UserId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllUserResponseDTO>(item);
+            if (item != null)
+            {
+               // response.LastLoginDate = _context.Logins.Where(x => x.LoginId == item.LoginId).Select(x => x.CreationDate).FirstOrDefault();                
+                response.UserId = item.UserId;
+                response.UserName = item.UserName;
+                response.UserType = item.UserType;
+                response.Status = item.Status;
+                response.Email = item.Email;
+                response.Phone = item.Phone;
+                response.CreationDate = item.CreationDate;
+            }
+
             return response;
         }
         public bool SaveUser(GetAllUserRequestDTO request)
@@ -45,6 +56,7 @@ namespace PRJRepository.Repo
                 if (request.UserId == 0)
                 {
                     User = _mapper.Map<TcUser>(request);
+                   // User.LastLoginDate = _context.Logins.Where(x => x.LoginId == item.LoginId).Select(x => x.CreationDate).FirstOrDefault();
                     User.IsActive = true;
                     User.CreationDate = DateTime.UtcNow;
                     _context.TcUsers.Add(User);

@@ -95,5 +95,25 @@ namespace TCManagementSystem.Controllers
             response.Status = 0;
             return response;
         }
+
+        [HttpPost]
+        [Route("loginOTP")]
+        public ApiResponse<LoginResponseDTO> LoginOTP([FromQuery] LoginOTPRequestDTO request)
+        {
+            ApiResponse<LoginResponseDTO> response = new ApiResponse<LoginResponseDTO>();
+            var result = _ILoginRepo.LoginOTP(request);
+            if(result != null)
+            {
+                response.Message = "Valid Credentials";
+                response.Status = 1;
+            }
+            else
+            {
+                response.Message = "Invalid Credentials";
+                response.Status = 1;
+            }
+            return response;
+
+        }
     }
 }

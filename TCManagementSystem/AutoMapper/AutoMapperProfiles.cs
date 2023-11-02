@@ -35,6 +35,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Login, LoginResponseDTO>().ReverseMap();
             CreateMap<Login, LoginRequestDTO>().ReverseMap();
             CreateMap<Login, SaveLoginRequestDTO>().ReverseMap();
+            CreateMap<Login, LoginOTPRequestDTO>().ReverseMap();
             CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();

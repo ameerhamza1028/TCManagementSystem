@@ -12,12 +12,12 @@ namespace PRJRepository.Repo
 {
     public class SendEmail
     {
-        public async Task EmailSender(string toEmail, string message)
+        public async Task EmailSender(string toEmail, string message, string Subject)
         {
             var apiKey = "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";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("Timbercreek@stream.com", "Stream");
-            var subject = "New User Confirmation";
+            var subject = Subject;
             var to = new EmailAddress(toEmail,"Client");
             var plainTextContent = message;
             var htmlContent = "";

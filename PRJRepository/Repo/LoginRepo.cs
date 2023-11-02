@@ -30,6 +30,7 @@ namespace PRJRepository.Repo
                 {
                     Login = _mapper.Map<Models.Login>(request);
                     Login.Password = GenerateRandomPassword(15);
+                    Login.Otpcode = GenerateRandomOtp(6);
                     Login.IsTermsAndConditions = true;
                     Login.IsRememberMe = true;
                     Login.IsActive = true;
@@ -39,9 +40,10 @@ namespace PRJRepository.Repo
 
                     string email = Login.Email;
                     string message = Login.Password;
+                    string subject = "Password Confirmation Email";
 
                     SendEmail sendEmail = new SendEmail();
-                    sendEmail.EmailSender(email, message);
+                    sendEmail.EmailSender(email, message, subject);
                 }
                 else
                 {
@@ -70,14 +72,34 @@ namespace PRJRepository.Repo
 
             return password.ToString();
         }
+
+        public string GenerateRandomOtp(int length)
+        {
+            const string allowedChars = "1234567890";
+            Random random = new Random();
+            StringBuilder Otp = new StringBuilder();
+
+            for (int i = 0; i < length; i++)
+            {
+                int index = random.Next(0, allowedChars.Length);
+                Otp.Append(allowedChars[index]);
+            }
+
+            return Otp.ToString();
+        }
         public LoginResponseDTO Login(LoginRequestDTO request)
         {
             LoginResponseDTO response = new LoginResponseDTO();
 
             Login login = _context.Logins.Where(x => x.Email == request.Email && x.Password == request.Password).FirstOrDefault();
-            if(login != null)
+            if (login != null)
             {
-                //response = _mapper.Map<LoginResponseDTO>(login);
+                string email = login.Email;
+                string message = login.Password;
+                string subject = "OTP Confirmation Email";
+
+                SendEmail sendEmail = new SendEmail();
+                sendEmail.EmailSender(email, message, subject);
                 TcUser user = _context.TcUsers.Where(x => x.LoginId == login.LoginId).FirstOrDefault();
                 if (user != null)
                 {
@@ -92,11 +114,12 @@ namespace PRJRepository.Repo
                     response.Email = user.Email;
                     response.RoleName = _context.UserRoles.Where(x => x.RoleId == login.RoleId).Select(x => x.Title).FirstOrDefault();
                 }
-                
+
                 Client client = _context.Clients.Where(x => x.LoginId == login.LoginId).FirstOrDefault();
-                if (client != null) {
+                if (client != null)
+                {
                     response.ClientId = client.ClientId;
-                    response.FirstName1 = client.FirstName1;    
+                    response.FirstName1 = client.FirstName1;
                     response.LastName1 = client.LastName1;
                     response.Email1 = client.Email1;
                     response.Phone1 = client.Phone1;
@@ -107,9 +130,18 @@ namespace PRJRepository.Repo
                     response.RoleName = _context.UserRoles.Where(x => x.RoleId == login.RoleId).Select(x => x.Title).FirstOrDefault();
                 }
             }
-            return response; 
-            
-            
+            return response;
+        }
+
+        public LoginResponseDTO LoginOTP(LoginOTPRequestDTO request)
+        {
+            LoginResponseDTO response = new LoginResponseDTO();
+            Login login = _context.Logins.Where(x => x.Otpcode == request.Otpcode).FirstOrDefault();
+            if (login != null)
+            {
+                response.LoginId = login.LoginId;
+            }
+            return response;
         }
     }
 }

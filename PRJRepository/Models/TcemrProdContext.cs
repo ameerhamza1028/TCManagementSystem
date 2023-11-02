@@ -200,7 +200,6 @@ public partial class TcemrProdContext : DbContext
 
             entity.Property(e => e.Address).HasMaxLength(200);
             entity.Property(e => e.BillingAddress).HasMaxLength(200);
-            entity.Property(e => e.CityName).HasMaxLength(200);
             entity.Property(e => e.ContactEmail).HasMaxLength(200);
             entity.Property(e => e.ContactName).HasMaxLength(200);
             entity.Property(e => e.ContactPhone).HasMaxLength(20);
@@ -212,7 +211,6 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Npi).HasColumnName("NPI");
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.ShortFacilityName).HasMaxLength(200);
-            entity.Property(e => e.StateName).HasMaxLength(200);
             entity.Property(e => e.ZipCode).HasMaxLength(50);
         });
 
@@ -338,6 +336,9 @@ public partial class TcemrProdContext : DbContext
 
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Email).HasMaxLength(200);
+            entity.Property(e => e.Otpcode)
+                .HasMaxLength(6)
+                .HasColumnName("OTPCode");
             entity.Property(e => e.Password).HasMaxLength(50);
         });
 
