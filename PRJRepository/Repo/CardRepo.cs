@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class CardRepo : ICardRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public CardRepo(TcdatabaseContext context, IMapper mapper)
+        public CardRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

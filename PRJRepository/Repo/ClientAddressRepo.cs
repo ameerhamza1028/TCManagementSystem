@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class ClientAddressRepo : IClientAddressRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public ClientAddressRepo(TcdatabaseContext context, IMapper mapper)
+        public ClientAddressRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

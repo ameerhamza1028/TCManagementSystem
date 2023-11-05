@@ -38,10 +38,12 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Login, LoginOTPRequestDTO>().ReverseMap();
             CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
+            CreateMap<Client, EditClientResponseDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationRequestDTO>().ReverseMap();
             CreateMap<Clinic, GetAllClinicResponseDTO>().ReverseMap();
             CreateMap<Clinic, GetAllClinicRequestDTO>().ReverseMap();
+            CreateMap<Clinic, EditClinicResponseDTO>().ReverseMap();
             CreateMap<Appointment, GetAllAppointmentResponseDTO>().ReverseMap();
             CreateMap<Appointment, GetAllAppointmentRequestDTO>().ReverseMap();
             CreateMap<AvailableSlot, GetAllSlotAvailableResponseDTO>().ReverseMap();

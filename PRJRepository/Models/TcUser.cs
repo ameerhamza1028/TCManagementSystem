@@ -5,11 +5,13 @@ namespace PRJRepository.Models;
 
 public partial class TcUser
 {
+    public long? OrganizationId { get; set; }
+
+    public long? ClinicId { get; set; }
+
     public string? UserType { get; set; }
 
     public long UserId { get; set; }
-
-    public string? Password { get; set; }
 
     public string? UserName { get; set; }
 
@@ -17,9 +19,11 @@ public partial class TcUser
 
     public string? Address { get; set; }
 
-    public string? CityName { get; set; }
+    public int? CountryId { get; set; }
 
-    public string? StateName { get; set; }
+    public int? CityId { get; set; }
+
+    public int? StateId { get; set; }
 
     public long? ZipCode { get; set; }
 

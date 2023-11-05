@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class InsuranceRepo : IInsuranceRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public InsuranceRepo(TcdatabaseContext context, IMapper mapper)
+        public InsuranceRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

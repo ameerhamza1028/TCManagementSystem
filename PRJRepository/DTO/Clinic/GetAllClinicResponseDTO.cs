@@ -8,23 +8,13 @@ namespace PRJRepository.DTO.Clinic
 {
     public class GetAllClinicResponseDTO
     {
-       // public long? ClientId { get; set; }
 
         public long ClinicId { get; set; }
 
         public string? LongFacilityName { get; set; }
 
-       // public string? ShortFacilityName { get; set; }
-
         public string? Address { get; set; }
 
-        //public string? CityName { get; set; }
-
-        //public string? StateName { get; set; }
-
-        //public string? ZipCode { get; set; }
-
-       // public string? BillingAddress { get; set; }
 
         public string? Phone { get; set; }
 
@@ -32,9 +22,6 @@ namespace PRJRepository.DTO.Clinic
 
         public string? Email { get; set; }
 
-        //public string? ContactName { get; set; }
-
-        //public string? ContactEmail { get; set; }
 
         public string? ContactPhone { get; set; }
 
@@ -44,17 +31,11 @@ namespace PRJRepository.DTO.Clinic
 
         public long? Taxomony { get; set; }
 
-        //public DateTime? ExpirationDate { get; set; }
-
-        //public long? ServicePlaceId { get; set; }
 
         public bool? Message { get; set; }
 
-        public bool? IsActive { get; set; }
+        public bool? Status { get; set; }
 
 
-        //public DateTime? CreationDate { get; set; }
-
-        //public long? CreatedBy { get; set; }
     }
 }

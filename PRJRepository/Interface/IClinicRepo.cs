@@ -10,7 +10,7 @@ namespace PRJRepository.Interface
     public interface IClinicRepo
     {
         public List<GetAllClinicResponseDTO> GetAllClinic();
-        public GetAllClinicResponseDTO GetClinicById(long Id);
+        public EditClinicResponseDTO GetClinicById(long Id);
         public bool SaveClinic(GetAllClinicRequestDTO request);
 
         public bool DeleteClinic(long Id);

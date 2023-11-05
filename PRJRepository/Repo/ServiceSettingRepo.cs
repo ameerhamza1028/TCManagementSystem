@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class ServiceSettingRepo : IServiceSettingRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public ServiceSettingRepo(TcdatabaseContext context, IMapper mapper)
+        public ServiceSettingRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -13,9 +13,9 @@ namespace PRJRepository.Repo
 {
     public class UserRepo : IUserRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public UserRepo(TcdatabaseContext context, IMapper mapper)
+        public UserRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -56,7 +56,6 @@ namespace PRJRepository.Repo
                 if (request.UserId == 0)
                 {
                     User = _mapper.Map<TcUser>(request);
-                   // User.LastLoginDate = _context.Logins.Where(x => x.LoginId == item.LoginId).Select(x => x.CreationDate).FirstOrDefault();
                     User.IsActive = true;
                     User.CreationDate = DateTime.UtcNow;
                     _context.TcUsers.Add(User);

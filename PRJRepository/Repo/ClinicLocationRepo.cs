@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class ClinicLocationRepo : IClinicLocationRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public ClinicLocationRepo(TcdatabaseContext context, IMapper mapper)
+        public ClinicLocationRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

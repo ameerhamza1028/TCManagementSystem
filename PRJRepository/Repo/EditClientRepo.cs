@@ -13,9 +13,9 @@ namespace PRJRepository.Repo
 {
     public class EditClientRepo : IEditClientRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext   _context;
         private readonly IMapper _mapper;
-        public EditClientRepo(TcdatabaseContext context, IMapper mapper)
+        public EditClientRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

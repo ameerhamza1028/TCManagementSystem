@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Clinic
 {
+    public long? OrganizationId { get; set; }
+
     public long ClinicId { get; set; }
 
     public string? LongFacilityName { get; set; }
@@ -13,6 +15,8 @@ public partial class Clinic
 
     public string? Address { get; set; }
 
+    public int? CountryId { get; set; }
+
     public int? CityId { get; set; }
 
     public int? StateId { get; set; }
@@ -20,6 +24,16 @@ public partial class Clinic
     public string? ZipCode { get; set; }
 
     public string? BillingAddress { get; set; }
+
+    public string? OtherAddress { get; set; }
+
+    public int? OtherCountryId { get; set; }
+
+    public int? OtherCityId { get; set; }
+
+    public int? OtherStateId { get; set; }
+
+    public string? OtherZipCode { get; set; }
 
     public string? Phone { get; set; }
 
@@ -42,6 +56,8 @@ public partial class Clinic
     public DateTime? ExpirationDate { get; set; }
 
     public long? ServicePlaceId { get; set; }
+
+    public bool? Status { get; set; }
 
     public bool? Message { get; set; }
 

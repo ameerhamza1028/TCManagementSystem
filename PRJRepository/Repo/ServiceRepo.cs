@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class ServiceRepo : IServiceRepo
         {
-            private readonly TcdatabaseContext _context;
+            private readonly TcemrProdContext _context;
             private readonly IMapper _mapper;
-            public ServiceRepo(TcdatabaseContext context, IMapper mapper)
+            public ServiceRepo(TcemrProdContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;

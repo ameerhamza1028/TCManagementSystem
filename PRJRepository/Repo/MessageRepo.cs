@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class MessageRepo : IMessageRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public MessageRepo(TcdatabaseContext context, IMapper mapper)
+        public MessageRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -13,9 +13,9 @@ namespace PRJRepository.Repo
 {
     public class LoginRepo : ILoginRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public LoginRepo(TcdatabaseContext context, IMapper mapper)
+        public LoginRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -105,8 +105,9 @@ namespace PRJRepository.Repo
                 {
                     response.UserId = user.UserId;
                     response.UserName = user.UserName;
-                    response.StateName = user.StateName;
-                    response.CityName = user.CityName;
+                    response.StateId = user.StateId;
+                    response.CityId = user.CityId;
+                    response.CountryId = user.CountryId;
                     response.Address = user.Address;
                     response.Phone = user.Phone;
                     response.Status = user.Status;

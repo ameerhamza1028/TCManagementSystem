@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class PhoneRepo : IPhoneRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public PhoneRepo(TcdatabaseContext context, IMapper mapper)
+        public PhoneRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

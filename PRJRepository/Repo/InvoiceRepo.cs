@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class InvoiceRepo : IInvoiceRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public InvoiceRepo(TcdatabaseContext context, IMapper mapper)
+        public InvoiceRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

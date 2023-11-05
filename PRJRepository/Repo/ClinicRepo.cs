@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class ClinicRepo : IClinicRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public ClinicRepo(TcdatabaseContext context, IMapper mapper)
+        public ClinicRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -23,11 +23,11 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllClinicResponseDTO GetClinicById(long Id)
+        public EditClinicResponseDTO GetClinicById(long Id)
         {
-            GetAllClinicResponseDTO response = new GetAllClinicResponseDTO();
+            EditClinicResponseDTO response = new EditClinicResponseDTO();
             Clinic item = _context.Clinics.Where(x => x.ClinicId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllClinicResponseDTO>(item);
+            response = _mapper.Map<EditClinicResponseDTO>(item);
             return response;
         }
 

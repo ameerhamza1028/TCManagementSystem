@@ -46,12 +46,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetClinicById")]
-        public ApiResponse<GetAllClinicResponseDTO> GetClinicById(long Id)
+        public ApiResponse<EditClinicResponseDTO> GetClinicById(long Id)
         {
-            ApiResponse<GetAllClinicResponseDTO> response = new ApiResponse<GetAllClinicResponseDTO>();
+            ApiResponse<EditClinicResponseDTO> response = new ApiResponse<EditClinicResponseDTO>();
             try
             {
-                GetAllClinicResponseDTO result = new GetAllClinicResponseDTO();
+                EditClinicResponseDTO result = new EditClinicResponseDTO();
                 result = _IClinicRepo.GetClinicById(Id);
                 response.Data = result;
             }

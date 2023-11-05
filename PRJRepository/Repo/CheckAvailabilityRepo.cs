@@ -13,9 +13,9 @@ namespace PRJRepository.Repo
 {
     public class CheckAvailabilityRepo : ICheckAvailabilityRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public CheckAvailabilityRepo(TcdatabaseContext context, IMapper mapper)
+        public CheckAvailabilityRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

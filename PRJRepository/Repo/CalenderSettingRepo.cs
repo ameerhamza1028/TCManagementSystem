@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class CalenderSettingRepo : ICalenderSettingRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public CalenderSettingRepo(TcdatabaseContext context, IMapper mapper)
+        public CalenderSettingRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

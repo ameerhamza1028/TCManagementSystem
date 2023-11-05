@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class AvailableSlotRepo : IAvailableSlotRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public AvailableSlotRepo(TcdatabaseContext context, IMapper mapper)
+        public AvailableSlotRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

@@ -31,6 +31,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<CheckAvaliability> CheckAvaliabilities { get; set; }
 
+    public virtual DbSet<City> Cities { get; set; }
+
     public virtual DbSet<Client> Clients { get; set; }
 
     public virtual DbSet<ClientForm> ClientForms { get; set; }
@@ -40,6 +42,8 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<ClinicLocation> ClinicLocations { get; set; }
 
     public virtual DbSet<Clinician> Clinicians { get; set; }
+
+    public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<EditClient> EditClients { get; set; }
 
@@ -62,6 +66,8 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<Organization> Organizations { get; set; }
 
     public virtual DbSet<Phone> Phones { get; set; }
+
+    public virtual DbSet<Region> Regions { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
 
@@ -163,12 +169,30 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.SelectDate).HasColumnType("date");
         });
 
+        modelBuilder.Entity<City>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Cities__3214EC0714AAB337");
+
+            entity.ToTable("City");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Region).WithMany(p => p.Cities)
+                .HasForeignKey(d => d.RegionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Cities_Regions");
+        });
+
         modelBuilder.Entity<Client>(entity =>
         {
             entity.HasKey(e => e.ClientId).HasName("PK_TCUser");
 
             entity.ToTable("Client");
 
+            entity.Property(e => e.BillResponsibleClient).HasMaxLength(50);
             entity.Property(e => e.CreatedDate).HasColumnType("date");
             entity.Property(e => e.Email1).HasMaxLength(200);
             entity.Property(e => e.Email2).HasMaxLength(200);
@@ -176,9 +200,10 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.FirstName2).HasMaxLength(200);
             entity.Property(e => e.LastName1).HasMaxLength(200);
             entity.Property(e => e.LastName2).HasMaxLength(200);
-            entity.Property(e => e.Password).HasMaxLength(50);
+            entity.Property(e => e.Location).HasMaxLength(50);
             entity.Property(e => e.Phone1).HasMaxLength(20);
             entity.Property(e => e.Phone2).HasMaxLength(20);
+            entity.Property(e => e.PrimaryClinicianName).HasMaxLength(200);
             entity.Property(e => e.Relationship).HasMaxLength(50);
         });
 
@@ -209,6 +234,8 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Fax).HasMaxLength(20);
             entity.Property(e => e.LongFacilityName).HasMaxLength(200);
             entity.Property(e => e.Npi).HasColumnName("NPI");
+            entity.Property(e => e.OtherAddress).HasMaxLength(200);
+            entity.Property(e => e.OtherZipCode).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.ShortFacilityName).HasMaxLength(200);
             entity.Property(e => e.ZipCode).HasMaxLength(50);
@@ -239,6 +266,24 @@ public partial class TcemrProdContext : DbContext
             entity.ToTable("Clinician");
 
             entity.Property(e => e.ClinicianName).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<Country>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Countrie__3214EC07537387DE");
+
+            entity.ToTable("Country");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Code)
+                .HasMaxLength(2)
+                .IsUnicode(false);
+            entity.Property(e => e.Language)
+                .HasMaxLength(3)
+                .IsUnicode(false);
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<EditClient>(entity =>
@@ -373,6 +418,23 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.PhoneType).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<Region>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Regions__3214EC070DA0D56E");
+
+            entity.ToTable("Region");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+
+            entity.HasOne(d => d.Country).WithMany(p => p.Regions)
+                .HasForeignKey(d => d.CountryId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Regions_Countries");
+        });
+
         modelBuilder.Entity<Service>(entity =>
         {
             entity.ToTable("Service");
@@ -407,7 +469,6 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Address).HasMaxLength(200);
             entity.Property(e => e.AddressType).HasMaxLength(50);
             entity.Property(e => e.Caqhid).HasColumnName("CAQHId");
-            entity.Property(e => e.CityName).HasMaxLength(100);
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.DefaultModifier).HasMaxLength(200);
             entity.Property(e => e.DegreeReceived).HasMaxLength(200);
@@ -420,11 +481,9 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Modifier3).HasMaxLength(200);
             entity.Property(e => e.Month).HasMaxLength(50);
             entity.Property(e => e.Npi).HasColumnName("NPI");
-            entity.Property(e => e.Password).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.PrimaryWorkLocation).HasMaxLength(50);
             entity.Property(e => e.School).HasMaxLength(200);
-            entity.Property(e => e.StateName).HasMaxLength(100);
             entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.UploadFilePath)
                 .HasMaxLength(500)

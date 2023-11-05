@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class LicenseRepo : ILicenseRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public LicenseRepo(TcdatabaseContext context, IMapper mapper)
+        public LicenseRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

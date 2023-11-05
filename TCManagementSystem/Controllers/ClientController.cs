@@ -45,12 +45,12 @@ namespace TCManagementSystem.Controllers
         }
         [HttpGet]
         [Route("GetClientById")]
-        public ApiResponse<GetAllClientResponseDTO> GetClientById(long Id)
+        public ApiResponse<EditClientResponseDTO> GetClientById(long Id)
         {
-            ApiResponse<GetAllClientResponseDTO> response = new ApiResponse<GetAllClientResponseDTO>();
+            ApiResponse<EditClientResponseDTO> response = new ApiResponse<EditClientResponseDTO>();
             try
             {
-                GetAllClientResponseDTO result = new GetAllClientResponseDTO();
+                EditClientResponseDTO result = new EditClientResponseDTO();
                 result = _IClientRepo.GetClientById(Id);
                 response.Data = result;
             }

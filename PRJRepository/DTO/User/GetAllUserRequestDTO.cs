@@ -8,6 +8,7 @@ namespace PRJRepository.DTO.User
 {
     public class GetAllUserRequestDTO
     {
+        public long? ClinicId { get; set; }
 
         public string? UserType { get; set; }
 
@@ -19,9 +20,11 @@ namespace PRJRepository.DTO.User
 
         public string? Address { get; set; }
 
-        public string? CityName { get; set; }
+        public int? CountryId { get; set; }
 
-        public string? StateName { get; set; }
+        public int? CityId { get; set; }
+
+        public int? StateId { get; set; }
 
         public long? ZipCode { get; set; }
 

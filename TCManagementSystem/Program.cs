@@ -67,10 +67,10 @@ internal class Program
         });
 
         // Add services to the container.
-        builder.Services.AddDbContext<TcdatabaseContext>
+        builder.Services.AddDbContext<TcemrProdContext>
              (options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
 
-        builder.Services.AddDbContext<TcdatabaseContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
+        builder.Services.AddDbContext<TcemrProdContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
 
         builder.Services.AddTransient<IClientRepo, ClientRepo>();
         builder.Services.AddTransient<IOrganizationRepo, OrganizationRepo>();
@@ -97,6 +97,7 @@ internal class Program
         builder.Services.AddTransient<IInsuranceRepo, InsuranceRepo>();
         builder.Services.AddTransient<IServiceRepo, ServiceRepo>();
         builder.Services.AddTransient<IEmailRepo, EmailRepo>();
+        builder.Services.AddTransient<ICountryRepo, CountryRepo>();
 
 
 

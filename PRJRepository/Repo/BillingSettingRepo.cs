@@ -7,9 +7,9 @@ namespace PRJRepository.Repo
 {
     public class BillingSettingRepo : IBillingSettingRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public BillingSettingRepo(TcdatabaseContext context, IMapper mapper)
+        public BillingSettingRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

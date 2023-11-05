@@ -12,9 +12,9 @@ namespace PRJRepository.Repo
 {
     public class AppointmentPaymentRepo : IAppointmentPaymentRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public AppointmentPaymentRepo(TcdatabaseContext context, IMapper mapper)
+        public AppointmentPaymentRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

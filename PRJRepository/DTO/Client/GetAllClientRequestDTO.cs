@@ -8,8 +8,10 @@ namespace PRJRepository.DTO.Client
 {
     public class GetAllClientRequestDTO
     {
+       // public long? OrganizationId { get; set; }
+
         public long ClientId { get; set; }
-        public long? CoupleId { get; set; }
+
         public bool? IsAdult { get; set; }
 
         public bool? IsMinor { get; set; }
@@ -32,9 +34,9 @@ namespace PRJRepository.DTO.Client
 
         public bool? IsInsurance { get; set; }
 
-        public long? PrimaryClinicId { get; set; }
+        public string? PrimaryClinicianName { get; set; }
 
-        public long? LocationId { get; set; }
+        public string? Location { get; set; }
 
         public string? FirstName2 { get; set; }
 
@@ -54,13 +56,8 @@ namespace PRJRepository.DTO.Client
 
         public bool? IsResponsibleForBilling { get; set; }
 
-        public long? BillResponsibleClientId { get; set; }
+        public string? BillResponsibleClient { get; set; }
 
-        public bool? IsPotentialClient { get; set; }
-
-        public bool? IsArchivedClient { get; set; }
-
-        public long? CreatedBy { get; set; }
-        public long? LoginId { get; set; }
+        public bool? Status { get; set; }
     }
 }

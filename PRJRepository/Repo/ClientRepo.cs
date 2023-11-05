@@ -8,9 +8,9 @@ namespace PRJRepository.Repo
 {
     public class ClientRepo : IClientRepo
     {
-        private readonly TcdatabaseContext _context;
+        private readonly TcemrProdContext _context;
         private readonly IMapper _mapper;
-        public ClientRepo(TcdatabaseContext context, IMapper mapper)
+        public ClientRepo(TcemrProdContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -24,11 +24,11 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllClientResponseDTO GetClientById(long Id)
+        public EditClientResponseDTO GetClientById(long Id)
         {
-            GetAllClientResponseDTO response = new GetAllClientResponseDTO();
+            EditClientResponseDTO response = new EditClientResponseDTO();
             Models.Client item = _context.Clients.Where(x => x.ClientId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllClientResponseDTO>(item);
+            response = _mapper.Map<EditClientResponseDTO>(item);
             return response;
         }
 
