@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class License
 {
+    public long? UserId { get; set; }
+
     public long LicenseId { get; set; }
 
     public string? LicenseType { get; set; }

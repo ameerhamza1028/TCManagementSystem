@@ -13,8 +13,6 @@ public partial class Login
 
     public string? Password { get; set; }
 
-    public string? Otpcode { get; set; }
-
     public bool? IsRememberMe { get; set; }
 
     public bool? IsTermsAndConditions { get; set; }

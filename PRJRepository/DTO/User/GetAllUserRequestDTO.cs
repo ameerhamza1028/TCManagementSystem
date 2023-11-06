@@ -8,8 +8,6 @@ namespace PRJRepository.DTO.User
 {
     public class GetAllUserRequestDTO
     {
-        public long? ClinicId { get; set; }
-
         public string? UserType { get; set; }
 
         public long UserId { get; set; }
@@ -62,8 +60,6 @@ namespace PRJRepository.DTO.User
 
         public string? DefaultModifier { get; set; }
 
-        public long? LicenseId { get; set; }
-
         public long? TaxonomyCode { get; set; }
 
         public string? Modifier1 { get; set; }
@@ -71,12 +67,5 @@ namespace PRJRepository.DTO.User
         public string? Modifier2 { get; set; }
 
         public string? Modifier3 { get; set; }
-
-        public long? CreatedBy { get; set; }
-
-        public DateTime? ModifiedDate { get; set; }
-
-        public long? ModifiedBy { get; set; }
-        public long? LoginId { get; set; }
     }
 }

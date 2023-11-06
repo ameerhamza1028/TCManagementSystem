@@ -20,11 +20,11 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllLicenseResponseDTO> GetAllLicense()
+        public GetAllLicenseResponseDTO GetLicenseById(long Id)
         {
-            List<GetAllLicenseResponseDTO> response = new List<GetAllLicenseResponseDTO>();
-            List<License> list = _context.Licenses.ToList();
-            response = _mapper.Map<List<GetAllLicenseResponseDTO>>(list);
+            GetAllLicenseResponseDTO response = new GetAllLicenseResponseDTO();
+            License item = _context.Licenses.Where(x => x.LicenseId == Id).FirstOrDefault();
+            response = _mapper.Map<GetAllLicenseResponseDTO>(item);
             return response;
         }
 
@@ -32,10 +32,12 @@ namespace PRJRepository.Repo
         {
             try
             {
+                TcUser user = new TcUser();
                 License License = new License();
                 if (request.LicenseId == 0)
                 {
                     License = _mapper.Map<License>(request);
+                    License.UserId = user.UserId;
                     License.IsActive = true;
                     License.CreationDate = DateTime.UtcNow;
                     _context.Licenses.Add(License);

@@ -30,7 +30,7 @@ namespace PRJRepository.Repo
                 {
                     Login = _mapper.Map<Models.Login>(request);
                     Login.Password = GenerateRandomPassword(15);
-                    Login.Otpcode = GenerateRandomOtp(6);
+                   // Login.Otpcode = GenerateRandomOtp(6);
                     Login.IsTermsAndConditions = true;
                     Login.IsRememberMe = true;
                     Login.IsActive = true;
@@ -137,11 +137,6 @@ namespace PRJRepository.Repo
         public LoginResponseDTO LoginOTP(LoginOTPRequestDTO request)
         {
             LoginResponseDTO response = new LoginResponseDTO();
-            Login login = _context.Logins.Where(x => x.Otpcode == request.Otpcode).FirstOrDefault();
-            if (login != null)
-            {
-                response.LoginId = login.LoginId;
-            }
             return response;
         }
     }

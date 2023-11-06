@@ -18,10 +18,5 @@ namespace PRJRepository.DTO.License
 
         public string? LicenseState { get; set; }
 
-        public bool? IsActive { get; set; }
-
-        public DateTime? CreationDate { get; set; }
-
-        public long? CreatedBy { get; set; }
     }
 }

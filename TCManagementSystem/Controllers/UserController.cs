@@ -47,12 +47,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetUserById")]
-        public ApiResponse<GetAllUserResponseDTO> GetUserById(long Id)
+        public ApiResponse<EditUserResponseDTO> GetUserById(long Id)
         {
-            ApiResponse<GetAllUserResponseDTO> response = new ApiResponse<GetAllUserResponseDTO>();
+            ApiResponse<EditUserResponseDTO> response = new ApiResponse<EditUserResponseDTO>();
             try
             {
-                GetAllUserResponseDTO result = new GetAllUserResponseDTO();
+                EditUserResponseDTO result = new EditUserResponseDTO();
                 result = _IUserRepo.GetUserById(Id);
                 response.Data = result;
             }

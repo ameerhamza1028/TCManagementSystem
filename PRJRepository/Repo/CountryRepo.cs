@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PRJRepository.DTO.Client;
 using PRJRepository.DTO.Clinic;
 using PRJRepository.DTO.Country;
 using PRJRepository.Interface;
@@ -20,26 +21,27 @@ namespace PRJRepository.Repo
             _context = context;
             _mapper = mapper;
         }
-
-        public GetCountryByIdResponseDTO GetCountryById(int CountryId, int RegionId, int CityId)
+        public List<GetAllCountryResponseDTO> GetAllCountry()
         {
-            GetCountryByIdResponseDTO response = new GetCountryByIdResponseDTO();
-            Country country = _context.Countries.Where(x => x.Id == CountryId).FirstOrDefault();
-            if(country != null)
-            {
-                Region region = _context.Regions.Where(x => x.CountryId == CountryId && x.Id == RegionId).FirstOrDefault();
-                if(region != null)
-                {
-                    City city = _context.Cities.Where(x => x.RegionId == RegionId && x.Id == CityId).FirstOrDefault();
-                    if(city != null)
-                    {
-                        response.CountryName = _context.Countries.Where(x => x.Id == CountryId).Select(x => x.Name).FirstOrDefault();
-                        response.RegionName = _context.Regions.Where(x => x.Id == RegionId).Select(x => x.Name).FirstOrDefault();
-                        response.CityName = _context.Cities.Where(x => x.Id == CityId).Select(x => x.Name).FirstOrDefault();
-                    }
-                }
-            }
-            
+            List<GetAllCountryResponseDTO> response = new List<GetAllCountryResponseDTO>();
+            List<Models.Country> list = _context.Countries.ToList();
+            response = _mapper.Map<List<GetAllCountryResponseDTO>>(list);
+            return response;
+        }
+
+        public List<GetAllCountryResponseDTO> GetAllRegion(short CountryId)
+        {
+            List<GetAllCountryResponseDTO> response = new List<GetAllCountryResponseDTO>();
+            List<Region> list = _context.Regions.Where(x => x.CountryId == CountryId).ToList();
+            response = _mapper.Map<List<GetAllCountryResponseDTO>>(list);
+            return response;
+        }
+
+        public List<GetAllCountryResponseDTO> GetAllCity(int RegionId)
+        {
+            List<GetAllCountryResponseDTO> response = new List<GetAllCountryResponseDTO>();
+            List<City> list = _context.Cities.Where(x => x.RegionId == RegionId).ToList();
+            response = _mapper.Map<List<GetAllCountryResponseDTO>>(list);
             return response;
         }
     }

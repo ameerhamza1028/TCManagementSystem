@@ -9,6 +9,8 @@ namespace PRJRepository.Interface
 {
     public interface ICountryRepo
     {
-        public GetCountryByIdResponseDTO GetCountryById(int CountryId, int RegionId, int CityId);
+        public List<GetAllCountryResponseDTO> GetAllCountry();
+        public List<GetAllCountryResponseDTO> GetAllRegion(short CountryId);
+        public List<GetAllCountryResponseDTO> GetAllCity(int RegionId);
     }
 }

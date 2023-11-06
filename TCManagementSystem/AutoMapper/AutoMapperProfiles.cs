@@ -11,6 +11,7 @@ using PRJRepository.DTO.ClientAddress;
 using PRJRepository.DTO.ClientForm;
 using PRJRepository.DTO.Clinic;
 using PRJRepository.DTO.ClinicLocation;
+using PRJRepository.DTO.Country;
 using PRJRepository.DTO.EditClient;
 using PRJRepository.DTO.Email;
 using PRJRepository.DTO.Insurance;
@@ -32,13 +33,14 @@ namespace TCManagementSystem.AutoMapper
     {
         public AutoMapperProfiles()
         {
-            CreateMap<Login, LoginResponseDTO>().ReverseMap();
-            CreateMap<Login, LoginRequestDTO>().ReverseMap();
-            CreateMap<Login, SaveLoginRequestDTO>().ReverseMap();
-            CreateMap<Login, LoginOTPRequestDTO>().ReverseMap();
+           // CreateMap<Login, LoginResponseDTO>().ReverseMap();
+            //CreateMap<Login, LoginRequestDTO>().ReverseMap();
+            //CreateMap<Login, SaveLoginRequestDTO>().ReverseMap();
+            //CreateMap<Login, LoginOTPRequestDTO>().ReverseMap();
             CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Client, EditClientResponseDTO>().ReverseMap();
+            CreateMap<Login, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationRequestDTO>().ReverseMap();
             CreateMap<Clinic, GetAllClinicResponseDTO>().ReverseMap();
@@ -62,8 +64,10 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<CalenderSetting, GetAllCalenderSettingRequestDTO>().ReverseMap();
             CreateMap<ClientForm, GetAllClientFormResponseDTO>().ReverseMap();
             CreateMap<ClientForm, GetAllClientFormRequestDTO>().ReverseMap();
+            CreateMap<Login, GetAllUserRequestDTO>().ReverseMap();
             CreateMap<TcUser, GetAllUserResponseDTO>().ReverseMap();
             CreateMap<TcUser, GetAllUserRequestDTO>().ReverseMap();
+            CreateMap<TcUser, EditUserResponseDTO>().ReverseMap();
             CreateMap<License, GetAllLicenseResponseDTO>().ReverseMap();
             CreateMap<License, GetAllLicenseRequestDTO>().ReverseMap();
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentResponseDTO>().ReverseMap();
@@ -84,6 +88,9 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Service, GetAllServiceRequestDTO>().ReverseMap();
             CreateMap<Email, GetAllEmailResponseDTO>().ReverseMap();
             CreateMap<Email, GetAllEmailRequestDTO>().ReverseMap();
+            CreateMap<Country, GetAllCountryResponseDTO>().ReverseMap();
+            CreateMap<Region, GetAllCountryResponseDTO>().ReverseMap();
+            CreateMap<City, GetAllCountryResponseDTO>().ReverseMap();
         }
     }
 }

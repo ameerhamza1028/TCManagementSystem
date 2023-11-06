@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using PRJRepository.DTO.User;
 using PRJRepository.Interface;
 using PRJRepository.Models;
@@ -30,50 +31,82 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllUserResponseDTO GetUserById(long Id)
+        public EditUserResponseDTO GetUserById(long Id)
         {
-            GetAllUserResponseDTO response = new GetAllUserResponseDTO();
+            EditUserResponseDTO response = new EditUserResponseDTO();
             Models.TcUser item = _context.TcUsers.Where(x => x.UserId == Id).FirstOrDefault();
             if (item != null)
             {
-               // response.LastLoginDate = _context.Logins.Where(x => x.LoginId == item.LoginId).Select(x => x.CreationDate).FirstOrDefault();                
-                response.UserId = item.UserId;
-                response.UserName = item.UserName;
-                response.UserType = item.UserType;
-                response.Status = item.Status;
-                response.Email = item.Email;
-                response.Phone = item.Phone;
-                response.CreationDate = item.CreationDate;
+                response= _mapper.Map<EditUserResponseDTO>(item);
             }
 
             return response;
         }
         public bool SaveUser(GetAllUserRequestDTO request)
         {
-            try
-            {
-                TcUser User = new TcUser();
-                if (request.UserId == 0)
+                try
                 {
-                    User = _mapper.Map<TcUser>(request);
-                    User.IsActive = true;
-                    User.CreationDate = DateTime.UtcNow;
-                    _context.TcUsers.Add(User);
+                    Login login = _mapper.Map<Login>(request);
+                    login.Email = request.Email;
+                    login.Password = GenerateRandomPassword(15);
+                    login.IsTermsAndConditions = true;
+                    login.IsRememberMe = true;
+                    login.IsActive = true;
+                    login.CreationDate = DateTime.UtcNow;
+
+                    if (request.UserType == "Clinic Admin")
+                        login.RoleId = 1;
+                    else if (request.UserType == "Supervisor")
+                        login.RoleId = 2;
+                    else if (request.UserType == "Clinician")
+                        login.RoleId = 3;
+                    else
+                        login.RoleId = 4;
+
+                    _context.Logins.Add(login);
+                    _context.SaveChanges();
+                    TcUser user = new TcUser();
+                    if (request.UserId == 0)
+                    {
+                        user = _mapper.Map<TcUser>(request);
+                        user.IsActive = true;
+                        user.CreationDate = DateTime.UtcNow;
+                        user.LoginId = login.LoginId;
+                        _context.TcUsers.Add(user);
+                    }
+                    else
+                    {
+                        user = _context.TcUsers.FirstOrDefault(x => x.UserId == request.UserId);
+
+                        if (user != null)
+                        {
+                            _mapper.Map(request, user);
+                        }
+                    }
+
                     _context.SaveChanges();
 
+
+                    return true;
                 }
-                else
+                catch (Exception ex)
                 {
-                    User = _context.TcUsers.Where(x => x.UserId == request.UserId).FirstOrDefault();
-                    User = _mapper.Map(request, User);
-                    _context.SaveChanges();
+                    return false;
                 }
-                return true;
-            }
-            catch
+        }
+        public string GenerateRandomPassword(int length)
+        {
+            const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%";
+            Random random = new Random();
+            StringBuilder password = new StringBuilder();
+
+            for (int i = 0; i < length; i++)
             {
-                return false;
+                int index = random.Next(0, allowedChars.Length);
+                password.Append(allowedChars[index]);
             }
+
+            return password.ToString();
         }
         public bool DeleteUser(long Id)
         {

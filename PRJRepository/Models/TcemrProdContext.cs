@@ -78,9 +78,8 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -381,9 +380,6 @@ public partial class TcemrProdContext : DbContext
 
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Email).HasMaxLength(200);
-            entity.Property(e => e.Otpcode)
-                .HasMaxLength(6)
-                .HasColumnName("OTPCode");
             entity.Property(e => e.Password).HasMaxLength(50);
         });
 

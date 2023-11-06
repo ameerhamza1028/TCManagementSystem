@@ -61,8 +61,6 @@ public partial class TcUser
 
     public string? DefaultModifier { get; set; }
 
-    public long? LicenseId { get; set; }
-
     public long? TaxonomyCode { get; set; }
 
     public string? Modifier1 { get; set; }

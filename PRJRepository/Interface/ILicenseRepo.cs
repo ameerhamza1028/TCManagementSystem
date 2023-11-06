@@ -9,8 +9,8 @@ namespace PRJRepository.Interface
 {
     public interface ILicenseRepo
     {
-        public List<GetAllLicenseResponseDTO> GetAllLicense();
         public bool SaveLicense(GetAllLicenseRequestDTO request);
         public bool DeleteLicense(long Id);
+        public GetAllLicenseResponseDTO GetLicenseById(long Id);
     }
 }

@@ -11,7 +11,7 @@ namespace PRJRepository.Interface
     public interface IUserRepo
     {
         public List<GetAllUserResponseDTO> GetAllUser();
-        public GetAllUserResponseDTO GetUserById(long Id);
+        public EditUserResponseDTO GetUserById(long Id);
         public bool SaveUser(GetAllUserRequestDTO request);
         public bool DeleteUser(long Id);
     }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PRJRepository.DTO.Client;
 using PRJRepository.DTO.Clinic;
 using PRJRepository.DTO.Country;
 using PRJRepository.Interface;
@@ -29,14 +30,50 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetCountryById")]
-        public ApiResponse<GetCountryByIdResponseDTO> GetCountryById(int CountryId,int RegionId, int CityId)
+        [Route("GetAllCountry")]
+        public ApiResponse<List<GetAllCountryResponseDTO>> GetAllCountry()
         {
-            ApiResponse<GetCountryByIdResponseDTO> response = new ApiResponse<GetCountryByIdResponseDTO>();
+            ApiResponse<List<GetAllCountryResponseDTO>> response = new ApiResponse<List<GetAllCountryResponseDTO>>();
             try
             {
-                GetCountryByIdResponseDTO result = new GetCountryByIdResponseDTO();
-                result = _ICountryRepo.GetCountryById(CountryId,RegionId,CityId);
+                List<GetAllCountryResponseDTO> result = new List<GetAllCountryResponseDTO>();
+                result = _ICountryRepo.GetAllCountry();
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetAllRegionByCountryId")]
+        public ApiResponse<List<GetAllCountryResponseDTO>> GetAllRegion(short CountryId)
+        {
+            ApiResponse<List<GetAllCountryResponseDTO>> response = new ApiResponse<List<GetAllCountryResponseDTO>>();
+            try
+            {
+                List<GetAllCountryResponseDTO> result = new List<GetAllCountryResponseDTO>();
+                result = _ICountryRepo.GetAllRegion(CountryId);
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetAllCityByRegionId")]
+        public ApiResponse<List<GetAllCountryResponseDTO>> GetAllCity(int RegionId)
+        {
+            ApiResponse<List<GetAllCountryResponseDTO>> response = new ApiResponse<List<GetAllCountryResponseDTO>>();
+            try
+            {
+                List<GetAllCountryResponseDTO> result = new List<GetAllCountryResponseDTO>();
+                result = _ICountryRepo.GetAllCity(RegionId);
                 response.Data = result;
             }
             catch (Exception ex)

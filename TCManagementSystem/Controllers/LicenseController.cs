@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PRJRepository.DTO.License;
+using PRJRepository.DTO.License;
 using PRJRepository.Interface;
+using PRJRepository.Repo;
 using TCManagementSystem.Helper;
 
 namespace TCManagementSystem.Controllers
@@ -26,15 +28,16 @@ namespace TCManagementSystem.Controllers
             _ILicenseRepo = ILicenseRepo;
         }
 
+
         [HttpGet]
-        [Route("GetAllLicense")]
-        public ApiResponse<List<GetAllLicenseResponseDTO>> GetAllLicense()
+        [Route("GetLicenseById")]
+        public ApiResponse<GetAllLicenseResponseDTO> GetLicenseById(long Id)
         {
-            ApiResponse<List<GetAllLicenseResponseDTO>> response = new ApiResponse<List<GetAllLicenseResponseDTO>>();
+            ApiResponse<GetAllLicenseResponseDTO> response = new ApiResponse<GetAllLicenseResponseDTO>();
             try
             {
-                List<GetAllLicenseResponseDTO> result = new List<GetAllLicenseResponseDTO>();
-                result = _ILicenseRepo.GetAllLicense();
+                GetAllLicenseResponseDTO result = new GetAllLicenseResponseDTO();
+                result = _ILicenseRepo.GetLicenseById(Id);
                 response.Data = result;
             }
             catch (Exception ex)
