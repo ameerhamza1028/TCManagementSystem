@@ -21,7 +21,7 @@ namespace PRJRepository.DTO.Login
 
         public int? StateId { get; set; }
         public string? Phone { get; set; }
-        public string? Status { get; set; }
+        public int? Status { get; set; }
 
         public string? RoleName { get; set; }
 

@@ -8,7 +8,7 @@ namespace PRJRepository.DTO.User
 {
     public class EditUserResponseDTO
     {
-        public string? UserType { get; set; }
+        public int? UserType { get; set; }
 
         public long UserId { get; set; }
 
@@ -24,7 +24,7 @@ namespace PRJRepository.DTO.User
 
         public int? StateId { get; set; }
 
-        public long? ZipCode { get; set; }
+        public string? ZipCode { get; set; }
 
         public string? Phone { get; set; }
 
@@ -40,7 +40,7 @@ namespace PRJRepository.DTO.User
 
         public long? TaxId { get; set; }
 
-        public string? Status { get; set; }
+        public int? Status { get; set; }
 
         public string? PrimaryWorkLocation { get; set; }
 

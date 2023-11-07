@@ -20,73 +20,6 @@ namespace PRJRepository.Repo
             _context = context;
             _mapper = mapper;
         }
-
-        public bool SaveLogin(SaveLoginRequestDTO request)
-        {
-            try
-            {
-                Models.Login Login = new Models.Login();
-                if (request.LoginId == 0)
-                {
-                    Login = _mapper.Map<Models.Login>(request);
-                    Login.Password = GenerateRandomPassword(15);
-                   // Login.Otpcode = GenerateRandomOtp(6);
-                    Login.IsTermsAndConditions = true;
-                    Login.IsRememberMe = true;
-                    Login.IsActive = true;
-                    Login.CreationDate = DateTime.UtcNow;
-                    _context.Logins.Add(Login);
-                    _context.SaveChanges();
-
-                    string email = Login.Email;
-                    string message = Login.Password;
-                    string subject = "Password Confirmation Email";
-
-                    SendEmail sendEmail = new SendEmail();
-                    sendEmail.EmailSender(email, message, subject);
-                }
-                else
-                {
-                    Login = _context.Logins.Where(x => x.LoginId == request.LoginId).FirstOrDefault();
-                    Login = _mapper.Map(request, Login);
-                    _context.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        public string GenerateRandomPassword(int length)
-        {
-            const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%";
-            Random random = new Random();
-            StringBuilder password = new StringBuilder();
-
-            for (int i = 0; i < length; i++)
-            {
-                int index = random.Next(0, allowedChars.Length);
-                password.Append(allowedChars[index]);
-            }
-
-            return password.ToString();
-        }
-
-        public string GenerateRandomOtp(int length)
-        {
-            const string allowedChars = "1234567890";
-            Random random = new Random();
-            StringBuilder Otp = new StringBuilder();
-
-            for (int i = 0; i < length; i++)
-            {
-                int index = random.Next(0, allowedChars.Length);
-                Otp.Append(allowedChars[index]);
-            }
-
-            return Otp.ToString();
-        }
         public LoginResponseDTO Login(LoginRequestDTO request)
         {
             LoginResponseDTO response = new LoginResponseDTO();
@@ -94,12 +27,7 @@ namespace PRJRepository.Repo
             Login login = _context.Logins.Where(x => x.Email == request.Email && x.Password == request.Password).FirstOrDefault();
             if (login != null)
             {
-                string email = login.Email;
-                string message = login.Password;
-                string subject = "OTP Confirmation Email";
-
-                SendEmail sendEmail = new SendEmail();
-                sendEmail.EmailSender(email, message, subject);
+                login.LoginDate = DateTime.Now;
                 TcUser user = _context.TcUsers.Where(x => x.LoginId == login.LoginId).FirstOrDefault();
                 if (user != null)
                 {
@@ -131,12 +59,6 @@ namespace PRJRepository.Repo
                     response.RoleName = _context.UserRoles.Where(x => x.RoleId == login.RoleId).Select(x => x.Title).FirstOrDefault();
                 }
             }
-            return response;
-        }
-
-        public LoginResponseDTO LoginOTP(LoginOTPRequestDTO request)
-        {
-            LoginResponseDTO response = new LoginResponseDTO();
             return response;
         }
     }

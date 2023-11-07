@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PRJRepository.DTO.Message;
 using PRJRepository.DTO.User;
 using PRJRepository.Interface;
 using PRJRepository.Models;
@@ -23,10 +24,10 @@ namespace PRJRepository.Repo
         }
 
 
-        public List<GetAllUserResponseDTO> GetAllUser()
+        public List<GetAllUserResponseDTO> GetAllUserByClinicId(long Id)
         {
             List<GetAllUserResponseDTO> response = new List<GetAllUserResponseDTO>();
-            List<TcUser> list = _context.TcUsers.ToList();
+            List<TcUser> list = _context.TcUsers.Where(x => x.ClinicId == Id).ToList();
             response = _mapper.Map<List<GetAllUserResponseDTO>>(list);
             return response;
         }
@@ -53,22 +54,21 @@ namespace PRJRepository.Repo
                     login.IsRememberMe = true;
                     login.IsActive = true;
                     login.CreationDate = DateTime.UtcNow;
-
-                    if (request.UserType == "Clinic Admin")
-                        login.RoleId = 1;
-                    else if (request.UserType == "Supervisor")
-                        login.RoleId = 2;
-                    else if (request.UserType == "Clinician")
-                        login.RoleId = 3;
-                    else
-                        login.RoleId = 4;
-
+                    login.RoleId = request.UserType;
                     _context.Logins.Add(login);
                     _context.SaveChanges();
                     TcUser user = new TcUser();
                     if (request.UserId == 0)
                     {
                         user = _mapper.Map<TcUser>(request);
+                        if (request.AddressType == "SameAsClinic")
+                        {
+                            Clinic clinic = _context.Clinics.Where(x => x.ClinicId == request.ClinicId).FirstOrDefault();
+                            user.CountryId = clinic.CountryId;
+                            user.StateId = clinic.StateId;
+                            user.CityId = clinic.CityId;
+                            user.ZipCode = clinic.ZipCode;
+                        }
                         user.IsActive = true;
                         user.CreationDate = DateTime.UtcNow;
                         user.LoginId = login.LoginId;
@@ -108,13 +108,16 @@ namespace PRJRepository.Repo
 
             return password.ToString();
         }
-        public bool DeleteUser(long Id)
+        public bool DeleteUser(long Id,string Name)
         {
             try
             {
-                TcUser user = _context.TcUsers.FirstOrDefault(x => x.UserId == Id);
-                user.IsActive = false;
-                _context.SaveChanges();
+                TcUser user = _context.TcUsers.FirstOrDefault(x => x.UserId == Id && x.UserName == Name);
+                if (user != null)
+                {
+                    user.IsActive = false;
+                    _context.SaveChanges();
+                }
                 return true;
             }
             catch

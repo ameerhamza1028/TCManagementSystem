@@ -7,11 +7,9 @@ public partial class Country
 {
     public short Id { get; set; }
 
+    public string ShortName { get; set; } = null!;
+
     public string Name { get; set; } = null!;
 
-    public string Code { get; set; } = null!;
-
-    public string Language { get; set; } = null!;
-
-    public virtual ICollection<Region> Regions { get; set; } = new List<Region>();
+    public int Phone { get; set; }
 }

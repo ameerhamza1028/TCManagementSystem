@@ -33,10 +33,8 @@ namespace TCManagementSystem.AutoMapper
     {
         public AutoMapperProfiles()
         {
-           // CreateMap<Login, LoginResponseDTO>().ReverseMap();
-            //CreateMap<Login, LoginRequestDTO>().ReverseMap();
-            //CreateMap<Login, SaveLoginRequestDTO>().ReverseMap();
-            //CreateMap<Login, LoginOTPRequestDTO>().ReverseMap();
+            CreateMap<Login, LoginResponseDTO>().ReverseMap();
+            CreateMap<Login, LoginRequestDTO>().ReverseMap();
             CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Client, EditClientResponseDTO>().ReverseMap();
@@ -89,7 +87,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Email, GetAllEmailResponseDTO>().ReverseMap();
             CreateMap<Email, GetAllEmailRequestDTO>().ReverseMap();
             CreateMap<Country, GetAllCountryResponseDTO>().ReverseMap();
-            CreateMap<Region, GetAllCountryResponseDTO>().ReverseMap();
+            CreateMap<State, GetAllCountryResponseDTO>().ReverseMap();
             CreateMap<City, GetAllCountryResponseDTO>().ReverseMap();
         }
     }

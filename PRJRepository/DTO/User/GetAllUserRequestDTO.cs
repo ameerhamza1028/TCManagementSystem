@@ -8,7 +8,8 @@ namespace PRJRepository.DTO.User
 {
     public class GetAllUserRequestDTO
     {
-        public string? UserType { get; set; }
+        public long? ClinicId { get; set; }
+        public int? UserType { get; set; }
 
         public long UserId { get; set; }
 
@@ -30,8 +31,7 @@ namespace PRJRepository.DTO.User
 
         public string? Email { get; set; }
 
-        public string? Month { get; set; }
-
+        public int? Month { get; set; }
         public int? Day { get; set; }
 
         public long? Year { get; set; }
@@ -40,7 +40,7 @@ namespace PRJRepository.DTO.User
 
         public long? TaxId { get; set; }
 
-        public string? Status { get; set; }
+        public int? Status { get; set; }
 
         public string? PrimaryWorkLocation { get; set; }
 

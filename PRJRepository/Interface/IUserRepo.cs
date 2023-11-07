@@ -10,9 +10,9 @@ namespace PRJRepository.Interface
 {
     public interface IUserRepo
     {
-        public List<GetAllUserResponseDTO> GetAllUser();
+        public List<GetAllUserResponseDTO> GetAllUserByClinicId(long Id);
         public EditUserResponseDTO GetUserById(long Id);
         public bool SaveUser(GetAllUserRequestDTO request);
-        public bool DeleteUser(long Id);
+        public bool DeleteUser(long Id, string Name);
     }
 }

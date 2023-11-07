@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TCManagementSystem.Helper;
 using PRJRepository.DTO.Client;
 using PRJRepository.Interface;
+using PRJRepository.DTO.EditClient;
 
 namespace TCManagementSystem.Controllers
 {
@@ -28,12 +29,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllClients")]
-        public ApiResponse<List<GetAllClientResponseDTO>> GetAllClient()
+        public ApiResponse<List<SaveEditClientResponseDTO>> GetAllClient()
         {
-            ApiResponse<List<GetAllClientResponseDTO>> response = new ApiResponse<List<GetAllClientResponseDTO>>();
+            ApiResponse<List<SaveEditClientResponseDTO>> response = new ApiResponse<List<SaveEditClientResponseDTO>>();
             try
             {
-                List<GetAllClientResponseDTO> result = new List<GetAllClientResponseDTO>();
+                List<SaveEditClientResponseDTO> result = new List<SaveEditClientResponseDTO>();
                 result = _IClientRepo.GetAllClient();
                 response.Data = result;
             }

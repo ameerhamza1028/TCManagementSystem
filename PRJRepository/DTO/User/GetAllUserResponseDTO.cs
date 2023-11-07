@@ -9,7 +9,7 @@ namespace PRJRepository.DTO.User
     public class GetAllUserResponseDTO
     {
         public string? UserName { get; set; }
-        public string? UserType { get; set; }
+        public int? UserType { get; set; }
 
         public long UserId { get; set; }
 
@@ -19,7 +19,7 @@ namespace PRJRepository.DTO.User
 
         public DateTime? LastLoginDate { get; set; }
 
-        public string? Status { get; set; }
+        public int? Status { get; set; }
 
         public DateTime? CreationDate { get; set; }
 

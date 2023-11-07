@@ -1,4 +1,5 @@
 ﻿using PRJRepository.DTO.Client;
+using PRJRepository.DTO.EditClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace PRJRepository.Interface
 {
     public interface IClientRepo
     {
-        public List<GetAllClientResponseDTO> GetAllClient();
+        public List<SaveEditClientResponseDTO> GetAllClient();
         public EditClientResponseDTO GetClientById(long Id);
         public bool SaveClient(GetAllClientRequestDTO request);
         public bool DeleteClient(long Id);

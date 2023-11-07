@@ -67,13 +67,13 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllCityByRegionId")]
-        public ApiResponse<List<GetAllCountryResponseDTO>> GetAllCity(int RegionId)
+        public ApiResponse<List<GetAllCountryResponseDTO>> GetAllCity(int StateId)
         {
             ApiResponse<List<GetAllCountryResponseDTO>> response = new ApiResponse<List<GetAllCountryResponseDTO>>();
             try
             {
                 List<GetAllCountryResponseDTO> result = new List<GetAllCountryResponseDTO>();
-                result = _ICountryRepo.GetAllCity(RegionId);
+                result = _ICountryRepo.GetAllCity(StateId);
                 response.Data = result;
             }
             catch (Exception ex)

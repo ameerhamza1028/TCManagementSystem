@@ -67,19 +67,20 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<Phone> Phones { get; set; }
 
-    public virtual DbSet<Region> Regions { get; set; }
-
     public virtual DbSet<Service> Services { get; set; }
 
     public virtual DbSet<ServiceSetting> ServiceSettings { get; set; }
+
+    public virtual DbSet<State> States { get; set; }
 
     public virtual DbSet<TcUser> TcUsers { get; set; }
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
+    {
+        optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -170,7 +171,7 @@ public partial class TcemrProdContext : DbContext
 
         modelBuilder.Entity<City>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cities__3214EC0714AAB337");
+            entity.HasKey(e => e.Id).HasName("PK__Cities__3214EC074481970D");
 
             entity.ToTable("City");
 
@@ -178,11 +179,6 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(255)
                 .IsUnicode(false);
-
-            entity.HasOne(d => d.Region).WithMany(p => p.Cities)
-                .HasForeignKey(d => d.RegionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Cities_Regions");
         });
 
         modelBuilder.Entity<Client>(entity =>
@@ -269,18 +265,15 @@ public partial class TcemrProdContext : DbContext
 
         modelBuilder.Entity<Country>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Countrie__3214EC07537387DE");
+            entity.HasKey(e => e.Id).HasName("PK__Countrie__3214EC076234D417");
 
             entity.ToTable("Country");
 
             entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.Code)
-                .HasMaxLength(2)
-                .IsUnicode(false);
-            entity.Property(e => e.Language)
-                .HasMaxLength(3)
-                .IsUnicode(false);
             entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.ShortName)
                 .HasMaxLength(255)
                 .IsUnicode(false);
         });
@@ -380,6 +373,7 @@ public partial class TcemrProdContext : DbContext
 
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Email).HasMaxLength(200);
+            entity.Property(e => e.LoginDate).HasColumnType("date");
             entity.Property(e => e.Password).HasMaxLength(50);
         });
 
@@ -414,23 +408,6 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.PhoneType).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<Region>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Regions__3214EC070DA0D56E");
-
-            entity.ToTable("Region");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
-            entity.Property(e => e.Name)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-
-            entity.HasOne(d => d.Country).WithMany(p => p.Regions)
-                .HasForeignKey(d => d.CountryId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Regions_Countries");
-        });
-
         modelBuilder.Entity<Service>(entity =>
         {
             entity.ToTable("Service");
@@ -456,6 +433,18 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.ServiceName).HasMaxLength(200);
         });
 
+        modelBuilder.Entity<State>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__States__3214EC07B36DC5F9");
+
+            entity.ToTable("State");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<TcUser>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK_User");
@@ -475,17 +464,15 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Modifier1).HasMaxLength(200);
             entity.Property(e => e.Modifier2).HasMaxLength(200);
             entity.Property(e => e.Modifier3).HasMaxLength(200);
-            entity.Property(e => e.Month).HasMaxLength(50);
             entity.Property(e => e.Npi).HasColumnName("NPI");
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.PrimaryWorkLocation).HasMaxLength(50);
             entity.Property(e => e.School).HasMaxLength(200);
-            entity.Property(e => e.Status).HasMaxLength(50);
             entity.Property(e => e.UploadFilePath)
                 .HasMaxLength(500)
                 .IsFixedLength();
             entity.Property(e => e.UserName).HasMaxLength(200);
-            entity.Property(e => e.UserType).HasMaxLength(50);
+            entity.Property(e => e.ZipCode).HasMaxLength(50);
         });
 
         modelBuilder.Entity<UserRole>(entity =>

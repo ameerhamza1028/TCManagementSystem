@@ -9,7 +9,7 @@ public partial class TcUser
 
     public long? ClinicId { get; set; }
 
-    public string? UserType { get; set; }
+    public int? UserType { get; set; }
 
     public long UserId { get; set; }
 
@@ -25,15 +25,15 @@ public partial class TcUser
 
     public int? StateId { get; set; }
 
-    public long? ZipCode { get; set; }
+    public string? ZipCode { get; set; }
 
     public string? Phone { get; set; }
 
     public string? Email { get; set; }
 
-    public string? Month { get; set; }
-
     public int? Day { get; set; }
+
+    public int? Month { get; set; }
 
     public long? Year { get; set; }
 
@@ -41,7 +41,7 @@ public partial class TcUser
 
     public long? TaxId { get; set; }
 
-    public string? Status { get; set; }
+    public int? Status { get; set; }
 
     public string? PrimaryWorkLocation { get; set; }
 

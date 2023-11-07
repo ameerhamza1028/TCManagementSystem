@@ -32,15 +32,15 @@ namespace PRJRepository.Repo
         public List<GetAllCountryResponseDTO> GetAllRegion(short CountryId)
         {
             List<GetAllCountryResponseDTO> response = new List<GetAllCountryResponseDTO>();
-            List<Region> list = _context.Regions.Where(x => x.CountryId == CountryId).ToList();
+            List<State> list = _context.States.Where(x => x.CountryId == CountryId).ToList();
             response = _mapper.Map<List<GetAllCountryResponseDTO>>(list);
             return response;
         }
 
-        public List<GetAllCountryResponseDTO> GetAllCity(int RegionId)
+        public List<GetAllCountryResponseDTO> GetAllCity(int StateId)
         {
             List<GetAllCountryResponseDTO> response = new List<GetAllCountryResponseDTO>();
-            List<City> list = _context.Cities.Where(x => x.RegionId == RegionId).ToList();
+            List<City> list = _context.Cities.Where(x => x.StateId == StateId).ToList();
             response = _mapper.Map<List<GetAllCountryResponseDTO>>(list);
             return response;
         }

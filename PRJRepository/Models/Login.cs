@@ -22,4 +22,6 @@ public partial class Login
     public DateTime? CreationDate { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public DateTime? LoginDate { get; set; }
 }

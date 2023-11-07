@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO.Client;
+using PRJRepository.DTO.EditClient;
 using PRJRepository.Interface;
 using PRJRepository.Models;
 using System.Text;
@@ -16,13 +17,35 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllClientResponseDTO> GetAllClient()
+        public List<SaveEditClientResponseDTO> GetAllClient()
         {
-            List<GetAllClientResponseDTO> response = new List<GetAllClientResponseDTO>();
-            List<Models.Client> list = _context.Clients.ToList();
-            response = _mapper.Map<List<GetAllClientResponseDTO>>(list);
+            List<SaveEditClientResponseDTO> response = new List<SaveEditClientResponseDTO>();
+            List<Models.EditClient> list = _context.EditClients.ToList();
+            foreach (var editClient in list)
+            {
+                SaveEditClientResponseDTO clientResponse = new SaveEditClientResponseDTO
+                {
+                    FirstName = editClient.FirstName,
+                    MiddleName = editClient.MiddleName,
+                    LastName = editClient.LastName,
+                    ClinicianName = _context.TcUsers.Where(x => x.UserId == editClient.PrimaryClinicianId).Select(x => x.UserName).FirstOrDefault(),
+                    IntakeDate = DateTime.UtcNow,
+                    LastAppointment = null,
+                    ClientEmail = editClient.ClientEmail,
+                    PhoneNumber = _context.Phones.Where(x => x.PhoneId == editClient.PhoneId).Select(x => x.PhoneNumber).FirstOrDefault(),
+                    Status = true,
+                    InsuranceId = editClient.InsuranceId,
+                    InsuranceType = _context.Insurances.Where(x => x.InsuranceId == editClient.InsuranceId).Select(x => x.InsuranceType).FirstOrDefault(),
+                    AddressId = editClient.AddressId,
+                    IsInsurrance = editClient.IsInsurrance,
+                    IsSelfPay = editClient.IsSelfPay,
+                };
+                response.Add(clientResponse);
+            }
+
             return response;
         }
+
 
         public EditClientResponseDTO GetClientById(long Id)
         {
