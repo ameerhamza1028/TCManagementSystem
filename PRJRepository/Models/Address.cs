@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Address
 {
+    public long? ClientId { get; set; }
+
     public long AddressId { get; set; }
 
     public string? Address1 { get; set; }

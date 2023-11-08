@@ -8,56 +8,73 @@ namespace PRJRepository.DTO.Client
 {
     public class EditClientResponseDTO
     {
-       // public long? OrganizationId { get; set; }
+        public long EditClientId { get; set; }
 
-        public long ClientId { get; set; }
+        public long? ClientId { get; set; }
 
-        public bool? IsAdult { get; set; }
+        public string? FirstName { get; set; }
+
+        public string? MiddleName { get; set; }
+
+        public string? LastName { get; set; }
+
+        public string? Suffix { get; set; }
+
+        public string? NameToGoBy { get; set; }
 
         public bool? IsMinor { get; set; }
 
-        public bool? IsCouple { get; set; }
+        public int? PrimaryClinicianId { get; set; }
+        public bool? IsAppointments { get; set; }
 
-        public string? FirstName1 { get; set; }
+        public bool? IsCompletingDocuments { get; set; }
 
-        public string? LastName1 { get; set; }
+        public string? ClientEmail { get; set; }
 
-        public string? Email1 { get; set; }
+        public bool? IsReminderDayOne { get; set; }
 
-        public bool? IsSendEmailReminder1 { get; set; }
+        public bool? IsReminderDayTwo { get; set; }
 
-        public bool? IsSendTextReminder1 { get; set; }
+        public bool? IsReminderDayThree { get; set; }
 
-        public string? Phone1 { get; set; }
+        public bool? IsReminderDayFive { get; set; }
 
-        public bool? IsSelfPay { get; set; }
+        public bool? IsReminderWeek1 { get; set; }
 
-        public bool? IsInsurance { get; set; }
+        public int? LocationId { get; set; }
 
-        public string? PrimaryClinicianName { get; set; }
+        public int? Month { get; set; }
 
-        public string? Location { get; set; }
+        public int? Day { get; set; }
 
-        public string? FirstName2 { get; set; }
+        public long? Year { get; set; }
 
-        public string? LastName2 { get; set; }
+        public int? Sex { get; set; }
 
-        public string? Email2 { get; set; }
+        public string? GenderIdentity { get; set; }
 
-        public string? Phone2 { get; set; }
+        public int? RelationshipStatus { get; set; }
 
-        public bool? IsSendEmailRemainder2 { get; set; }
+        public int? EmploymentStatus { get; set; }
 
-        public bool? IsSendTextRemainder2 { get; set; }
+        public bool? IsAmericanIndianOrAlaskaNatine { get; set; }
 
-        public bool? IsSendVoiceRemainder2 { get; set; }
+        public bool? IsAsian { get; set; }
 
-        public string? Relationship { get; set; }
+        public bool? IsBlackOrAfricanAmerican { get; set; }
 
-        public bool? IsResponsibleForBilling { get; set; }
+        public bool? IsHisoanicOrLatinix { get; set; }
 
-        public string? BillResponsibleClient { get; set; }
+        public bool? IsMiddleEasternOrNorthAfrican { get; set; }
 
-        public bool? Status { get; set; }
+        public bool? IsNativeHawaiianOrOtherPacificIslander { get; set; }
+
+        public bool? IsWhite { get; set; }
+
+        public bool? IsRaceOrEthnicityNotListed { get; set; }
     }
+    
+
+    
 }
+

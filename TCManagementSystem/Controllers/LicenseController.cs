@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PRJRepository.DTO.License;
-using PRJRepository.DTO.License;
+using PRJRepository.DTO.Message;
 using PRJRepository.Interface;
 using PRJRepository.Repo;
 using TCManagementSystem.Helper;
@@ -30,32 +30,15 @@ namespace TCManagementSystem.Controllers
 
 
         [HttpGet]
-        [Route("GetLicenseById")]
-        public ApiResponse<GetAllLicenseResponseDTO> GetLicenseById(long Id)
+        [Route("GetLicenseByUserId")]
+        public ApiResponse<List<GetAllLicenseResponseDTO>> GetAllLicense(long Id)
         {
-            ApiResponse<GetAllLicenseResponseDTO> response = new ApiResponse<GetAllLicenseResponseDTO>();
+            ApiResponse<List<GetAllLicenseResponseDTO>> response = new ApiResponse<List<GetAllLicenseResponseDTO>>();
             try
             {
-                GetAllLicenseResponseDTO result = new GetAllLicenseResponseDTO();
+                List<GetAllLicenseResponseDTO> result = new List<GetAllLicenseResponseDTO>();
                 result = _ILicenseRepo.GetLicenseById(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SaveLicense")]
-        public ApiResponse<bool> SaveLicense([FromBody] GetAllLicenseRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _ILicenseRepo.SaveLicense(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

@@ -23,8 +23,6 @@ public partial class EditClient
 
     public int? PrimaryClinicianId { get; set; }
 
-    public long? PhoneId { get; set; }
-
     public bool? IsAppointments { get; set; }
 
     public bool? IsCompletingDocuments { get; set; }
@@ -43,21 +41,19 @@ public partial class EditClient
 
     public int? LocationId { get; set; }
 
-    public long? AddressId { get; set; }
-
-    public string? Month { get; set; }
+    public int? Month { get; set; }
 
     public int? Day { get; set; }
 
     public long? Year { get; set; }
 
-    public string? Sex { get; set; }
+    public int? Sex { get; set; }
 
     public string? GenderIdentity { get; set; }
 
-    public string? RelationshipStatus { get; set; }
+    public int? RelationshipStatus { get; set; }
 
-    public string? EmploymentStatus { get; set; }
+    public int? EmploymentStatus { get; set; }
 
     public bool? IsAmericanIndianOrAlaskaNatine { get; set; }
 
@@ -75,21 +71,41 @@ public partial class EditClient
 
     public bool? IsRaceOrEthnicityNotListed { get; set; }
 
-    public int? ServiceId { get; set; }
+    public string? Contact1FirstName { get; set; }
 
-    public long? ContactEmailId { get; set; }
+    public string? Contact1MiddleName { get; set; }
+
+    public string? Contact1LastName { get; set; }
+
+    public string? Contact1Suffix { get; set; }
+
+    public string? Contact1NameGoBy { get; set; }
+
+    public int? Contact1RelatonshipStatus { get; set; }
+
+    public bool? IsEmergencyContact { get; set; }
 
     public string? Notes { get; set; }
+
+    public string? Contact2FirstName { get; set; }
+
+    public string? Contact2MiddleName { get; set; }
+
+    public string? Contact2LastName { get; set; }
+
+    public string? Contact2Suffix { get; set; }
+
+    public string? Contact2NameGoBy { get; set; }
+
+    public int? Contact2RelationshipStatus { get; set; }
+
+    public bool? Contact2IsemergencyContact { get; set; }
 
     public bool? IsSelfPay { get; set; }
 
     public bool? IsInsurrance { get; set; }
 
     public bool? IsAutoPayEnrolled { get; set; }
-
-    public long? CardId { get; set; }
-
-    public long? InsuranceId { get; set; }
 
     public bool? IsCreateMonthlyStatements { get; set; }
 

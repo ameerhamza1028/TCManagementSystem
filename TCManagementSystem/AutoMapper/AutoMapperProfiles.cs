@@ -66,14 +66,20 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<TcUser, GetAllUserResponseDTO>().ReverseMap();
             CreateMap<TcUser, GetAllUserRequestDTO>().ReverseMap();
             CreateMap<TcUser, EditUserResponseDTO>().ReverseMap();
+            CreateMap<TcUser, GetAllLicenseResponseDTO>().ReverseMap();
             CreateMap<License, GetAllLicenseResponseDTO>().ReverseMap();
             CreateMap<License, GetAllLicenseRequestDTO>().ReverseMap();
+            CreateMap<License, LicenseDTO>().ReverseMap();
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentResponseDTO>().ReverseMap();
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentRequestDTO>().ReverseMap();
             CreateMap<Message, GetMessageResponseDTO>().ReverseMap();
             CreateMap<Message, GetMessageRequestDTO>().ReverseMap();
             CreateMap<EditClient, SaveEditClientResponseDTO>().ReverseMap();
             CreateMap<EditClient, SaveEditClientRequestDTO>().ReverseMap();
+            CreateMap<EditClientContact, SaveEditClientContactRequestDTO>().ReverseMap();
+            CreateMap<EditClientContact, SaveEditClientContactResponseDTO>().ReverseMap();
+            CreateMap<EditClientBilling, SaveEditClientBillingRequestDTO>().ReverseMap();
+            CreateMap<EditClientBilling, SaveEditClientBillingResponseDTO>().ReverseMap();
             CreateMap<Phone, GetAllPhoneResponseDTO>().ReverseMap();
             CreateMap<Phone, GetAllPhoneRequestDTO>().ReverseMap();
             CreateMap<Address, GetAllClientAddressResponseDTO>().ReverseMap();
@@ -89,6 +95,14 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Country, GetAllCountryResponseDTO>().ReverseMap();
             CreateMap<State, GetAllCountryResponseDTO>().ReverseMap();
             CreateMap<City, GetAllCountryResponseDTO>().ReverseMap();
+            CreateMap<Address, Address1DTO>().ReverseMap();
+            CreateMap<Phone, Phone1DTO>().ReverseMap();
+            CreateMap<Address, Address2DTO>().ReverseMap();
+            CreateMap<Phone, Phone2DTO>().ReverseMap();
+            CreateMap<Service, ServiceDTO>().ReverseMap();
+            CreateMap<Email, ContactEmailDTO>().ReverseMap();
+            CreateMap<Card, CardDTO>().ReverseMap();
+            CreateMap<Insurance, InsuranceDTO>().ReverseMap();
         }
     }
 }

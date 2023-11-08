@@ -27,32 +27,15 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllCards")]
-        public ApiResponse<List<GetAllCardResponseDTO>> GetAllCard()
+        [Route("GetCardsByClientId")]
+        public ApiResponse<List<GetAllCardResponseDTO>> GetAllCard(long Id)
         {
             ApiResponse<List<GetAllCardResponseDTO>> response = new ApiResponse<List<GetAllCardResponseDTO>>();
             try
             {
                 List<GetAllCardResponseDTO> result = new List<GetAllCardResponseDTO>();
-                result = _ICardRepo.GetAllCard();
+                result = _ICardRepo.GetAllCard(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SaveCard")]
-        public ApiResponse<bool> SaveCard([FromBody] GetAllCardRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _ICardRepo.SaveCard(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

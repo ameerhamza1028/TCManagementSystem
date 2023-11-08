@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRJRepository.DTO.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace PRJRepository.DTO.EditClient
 
         public int? PrimaryClinicianId { get; set; }
 
-        public long? PhoneId { get; set; }
+        public List<Phone1DTO>? Phone { get; set; }
 
         public bool? IsAppointments { get; set; }
 
@@ -46,21 +47,23 @@ namespace PRJRepository.DTO.EditClient
 
         public int? LocationId { get; set; }
 
-        public long? AddressId { get; set; }
+        public List<Address1DTO>? Address { get; set; }
 
-        public string? Month { get; set; }
+        public List<ServiceDTO>? Service { get; set; }
+
+        public int? Month { get; set; }
 
         public int? Day { get; set; }
 
         public long? Year { get; set; }
 
-        public string? Sex { get; set; }
+        public int? Sex { get; set; }
 
         public string? GenderIdentity { get; set; }
 
-        public string? RelationshipStatus { get; set; }
+        public int? RelationshipStatus { get; set; }
 
-        public string? EmploymentStatus { get; set; }
+        public int? EmploymentStatus { get; set; }
 
         public bool? IsAmericanIndianOrAlaskaNatine { get; set; }
 
@@ -77,36 +80,50 @@ namespace PRJRepository.DTO.EditClient
         public bool? IsWhite { get; set; }
 
         public bool? IsRaceOrEthnicityNotListed { get; set; }
+    }
+    public class Phone1DTO
+    {
 
-        public int? ServiceId { get; set; }
+        public long PhoneId { get; set; }
 
-        public long? ContactEmailId { get; set; }
+        public string? PhoneNumber { get; set; }
 
-        public string? Notes { get; set; }
+        public string? PhoneType { get; set; }
 
-        public bool? IsSelfPay { get; set; }
+        public bool? IsSendTextMessage { get; set; }
 
-        public bool? IsInsurrance { get; set; }
+        public bool? IsSendVoiceMessage { get; set; }
+    }
 
-        public bool? IsAutoPayEnrolled { get; set; }
+    public class Address1DTO
+    {
+        public long AddressId { get; set; }
 
-        public long? CardId { get; set; }
+        public string? Address1 { get; set; }
 
-        public long? InsuranceId { get; set; }
+        public int? CityId { get; set; }
 
-        public bool? IsCreateMonthlyStatements { get; set; }
+        public int? StateId { get; set; }
 
-        public bool? IsCreateMonthlySuperBills { get; set; }
+        public long? ZipCode { get; set; }
+    }
 
-        public string? EmailNotification { get; set; }
+    public class ServiceDTO
+    {
+        public long ServiceId { get; set; }
 
-        public bool? IsNotifyNewInvoices { get; set; }
+        public string? ServiceName { get; set; }
 
-        public bool? IsNotifyNewStatements { get; set; }
+        public int? ServiceDuration { get; set; }
 
-        public bool? IsNotifyNewSuperBills { get; set; }
-        public long? ModifiedBy { get; set; }
+        public decimal? RatePerUnit { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public string? Modifier1 { get; set; }
+
+        public string? Modifier2 { get; set; }
+
+        public string? Modifier3 { get; set; }
+
+        public string? Modifier4 { get; set; }
     }
 }

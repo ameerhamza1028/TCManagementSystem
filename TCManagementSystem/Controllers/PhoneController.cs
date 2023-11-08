@@ -27,32 +27,15 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllPhones")]
-        public ApiResponse<List<GetAllPhoneResponseDTO>> GetAllPhone()
+        [Route("GetAllPhonesByClientId")]
+        public ApiResponse<List<GetAllPhoneResponseDTO>> GetAllPhone(int Id)
         {
             ApiResponse<List<GetAllPhoneResponseDTO>> response = new ApiResponse<List<GetAllPhoneResponseDTO>>();
             try
             {
                 List<GetAllPhoneResponseDTO> result = new List<GetAllPhoneResponseDTO>();
-                result = _IPhoneRepo.GetAllPhone();
+                result = _IPhoneRepo.GetAllPhone(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SavePhone")]
-        public ApiResponse<bool> SavePhone([FromBody] GetAllPhoneRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _IPhoneRepo.SavePhone(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

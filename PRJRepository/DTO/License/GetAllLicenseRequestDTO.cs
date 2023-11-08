@@ -8,6 +8,11 @@ namespace PRJRepository.DTO.License
 {
     public class GetAllLicenseRequestDTO
     {
+        public List<LicenseRequestDTO>? LicenseRequets { get; set; }
+    }
+    public class LicenseRequestDTO
+    {
+        public long? UserId { get; set; }
         public long LicenseId { get; set; }
 
         public string? LicenseType { get; set; }

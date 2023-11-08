@@ -47,6 +47,10 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<EditClient> EditClients { get; set; }
 
+    public virtual DbSet<EditClientBilling> EditClientBillings { get; set; }
+
+    public virtual DbSet<EditClientContact> EditClientContacts { get; set; }
+
     public virtual DbSet<Email> Emails { get; set; }
 
     public virtual DbSet<Insurance> Insurances { get; set; }
@@ -283,19 +287,52 @@ public partial class TcemrProdContext : DbContext
             entity.ToTable("EditClient");
 
             entity.Property(e => e.ClientEmail).HasMaxLength(200);
+            entity.Property(e => e.Contact1FirstName).HasMaxLength(200);
+            entity.Property(e => e.Contact1LastName).HasMaxLength(200);
+            entity.Property(e => e.Contact1MiddleName).HasMaxLength(200);
+            entity.Property(e => e.Contact1NameGoBy).HasMaxLength(200);
+            entity.Property(e => e.Contact1Suffix).HasMaxLength(200);
+            entity.Property(e => e.Contact2FirstName).HasMaxLength(200);
+            entity.Property(e => e.Contact2IsemergencyContact).HasColumnName("Contact2ISEmergencyContact");
+            entity.Property(e => e.Contact2LastName).HasMaxLength(200);
+            entity.Property(e => e.Contact2MiddleName).HasMaxLength(200);
+            entity.Property(e => e.Contact2NameGoBy).HasMaxLength(200);
+            entity.Property(e => e.Contact2Suffix).HasMaxLength(200);
             entity.Property(e => e.EmailNotification).HasMaxLength(50);
-            entity.Property(e => e.EmploymentStatus).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(200);
             entity.Property(e => e.GenderIdentity).HasMaxLength(100);
             entity.Property(e => e.LastName).HasMaxLength(200);
             entity.Property(e => e.MiddleName).HasMaxLength(200);
             entity.Property(e => e.ModifiedDate).HasColumnType("date");
-            entity.Property(e => e.Month).HasMaxLength(50);
             entity.Property(e => e.NameToGoBy).HasMaxLength(200);
             entity.Property(e => e.Notes).HasMaxLength(500);
-            entity.Property(e => e.RelationshipStatus).HasMaxLength(50);
-            entity.Property(e => e.Sex).HasMaxLength(50);
             entity.Property(e => e.Suffix).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<EditClientBilling>(entity =>
+        {
+            entity.HasKey(e => e.BillingId);
+
+            entity.ToTable("EditClientBilling");
+
+            entity.Property(e => e.EmailNotification).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<EditClientContact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId);
+
+            entity.ToTable("EditClientContact");
+
+            entity.Property(e => e.ContactFirstName).HasMaxLength(200);
+            entity.Property(e => e.ContactLastName).HasMaxLength(200);
+            entity.Property(e => e.ContactMiddleName).HasMaxLength(200);
+            entity.Property(e => e.ContactNameGoBy)
+                .HasMaxLength(200)
+                .HasColumnName("ContactNameGoBY");
+            entity.Property(e => e.ContactSuffix).HasMaxLength(200);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.Notes).HasMaxLength(500);
         });
 
         modelBuilder.Entity<Email>(entity =>

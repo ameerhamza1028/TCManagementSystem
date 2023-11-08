@@ -9,8 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IEmailRepo
     {
-        public List<GetAllEmailResponseDTO> GetAllEmail();
-        public bool SaveEmail(GetAllEmailRequestDTO request);
+        public List<GetAllEmailResponseDTO> GetAllEmail(long Id);
         public bool DeleteEmail(long Id);
     }
 }

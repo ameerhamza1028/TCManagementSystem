@@ -28,31 +28,14 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllServices")]
-        public ApiResponse<List<GetAllServiceResponseDTO>> GetAllService()
+        public ApiResponse<List<GetAllServiceResponseDTO>> GetAllService(long Id)
         {
             ApiResponse<List<GetAllServiceResponseDTO>> response = new ApiResponse<List<GetAllServiceResponseDTO>>();
             try
             {
                 List<GetAllServiceResponseDTO> result = new List<GetAllServiceResponseDTO>();
-                result = _IServiceRepo.GetAllService();
+                result = _IServiceRepo.GetAllService(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SaveService")]
-        public ApiResponse<bool> SaveService([FromBody] GetAllServiceRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _IServiceRepo.SaveService(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

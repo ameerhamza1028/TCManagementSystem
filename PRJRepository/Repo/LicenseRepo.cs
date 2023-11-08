@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO.License;
+using PRJRepository.DTO.Message;
 using PRJRepository.Interface;
 using PRJRepository.Models;
 using System;
@@ -20,42 +21,14 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public GetAllLicenseResponseDTO GetLicenseById(long Id)
+        public List<GetAllLicenseResponseDTO> GetLicenseById(long Id)
         {
-            GetAllLicenseResponseDTO response = new GetAllLicenseResponseDTO();
-            License item = _context.Licenses.Where(x => x.LicenseId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllLicenseResponseDTO>(item);
+            List<GetAllLicenseResponseDTO> response = new List<GetAllLicenseResponseDTO>();
+            List<License> list = _context.Licenses.Where(x => x.UserId == Id).ToList();
+            response = _mapper.Map<List<GetAllLicenseResponseDTO>>(list);
             return response;
         }
 
-        public bool SaveLicense(GetAllLicenseRequestDTO request)
-        {
-            try
-            {
-                TcUser user = new TcUser();
-                License License = new License();
-                if (request.LicenseId == 0)
-                {
-                    License = _mapper.Map<License>(request);
-                    License.UserId = user.UserId;
-                    License.IsActive = true;
-                    License.CreationDate = DateTime.UtcNow;
-                    _context.Licenses.Add(License);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    License = _context.Licenses.Where(x => x.LicenseId == request.LicenseId).FirstOrDefault();
-                    License = _mapper.Map(request, License);
-                    _context.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         public bool DeleteLicense(long Id)
         {

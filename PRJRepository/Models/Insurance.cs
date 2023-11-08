@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Insurance
 {
+    public long? ClientId { get; set; }
+
     public long InsuranceId { get; set; }
 
     public int? InsuranceType { get; set; }

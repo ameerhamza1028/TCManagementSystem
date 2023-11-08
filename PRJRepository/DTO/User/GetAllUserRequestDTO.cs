@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRJRepository.DTO.License;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,8 @@ namespace PRJRepository.DTO.User
 
         public long? Caqhid { get; set; }
 
+        public List<LicenseDTO>? LicenseRequets { get; set; }
+
         public string? DefaultModifier { get; set; }
 
         public long? TaxonomyCode { get; set; }
@@ -67,5 +70,17 @@ namespace PRJRepository.DTO.User
         public string? Modifier2 { get; set; }
 
         public string? Modifier3 { get; set; }
+    }
+    public class LicenseDTO
+    {
+        public long LicenseId { get; set; }
+
+        public string? LicenseType { get; set; }
+
+        public long? LicenseNumber { get; set; }
+
+        public DateTime? LicenseExpirationDate { get; set; }
+
+        public string? LicenseState { get; set; }
     }
 }

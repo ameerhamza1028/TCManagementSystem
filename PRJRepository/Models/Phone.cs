@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Phone
 {
+    public long? ClientId { get; set; }
+
     public long PhoneId { get; set; }
 
     public string? PhoneNumber { get; set; }

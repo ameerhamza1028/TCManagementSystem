@@ -27,32 +27,15 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllInsurances")]
-        public ApiResponse<List<GetAllInsuranceResponseDTO>> GetAllInsurance()
+        [Route("GetInsurancesByClientId")]
+        public ApiResponse<List<GetAllInsuranceResponseDTO>> GetAllInsurance(long Id)
         {
             ApiResponse<List<GetAllInsuranceResponseDTO>> response = new ApiResponse<List<GetAllInsuranceResponseDTO>>();
             try
             {
                 List<GetAllInsuranceResponseDTO> result = new List<GetAllInsuranceResponseDTO>();
-                result = _IInsuranceRepo.GetAllInsurance();
+                result = _IInsuranceRepo.GetAllInsurance(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SaveInsurance")]
-        public ApiResponse<bool> SaveInsurance([FromBody] GetAllInsuranceRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _IInsuranceRepo.SaveInsurance(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

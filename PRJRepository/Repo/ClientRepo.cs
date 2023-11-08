@@ -32,11 +32,11 @@ namespace PRJRepository.Repo
                     IntakeDate = DateTime.UtcNow,
                     LastAppointment = null,
                     ClientEmail = editClient.ClientEmail,
-                    PhoneNumber = _context.Phones.Where(x => x.PhoneId == editClient.PhoneId).Select(x => x.PhoneNumber).FirstOrDefault(),
+                    PhoneNumber = _context.Phones.Where(x => x.ClientId == editClient.ClientId).Select(x => x.PhoneNumber).FirstOrDefault(),
                     Status = true,
-                    InsuranceId = editClient.InsuranceId,
-                    InsuranceType = _context.Insurances.Where(x => x.InsuranceId == editClient.InsuranceId).Select(x => x.InsuranceType).FirstOrDefault(),
-                    AddressId = editClient.AddressId,
+                    InsuranceId = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceId).FirstOrDefault(),
+                    InsuranceType = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceType).FirstOrDefault(),
+                    AddressId = _context.Addresses.Where(x => x.ClientId == editClient.ClientId).Select(x => x.AddressId).FirstOrDefault(),
                     IsInsurrance = editClient.IsInsurrance,
                     IsSelfPay = editClient.IsSelfPay,
                 };
@@ -86,6 +86,22 @@ namespace PRJRepository.Repo
                     client = _mapper.Map(request, client);
                     _context.SaveChanges();
                 }
+                
+                EditClient edit = new EditClient();
+                edit = _mapper.Map<EditClient>(request);
+                _context.EditClients.Add(edit);
+                _context.SaveChanges();
+
+                EditClientContact editcontact = new EditClientContact();
+                editcontact = _mapper.Map<EditClientContact>(request);
+                _context.EditClientContacts.Add(editcontact);
+                _context.SaveChanges();
+
+                EditClientBilling editbilling = new EditClientBilling();
+                editbilling = _mapper.Map<EditClientBilling>(request);
+                _context.EditClientBillings.Add(editbilling);
+                _context.SaveChanges();
+
                 return true;
             }
             catch

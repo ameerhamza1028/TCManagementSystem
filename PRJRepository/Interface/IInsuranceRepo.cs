@@ -9,8 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IInsuranceRepo
     {
-        public List<GetAllInsuranceResponseDTO> GetAllInsurance();
-        public bool SaveInsurance(GetAllInsuranceRequestDTO request);
+        public List<GetAllInsuranceResponseDTO> GetAllInsurance(long Id);
         public bool DeleteInsurance(long Id);
     }
 }

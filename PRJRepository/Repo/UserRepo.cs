@@ -43,10 +43,9 @@ namespace PRJRepository.Repo
 
             return response;
         }
-        public bool SaveUser(GetAllUserRequestDTO request)
+        public SaveUserResponseDTO SaveUser(GetAllUserRequestDTO request)
         {
-                try
-                {
+                    SaveUserResponseDTO response = new SaveUserResponseDTO();
                     Login login = _mapper.Map<Login>(request);
                     login.Email = request.Email;
                     login.Password = GenerateRandomPassword(15);
@@ -83,16 +82,35 @@ namespace PRJRepository.Repo
                             _mapper.Map(request, user);
                         }
                     }
-
                     _context.SaveChanges();
+            List<LicenseDTO> licenseList = request.LicenseRequets; 
 
+            foreach (var list in licenseList)
+            {
+                License license;
 
-                    return true;
-                }
-                catch (Exception ex)
+                if (list.LicenseId == 0)
                 {
-                    return false;
+                    license = _mapper.Map<License>(list); 
+                    license.UserId = user.UserId;
+                    license.IsActive = true;
+                    license.CreationDate = DateTime.UtcNow;
+                    _context.Licenses.Add(license);
                 }
+                else
+                {
+                    license = _context.Licenses.FirstOrDefault(x => x.LicenseId == list.LicenseId);
+
+                    if (license != null)
+                    {
+                        _mapper.Map(list, license); 
+                    }
+                }
+            }
+
+            _context.SaveChanges();
+            response.UserId = user.UserId;
+            return response;
         }
         public string GenerateRandomPassword(int length)
         {

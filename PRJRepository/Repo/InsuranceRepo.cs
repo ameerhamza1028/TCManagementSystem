@@ -20,39 +20,12 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllInsuranceResponseDTO> GetAllInsurance()
+        public List<GetAllInsuranceResponseDTO> GetAllInsurance(long Id)
         {
             List<GetAllInsuranceResponseDTO> response = new List<GetAllInsuranceResponseDTO>();
-            List<Models.Insurance> list = _context.Insurances.ToList();
+            List<Insurance> list = _context.Insurances.Where(x => x.InsuranceId == Id).ToList();
             response = _mapper.Map<List<GetAllInsuranceResponseDTO>>(list);
             return response;
-        }
-
-        public bool SaveInsurance(GetAllInsuranceRequestDTO request)
-        {
-            try
-            {
-                Models.Insurance Insurance = new Models.Insurance();
-                if (request.InsuranceId == 0)
-                {
-                    Insurance = _mapper.Map<Models.Insurance>(request);
-                    Insurance.IsActive = true;
-                    Insurance.CreationDate = DateTime.UtcNow;
-                    _context.Insurances.Add(Insurance);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    Insurance = _context.Insurances.Where(x => x.InsuranceId == request.InsuranceId).FirstOrDefault();
-                    Insurance = _mapper.Map(request, Insurance);
-                    _context.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public bool DeleteInsurance(long Id)

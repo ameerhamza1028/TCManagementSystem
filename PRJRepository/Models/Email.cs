@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Email
 {
+    public long? ClientId { get; set; }
+
     public long EmailId { get; set; }
 
     public string? EmailAddress { get; set; }

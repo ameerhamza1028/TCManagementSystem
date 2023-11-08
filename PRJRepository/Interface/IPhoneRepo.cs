@@ -9,8 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IPhoneRepo
     {
-        public List<GetAllPhoneResponseDTO> GetAllPhone();
-        public bool SavePhone(GetAllPhoneRequestDTO request);
+        public List<GetAllPhoneResponseDTO> GetAllPhone(long Id);
         public bool DeletePhone(long Id);
     }
 }

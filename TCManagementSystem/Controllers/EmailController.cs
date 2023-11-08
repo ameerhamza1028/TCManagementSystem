@@ -28,31 +28,14 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllEmails")]
-        public ApiResponse<List<GetAllEmailResponseDTO>> GetAllEmail()
+        public ApiResponse<List<GetAllEmailResponseDTO>> GetAllEmail(long Id)
         {
             ApiResponse<List<GetAllEmailResponseDTO>> response = new ApiResponse<List<GetAllEmailResponseDTO>>();
             try
             {
                 List<GetAllEmailResponseDTO> result = new List<GetAllEmailResponseDTO>();
-                result = _IEmailRepo.GetAllEmail();
+                result = _IEmailRepo.GetAllEmail(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SaveEmail")]
-        public ApiResponse<bool> SaveEmail([FromBody] GetAllEmailRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _IEmailRepo.SaveEmail(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Card
 {
+    public long? ClientId { get; set; }
+
     public long CardId { get; set; }
 
     public long? CardNumber { get; set; }

@@ -9,8 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface ICardRepo
     {
-        public List<GetAllCardResponseDTO> GetAllCard();
-        public bool SaveCard(GetAllCardRequestDTO request);
+        public List<GetAllCardResponseDTO> GetAllCard(long Id);
         public bool DeleteCard(long Id);
     }
 }

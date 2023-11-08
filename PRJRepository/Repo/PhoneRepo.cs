@@ -20,39 +20,12 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllPhoneResponseDTO> GetAllPhone()
+        public List<GetAllPhoneResponseDTO> GetAllPhone(long Id)
         {
             List<GetAllPhoneResponseDTO> response = new List<GetAllPhoneResponseDTO>();
-            List<Models.Phone> list = _context.Phones.ToList();
+            List<Phone> list = _context.Phones.Where(x => x.PhoneId == Id).ToList();
             response = _mapper.Map<List<GetAllPhoneResponseDTO>>(list);
             return response;
-        }
-
-        public bool SavePhone(GetAllPhoneRequestDTO request)
-        {
-            try
-            {
-                Models.Phone Phone = new Models.Phone();
-                if (request.PhoneId == 0)
-                {
-                    Phone = _mapper.Map<Models.Phone>(request);
-                    Phone.IsActive = true;
-                    Phone.CreactionDate = DateTime.UtcNow;
-                    _context.Phones.Add(Phone);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    Phone = _context.Phones.Where(x => x.PhoneId == request.PhoneId).FirstOrDefault();
-                    Phone = _mapper.Map(request, Phone);
-                    _context.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public bool DeletePhone(long Id)

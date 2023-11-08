@@ -9,8 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IServiceRepo
     {
-        public List<GetAllServiceResponseDTO> GetAllService();
-        public bool SaveService(GetAllServiceRequestDTO request);
+        public List<GetAllServiceResponseDTO> GetAllService(long Id);
         public bool DeleteService(long Id);
     }
 }

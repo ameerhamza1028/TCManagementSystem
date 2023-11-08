@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class Service
 {
+    public long? ClientId { get; set; }
+
     public long ServiceId { get; set; }
 
     public string? ServiceName { get; set; }

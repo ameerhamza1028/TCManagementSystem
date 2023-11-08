@@ -9,8 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IClientAddressRepo
     {
-        public List<GetAllClientAddressResponseDTO> GetAllClientAddress();
-        public bool SaveClientAddress(GetAllClientAddressRequestDTO request);
+        public List<GetAllClientAddressResponseDTO> GetAllClientAddress(long Id);
         public bool DeleteClientAddress(long Id);
     }
 }

@@ -28,31 +28,14 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllClientAddresss")]
-        public ApiResponse<List<GetAllClientAddressResponseDTO>> GetAllClientAddress()
+        public ApiResponse<List<GetAllClientAddressResponseDTO>> GetAllClientAddress(long Id)
         {
             ApiResponse<List<GetAllClientAddressResponseDTO>> response = new ApiResponse<List<GetAllClientAddressResponseDTO>>();
             try
             {
                 List<GetAllClientAddressResponseDTO> result = new List<GetAllClientAddressResponseDTO>();
-                result = _IClientAddressRepo.GetAllClientAddress();
+                result = _IClientAddressRepo.GetAllClientAddress(Id);
                 response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("SaveClientAddress")]
-        public ApiResponse<bool> SaveClientAddress([FromBody] GetAllClientAddressRequestDTO request)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _IClientAddressRepo.SaveClientAddress(request);
-                response.Data = true;
             }
             catch (Exception ex)
             {

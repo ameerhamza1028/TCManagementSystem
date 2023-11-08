@@ -20,39 +20,12 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllClientAddressResponseDTO> GetAllClientAddress()
+        public List<GetAllClientAddressResponseDTO> GetAllClientAddress(long Id)
         {
             List<GetAllClientAddressResponseDTO> response = new List<GetAllClientAddressResponseDTO>();
-            List<Models.Address> list = _context.Addresses.ToList();
+            List<Address> list = _context.Addresses.Where(x => x.AddressId == Id).ToList();
             response = _mapper.Map<List<GetAllClientAddressResponseDTO>>(list);
             return response;
-        }
-
-        public bool SaveClientAddress(GetAllClientAddressRequestDTO request)
-        {
-            try
-            {
-                Models.Address ClientAddress = new Models.Address();
-                if (request.AddressId == 0)
-                {
-                    ClientAddress = _mapper.Map<Models.Address>(request);
-                    ClientAddress.IsActive = true;
-                    ClientAddress.CreationDate = DateTime.UtcNow;
-                    _context.Addresses.Add(ClientAddress);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    ClientAddress = _context.Addresses.Where(x => x.AddressId == request.AddressId).FirstOrDefault();
-                    ClientAddress = _mapper.Map(request, ClientAddress);
-                    _context.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public bool DeleteClientAddress(long Id)

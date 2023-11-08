@@ -20,39 +20,12 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllCardResponseDTO> GetAllCard()
+        public List<GetAllCardResponseDTO> GetAllCard(long Id)
         {
             List<GetAllCardResponseDTO> response = new List<GetAllCardResponseDTO>();
-            List<Models.Card> list = _context.Cards.ToList();
+            List<Card> list = _context.Cards.Where(x => x.CardId == Id).ToList();
             response = _mapper.Map<List<GetAllCardResponseDTO>>(list);
             return response;
-        }
-
-        public bool SaveCard(GetAllCardRequestDTO request)
-        {
-            try
-            {
-                Models.Card Card = new Models.Card();
-                if (request.CardId == 0)
-                {
-                    Card = _mapper.Map<Models.Card>(request);
-                    Card.IsActive = true;
-                    Card.CreationDate = DateTime.UtcNow;
-                    _context.Cards.Add(Card);
-                    _context.SaveChanges();
-                }
-                else
-                {
-                    Card = _context.Cards.Where(x => x.CardId == request.CardId).FirstOrDefault();
-                    Card = _mapper.Map(request, Card);
-                    _context.SaveChanges();
-                }
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public bool DeleteCard(long Id)
