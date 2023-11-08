@@ -19,9 +19,9 @@ public partial class Insurance
 
     public string? LastName { get; set; }
 
-    public string? Sex { get; set; }
+    public int? Sex { get; set; }
 
-    public string? Month { get; set; }
+    public int? Month { get; set; }
 
     public int? Day { get; set; }
 
@@ -35,7 +35,7 @@ public partial class Insurance
 
     public int? StateId { get; set; }
 
-    public long? ZipCode { get; set; }
+    public string? ZipCode { get; set; }
 
     public long? MemberId { get; set; }
 

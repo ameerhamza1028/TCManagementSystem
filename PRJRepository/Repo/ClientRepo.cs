@@ -37,8 +37,8 @@ namespace PRJRepository.Repo
                     InsuranceId = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceId).FirstOrDefault(),
                     InsuranceType = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceType).FirstOrDefault(),
                     AddressId = _context.Addresses.Where(x => x.ClientId == editClient.ClientId).Select(x => x.AddressId).FirstOrDefault(),
-                    IsInsurrance = editClient.IsInsurrance,
-                    IsSelfPay = editClient.IsSelfPay,
+                    IsInsurrance = _context.EditClientBillings.Where(x => x.ClientId == editClient.ClientId).Select(x => x.IsInsurance).FirstOrDefault(),
+                    IsSelfPay = _context.EditClientBillings.Where(x => x.ClientId == editClient.ClientId).Select(x => x.IsSelfPay).FirstOrDefault(),
                 };
                 response.Add(clientResponse);
             }

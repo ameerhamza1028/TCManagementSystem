@@ -287,25 +287,12 @@ public partial class TcemrProdContext : DbContext
             entity.ToTable("EditClient");
 
             entity.Property(e => e.ClientEmail).HasMaxLength(200);
-            entity.Property(e => e.Contact1FirstName).HasMaxLength(200);
-            entity.Property(e => e.Contact1LastName).HasMaxLength(200);
-            entity.Property(e => e.Contact1MiddleName).HasMaxLength(200);
-            entity.Property(e => e.Contact1NameGoBy).HasMaxLength(200);
-            entity.Property(e => e.Contact1Suffix).HasMaxLength(200);
-            entity.Property(e => e.Contact2FirstName).HasMaxLength(200);
-            entity.Property(e => e.Contact2IsemergencyContact).HasColumnName("Contact2ISEmergencyContact");
-            entity.Property(e => e.Contact2LastName).HasMaxLength(200);
-            entity.Property(e => e.Contact2MiddleName).HasMaxLength(200);
-            entity.Property(e => e.Contact2NameGoBy).HasMaxLength(200);
-            entity.Property(e => e.Contact2Suffix).HasMaxLength(200);
-            entity.Property(e => e.EmailNotification).HasMaxLength(50);
             entity.Property(e => e.FirstName).HasMaxLength(200);
             entity.Property(e => e.GenderIdentity).HasMaxLength(100);
             entity.Property(e => e.LastName).HasMaxLength(200);
             entity.Property(e => e.MiddleName).HasMaxLength(200);
             entity.Property(e => e.ModifiedDate).HasColumnType("date");
             entity.Property(e => e.NameToGoBy).HasMaxLength(200);
-            entity.Property(e => e.Notes).HasMaxLength(500);
             entity.Property(e => e.Suffix).HasMaxLength(200);
         });
 
@@ -358,10 +345,9 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.InsurancePayerPhone).HasMaxLength(20);
             entity.Property(e => e.LastName).HasMaxLength(200);
             entity.Property(e => e.MiddleName).HasMaxLength(200);
-            entity.Property(e => e.Month).HasMaxLength(50);
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.SendPayment).HasMaxLength(50);
-            entity.Property(e => e.Sex).HasMaxLength(50);
+            entity.Property(e => e.ZipCode).HasMaxLength(50);
         });
 
         modelBuilder.Entity<InsurranceSetting>(entity =>

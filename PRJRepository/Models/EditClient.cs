@@ -71,54 +71,6 @@ public partial class EditClient
 
     public bool? IsRaceOrEthnicityNotListed { get; set; }
 
-    public string? Contact1FirstName { get; set; }
-
-    public string? Contact1MiddleName { get; set; }
-
-    public string? Contact1LastName { get; set; }
-
-    public string? Contact1Suffix { get; set; }
-
-    public string? Contact1NameGoBy { get; set; }
-
-    public int? Contact1RelatonshipStatus { get; set; }
-
-    public bool? IsEmergencyContact { get; set; }
-
-    public string? Notes { get; set; }
-
-    public string? Contact2FirstName { get; set; }
-
-    public string? Contact2MiddleName { get; set; }
-
-    public string? Contact2LastName { get; set; }
-
-    public string? Contact2Suffix { get; set; }
-
-    public string? Contact2NameGoBy { get; set; }
-
-    public int? Contact2RelationshipStatus { get; set; }
-
-    public bool? Contact2IsemergencyContact { get; set; }
-
-    public bool? IsSelfPay { get; set; }
-
-    public bool? IsInsurrance { get; set; }
-
-    public bool? IsAutoPayEnrolled { get; set; }
-
-    public bool? IsCreateMonthlyStatements { get; set; }
-
-    public bool? IsCreateMonthlySuperBills { get; set; }
-
-    public string? EmailNotification { get; set; }
-
-    public bool? IsNotifyNewInvoices { get; set; }
-
-    public bool? IsNotifyNewStatements { get; set; }
-
-    public bool? IsNotifyNewSuperBills { get; set; }
-
     public long? ModifiedBy { get; set; }
 
     public DateTime? ModifiedDate { get; set; }
