@@ -82,9 +82,8 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -96,6 +95,7 @@ public partial class TcemrProdContext : DbContext
                 .HasMaxLength(200)
                 .HasColumnName("Address");
             entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.ZipCode).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Appointment>(entity =>
@@ -195,15 +195,24 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.CreatedDate).HasColumnType("date");
             entity.Property(e => e.Email1).HasMaxLength(200);
             entity.Property(e => e.Email2).HasMaxLength(200);
+            entity.Property(e => e.EmailType1).HasMaxLength(50);
+            entity.Property(e => e.EmailType2).HasMaxLength(50);
             entity.Property(e => e.FirstName1).HasMaxLength(200);
             entity.Property(e => e.FirstName2).HasMaxLength(200);
             entity.Property(e => e.LastName1).HasMaxLength(200);
             entity.Property(e => e.LastName2).HasMaxLength(200);
             entity.Property(e => e.Location).HasMaxLength(50);
+            entity.Property(e => e.Location2).HasMaxLength(50);
+            entity.Property(e => e.PaymentType).HasMaxLength(50);
             entity.Property(e => e.Phone1).HasMaxLength(20);
             entity.Property(e => e.Phone2).HasMaxLength(20);
+            entity.Property(e => e.PhoneType1).HasMaxLength(50);
+            entity.Property(e => e.PhoneType2).HasMaxLength(50);
             entity.Property(e => e.PrimaryClinicianName).HasMaxLength(200);
+            entity.Property(e => e.PrimaryClinicianName2).HasMaxLength(200);
             entity.Property(e => e.Relationship).HasMaxLength(50);
+            entity.Property(e => e.RemainderType1).HasMaxLength(50);
+            entity.Property(e => e.RemainderType2).HasMaxLength(50);
         });
 
         modelBuilder.Entity<ClientForm>(entity =>
@@ -290,6 +299,7 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.FirstName).HasMaxLength(200);
             entity.Property(e => e.GenderIdentity).HasMaxLength(100);
             entity.Property(e => e.LastName).HasMaxLength(200);
+            entity.Property(e => e.LocationType).HasMaxLength(50);
             entity.Property(e => e.MiddleName).HasMaxLength(200);
             entity.Property(e => e.ModifiedDate).HasColumnType("date");
             entity.Property(e => e.NameToGoBy).HasMaxLength(200);
@@ -303,6 +313,7 @@ public partial class TcemrProdContext : DbContext
             entity.ToTable("EditClientBilling");
 
             entity.Property(e => e.EmailNotification).HasMaxLength(50);
+            entity.Property(e => e.PaymentPay).HasMaxLength(50);
         });
 
         modelBuilder.Entity<EditClientContact>(entity =>

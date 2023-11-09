@@ -9,9 +9,7 @@ public partial class EditClientBilling
 
     public long BillingId { get; set; }
 
-    public bool? IsSelfPay { get; set; }
-
-    public bool? IsInsurance { get; set; }
+    public string? PaymentPay { get; set; }
 
     public bool? IsCreateMonthlyStatement { get; set; }
 

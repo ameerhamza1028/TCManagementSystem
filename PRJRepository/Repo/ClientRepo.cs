@@ -20,25 +20,24 @@ namespace PRJRepository.Repo
         public List<SaveEditClientResponseDTO> GetAllClient()
         {
             List<SaveEditClientResponseDTO> response = new List<SaveEditClientResponseDTO>();
-            List<Models.EditClient> list = _context.EditClients.ToList();
+            List<Models.Client> list = _context.Clients.ToList();
             foreach (var editClient in list)
             {
                 SaveEditClientResponseDTO clientResponse = new SaveEditClientResponseDTO
                 {
-                    FirstName = editClient.FirstName,
-                    MiddleName = editClient.MiddleName,
-                    LastName = editClient.LastName,
-                    ClinicianName = _context.TcUsers.Where(x => x.UserId == editClient.PrimaryClinicianId).Select(x => x.UserName).FirstOrDefault(),
+                    ClientId = editClient.ClientId,
+                    FirstName = editClient.FirstName1,
+                    LastName = editClient.LastName1,
+                    ClinicianName = editClient.PrimaryClinicianName,
                     IntakeDate = DateTime.UtcNow,
                     LastAppointment = null,
-                    ClientEmail = editClient.ClientEmail,
+                    ClientEmail = editClient.Email1,
                     PhoneNumber = _context.Phones.Where(x => x.ClientId == editClient.ClientId).Select(x => x.PhoneNumber).FirstOrDefault(),
                     Status = true,
                     InsuranceId = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceId).FirstOrDefault(),
                     InsuranceType = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceType).FirstOrDefault(),
-                    AddressId = _context.Addresses.Where(x => x.ClientId == editClient.ClientId).Select(x => x.AddressId).FirstOrDefault(),
-                    IsInsurrance = _context.EditClientBillings.Where(x => x.ClientId == editClient.ClientId).Select(x => x.IsInsurance).FirstOrDefault(),
-                    IsSelfPay = _context.EditClientBillings.Where(x => x.ClientId == editClient.ClientId).Select(x => x.IsSelfPay).FirstOrDefault(),
+                    Address = _context.Addresses.Where(x => x.ClientId == editClient.ClientId).Select(x => x.Address1).FirstOrDefault(),
+                    PaymentType = _context.EditClientBillings.Where(x => x.ClientId == editClient.ClientId).Select(x => x.PaymentPay).FirstOrDefault(),
                 };
                 response.Add(clientResponse);
             }

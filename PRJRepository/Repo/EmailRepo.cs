@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllEmailResponseDTO> GetAllEmail(long Id)
         {
             List<GetAllEmailResponseDTO> response = new List<GetAllEmailResponseDTO>();
-            List<Email> list = _context.Emails.Where(x => x.EmailId == Id).ToList();
+            List<Email> list = _context.Emails.Where(x => x.ClientId == Id).ToList();
             response = _mapper.Map<List<GetAllEmailResponseDTO>>(list);
             return response;
         }

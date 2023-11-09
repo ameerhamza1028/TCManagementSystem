@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllPhoneResponseDTO> GetAllPhone(long Id)
         {
             List<GetAllPhoneResponseDTO> response = new List<GetAllPhoneResponseDTO>();
-            List<Phone> list = _context.Phones.Where(x => x.PhoneId == Id).ToList();
+            List<Phone> list = _context.Phones.Where(x => x.ClientId == Id).ToList();
             response = _mapper.Map<List<GetAllPhoneResponseDTO>>(list);
             return response;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRJRepository.DTO.EditClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,8 @@ namespace PRJRepository.DTO.Client
 
         public string? NameToGoBy { get; set; }
 
-        public bool? IsMinor { get; set; }
-
         public int? PrimaryClinicianId { get; set; }
+
         public bool? IsAppointments { get; set; }
 
         public bool? IsCompletingDocuments { get; set; }
@@ -41,7 +41,7 @@ namespace PRJRepository.DTO.Client
 
         public bool? IsReminderWeek1 { get; set; }
 
-        public int? LocationId { get; set; }
+        public string? LocationType { get; set; }
 
         public int? Month { get; set; }
 
@@ -57,21 +57,9 @@ namespace PRJRepository.DTO.Client
 
         public int? EmploymentStatus { get; set; }
 
-        public bool? IsAmericanIndianOrAlaskaNatine { get; set; }
+        public int? HumanRace { get; set; }
 
-        public bool? IsAsian { get; set; }
-
-        public bool? IsBlackOrAfricanAmerican { get; set; }
-
-        public bool? IsHisoanicOrLatinix { get; set; }
-
-        public bool? IsMiddleEasternOrNorthAfrican { get; set; }
-
-        public bool? IsNativeHawaiianOrOtherPacificIslander { get; set; }
-
-        public bool? IsWhite { get; set; }
-
-        public bool? IsRaceOrEthnicityNotListed { get; set; }
+        public int? ServiceId { get; set; }
     }
     
 

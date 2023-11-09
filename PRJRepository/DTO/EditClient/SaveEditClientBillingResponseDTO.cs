@@ -10,9 +10,7 @@ namespace PRJRepository.DTO.EditClient
     {
         public long BillingId { get; set; }
 
-        public bool? IsSelfPay { get; set; }
-
-        public bool? IsInsurance { get; set; }
+        public string? PaymentType { get; set; }
 
         public bool? IsCreateMonthlyStatement { get; set; }
 

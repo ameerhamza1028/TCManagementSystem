@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllInsuranceResponseDTO> GetAllInsurance(long Id)
         {
             List<GetAllInsuranceResponseDTO> response = new List<GetAllInsuranceResponseDTO>();
-            List<Insurance> list = _context.Insurances.Where(x => x.InsuranceId == Id).ToList();
+            List<Insurance> list = _context.Insurances.Where(x => x.ClientId == Id).ToList();
             response = _mapper.Map<List<GetAllInsuranceResponseDTO>>(list);
             return response;
         }

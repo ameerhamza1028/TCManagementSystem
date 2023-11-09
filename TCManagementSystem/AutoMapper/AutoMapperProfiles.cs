@@ -38,6 +38,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Client, GetAllClientResponseDTO>().ReverseMap();
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Client, EditClientResponseDTO>().ReverseMap();
+            CreateMap<Client, SaveEditClientResponseDTO>().ReverseMap();
             CreateMap<Login, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationRequestDTO>().ReverseMap();
@@ -99,7 +100,6 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Phone, Phone1DTO>().ReverseMap();
             CreateMap<Address, Address2DTO>().ReverseMap();
             CreateMap<Phone, Phone2DTO>().ReverseMap();
-            CreateMap<Service, ServiceDTO>().ReverseMap();
             CreateMap<Email, ContactEmailDTO>().ReverseMap();
             CreateMap<Card, CardDTO>().ReverseMap();
             CreateMap<Insurance, InsuranceDTO>().ReverseMap();

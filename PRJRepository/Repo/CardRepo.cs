@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllCardResponseDTO> GetAllCard(long Id)
         {
             List<GetAllCardResponseDTO> response = new List<GetAllCardResponseDTO>();
-            List<Card> list = _context.Cards.Where(x => x.CardId == Id).ToList();
+            List<Card> list = _context.Cards.Where(x => x.ClientId == Id).ToList();
             response = _mapper.Map<List<GetAllCardResponseDTO>>(list);
             return response;
         }

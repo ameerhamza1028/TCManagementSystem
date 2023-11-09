@@ -20,9 +20,7 @@ namespace PRJRepository.DTO.Client
 
         public string? Phone1 { get; set; }
 
-        public bool? IsSelfPay { get; set; }
-
-        public bool? IsInsurance { get; set; }
+        public string? PaymentType { get; set; }
 
         public long? InsuranceId { get; set; }
 

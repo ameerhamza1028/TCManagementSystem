@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllClientAddressResponseDTO> GetAllClientAddress(long Id)
         {
             List<GetAllClientAddressResponseDTO> response = new List<GetAllClientAddressResponseDTO>();
-            List<Address> list = _context.Addresses.Where(x => x.AddressId == Id).ToList();
+            List<Address> list = _context.Addresses.Where(x => x.ClientId == Id).ToList();
             response = _mapper.Map<List<GetAllClientAddressResponseDTO>>(list);
             return response;
         }

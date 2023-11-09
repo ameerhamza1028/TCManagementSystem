@@ -8,10 +8,9 @@ namespace PRJRepository.DTO.EditClient
 {
     public class SaveEditClientResponseDTO
     {
+        public long? ClientId { get; set; }
 
         public string? FirstName { get; set; }
-
-        public string? MiddleName { get; set; }
 
         public string? LastName { get; set; }
 
@@ -21,11 +20,9 @@ namespace PRJRepository.DTO.EditClient
 
         public string? ClientEmail { get; set; }
 
-        public long? AddressId { get; set; }
+        public string? Address { get; set; }
 
-        public bool? IsSelfPay { get; set; }
-
-        public bool? IsInsurrance { get; set; }
+        public string? PaymentType { get; set; }
 
         public long? InsuranceId { get; set; }
 

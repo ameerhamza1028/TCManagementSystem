@@ -108,30 +108,6 @@ namespace PRJRepository.Repo
                         }
                     }
                 }
-
-                List<ServiceDTO> ServiceList = request.Service;
-                foreach (var list in ServiceList)
-                {
-                    Service service;
-
-                    if (list.ServiceId == 0)
-                    {
-                        service = _mapper.Map<Service>(list);
-                        service.ClientId = edit.ClientId;
-                        service.IsActive = true;
-                        service.CreationDate = DateTime.UtcNow;
-                        _context.Services.Add(service);
-                    }
-                    else
-                    {
-                        service = _context.Services.FirstOrDefault(x => x.ServiceId == list.ServiceId);
-
-                        if (service != null)
-                        {
-                            _mapper.Map(list, service);
-                        }
-                    }
-                }
             }
             catch
             {

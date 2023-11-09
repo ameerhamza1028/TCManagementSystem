@@ -12,11 +12,13 @@ namespace PRJRepository.DTO.ClientAddress
 
         public string? Address1 { get; set; }
 
+        public int? CountryId { get; set; }
+
         public int? CityId { get; set; }
 
         public int? StateId { get; set; }
 
-        public long? ZipCode { get; set; }
+        public string? ZipCode { get; set; }
         public long? CreatedBy { get; set; }
     }
 }

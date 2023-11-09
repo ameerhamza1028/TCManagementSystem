@@ -39,7 +39,7 @@ public partial class EditClient
 
     public bool? IsReminderWeek1 { get; set; }
 
-    public int? LocationId { get; set; }
+    public string? LocationType { get; set; }
 
     public int? Month { get; set; }
 
@@ -55,21 +55,7 @@ public partial class EditClient
 
     public int? EmploymentStatus { get; set; }
 
-    public bool? IsAmericanIndianOrAlaskaNatine { get; set; }
-
-    public bool? IsAsian { get; set; }
-
-    public bool? IsBlackOrAfricanAmerican { get; set; }
-
-    public bool? IsHisoanicOrLatinix { get; set; }
-
-    public bool? IsMiddleEasternOrNorthAfrican { get; set; }
-
-    public bool? IsNativeHawaiianOrOtherPacificIslander { get; set; }
-
-    public bool? IsWhite { get; set; }
-
-    public bool? IsRaceOrEthnicityNotListed { get; set; }
+    public int? HumanRace { get; set; }
 
     public long? ModifiedBy { get; set; }
 

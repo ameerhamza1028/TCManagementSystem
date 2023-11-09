@@ -23,8 +23,6 @@ namespace PRJRepository.DTO.EditClient
 
         public string? NameToGoBy { get; set; }
 
-        public bool? IsMinor { get; set; }
-
         public int? PrimaryClinicianId { get; set; }
 
         public List<Phone1DTO>? Phone { get; set; }
@@ -45,11 +43,9 @@ namespace PRJRepository.DTO.EditClient
 
         public bool? IsReminderWeek1 { get; set; }
 
-        public int? LocationId { get; set; }
+        public string? LocationType { get; set; }
 
         public List<Address1DTO>? Address { get; set; }
-
-        public List<ServiceDTO>? Service { get; set; }
 
         public int? Month { get; set; }
 
@@ -65,21 +61,9 @@ namespace PRJRepository.DTO.EditClient
 
         public int? EmploymentStatus { get; set; }
 
-        public bool? IsAmericanIndianOrAlaskaNatine { get; set; }
+        public int? HumanRace { get; set; }
 
-        public bool? IsAsian { get; set; }
-
-        public bool? IsBlackOrAfricanAmerican { get; set; }
-
-        public bool? IsHisoanicOrLatinix { get; set; }
-
-        public bool? IsMiddleEasternOrNorthAfrican { get; set; }
-
-        public bool? IsNativeHawaiianOrOtherPacificIslander { get; set; }
-
-        public bool? IsWhite { get; set; }
-
-        public bool? IsRaceOrEthnicityNotListed { get; set; }
+        public int? ServiceId { get; set; }
     }
     public class Phone1DTO
     {
@@ -106,24 +90,5 @@ namespace PRJRepository.DTO.EditClient
         public int? StateId { get; set; }
 
         public long? ZipCode { get; set; }
-    }
-
-    public class ServiceDTO
-    {
-        public long ServiceId { get; set; }
-
-        public string? ServiceName { get; set; }
-
-        public int? ServiceDuration { get; set; }
-
-        public decimal? RatePerUnit { get; set; }
-
-        public string? Modifier1 { get; set; }
-
-        public string? Modifier2 { get; set; }
-
-        public string? Modifier3 { get; set; }
-
-        public string? Modifier4 { get; set; }
     }
 }
