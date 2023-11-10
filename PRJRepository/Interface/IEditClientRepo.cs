@@ -10,6 +10,7 @@ namespace PRJRepository.Interface
 {
     public interface IEditClientRepo
     {
+        public List<GetAllEditClientContactResponse> GetAllEditClientContact();
         public EditClientResponseDTO GetEditClient(long Id);
 
         public SaveEditClientContactResponseDTO GetEditClientContact(long Id);

@@ -28,7 +28,7 @@ namespace PRJRepository.Repo
                     ClientId = editClient.ClientId,
                     FirstName = editClient.FirstName1,
                     LastName = editClient.LastName1,
-                    ClinicianName = editClient.PrimaryClinicianName,
+                    ClinicianName = _context.TcUsers.Where(x => x.UserId == editClient.PrimaryClinicianId).Select(x => x.UserName).FirstOrDefault(),
                     IntakeDate = DateTime.UtcNow,
                     LastAppointment = null,
                     ClientEmail = editClient.Email1,
@@ -85,21 +85,102 @@ namespace PRJRepository.Repo
                     client = _mapper.Map(request, client);
                     _context.SaveChanges();
                 }
-                
-                EditClient edit = new EditClient();
-                edit = _mapper.Map<EditClient>(request);
-                _context.EditClients.Add(edit);
-                _context.SaveChanges();
 
-                EditClientContact editcontact = new EditClientContact();
-                editcontact = _mapper.Map<EditClientContact>(request);
-                _context.EditClientContacts.Add(editcontact);
-                _context.SaveChanges();
+                if (request.ClientType == 1)
+                {
+                    EditClient edit = new EditClient();
+                    edit.ClientId = client.ClinicId;
+                    edit.FirstName = request.FirstName1;
+                    edit.LastName = request.LastName1;
+                    edit.PrimaryClinicianId = request.PrimaryClinicianId;
+                    edit.ClientEmail = request.Email1;
+                    edit.LocationType = request.Location;
+                    _context.EditClients.Add(edit);
+                    _context.SaveChanges();
+                    Phone phone = new Phone();
+                    phone.ClientId = client.ClinicId;
+                    phone.PhoneNumber = request.Phone1;
+                    phone.ContactId = 0;
+                    _context.Phones.Add(phone);
+                    _context.SaveChanges();
+                    EditClientBilling editbilling = new EditClientBilling();
+                    editbilling.ClientId = client.ClientId;
+                    editbilling.PaymentPay = request.PaymentType;
+                    _context.EditClientBillings.Add(editbilling);
+                    _context.SaveChanges();
+                }
 
-                EditClientBilling editbilling = new EditClientBilling();
-                editbilling = _mapper.Map<EditClientBilling>(request);
-                _context.EditClientBillings.Add(editbilling);
-                _context.SaveChanges();
+                else if (request.ClientType == 2)
+                {
+                    EditClient edit = new EditClient();
+                    edit.ClientId = client.ClientId;
+                    edit.FirstName = request.FirstName1;
+                    edit.LastName = request.LastName1;
+                    edit.PrimaryClinicianId = request.PrimaryClinicianId;
+                    edit.ClientEmail = request.Email1;
+                    edit.LocationType = request.Location;
+                    _context.EditClients.Add(edit);
+                    _context.SaveChanges();
+                    Phone phone1 = new Phone();
+                    phone1.ClientId = client.ClientId;
+                    phone1.PhoneNumber = request.Phone1;
+                    phone1.ContactId = 0;
+                    _context.Phones.Add(phone1);
+                    _context.SaveChanges();
+                    EditClientContact editcontact = new EditClientContact();
+                    editcontact.ClientId = client.ClientId;
+                    editcontact.ContactFirstName = request.FirstName2;
+                    editcontact.ContactLastName = request.LastName2;
+                    editcontact.ContactRelationshipStatus = request.Relationship;
+                    editcontact.ConatactEmail = request.Email2;
+                    _context.EditClientContacts.Add(editcontact);
+                    _context.SaveChanges();
+                    Phone phone2 = new Phone();
+                    phone2.ClientId = client.ClientId;
+                    phone2.PhoneNumber = request.Phone2;
+                    phone2.ContactId = client.ClientId;
+                    _context.Phones.Add(phone2);
+                    _context.SaveChanges();
+                }
+
+                else
+                {
+                    EditClient edit = new EditClient();
+                    edit.ClientId = client.ClientId;
+                    edit.FirstName = request.FirstName1;
+                    edit.LastName = request.LastName1;
+                    edit.PrimaryClinicianId = request.PrimaryClinicianId;
+                    edit.ClientEmail = request.Email1;
+                    edit.LocationType = request.Location;
+                    _context.EditClients.Add(edit);
+                    _context.SaveChanges();
+                    Phone phone1 = new Phone();
+                    phone1.ClientId = client.ClientId;
+                    phone1.PhoneNumber = request.Phone1;
+                    phone1.ContactId = 0;
+                    _context.Phones.Add(phone1);
+                    _context.SaveChanges();
+                    EditClient edit1 = new EditClient();
+                    edit1.ClientId = client.ClientId;
+                    edit1.FirstName = request.FirstName2;
+                    edit1.LastName = request.LastName2;
+                    edit1.PrimaryClinicianId = request.PrimaryClinicianId2;
+                    edit1.ClientEmail = request.Email2;
+                    edit1.LocationType = request.Location2;
+                    _context.EditClients.Add(edit1);
+                    _context.SaveChanges();
+                    Phone phone2 = new Phone();
+                    phone2.ClientId = client.ClientId;
+                    phone2.ContactId = 0;
+                    phone2.PhoneNumber = request.Phone2;
+                    _context.Phones.Add(phone2);
+                    _context.SaveChanges();
+                    EditClientBilling editbilling = new EditClientBilling();
+                    editbilling.ClientId = client.ClientId;
+                    editbilling.PaymentPay = request.PaymentType;
+                    _context.EditClientBillings.Add(editbilling);
+                    _context.SaveChanges();
+                }
 
                 return true;
             }

@@ -29,6 +29,24 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllEditClientContacts")]
+        public ApiResponse<List<GetAllEditClientContactResponse>> GetAllEditClientContact()
+        {
+            ApiResponse<List<GetAllEditClientContactResponse>> response = new ApiResponse<List<GetAllEditClientContactResponse>>();
+            try
+            {
+                List<GetAllEditClientContactResponse> result = new List<GetAllEditClientContactResponse>();
+                result = _IEditClientRepo.GetAllEditClientContact();
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
         [Route("GetEditClientById")]
         public ApiResponse<EditClientResponseDTO> GetClientById(long Id)
         {

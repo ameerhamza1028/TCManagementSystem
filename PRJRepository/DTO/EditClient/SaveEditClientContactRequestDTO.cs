@@ -22,7 +22,7 @@ namespace PRJRepository.DTO.EditClient
 
         public string? ContactNameGoBy { get; set; }
 
-        public int? ContactRelationshipStatus { get; set; }
+        public string? ContactRelationshipStatus { get; set; }
 
         public bool? IsEmergencyContact { get; set; }
 

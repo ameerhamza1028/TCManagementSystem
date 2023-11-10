@@ -22,4 +22,6 @@ public partial class Phone
     public DateTime? CreactionDate { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public long? ContactId { get; set; }
 }

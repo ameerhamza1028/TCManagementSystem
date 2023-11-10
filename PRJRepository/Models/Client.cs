@@ -27,7 +27,7 @@ public partial class Client
 
     public string? PaymentType { get; set; }
 
-    public string? PrimaryClinicianName { get; set; }
+    public int? PrimaryClinicianId { get; set; }
 
     public string? RemainderType1 { get; set; }
 
@@ -49,7 +49,7 @@ public partial class Client
 
     public string? RemainderType2 { get; set; }
 
-    public string? PrimaryClinicianName2 { get; set; }
+    public int? PrimaryClinicianId2 { get; set; }
 
     public string? Location2 { get; set; }
 

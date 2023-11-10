@@ -19,7 +19,9 @@ public partial class EditClientContact
 
     public string? ContactNameGoBy { get; set; }
 
-    public int? ContactRelationshipStatus { get; set; }
+    public string? ConatactEmail { get; set; }
+
+    public string? ContactRelationshipStatus { get; set; }
 
     public bool? IsEmergencyContact { get; set; }
 

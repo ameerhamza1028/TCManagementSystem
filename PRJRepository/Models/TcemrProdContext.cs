@@ -208,8 +208,6 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Phone2).HasMaxLength(20);
             entity.Property(e => e.PhoneType1).HasMaxLength(50);
             entity.Property(e => e.PhoneType2).HasMaxLength(50);
-            entity.Property(e => e.PrimaryClinicianName).HasMaxLength(200);
-            entity.Property(e => e.PrimaryClinicianName2).HasMaxLength(200);
             entity.Property(e => e.Relationship).HasMaxLength(50);
             entity.Property(e => e.RemainderType1).HasMaxLength(50);
             entity.Property(e => e.RemainderType2).HasMaxLength(50);
@@ -322,12 +320,14 @@ public partial class TcemrProdContext : DbContext
 
             entity.ToTable("EditClientContact");
 
+            entity.Property(e => e.ConatactEmail).HasMaxLength(200);
             entity.Property(e => e.ContactFirstName).HasMaxLength(200);
             entity.Property(e => e.ContactLastName).HasMaxLength(200);
             entity.Property(e => e.ContactMiddleName).HasMaxLength(200);
             entity.Property(e => e.ContactNameGoBy)
                 .HasMaxLength(200)
                 .HasColumnName("ContactNameGoBY");
+            entity.Property(e => e.ContactRelationshipStatus).HasMaxLength(50);
             entity.Property(e => e.ContactSuffix).HasMaxLength(200);
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Notes).HasMaxLength(500);
@@ -436,7 +436,6 @@ public partial class TcemrProdContext : DbContext
         {
             entity.ToTable("Phone");
 
-            entity.Property(e => e.PhoneId).ValueGeneratedNever();
             entity.Property(e => e.CreactionDate).HasColumnType("date");
             entity.Property(e => e.PhoneNumber).HasMaxLength(20);
             entity.Property(e => e.PhoneType).HasMaxLength(50);

@@ -22,6 +22,27 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
+        public List<GetAllEditClientContactResponse> GetAllEditClientContact()
+        {
+            List<GetAllEditClientContactResponse> response = new List<GetAllEditClientContactResponse>();
+            List<Models.EditClientContact> list = _context.EditClientContacts.ToList();
+            foreach (var contact in list)
+            {
+                GetAllEditClientContactResponse clientResponse = new GetAllEditClientContactResponse
+                {
+                    ContactFirstName = contact.ContactFirstName,
+                    ContactLastName = contact.ContactLastName,
+                    ContactSuffix = contact.ContactSuffix,
+                    ContactEmail = contact.ConatactEmail,
+                    ContactRelationshipStatus = contact.ContactRelationshipStatus,
+                    IsEmergencyContact = contact.IsEmergencyContact,
+                    ContactPhone = _context.Phones.Where(x => x.ContactId == contact.ClientId).Select(x => x.PhoneNumber).FirstOrDefault(),
+                };
+                response.Add(clientResponse);
+            }
+            return response;
+        }
+
         public EditClientResponseDTO GetEditClient(long Id)
         {
             EditClientResponseDTO response = new EditClientResponseDTO();

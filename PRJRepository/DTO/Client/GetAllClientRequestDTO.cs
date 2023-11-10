@@ -30,7 +30,7 @@ namespace PRJRepository.DTO.Client
 
         public string? PaymentType { get; set; }
 
-        public string? PrimaryClinicianName { get; set; }
+        public int? PrimaryClinicianId { get; set; }
 
         public string? RemainderType1 { get; set; }
 
@@ -52,7 +52,7 @@ namespace PRJRepository.DTO.Client
 
         public string? RemainderType2 { get; set; }
 
-        public string? PrimaryClinicianName2 { get; set; }
+        public int? PrimaryClinicianId2 { get; set; }
 
         public string? Location2 { get; set; }
 
@@ -63,8 +63,6 @@ namespace PRJRepository.DTO.Client
         public string? BillResponsibleClient { get; set; }
 
         public bool? Status { get; set; }
-
-        public long? LoginId { get; set; }
 
         public long? ClinicId { get; set; }
 
