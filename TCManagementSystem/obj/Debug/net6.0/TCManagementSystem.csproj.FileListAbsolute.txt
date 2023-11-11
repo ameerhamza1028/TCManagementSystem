@@ -92,3 +92,4 @@ D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\ne
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\SendGrid.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\StarkbankEcdsa.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Debug\net6.0\TCManagementSystem.MvcApplicationPartsAssemblyInfo.cs
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Debug\net6.0\TCManagementSystem.staticwebassets.runtime.json

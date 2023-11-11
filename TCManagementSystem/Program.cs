@@ -112,8 +112,8 @@ internal class Program
             options.AddPolicy(name: MyAllowSpecificOrigins,
                               policy =>
                               {
-                                  policy.WithOrigins("http://localhost:4200",
-                                                      "https://localhost:4200")
+                                  policy.WithOrigins("https://tcapi.thequantumz.com"
+                                                      )
                                                         .AllowAnyHeader()
                                                           .AllowAnyMethod();
                               });
@@ -140,6 +140,8 @@ internal class Program
         app.UseRouting();
         app.UseHttpsRedirection();
         app.UseCors(MyAllowSpecificOrigins);
+        app.UseStaticFiles();
+        app.UseDefaultFiles();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();

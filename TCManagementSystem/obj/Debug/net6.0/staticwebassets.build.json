@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "vnYh32v+ULkEdmF/7jY0lGVyp54uWjicmyhYWOKHTK0=",
+  "Hash": "dieU9Y+g3Jc7T3sscJ4aEnY361ZYabKQzHWKZtlygtU=",
   "Source": "TCManagementSystem",
   "BasePath": "_content/TCManagementSystem",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "TCManagementSystem\\wwwroot",
+      "Source": "TCManagementSystem",
+      "ContentRoot": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\",
+      "BasePath": "_content/TCManagementSystem",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

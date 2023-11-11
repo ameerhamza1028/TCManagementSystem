@@ -75,6 +75,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<AppointmentPayment, GetAllAppointmentPaymentRequestDTO>().ReverseMap();
             CreateMap<Message, GetMessageResponseDTO>().ReverseMap();
             CreateMap<Message, GetMessageRequestDTO>().ReverseMap();
+            CreateMap<EditClient, EditClientResponseDTO>().ReverseMap();
             CreateMap<EditClient, SaveEditClientResponseDTO>().ReverseMap();
             CreateMap<EditClient, SaveEditClientRequestDTO>().ReverseMap();
             CreateMap<EditClientContact, SaveEditClientContactRequestDTO>().ReverseMap();
