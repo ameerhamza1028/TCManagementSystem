@@ -321,7 +321,7 @@ public partial class TcemrProdContext : DbContext
 
             entity.ToTable("EditClientContact");
 
-            entity.Property(e => e.ConatactEmail).HasMaxLength(200);
+            entity.Property(e => e.ContactEmail).HasMaxLength(200);
             entity.Property(e => e.ContactEmailType).HasMaxLength(50);
             entity.Property(e => e.ContactFirstName).HasMaxLength(200);
             entity.Property(e => e.ContactLastName).HasMaxLength(200);

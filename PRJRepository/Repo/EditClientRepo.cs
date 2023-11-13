@@ -35,7 +35,7 @@ namespace PRJRepository.Repo
                     ContactFirstName = contact.ContactFirstName,
                     ContactLastName = contact.ContactLastName,
                     ContactSuffix = contact.ContactSuffix,
-                    ContactEmail = contact.ConatactEmail,
+                    ContactEmail = contact.ContactEmail,
                     ContactRelationshipStatus = contact.ContactRelationshipStatus,
                     IsEmergencyContact = contact.IsEmergencyContact,
                     ContactPhone = _context.Phones.Where(x => x.ClientId == contact.ClientId).Select(x => x.PhoneNumber).FirstOrDefault(),

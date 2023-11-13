@@ -19,7 +19,7 @@ public partial class EditClientContact
 
     public string? ContactNameGoBy { get; set; }
 
-    public string? ConatactEmail { get; set; }
+    public string? ContactEmail { get; set; }
 
     public string? ContactEmailType { get; set; }
 

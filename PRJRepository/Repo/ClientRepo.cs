@@ -135,7 +135,7 @@ namespace PRJRepository.Repo
                     editcontact.ContactFirstName = request.FirstName2;
                     editcontact.ContactLastName = request.LastName2;
                     editcontact.ContactRelationshipStatus = request.Relationship;
-                    editcontact.ConatactEmail = request.Email2;
+                    editcontact.ContactEmail = request.Email2;
                     editcontact.ContactEmailType = request.EmailType2;
                     _context.EditClientContacts.Add(editcontact);
                     _context.SaveChanges();
