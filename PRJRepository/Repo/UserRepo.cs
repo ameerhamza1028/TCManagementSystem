@@ -83,8 +83,18 @@ namespace PRJRepository.Repo
                         }
                     }
                     _context.SaveChanges();
-            List<LicenseDTO> licenseList = request.LicenseRequets; 
 
+                    if (request.UserType == 3)
+                    {
+                        Clinician clinician = new Clinician();
+                        clinician.UserId = user.UserId;
+                        clinician.ClinicianName = request.UserName;
+                        _context.Clinicians.Add(clinician);
+                        _context.SaveChanges();
+                    }
+
+
+            List<LicenseDTO> licenseList = request.LicenseRequets; 
             foreach (var list in licenseList)
             {
                 License license;

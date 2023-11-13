@@ -24,4 +24,6 @@ public partial class Address
     public DateTime? CreationDate { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public long? ContactId { get; set; }
 }

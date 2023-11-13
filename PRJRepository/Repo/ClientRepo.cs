@@ -3,6 +3,7 @@ using PRJRepository.DTO.Client;
 using PRJRepository.DTO.EditClient;
 using PRJRepository.Interface;
 using PRJRepository.Models;
+using System.Numerics;
 using System.Text;
 
 namespace PRJRepository.Repo
@@ -28,7 +29,7 @@ namespace PRJRepository.Repo
                     ClientId = editClient.ClientId,
                     FirstName = editClient.FirstName1,
                     LastName = editClient.LastName1,
-                    ClinicianName = _context.TcUsers.Where(x => x.UserId == editClient.PrimaryClinicianId).Select(x => x.UserName).FirstOrDefault(),
+                    ClinicianName = _context.Clinicians.Where(x => x.ClinicianId == editClient.PrimaryClinicianId).Select(x => x.ClinicianName).FirstOrDefault(),
                     IntakeDate = DateTime.UtcNow,
                     LastAppointment = null,
                     ClientEmail = editClient.Email1,
@@ -89,7 +90,7 @@ namespace PRJRepository.Repo
                 if (request.ClientType == 1)
                 {
                     EditClient edit = new EditClient();
-                    edit.ClientId = client.ClinicId;
+                    edit.ClientId = client.ClientId;
                     edit.FirstName = request.FirstName1;
                     edit.LastName = request.LastName1;
                     edit.PrimaryClinicianId = request.PrimaryClinicianId;
@@ -98,9 +99,10 @@ namespace PRJRepository.Repo
                     _context.EditClients.Add(edit);
                     _context.SaveChanges();
                     Phone phone = new Phone();
-                    phone.ClientId = client.ClinicId;
+                    phone.ClientId = client.ClientId;
                     phone.PhoneNumber = request.Phone1;
                     phone.ContactId = 0;
+                    phone.PhoneType = request.PhoneType1;
                     _context.Phones.Add(phone);
                     _context.SaveChanges();
                     EditClientBilling editbilling = new EditClientBilling();
@@ -125,6 +127,7 @@ namespace PRJRepository.Repo
                     phone1.ClientId = client.ClientId;
                     phone1.PhoneNumber = request.Phone1;
                     phone1.ContactId = 0;
+                    phone1.PhoneType = request.PhoneType1;
                     _context.Phones.Add(phone1);
                     _context.SaveChanges();
                     EditClientContact editcontact = new EditClientContact();
@@ -133,12 +136,14 @@ namespace PRJRepository.Repo
                     editcontact.ContactLastName = request.LastName2;
                     editcontact.ContactRelationshipStatus = request.Relationship;
                     editcontact.ConatactEmail = request.Email2;
+                    editcontact.ContactEmailType = request.EmailType2;
                     _context.EditClientContacts.Add(editcontact);
                     _context.SaveChanges();
                     Phone phone2 = new Phone();
                     phone2.ClientId = client.ClientId;
                     phone2.PhoneNumber = request.Phone2;
-                    phone2.ContactId = client.ClientId;
+                    phone2.ContactId = editcontact.ContactId;
+                    phone2.PhoneType = request.PhoneType2;
                     _context.Phones.Add(phone2);
                     _context.SaveChanges();
                 }
@@ -158,6 +163,7 @@ namespace PRJRepository.Repo
                     phone1.ClientId = client.ClientId;
                     phone1.PhoneNumber = request.Phone1;
                     phone1.ContactId = 0;
+                    phone1.PhoneType = request.PhoneType1;
                     _context.Phones.Add(phone1);
                     _context.SaveChanges();
                     EditClient edit1 = new EditClient();
@@ -173,6 +179,7 @@ namespace PRJRepository.Repo
                     phone2.ClientId = client.ClientId;
                     phone2.ContactId = 0;
                     phone2.PhoneNumber = request.Phone2;
+                    phone2.PhoneType = request.PhoneType2;
                     _context.Phones.Add(phone2);
                     _context.SaveChanges();
                     EditClientBilling editbilling = new EditClientBilling();

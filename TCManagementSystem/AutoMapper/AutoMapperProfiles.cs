@@ -101,7 +101,6 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Phone, Phone1DTO>().ReverseMap();
             CreateMap<Address, Address2DTO>().ReverseMap();
             CreateMap<Phone, Phone2DTO>().ReverseMap();
-            CreateMap<Email, ContactEmailDTO>().ReverseMap();
             CreateMap<Card, CardDTO>().ReverseMap();
             CreateMap<Insurance, InsuranceDTO>().ReverseMap();
         }

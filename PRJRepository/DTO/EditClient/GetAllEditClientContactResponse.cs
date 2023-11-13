@@ -9,7 +9,6 @@ namespace PRJRepository.DTO.EditClient
     public class GetAllEditClientContactResponse
     {
         public long ContactId { get; set; }
-
         public string? ContactFirstName { get; set; }
 
         public string? ContactMiddleName { get; set; }
@@ -27,5 +26,7 @@ namespace PRJRepository.DTO.EditClient
         public string? ContactEmail { get; set; }
 
         public string? ContactPhone { get; set;}
+
+        public string? ContactAdress { get; set;}
     }
 }

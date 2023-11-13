@@ -19,8 +19,6 @@ public partial class EditClient
 
     public string? NameToGoBy { get; set; }
 
-    public bool? IsMinor { get; set; }
-
     public int? PrimaryClinicianId { get; set; }
 
     public bool? IsAppointments { get; set; }

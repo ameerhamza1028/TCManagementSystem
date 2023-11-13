@@ -22,13 +22,17 @@ namespace PRJRepository.DTO.EditClient
 
         public string? ContactNameGoBy { get; set; }
 
+        public string? ContactEmail { get; set; }
+
+        public string? ContactEmailType { get; set; }
+
+        public bool? IsAccessToClientPortal { get; set; }
+
         public string? ContactRelationshipStatus { get; set; }
 
         public bool? IsEmergencyContact { get; set; }
 
         public List<Phone2DTO>? Phone { get; set; }
-
-        public List<ContactEmailDTO>? ContactEmail { get; set; }
 
         public List<Address2DTO>? Address { get; set; }
 
@@ -55,23 +59,12 @@ namespace PRJRepository.DTO.EditClient
 
         public string? Address1 { get; set; }
 
+        public int? CountryId { get; set; }
+
         public int? CityId { get; set; }
 
         public int? StateId { get; set; }
 
         public long? ZipCode { get; set; }
-    }
-
-    public class ContactEmailDTO
-    {
-        public long EmailId { get; set; }
-
-        public string? EmailAddress { get; set; }
-
-        public string? EmailType { get; set; }
-
-        public bool? IsEmailOk { get; set; }
-
-        public bool? IsAccessToClientPortal { get; set; }
     }
 }

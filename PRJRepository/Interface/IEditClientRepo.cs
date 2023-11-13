@@ -10,7 +10,7 @@ namespace PRJRepository.Interface
 {
     public interface IEditClientRepo
     {
-        public List<GetAllEditClientContactResponse> GetAllEditClientContact();
+        public List<GetAllEditClientContactResponse> GetAllEditClientContact(long Id);
         public EditClientResponseDTO GetEditClient(long Id);
 
         public SaveEditClientContactResponseDTO GetEditClientContact(long Id);
@@ -20,5 +20,7 @@ namespace PRJRepository.Interface
         public bool SaveClientContact(SaveEditClientContactRequestDTO request);
 
         public bool SaveClientBilling(SaveEditClientBillingRequestDTO request);
+
+        public bool DeleteClientContact(long Id);
     }
 }

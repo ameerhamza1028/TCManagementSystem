@@ -19,5 +19,7 @@ namespace PRJRepository.DTO.ClientAddress
         public int? StateId { get; set; }
 
         public string? ZipCode { get; set; }
+
+        public long? ContactId { get; set; }
     }
 }

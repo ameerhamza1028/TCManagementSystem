@@ -22,6 +22,12 @@ namespace PRJRepository.DTO.EditClient
 
         public string? ContactNameGoBy { get; set; }
 
+        public string? ContactEmail { get; set; }
+
+        public string? ContactEmailType { get; set; }
+
+        public bool? IsAccessToClientPortal { get; set; }
+
         public string? ContactRelationshipStatus { get; set; }
 
         public bool? IsEmergencyContact { get; set; }

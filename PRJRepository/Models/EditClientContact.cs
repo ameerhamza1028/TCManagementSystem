@@ -21,7 +21,11 @@ public partial class EditClientContact
 
     public string? ConatactEmail { get; set; }
 
+    public string? ContactEmailType { get; set; }
+
     public string? ContactRelationshipStatus { get; set; }
+
+    public bool? IsAccessToClientPortal { get; set; }
 
     public bool? IsEmergencyContact { get; set; }
 

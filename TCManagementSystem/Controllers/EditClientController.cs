@@ -30,13 +30,13 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAllEditClientContacts")]
-        public ApiResponse<List<GetAllEditClientContactResponse>> GetAllEditClientContact()
+        public ApiResponse<List<GetAllEditClientContactResponse>> GetAllEditClientContact(long Id)
         {
             ApiResponse<List<GetAllEditClientContactResponse>> response = new ApiResponse<List<GetAllEditClientContactResponse>>();
             try
             {
                 List<GetAllEditClientContactResponse> result = new List<GetAllEditClientContactResponse>();
-                result = _IEditClientRepo.GetAllEditClientContact();
+                result = _IEditClientRepo.GetAllEditClientContact(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -141,6 +141,23 @@ namespace TCManagementSystem.Controllers
             try
             {
                 _IEditClientRepo.SaveClientBilling(request);
+                response.Data = true;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpDelete]
+        [Route("DeleteClientContact")]
+        public ApiResponse<bool> DeleteClient(long Id)
+        {
+            ApiResponse<bool> response = new ApiResponse<bool>();
+            try
+            {
+                _IEditClientRepo.DeleteClientContact(Id);
                 response.Data = true;
             }
             catch (Exception ex)

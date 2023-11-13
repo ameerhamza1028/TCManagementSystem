@@ -7,5 +7,7 @@ public partial class Clinician
 {
     public int ClinicianId { get; set; }
 
+    public long? UserId { get; set; }
+
     public string? ClinicianName { get; set; }
 }

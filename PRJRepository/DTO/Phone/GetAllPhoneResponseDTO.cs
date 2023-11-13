@@ -17,5 +17,7 @@ namespace PRJRepository.DTO.Phone
         public bool? IsSendTextMessage { get; set; }
 
         public bool? IsSendVoiceMessage { get; set; }
+
+        public long? ContactId { get; set; }
     }
 }

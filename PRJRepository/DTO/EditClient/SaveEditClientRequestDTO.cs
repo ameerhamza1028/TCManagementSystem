@@ -89,6 +89,7 @@ namespace PRJRepository.DTO.EditClient
 
         public int? CityId { get; set; }
 
+
         public int? StateId { get; set; }
 
         public long? ZipCode { get; set; }
