@@ -44,7 +44,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteCard")]
         public ApiResponse<bool> DeleteCard(long Id)
         {

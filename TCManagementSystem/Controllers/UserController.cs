@@ -141,7 +141,7 @@ namespace TCManagementSystem.Controllers
 
 
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteUser")]
         public ApiResponse<bool> DeleteUser(long Id,string Name)
         {

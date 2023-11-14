@@ -44,7 +44,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeletePhone")]
         public ApiResponse<bool> DeletePhone(long Id)
         {

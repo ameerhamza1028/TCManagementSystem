@@ -83,7 +83,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteCalenderSetting")]
 
         public ApiResponse<bool> DeleteCalenderSetting(long Id)

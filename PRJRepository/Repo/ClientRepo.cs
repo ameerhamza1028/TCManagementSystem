@@ -24,6 +24,7 @@ namespace PRJRepository.Repo
             List<Models.Client> list = _context.Clients.ToList();
             foreach (var editClient in list)
             {
+                Address address = new Address();
                 SaveEditClientResponseDTO clientResponse = new SaveEditClientResponseDTO
                 {
                     ClientId = editClient.ClientId,
@@ -37,6 +38,10 @@ namespace PRJRepository.Repo
                     Status = true,
                     InsuranceId = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceId).FirstOrDefault(),
                     InsuranceType = _context.Insurances.Where(x => x.ClientId == editClient.ClientId).Select(x => x.InsuranceType).FirstOrDefault(),
+                    CountryName = _context.Addresses .Where(address => address.ClientId == editClient.ClientId).Join( _context.Countries,address => address.CountryId, country => country.Id, (address, country) => country.Name).FirstOrDefault(),
+                    StateName = _context.Addresses.Where(address => address.ClientId == editClient.ClientId).Join(_context.States,address => address.StateId, state => state.Id , (address,state) => state.Name).FirstOrDefault(),
+                    CityName = _context.Addresses.Where(address => address.ClientId == editClient.ClientId).Join(_context.Cities,address => address.CityId, city => city.Id, (address,city) => city.Name).FirstOrDefault(),
+                    ZipCode = _context.Addresses.Where(x => x.ClientId == editClient.ClientId).Select(x => x.ZipCode).FirstOrDefault(),
                     Address = _context.Addresses.Where(x => x.ClientId == editClient.ClientId).Select(x => x.Address1).FirstOrDefault(),
                     PaymentType = _context.EditClientBillings.Where(x => x.ClientId == editClient.ClientId).Select(x => x.PaymentPay).FirstOrDefault(),
                 };

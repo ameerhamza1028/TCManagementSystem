@@ -44,7 +44,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteClientAddress")]
         public ApiResponse<bool> DeleteClientAddress(long Id)
         {

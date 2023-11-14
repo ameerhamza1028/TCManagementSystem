@@ -79,7 +79,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteClient")]
         public ApiResponse<bool> DeleteClient(long Id)
         {

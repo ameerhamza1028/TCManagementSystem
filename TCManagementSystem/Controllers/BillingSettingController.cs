@@ -81,8 +81,8 @@ namespace TCManagementSystem.Controllers
                 return response;
             }
 
-            [HttpDelete]
-            [Route("DeleteBillingSetting")]
+        [HttpPost]
+        [Route("DeleteBillingSetting")]
             public ApiResponse<bool> DeleteBillingSetting(long Id)
             {
                 ApiResponse<bool> response = new ApiResponse<bool>();

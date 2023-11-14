@@ -22,6 +22,14 @@ namespace PRJRepository.DTO.EditClient
 
         public string? Address { get; set; }
 
+        public string? CountryName { get; set; }
+
+        public string? StateName { get; set; }
+
+        public string? CityName { get; set; }
+
+        public string? ZipCode { get; set; }
+
         public string? PaymentType { get; set; }
 
         public long? InsuranceId { get; set; }

@@ -26,7 +26,7 @@ namespace TCManagementSystem.Controllers
             _ICheckAvailabilityRepo = ICheckAvailabilityRepo;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("GetCheckAvailability")]
         public ApiResponse<GetAllCheckAvailabilityResponseDTO> GetCheckAvailability(GetAllCheckAvailabilityRequestDTO request
             )

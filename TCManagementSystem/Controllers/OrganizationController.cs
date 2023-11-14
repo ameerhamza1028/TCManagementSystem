@@ -79,8 +79,8 @@ namespace TCManagementSystem.Controllers
                 return response;
             }
 
-            [HttpDelete]
-            [Route("DeleteOrganization")]
+        [HttpPost]
+        [Route("DeleteOrganization")]
             public ApiResponse<bool> DeleteOrganization(long Id)
             {
                 ApiResponse<bool> response = new ApiResponse<bool>();

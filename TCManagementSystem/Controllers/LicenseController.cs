@@ -47,7 +47,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteLicense")]
         public ApiResponse<bool> DeleteLicense(long Id)
         {

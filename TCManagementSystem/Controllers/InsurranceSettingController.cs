@@ -79,7 +79,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteInsurranceSetting")]
         public ApiResponse<bool> DeleteInsurranceSetting(int id)
         {

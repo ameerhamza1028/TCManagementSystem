@@ -11,6 +11,8 @@ public partial class EditClientBilling
 
     public string? PaymentPay { get; set; }
 
+    public bool? IsAutoPayEnrolled { get; set; }
+
     public bool? IsCreateMonthlyStatement { get; set; }
 
     public bool? IsCreateMonthlySuperBills { get; set; }

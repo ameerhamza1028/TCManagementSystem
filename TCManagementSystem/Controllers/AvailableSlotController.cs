@@ -79,7 +79,7 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteAvailableSlot")]
         public ApiResponse<bool> DeleteAvailableSlot(long Id)
         {
