@@ -21,16 +21,29 @@ namespace PRJRepository.Repo
         {
             List<GetAllServiceSettingResponseDTO> response = new List<GetAllServiceSettingResponseDTO>();
             List<ServiceSetting> list = _context.ServiceSettings.ToList();
-            response = _mapper.Map<List<GetAllServiceSettingResponseDTO>>(list);
+            foreach (var item in list)
+            {
+                GetAllServiceSettingResponseDTO Settingresponse = new GetAllServiceSettingResponseDTO()
+                {
+                    ServiceId = item.ServiceId,
+                    Cptcode = item.Cptcode,
+                    ServiceDescription = item.ServiceDescription,
+                    Duration = item.Duration,
+                    RatePerUnit = item.RatePerUnit,
+                    ClinicianCount = _context.ClinicianServices.Where(x => x.ServiceId == item.ServiceId).Count(),
+
+                };
+                response.Add(Settingresponse);
+            }
             return response;
         }
 
 
-        public GetAllServiceSettingResponseDTO GetServiceSettingById(long Id)
+        public GetAllServiceSettingRequestDTO GetServiceSettingById(long Id)
         {
-            GetAllServiceSettingResponseDTO response = new GetAllServiceSettingResponseDTO();
+            GetAllServiceSettingRequestDTO response = new GetAllServiceSettingRequestDTO();
             ServiceSetting item = _context.ServiceSettings.Where(x => x.ServiceId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllServiceSettingResponseDTO>(item);
+            response = _mapper.Map<GetAllServiceSettingRequestDTO>(item);
             return response;
         }
 
@@ -47,17 +60,21 @@ namespace PRJRepository.Repo
                     _context.ServiceSettings.Add(ServiceSetting);
                     _context.SaveChanges();
 
-                }
-                else
-                {
-                    ServiceSetting = _context.ServiceSettings.Where(x => x.ServiceId == request.ServiceId).FirstOrDefault();
-                    ServiceSetting = _mapper.Map(request, ServiceSetting);
-                    _context.SaveChanges();
+                    List<ClinicianDTO> clinicianList = request.Clinician;
+                    foreach (var list in clinicianList)
+                    {
+                        ClinicianService clinicianservice = new ClinicianService();
+                        clinicianservice.ClinicianId = list.ClinicianId;
+                        clinicianservice.ClinicianName = _context.Clinicians.Where(x => x.ClinicianId == list.ClinicianId).Select(x => x.ClinicianName).FirstOrDefault();
+                        clinicianservice.ServiceId = ServiceSetting.ServiceId;
+                        _context.ClinicianServices.Add(clinicianservice);
+                        _context.SaveChanges();
+                    }
                 }
                 return true;
             }
             catch(Exception ex)
-            {
+            { 
                 return false;
             }
         }

@@ -105,6 +105,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Card, CardDTO>().ReverseMap();
             CreateMap<Insurance, InsuranceDTO>().ReverseMap();
             CreateMap<Currency, GetAllCurrencyResponseDTO>().ReverseMap();
+            CreateMap<ClinicianService, ClinicianDTO>().ReverseMap();
         }
     }
 }

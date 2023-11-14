@@ -33,7 +33,12 @@ namespace PRJRepository.DTO.ServiceSetting
 
         public int? MinutesAfter { get; set; }
 
-        public string[]? ClinicianIds { get; set; }
+        public List<ClinicianDTO>? Clinician { get; set; }
 
+    }
+
+    public class ClinicianDTO
+    {
+        public int? ClinicianId { get; set; }
     }
 }

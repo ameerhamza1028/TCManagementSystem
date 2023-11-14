@@ -63,6 +63,7 @@ namespace PRJRepository.Repo
                         if (request.AddressType == "SameAsClinic")
                         {
                             Clinic clinic = _context.Clinics.Where(x => x.ClinicId == request.ClinicId).FirstOrDefault();
+                            user.Address = clinic.Address;
                             user.CountryId = clinic.CountryId;
                             user.StateId = clinic.StateId;
                             user.CityId = clinic.CityId;

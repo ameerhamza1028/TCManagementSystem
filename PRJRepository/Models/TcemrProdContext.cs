@@ -43,6 +43,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<Clinician> Clinicians { get; set; }
 
+    public virtual DbSet<ClinicianService> ClinicianServices { get; set; }
+
     public virtual DbSet<Country> Countries { get; set; }
 
     public virtual DbSet<Currency> Currencies { get; set; }
@@ -271,6 +273,13 @@ public partial class TcemrProdContext : DbContext
         modelBuilder.Entity<Clinician>(entity =>
         {
             entity.ToTable("Clinician");
+
+            entity.Property(e => e.ClinicianName).HasMaxLength(200);
+        });
+
+        modelBuilder.Entity<ClinicianService>(entity =>
+        {
+            entity.ToTable("ClinicianService");
 
             entity.Property(e => e.ClinicianName).HasMaxLength(200);
         });
