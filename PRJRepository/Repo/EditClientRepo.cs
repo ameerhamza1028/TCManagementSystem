@@ -228,7 +228,6 @@ namespace PRJRepository.Repo
         {
             try
             {
-                EditClient edit = new EditClient();
                 EditClientBilling editbilling = new EditClientBilling();
                 editbilling = _context.EditClientBillings.Where(c => c.ClientId == request.ClientId).FirstOrDefault();
                 if (editbilling != null)
@@ -241,7 +240,7 @@ namespace PRJRepository.Repo
                         if (list.CardId == 0)
                         {
                             card = _mapper.Map<Card>(list);
-                            card.ClientId = edit.ClientId;
+                            card.ClientId = editbilling.ClientId;
                             card.IsActive = true;
                             card.CreationDate = DateTime.UtcNow;
                             _context.Cards.Add(card);
@@ -267,9 +266,18 @@ namespace PRJRepository.Repo
                         if (list.InsuranceId == 0)
                         {
                             Insurance = _mapper.Map<Insurance>(list);
-                            Insurance.ClientId = edit.ClientId;
+                            Insurance.ClientId = editbilling.ClientId;
                             Insurance.IsActive = true;
                             Insurance.CreationDate = DateTime.UtcNow;
+                            if(list.AddressType == "SameAsClient")
+                            {
+                                Address address = _context.Addresses.Where(x => x.ClientId == request.ClientId).FirstOrDefault();
+                                list.Address = address.Address1;
+                                list.CountryId = address.CountryId;
+                                list.CityId = address.CityId;
+                                list.StateId = address.StateId;
+                                list.ZipCode = address.ZipCode;
+                            }
                             _context.Insurances.Add(Insurance);
                         }
                         else

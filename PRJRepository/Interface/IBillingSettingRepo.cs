@@ -9,9 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IBillingSettingRepo
     {
-        public List<GetAllBillingSettingResponseDTO> GetAllBillingSetting();
         public GetAllBillingSettingResponseDTO GetBillingSettingById(long Id);
         public bool SaveBillingSetting(GetAllBillingSettingRequestDTO request);
-        public bool DeleteBillingSetting(long Id);
     }
 }

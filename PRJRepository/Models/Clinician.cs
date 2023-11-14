@@ -10,4 +10,6 @@ public partial class Clinician
     public long? UserId { get; set; }
 
     public string? ClinicianName { get; set; }
+
+    public long? ServiceId { get; set; }
 }

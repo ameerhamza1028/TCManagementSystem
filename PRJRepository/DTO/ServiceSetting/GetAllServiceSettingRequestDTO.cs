@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRJRepository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace PRJRepository.DTO.ServiceSetting
 
         public string? ServiceDescription { get; set; }
 
-        public long? Cptcode { get; set; }
+        public int? Cptcode { get; set; }
 
         public int? RatePerUnit { get; set; }
 
@@ -32,9 +33,7 @@ namespace PRJRepository.DTO.ServiceSetting
 
         public int? MinutesAfter { get; set; }
 
-        public int? ClicianId { get; set; }
-
-        public long? CreatedBy { get; set; }
+        public string[]? ClinicianIds { get; set; }
 
     }
 }

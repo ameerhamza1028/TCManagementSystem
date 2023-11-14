@@ -98,6 +98,7 @@ internal class Program
         builder.Services.AddTransient<IServiceRepo, ServiceRepo>();
         builder.Services.AddTransient<IEmailRepo, EmailRepo>();
         builder.Services.AddTransient<ICountryRepo, CountryRepo>();
+        builder.Services.AddTransient<ICurrencyRepo, CurrencyRepo>();
 
 
 

@@ -7,23 +7,19 @@ public partial class BillingSetting
 {
     public int BillingId { get; set; }
 
-    public decimal? BillingCurrency { get; set; }
+    public int? BillingCurrencyId { get; set; }
 
     public long? TaxId { get; set; }
 
     public long? OrgNpi { get; set; }
 
-    public bool? IsAppointmentService { get; set; }
+    public int? ServiceDefaultType { get; set; }
 
-    public bool? IsProfessionalService { get; set; }
-
-    public bool? IsDaily { get; set; }
-
-    public bool? IsMonthly { get; set; }
-
-    public bool? IsManually { get; set; }
+    public int? InvoiceCreation { get; set; }
 
     public int? InvoicePastDue { get; set; }
+
+    public bool? IsGenerateInvoice { get; set; }
 
     public int? MonthlyStatement { get; set; }
 
@@ -34,6 +30,8 @@ public partial class BillingSetting
     public bool? IsNewClientStatement { get; set; }
 
     public bool? IsNewClientSuperBills { get; set; }
+
+    public int? DefaultNotification { get; set; }
 
     public DateTime? CreationDate { get; set; }
 

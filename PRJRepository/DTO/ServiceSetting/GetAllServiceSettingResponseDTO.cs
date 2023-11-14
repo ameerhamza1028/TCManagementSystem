@@ -14,7 +14,7 @@ namespace PRJRepository.DTO.ServiceSetting
 
         public string? ServiceDescription { get; set; }
 
-        public long? Cptcode { get; set; }
+        public int? Cptcode { get; set; }
 
         public int? RatePerUnit { get; set; }
 
@@ -32,12 +32,6 @@ namespace PRJRepository.DTO.ServiceSetting
 
         public int? MinutesAfter { get; set; }
 
-        public int? ClicianId { get; set; }
-
-        public DateTime? CreationDate { get; set; }
-
-        public long? CreatedBy { get; set; }
-
-        public bool? IsActive { get; set; }
+        public int? ClinicianId { get; set; }
     }
 }

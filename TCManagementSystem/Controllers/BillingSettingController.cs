@@ -27,25 +27,6 @@ namespace TCManagementSystem.Controllers
             }
 
             [HttpGet]
-            [Route("GetAllBillingSetting")]
-            public ApiResponse<List<GetAllBillingSettingResponseDTO>> GetAllBillingSetting()
-
-            {
-                ApiResponse<List<GetAllBillingSettingResponseDTO>> response = new ApiResponse<List<GetAllBillingSettingResponseDTO>>();
-                try
-                {
-                    List<GetAllBillingSettingResponseDTO> result = new List<GetAllBillingSettingResponseDTO>();
-                    result = _IBillingSettingRepo.GetAllBillingSetting();
-                    response.Data = result;
-                }
-                catch (Exception ex)
-                {
-                    response.Message = ex.Message;
-                }
-                return response;
-            }
-
-            [HttpGet]
             [Route("GetBillingSettingById")]
 
             public ApiResponse<GetAllBillingSettingResponseDTO> GetBillingSettingById(long Id)
@@ -72,25 +53,6 @@ namespace TCManagementSystem.Controllers
                 try
                 {
                     _IBillingSettingRepo.SaveBillingSetting(request);
-                    response.Data = true;
-                }
-                catch (Exception ex)
-                {
-                    response.Message = ex.Message;
-                }
-                return response;
-            }
-
-        [HttpPost]
-        [Route("DeleteBillingSetting")]
-            public ApiResponse<bool> DeleteBillingSetting(long Id)
-            {
-                ApiResponse<bool> response = new ApiResponse<bool>();
-                try
-                {
-
-                    _IBillingSettingRepo.DeleteBillingSetting(Id);
-
                     response.Data = true;
                 }
                 catch (Exception ex)

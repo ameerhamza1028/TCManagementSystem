@@ -11,7 +11,7 @@ public partial class ServiceSetting
 
     public string? ServiceDescription { get; set; }
 
-    public long? Cptcode { get; set; }
+    public int? Cptcode { get; set; }
 
     public int? RatePerUnit { get; set; }
 
@@ -29,7 +29,7 @@ public partial class ServiceSetting
 
     public int? MinutesAfter { get; set; }
 
-    public int? ClicianId { get; set; }
+    public string? ClinicianId { get; set; }
 
     public DateTime? CreationDate { get; set; }
 

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using PRJRepository.DTO.ServiceSetting;
+using PRJRepository.DTO.User;
 using PRJRepository.Interface;
 using PRJRepository.Models;
+using System.ComponentModel;
 
 namespace PRJRepository.Repo
 {
@@ -44,6 +46,7 @@ namespace PRJRepository.Repo
                     ServiceSetting.CreationDate = DateTime.UtcNow;
                     _context.ServiceSettings.Add(ServiceSetting);
                     _context.SaveChanges();
+
                 }
                 else
                 {
@@ -53,7 +56,7 @@ namespace PRJRepository.Repo
                 }
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }

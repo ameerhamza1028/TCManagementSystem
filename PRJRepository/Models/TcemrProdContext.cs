@@ -45,6 +45,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<Country> Countries { get; set; }
 
+    public virtual DbSet<Currency> Currencies { get; set; }
+
     public virtual DbSet<EditClient> EditClients { get; set; }
 
     public virtual DbSet<EditClientBilling> EditClientBillings { get; set; }
@@ -82,9 +84,8 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -140,7 +141,6 @@ public partial class TcemrProdContext : DbContext
 
             entity.ToTable("BillingSetting");
 
-            entity.Property(e => e.BillingCurrency).HasColumnType("money");
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.OrgNpi).HasColumnName("OrgNPI");
         });
@@ -290,6 +290,30 @@ public partial class TcemrProdContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<Currency>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Currency__3213E83FE6218F63");
+
+            entity.ToTable("Currency");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Code)
+                .HasMaxLength(3)
+                .IsUnicode(false)
+                .HasColumnName("code");
+            entity.Property(e => e.Country)
+                .HasMaxLength(36)
+                .IsUnicode(false)
+                .HasColumnName("country");
+            entity.Property(e => e.Currency1)
+                .HasMaxLength(39)
+                .IsUnicode(false)
+                .HasColumnName("currency");
+            entity.Property(e => e.Symbol)
+                .HasMaxLength(5)
+                .HasColumnName("symbol");
+        });
+
         modelBuilder.Entity<EditClient>(entity =>
         {
             entity.ToTable("EditClient");
@@ -349,6 +373,7 @@ public partial class TcemrProdContext : DbContext
             entity.ToTable("Insurance");
 
             entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.AddressType).HasMaxLength(50);
             entity.Property(e => e.Copay).HasColumnType("money");
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Deductible).HasColumnType("money");
@@ -462,6 +487,7 @@ public partial class TcemrProdContext : DbContext
 
             entity.ToTable("ServiceSetting");
 
+            entity.Property(e => e.ClinicianId).HasMaxLength(50);
             entity.Property(e => e.Cptcode).HasColumnName("CPTCode");
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.ServiceDescription).HasMaxLength(300);

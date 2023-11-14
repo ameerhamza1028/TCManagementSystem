@@ -20,9 +20,9 @@ namespace PRJRepository.DTO.Insurance
 
         public string? LastName { get; set; }
 
-        public string? Sex { get; set; }
+        public int? Sex { get; set; }
 
-        public string? Month { get; set; }
+        public int? Month { get; set; }
 
         public int? Day { get; set; }
 
@@ -30,13 +30,19 @@ namespace PRJRepository.DTO.Insurance
 
         public string? Phone { get; set; }
 
+        public string? AddressType { get; set; }
+
         public string? Address { get; set; }
+
+        public int? CountryId { get; set; }
 
         public int? CityId { get; set; }
 
         public int? StateId { get; set; }
 
-        public long? ZipCode { get; set; }
+        public string? ZipCode { get; set; }
+
+        public int? InsuranceNumber { get; set; }
 
         public long? MemberId { get; set; }
 
@@ -57,8 +63,6 @@ namespace PRJRepository.DTO.Insurance
         public string? EmployerOrSchool { get; set; }
 
         public string? InsuranceCardPhoto { get; set; }
-
-        public long? CreatedBy { get; set; }
 
     }
 }

@@ -15,13 +15,6 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllBillingSettingResponseDTO> GetAllBillingSetting()
-        {
-            List<GetAllBillingSettingResponseDTO> response = new List<GetAllBillingSettingResponseDTO>();
-            List<BillingSetting> list = _context.BillingSettings.ToList();
-            response = _mapper.Map<List<GetAllBillingSettingResponseDTO>>(list);
-            return response;
-        }
         public GetAllBillingSettingResponseDTO GetBillingSettingById(long Id)
         {
             GetAllBillingSettingResponseDTO response = new GetAllBillingSettingResponseDTO();
@@ -55,22 +48,6 @@ namespace PRJRepository.Repo
             {
                 return false;
             }
-        }
-
-        public bool DeleteBillingSetting(long Id)
-        {
-            try
-            {
-                BillingSetting billingSetting = _context.BillingSettings.FirstOrDefault(x => x.BillingId == Id);
-                billingSetting.IsActive = false;
-                _context.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
         }
     }
 }

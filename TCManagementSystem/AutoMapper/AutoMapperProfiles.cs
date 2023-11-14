@@ -12,6 +12,7 @@ using PRJRepository.DTO.ClientForm;
 using PRJRepository.DTO.Clinic;
 using PRJRepository.DTO.ClinicLocation;
 using PRJRepository.DTO.Country;
+using PRJRepository.DTO.Currency;
 using PRJRepository.DTO.EditClient;
 using PRJRepository.DTO.Email;
 using PRJRepository.DTO.Insurance;
@@ -103,6 +104,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Phone, Phone2DTO>().ReverseMap();
             CreateMap<Card, CardDTO>().ReverseMap();
             CreateMap<Insurance, InsuranceDTO>().ReverseMap();
+            CreateMap<Currency, GetAllCurrencyResponseDTO>().ReverseMap();
         }
     }
 }

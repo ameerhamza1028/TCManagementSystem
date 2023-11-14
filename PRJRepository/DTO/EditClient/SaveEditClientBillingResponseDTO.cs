@@ -8,6 +8,7 @@ namespace PRJRepository.DTO.EditClient
 {
     public class SaveEditClientBillingResponseDTO
     {
+        public long? ClientId { get; set; }
         public long BillingId { get; set; }
 
         public string? PaymentPay { get; set; }

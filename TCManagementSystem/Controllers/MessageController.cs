@@ -30,6 +30,24 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllPeopleList")]
+        public ApiResponse<List<GetMessageResponseDTO>> GetAllPeople()
+        {
+            ApiResponse<List<GetMessageResponseDTO>> response = new ApiResponse<List<GetMessageResponseDTO>>();
+            try
+            {
+                List<GetMessageResponseDTO> result = new List<GetMessageResponseDTO>();
+                result = _IMessageRepo.GetAllMessage();
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
         [Route("GetAllMessages")]
         public ApiResponse<List<GetMessageResponseDTO>> GetAllMessage()
         {
