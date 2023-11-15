@@ -17,10 +17,29 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllServiceSettingResponseDTO> GetAllServiceSetting()
+
+        public List<GetAllServiceResponseDTO> GetAllServiceNames()
+        {
+            List<GetAllServiceResponseDTO> response = new List<GetAllServiceResponseDTO>();
+            List<ServiceSetting> list = _context.ServiceSettings.ToList();
+            foreach (var item in list)
+            {
+                GetAllServiceResponseDTO Settingresponse = new GetAllServiceResponseDTO()
+                {
+                    Cptcode = item.Cptcode,
+                    ServiceDescription = item.ServiceDescription,
+                    Duration = item.Duration,
+
+                };
+                response.Add(Settingresponse);
+            }
+            return response;
+        }
+
+        public List<GetAllServiceSettingResponseDTO> GetAllServiceSetting(long Id)
         {
             List<GetAllServiceSettingResponseDTO> response = new List<GetAllServiceSettingResponseDTO>();
-            List<ServiceSetting> list = _context.ServiceSettings.ToList();
+            List<ServiceSetting> list = _context.ServiceSettings.Where(x => x.ClinicId == Id).ToList();
             foreach (var item in list)
             {
                 GetAllServiceSettingResponseDTO Settingresponse = new GetAllServiceSettingResponseDTO()
@@ -85,15 +104,38 @@ namespace PRJRepository.Repo
             try
             {
                 ServiceSetting serviceSetting = _context.ServiceSettings.FirstOrDefault(x => x.ServiceId == Id);
-                serviceSetting.IsActive = false;
-                _context.SaveChanges();
-                return true;
+                if(serviceSetting != null)
+                {
+                    serviceSetting.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                { return false; }
+                
             }
             catch
             {
                 return false;
             }
 
+        }
+
+        public List<GetAllClinicianServiceResponseDTO> GetClinicianServices(long Id)
+        {
+            List<GetAllClinicianServiceResponseDTO> response = new List<GetAllClinicianServiceResponseDTO>();
+            List<ClinicianService> list = _context.ClinicianServices.Where(x => x.ServiceId == Id).ToList();
+            foreach (var item in list)
+            {
+                GetAllClinicianServiceResponseDTO clinicianresponse = new GetAllClinicianServiceResponseDTO()
+                {
+
+                    ClinicianId = item.ClinicianId,
+
+                };
+                response.Add(clinicianresponse);
+            }
+            return response;
         }
     }
 }

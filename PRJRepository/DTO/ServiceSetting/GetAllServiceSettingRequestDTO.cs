@@ -9,6 +9,7 @@ namespace PRJRepository.DTO.ServiceSetting
 {
     public class GetAllServiceSettingRequestDTO
     {
+        public long? ClinicId { get; set; }
         public long ServiceId { get; set; }
 
         public string? ServiceName { get; set; }
@@ -23,7 +24,7 @@ namespace PRJRepository.DTO.ServiceSetting
 
         public bool? IsDefaultService { get; set; }
 
-        public bool? IsSelfPay { get; set; }
+        public int? PaymentType { get; set; }
 
         public bool? IsBookedforNewClient { get; set; }
 

@@ -12,7 +12,7 @@ namespace PRJRepository.Interface
     {
         public List<GetAllUserResponseDTO> GetAllUserByClinicId(long Id);
         public EditUserResponseDTO GetUserById(long Id);
-        public SaveUserResponseDTO SaveUser(GetAllUserRequestDTO request);
+        public bool SaveUser(GetAllUserRequestDTO request);
         public bool DeleteUser(long Id, string Name);
     }
 }

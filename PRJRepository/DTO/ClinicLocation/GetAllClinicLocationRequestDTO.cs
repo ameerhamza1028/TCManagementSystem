@@ -8,13 +8,17 @@ namespace PRJRepository.DTO.ClinicLocation
 {
     public class GetAllClinicLocationRequestDTO
     {
-        public long LocationId { get; set; }
+        public long ClinicLocationId { get; set; }
+
+        public long? ClinicId { get; set; }
 
         public string? ShortName { get; set; }
 
         public string? LongName { get; set; }
 
         public string? Address { get; set; }
+
+        public int? CountryId { get; set; }
 
         public int? CityId { get; set; }
 
@@ -24,7 +28,17 @@ namespace PRJRepository.DTO.ClinicLocation
 
         public string? BillingAddress { get; set; }
 
-        public string? IndividualOffice { get; set; }
+        public string? Address1 { get; set; }
+
+        public int? CountryId1 { get; set; }
+
+        public int? CityId1 { get; set; }
+
+        public int? StateId1 { get; set; }
+
+        public string? ZipCode1 { get; set; }
+
+        public int? IndividualOffice { get; set; }
 
         public string? Phone { get; set; }
 
@@ -42,6 +56,6 @@ namespace PRJRepository.DTO.ClinicLocation
 
         public int? ServicePlace { get; set; }
 
-        public long? CreatedBy { get; set; }
+        public bool? Status { get; set; }
     }
 }

@@ -28,6 +28,24 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllClientsNames")]
+        public ApiResponse<List<GetAllClientNameResponseDTO>> GetAllClientName()
+        {
+            ApiResponse<List<GetAllClientNameResponseDTO>> response = new ApiResponse<List<GetAllClientNameResponseDTO>>();
+            try
+            {
+                List<GetAllClientNameResponseDTO> result = new List<GetAllClientNameResponseDTO>();
+                result = _IClientRepo.GetAllClientNames();
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
         [Route("GetAllClients")]
         public ApiResponse<List<SaveEditClientResponseDTO>> GetAllClient()
         {

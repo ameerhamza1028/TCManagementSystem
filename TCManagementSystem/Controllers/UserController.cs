@@ -66,14 +66,13 @@ namespace TCManagementSystem.Controllers
 
         [HttpPost]
         [Route("SaveUser")]
-        public ApiResponse<SaveUserResponseDTO> SaveUser([FromBody] GetAllUserRequestDTO request)
+        public ApiResponse<bool> SaveUser([FromBody] GetAllUserRequestDTO request)
         {
-            ApiResponse<SaveUserResponseDTO> response = new ApiResponse<SaveUserResponseDTO>();
+            ApiResponse<bool> response = new ApiResponse<bool>();
             try
             {
-                SaveUserResponseDTO result = new SaveUserResponseDTO();
-                result = _IUserRepo.SaveUser(request);
-                response.Data = result;
+                _IUserRepo.SaveUser(request);
+                response.Data = true;
             }
             catch (Exception ex)
             {

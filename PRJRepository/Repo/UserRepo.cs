@@ -43,23 +43,45 @@ namespace PRJRepository.Repo
 
             return response;
         }
-        public SaveUserResponseDTO SaveUser(GetAllUserRequestDTO request)
+        public bool SaveUser(GetAllUserRequestDTO request)
         {
-                    SaveUserResponseDTO response = new SaveUserResponseDTO();
-                    Login login = _mapper.Map<Login>(request);
-                    login.Email = request.Email;
-                    login.Password = GenerateRandomPassword(15);
-                    login.IsTermsAndConditions = true;
-                    login.IsRememberMe = true;
-                    login.IsActive = true;
-                    login.CreationDate = DateTime.UtcNow;
-                    login.RoleId = request.UserType;
-                    _context.Logins.Add(login);
-                    _context.SaveChanges();
-                    TcUser user = new TcUser();
-                    if (request.UserId == 0)
+            try
+            {
+                Login login = _mapper.Map<Login>(request);
+                login.Email = request.Email;
+                login.Password = GenerateRandomPassword(15);
+                login.IsTermsAndConditions = true;
+                login.IsRememberMe = true;
+                login.IsActive = true;
+                login.CreationDate = DateTime.UtcNow;
+                login.RoleId = request.UserType;
+                _context.Logins.Add(login);
+                _context.SaveChanges();
+                TcUser user = new TcUser();
+                if (request.UserId == 0)
+                {
+                    user = _mapper.Map<TcUser>(request);
+                    if (request.AddressType == "SameAsClinic")
                     {
-                        user = _mapper.Map<TcUser>(request);
+                        Clinic clinic = _context.Clinics.Where(x => x.ClinicId == request.ClinicId).FirstOrDefault();
+                        user.Address = clinic.Address;
+                        user.CountryId = clinic.CountryId;
+                        user.StateId = clinic.StateId;
+                        user.CityId = clinic.CityId;
+                        user.ZipCode = clinic.ZipCode;
+                    }
+                    user.IsActive = true;
+                    user.CreationDate = DateTime.UtcNow;
+                    user.LoginId = login.LoginId;
+                    _context.TcUsers.Add(user);
+                }
+                else
+                {
+                    user = _context.TcUsers.FirstOrDefault(x => x.UserId == request.UserId);
+
+                    if (user != null)
+                    {
+                        _mapper.Map(request, user);
                         if (request.AddressType == "SameAsClinic")
                         {
                             Clinic clinic = _context.Clinics.Where(x => x.ClinicId == request.ClinicId).FirstOrDefault();
@@ -69,59 +91,51 @@ namespace PRJRepository.Repo
                             user.CityId = clinic.CityId;
                             user.ZipCode = clinic.ZipCode;
                         }
-                        user.IsActive = true;
-                        user.CreationDate = DateTime.UtcNow;
-                        user.LoginId = login.LoginId;
-                        _context.TcUsers.Add(user);
+                    }
+                }
+                _context.SaveChanges();
+
+                if (request.UserType == 3)
+                {
+                    Clinician clinician = new Clinician();
+                    clinician.UserId = user.UserId;
+                    clinician.ClinicianName = request.UserName;
+                    _context.Clinicians.Add(clinician);
+                    _context.SaveChanges();
+                }
+
+
+                List<LicenseDTO> licenseList = request.LicenseRequets;
+                foreach (var list in licenseList)
+                {
+                    License license;
+
+                    if (list.LicenseId == 0)
+                    {
+                        license = _mapper.Map<License>(list);
+                        license.UserId = user.UserId;
+                        license.IsActive = true;
+                        license.CreationDate = DateTime.UtcNow;
+                        _context.Licenses.Add(license);
                     }
                     else
                     {
-                        user = _context.TcUsers.FirstOrDefault(x => x.UserId == request.UserId);
+                        license = _context.Licenses.FirstOrDefault(x => x.LicenseId == list.LicenseId);
 
-                        if (user != null)
+                        if (license != null)
                         {
-                            _mapper.Map(request, user);
+                            _mapper.Map(list, license);
                         }
                     }
-                    _context.SaveChanges();
-
-                    if (request.UserType == 3)
-                    {
-                        Clinician clinician = new Clinician();
-                        clinician.UserId = user.UserId;
-                        clinician.ClinicianName = request.UserName;
-                        _context.Clinicians.Add(clinician);
-                        _context.SaveChanges();
-                    }
-
-
-            List<LicenseDTO> licenseList = request.LicenseRequets; 
-            foreach (var list in licenseList)
-            {
-                License license;
-
-                if (list.LicenseId == 0)
-                {
-                    license = _mapper.Map<License>(list); 
-                    license.UserId = user.UserId;
-                    license.IsActive = true;
-                    license.CreationDate = DateTime.UtcNow;
-                    _context.Licenses.Add(license);
                 }
-                else
-                {
-                    license = _context.Licenses.FirstOrDefault(x => x.LicenseId == list.LicenseId);
-
-                    if (license != null)
-                    {
-                        _mapper.Map(list, license); 
-                    }
-                }
+                _context.SaveChanges();
+                return true;
             }
 
-            _context.SaveChanges();
-            response.UserId = user.UserId;
-            return response;
+            catch
+            {
+                return false;
+            }
         }
         public string GenerateRandomPassword(int length)
         {

@@ -27,31 +27,13 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllClinicLocation")]
-        public ApiResponse<List<GetAllClinicLocationResponseDTO>> GetAllClinicLocation()
-        {
-            ApiResponse<List<GetAllClinicLocationResponseDTO>> response = new ApiResponse<List<GetAllClinicLocationResponseDTO>>();
-            try
-            {
-                List<GetAllClinicLocationResponseDTO> result = new List<GetAllClinicLocationResponseDTO>();
-                result = _IClinicLocationRepo.GetAllClinicLocation();
-                response.Data = result;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpGet]
         [Route("GetClinicLocationById")]
-        public ApiResponse<GetAllClinicLocationResponseDTO> GetClinicLocationById(long Id)
+        public ApiResponse<GetAllClinicLocationRequestDTO> GetClinicLocationById(long Id)
         {
-            ApiResponse<GetAllClinicLocationResponseDTO> response = new ApiResponse<GetAllClinicLocationResponseDTO>();
+            ApiResponse<GetAllClinicLocationRequestDTO> response = new ApiResponse<GetAllClinicLocationRequestDTO>();
             try
             {
-                GetAllClinicLocationResponseDTO result = new GetAllClinicLocationResponseDTO();
+                GetAllClinicLocationRequestDTO result = new GetAllClinicLocationRequestDTO();
                 result = _IClinicLocationRepo.GetClinicLocationById(Id);
                 response.Data = result;
             }
@@ -70,23 +52,6 @@ namespace TCManagementSystem.Controllers
             try
             {
                 _IClinicLocationRepo.SaveClinicLocation(request);
-                response.Data = true;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-            }
-            return response;
-        }
-
-        [HttpPost]
-        [Route("DeleteClinicLocation")]
-        public ApiResponse<bool> DeleteClinicLocation(long Id)
-        {
-            ApiResponse<bool> response = new ApiResponse<bool>();
-            try
-            {
-                _IClinicLocationRepo.DeleteClinicLocation(Id);
                 response.Data = true;
             }
             catch (Exception ex)

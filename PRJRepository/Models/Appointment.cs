@@ -9,11 +9,7 @@ public partial class Appointment
 
     public long ClientId { get; set; }
 
-    public string? ClientName { get; set; }
-
-    public bool? IsClientAppointment { get; set; }
-
-    public bool? IsOther { get; set; }
+    public int? AppointmentType { get; set; }
 
     public bool? AllDay { get; set; }
 
@@ -25,13 +21,13 @@ public partial class Appointment
 
     public long? ClicianId { get; set; }
 
-    public long? LocationId { get; set; }
+    public string? Location { get; set; }
 
     public bool? Repeat { get; set; }
 
-    public long? VirtualLocationId { get; set; }
+    public string? VirtualLocationId { get; set; }
 
-    public int? ServiceId { get; set; }
+    public long? ServiceId { get; set; }
 
     public DateTime? CreationDate { get; set; }
 

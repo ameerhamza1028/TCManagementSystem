@@ -9,9 +9,7 @@ namespace PRJRepository.Interface
 {
     public interface IClinicLocationRepo
     {
-        public List<GetAllClinicLocationResponseDTO> GetAllClinicLocation();
-        public GetAllClinicLocationResponseDTO GetClinicLocationById(long Id);
+        public GetAllClinicLocationRequestDTO GetClinicLocationById(long Id);
         public bool SaveClinicLocation(GetAllClinicLocationRequestDTO request);
-        public bool DeleteClinicLocation(long Id);
     }
 }

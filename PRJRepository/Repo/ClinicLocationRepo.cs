@@ -15,19 +15,11 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllClinicLocationResponseDTO> GetAllClinicLocation()
+        public GetAllClinicLocationRequestDTO GetClinicLocationById(long Id)
         {
-            List<GetAllClinicLocationResponseDTO> response = new List<GetAllClinicLocationResponseDTO>();
-            List<ClinicLocation> list = _context.ClinicLocations.ToList();
-            response = _mapper.Map<List<GetAllClinicLocationResponseDTO>>(list);
-            return response;
-        }
-
-        public GetAllClinicLocationResponseDTO GetClinicLocationById(long Id)
-        {
-            GetAllClinicLocationResponseDTO response = new GetAllClinicLocationResponseDTO();
-            ClinicLocation item = _context.ClinicLocations.Where(x => x.LocationId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllClinicLocationResponseDTO>(item);
+            GetAllClinicLocationRequestDTO response = new GetAllClinicLocationRequestDTO();
+            ClinicLocation item = _context.ClinicLocations.Where(x => x.ClinicId == Id).FirstOrDefault();
+            response = _mapper.Map<GetAllClinicLocationRequestDTO>(item);
             return response;
         }
 
@@ -36,18 +28,38 @@ namespace PRJRepository.Repo
             try
             {
                 ClinicLocation ClinicLocation = new ClinicLocation();
-                if (request.LocationId == 0)
+                if (request.ClinicLocationId == 0)
                 {
                     ClinicLocation = _mapper.Map<ClinicLocation>(request);
                     ClinicLocation.IsActive = true;
                     ClinicLocation.CreationDate = DateTime.UtcNow;
+                    if(request.BillingAddress == "SameAsFacility")
+                    {
+                        Clinic clinic = _context.Clinics.Where(x => x.ClinicId ==  request.ClinicId).FirstOrDefault();
+                        ClinicLocation.Address1 = clinic.Address;
+                        ClinicLocation.CountryId1 = clinic.CountryId;
+                        ClinicLocation.StateId1 = clinic.StateId;
+                        ClinicLocation.CityId1 = clinic.CityId;
+                        ClinicLocation.ZipCode1 = clinic.ZipCode;
+
+                    }
                     _context.ClinicLocations.Add(ClinicLocation);
                     _context.SaveChanges();
                 }
                 else
                 {
-                    ClinicLocation = _context.ClinicLocations.Where(x => x.LocationId == request.LocationId).FirstOrDefault();
+                    ClinicLocation = _context.ClinicLocations.Where(x => x.ClinicLocationId == request.ClinicLocationId).FirstOrDefault();
                     ClinicLocation = _mapper.Map(request, ClinicLocation);
+                    if (request.BillingAddress == "SameAsFacility")
+                    {
+                        Clinic clinic = _context.Clinics.Where(x => x.ClinicId == request.ClinicId).FirstOrDefault();
+                        ClinicLocation.Address1 = clinic.Address;
+                        ClinicLocation.CountryId1 = clinic.CountryId;
+                        ClinicLocation.StateId1 = clinic.StateId;
+                        ClinicLocation.CityId1 = clinic.CityId;
+                        ClinicLocation.ZipCode1 = clinic.ZipCode;
+
+                    }
                     _context.SaveChanges();
                 }
                 return true;
@@ -56,22 +68,6 @@ namespace PRJRepository.Repo
             {
                 return false;
             }
-        }
-
-        public bool DeleteClinicLocation(long Id)
-        {
-            try
-            {
-                ClinicLocation clinicLocation = _context.ClinicLocations.FirstOrDefault(x => x.LocationId == Id);
-                clinicLocation.IsActive = false;
-                _context.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-
         }
     }
 }

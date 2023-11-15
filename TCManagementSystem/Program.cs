@@ -95,10 +95,12 @@ internal class Program
         builder.Services.AddTransient<IClientAddressRepo, ClientAddressRepo>();
         builder.Services.AddTransient<ICardRepo, CardRepo>();
         builder.Services.AddTransient<IInsuranceRepo, InsuranceRepo>();
-        builder.Services.AddTransient<IServiceRepo, ServiceRepo>();
         builder.Services.AddTransient<IEmailRepo, EmailRepo>();
         builder.Services.AddTransient<ICountryRepo, CountryRepo>();
         builder.Services.AddTransient<ICurrencyRepo, CurrencyRepo>();
+        builder.Services.AddTransient<IImportClientRepo, ImportClientRepo>();
+        builder.Services.AddTransient<ICPTCodeRepo, CPTCodeRepo>();
+        builder.Services.AddTransient<IClinicianRepo, ClinicianRepo>();
 
 
 

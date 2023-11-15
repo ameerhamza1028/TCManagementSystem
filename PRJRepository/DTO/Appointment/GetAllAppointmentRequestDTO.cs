@@ -8,7 +8,7 @@ namespace PRJRepository.DTO.Appointment
 {
     public class GetAllAppointmentRequestDTO
     {
-        public int AppointmentId { get; set; }
+        public long AppointmentId { get; set; }
 
         public long ClientId { get; set; }
 
@@ -34,7 +34,6 @@ namespace PRJRepository.DTO.Appointment
 
         public long? VirtualLocationId { get; set; }
 
-        public int? ServiceId { get; set; }
-        public long? CreatedBy { get; set; }
+        public long? ServiceId { get; set; }
     }
 }

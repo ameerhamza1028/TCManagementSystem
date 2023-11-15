@@ -27,15 +27,34 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllServiceNames")]
+
+        public ApiResponse<List<GetAllServiceResponseDTO>> GetAllServiceNames()
+        {
+            ApiResponse<List<GetAllServiceResponseDTO>> response = new ApiResponse<List<GetAllServiceResponseDTO>>();
+            try
+            {
+                List<GetAllServiceResponseDTO> result = new List<GetAllServiceResponseDTO>();
+                result = _IServiceSettingRepo.GetAllServiceNames();
+                response.Data = result;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
         [Route("GetAllServiceSetting")]
 
-        public ApiResponse<List<GetAllServiceSettingResponseDTO>> GetAllServicesSetting()
+        public ApiResponse<List<GetAllServiceSettingResponseDTO>> GetAllServicesSetting(long Id)
         {
             ApiResponse<List<GetAllServiceSettingResponseDTO>> response = new ApiResponse<List<GetAllServiceSettingResponseDTO>>();
             try
             {
                 List<GetAllServiceSettingResponseDTO> result = new List<GetAllServiceSettingResponseDTO>();
-                result = _IServiceSettingRepo.GetAllServiceSetting();
+                result = _IServiceSettingRepo.GetAllServiceSetting(Id);
                 response.Data = result;
             }
             catch (Exception ex)
@@ -95,6 +114,25 @@ namespace TCManagementSystem.Controllers
                 _IServiceSettingRepo.DeleteServiceSetting(Id);
 
                 response.Data = true;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetClinicianServices")]
+
+        public ApiResponse<List<GetAllClinicianServiceResponseDTO>> GetClinicianServices(long Id)
+        {
+            ApiResponse<List<GetAllClinicianServiceResponseDTO>> response = new ApiResponse<List<GetAllClinicianServiceResponseDTO>>();
+            try
+            {
+                List<GetAllClinicianServiceResponseDTO> result = new List<GetAllClinicianServiceResponseDTO>();
+                result = _IServiceSettingRepo.GetClinicianServices(Id);
+                response.Data = result;
             }
             catch (Exception ex)
             {

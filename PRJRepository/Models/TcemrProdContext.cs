@@ -47,6 +47,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<Country> Countries { get; set; }
 
+    public virtual DbSet<Cptcode> Cptcodes { get; set; }
+
     public virtual DbSet<Currency> Currencies { get; set; }
 
     public virtual DbSet<EditClient> EditClients { get; set; }
@@ -57,6 +59,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<Email> Emails { get; set; }
 
+    public virtual DbSet<ImportClient> ImportClients { get; set; }
+
     public virtual DbSet<Insurance> Insurances { get; set; }
 
     public virtual DbSet<InsurranceSetting> InsurranceSettings { get; set; }
@@ -64,8 +68,6 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<Invoice> Invoices { get; set; }
 
     public virtual DbSet<License> Licenses { get; set; }
-
-    public virtual DbSet<Location> Locations { get; set; }
 
     public virtual DbSet<Login> Logins { get; set; }
 
@@ -106,9 +108,10 @@ public partial class TcemrProdContext : DbContext
         {
             entity.ToTable("Appointment");
 
-            entity.Property(e => e.ClientName).HasMaxLength(200);
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Date).HasColumnType("date");
+            entity.Property(e => e.Location).HasMaxLength(50);
+            entity.Property(e => e.VirtualLocationId).HasMaxLength(50);
         });
 
         modelBuilder.Entity<AppointmentPayment>(entity =>
@@ -252,22 +255,21 @@ public partial class TcemrProdContext : DbContext
 
         modelBuilder.Entity<ClinicLocation>(entity =>
         {
-            entity.HasKey(e => e.LocationId);
-
             entity.ToTable("ClinicLocation");
 
             entity.Property(e => e.Address).HasMaxLength(200);
+            entity.Property(e => e.Address1).HasMaxLength(200);
             entity.Property(e => e.BillingAddress).HasMaxLength(50);
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Email).HasMaxLength(200);
             entity.Property(e => e.ExpirationDate).HasColumnType("date");
             entity.Property(e => e.Fax).HasMaxLength(20);
-            entity.Property(e => e.IndividualOffice).HasMaxLength(50);
             entity.Property(e => e.LongName).HasMaxLength(200);
             entity.Property(e => e.Npi).HasColumnName("NPI");
             entity.Property(e => e.Phone).HasMaxLength(20);
             entity.Property(e => e.ShortName).HasMaxLength(200);
             entity.Property(e => e.ZipCode).HasMaxLength(20);
+            entity.Property(e => e.ZipCode1).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Clinician>(entity =>
@@ -297,6 +299,14 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.ShortName)
                 .HasMaxLength(255)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Cptcode>(entity =>
+        {
+            entity.ToTable("CPTCode");
+
+            entity.Property(e => e.CptcodeId).HasColumnName("CPTCodeId");
+            entity.Property(e => e.Cptcode1).HasColumnName("CPTCode");
         });
 
         modelBuilder.Entity<Currency>(entity =>
@@ -377,6 +387,19 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.EmailType).HasMaxLength(50);
         });
 
+        modelBuilder.Entity<ImportClient>(entity =>
+        {
+            entity.ToTable("ImportClient");
+
+            entity.Property(e => e.ClientEmail).HasMaxLength(200);
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.FileUploadPath).HasMaxLength(200);
+            entity.Property(e => e.FirstName).HasMaxLength(200);
+            entity.Property(e => e.LastName).HasMaxLength(200);
+            entity.Property(e => e.MobilePhone).HasMaxLength(20);
+            entity.Property(e => e.NickName).HasMaxLength(200);
+        });
+
         modelBuilder.Entity<Insurance>(entity =>
         {
             entity.ToTable("Insurance");
@@ -428,13 +451,6 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.LicenseExpirationDate).HasColumnType("date");
             entity.Property(e => e.LicenseState).HasMaxLength(200);
             entity.Property(e => e.LicenseType).HasMaxLength(20);
-        });
-
-        modelBuilder.Entity<Location>(entity =>
-        {
-            entity.ToTable("Location");
-
-            entity.Property(e => e.LocationType).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Login>(entity =>

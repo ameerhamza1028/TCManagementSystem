@@ -10,11 +10,14 @@ using PRJRepository.DTO.Client;
 using PRJRepository.DTO.ClientAddress;
 using PRJRepository.DTO.ClientForm;
 using PRJRepository.DTO.Clinic;
+using PRJRepository.DTO.Clinician;
 using PRJRepository.DTO.ClinicLocation;
 using PRJRepository.DTO.Country;
+using PRJRepository.DTO.CPTCode;
 using PRJRepository.DTO.Currency;
 using PRJRepository.DTO.EditClient;
 using PRJRepository.DTO.Email;
+using PRJRepository.DTO.ImportClient;
 using PRJRepository.DTO.Insurance;
 using PRJRepository.DTO.InsurranceSetting;
 using PRJRepository.DTO.Invoice;
@@ -40,6 +43,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Client, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Client, EditClientResponseDTO>().ReverseMap();
             CreateMap<Client, SaveEditClientResponseDTO>().ReverseMap();
+            CreateMap<Client, GetAllClientNameResponseDTO>().ReverseMap();
             CreateMap<Login, GetAllClientRequestDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationResponseDTO>().ReverseMap();
             CreateMap<Organization, GetAllOrganizationRequestDTO>().ReverseMap();
@@ -91,7 +95,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Card, GetAllCardRequestDTO>().ReverseMap();
             CreateMap<Insurance, GetAllInsuranceResponseDTO>().ReverseMap();
             CreateMap<Insurance, GetAllInsuranceRequestDTO>().ReverseMap();
-            CreateMap<Service, GetAllServiceResponseDTO>().ReverseMap();
+            CreateMap<Service, PRJRepository.DTO.Service.GetAllServiceResponseDTO>().ReverseMap();
             CreateMap<Service, GetAllServiceRequestDTO>().ReverseMap();
             CreateMap<Email, GetAllEmailResponseDTO>().ReverseMap();
             CreateMap<Email, GetAllEmailRequestDTO>().ReverseMap();
@@ -106,6 +110,11 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Insurance, InsuranceDTO>().ReverseMap();
             CreateMap<Currency, GetAllCurrencyResponseDTO>().ReverseMap();
             CreateMap<ClinicianService, ClinicianDTO>().ReverseMap();
+            CreateMap<Cptcode, GetAllCPTCodeResponseDTO>().ReverseMap();
+            CreateMap<ImportClient, GetAllImportClientResponseDTO>().ReverseMap();
+            CreateMap<ImportClient, GetAllImportClientRequestDTO>().ReverseMap();
+            CreateMap<ClinicianService, GetAllClinicianServiceResponseDTO>().ReverseMap();
+            CreateMap<Clinician, GetAllClinicianResponseDTO>().ReverseMap();
         }
     }
 }

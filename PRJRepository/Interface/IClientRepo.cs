@@ -10,6 +10,7 @@ namespace PRJRepository.Interface
 {
     public interface IClientRepo
     {
+        public List<GetAllClientNameResponseDTO> GetAllClientNames();
         public List<SaveEditClientResponseDTO> GetAllClient();
         public EditClientResponseDTO GetClientById(long Id);
         public bool SaveClient(GetAllClientRequestDTO request);

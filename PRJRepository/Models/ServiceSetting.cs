@@ -5,6 +5,8 @@ namespace PRJRepository.Models;
 
 public partial class ServiceSetting
 {
+    public long? ClinicId { get; set; }
+
     public long ServiceId { get; set; }
 
     public string? ServiceName { get; set; }
@@ -19,7 +21,7 @@ public partial class ServiceSetting
 
     public bool? IsDefaultService { get; set; }
 
-    public bool? IsSelfPay { get; set; }
+    public int? PaymentType { get; set; }
 
     public bool? IsBookedforNewClient { get; set; }
 

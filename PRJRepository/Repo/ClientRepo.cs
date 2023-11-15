@@ -18,6 +18,22 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
+        public List<GetAllClientNameResponseDTO> GetAllClientNames()
+        {
+            List<GetAllClientNameResponseDTO> response = new List<GetAllClientNameResponseDTO>();  
+            List<Client> list = _context.Clients.ToList();
+            foreach (var item in list)
+            {
+                GetAllClientNameResponseDTO name = new GetAllClientNameResponseDTO()
+                {
+                    ClientName1 = item.FirstName1 + " " + item.LastName1,
+                    ClientName2 = item.FirstName2 + " " + item.LastName2,
+
+                };
+                response.Add(name); 
+            }
+            return response;
+        }
         public List<SaveEditClientResponseDTO> GetAllClient()
         {
             List<SaveEditClientResponseDTO> response = new List<SaveEditClientResponseDTO>();
