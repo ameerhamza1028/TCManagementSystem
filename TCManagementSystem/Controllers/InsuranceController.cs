@@ -61,31 +61,50 @@ namespace TCManagementSystem.Controllers
             return response;
         }
 
-        [HttpPost("UploadInsuranceCardPhoto")]
-        public async Task<IActionResult> UploadFile(IFormFile file)
+        [HttpPost]
+        [Route("UploadFiles")]
+        public async Task<IActionResult> UploadFiles(List<IFormFile> files, [FromServices] IWebHostEnvironment hostingEnvironment)
         {
             try
             {
-
-
-
-                if (file == null || file.Length == 0)
+                if (files == null || files.Count == 0)
                 {
-                    return BadRequest("No file was selected for upload.");
+                    return BadRequest("No files were selected for upload.");
                 }
 
-                // Specify the path where you want to save the uploaded file.
-                string patientFilesDirectory = "UserUploadFiles";
-                string rootPath = "D:\\Web API Using Visual Sudio\\TCManagementSystem";
-                string filePath = Path.Combine(rootPath, patientFilesDirectory, file.FileName);
+                // Get the root path for wwwroot folder
+                string rootPath = Path.Combine(hostingEnvironment.WebRootPath, "InsuranceUpload");
 
-                // Use a stream to copy the file to the specified path.
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                // Create a list to store the file information of the uploaded files.
+                List<object> uploadedFileDetails = new List<object>();
+
+                foreach (var file in files)
                 {
-                    await file.CopyToAsync(stream);
+                    if (file.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    string uniqueFileName = file.FileName;
+                    string targetPath = Path.Combine(rootPath, uniqueFileName);
+
+                    using (var stream = new FileStream(targetPath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    // Add file information to the list
+                    var fileDetails = new
+                    {
+                        FileName = uniqueFileName,
+                        FilePath = targetPath
+                    };
+
+                    uploadedFileDetails.Add(fileDetails);
                 }
 
-                return Ok("File uploaded successfully.");
+                // Return the list of uploaded file details.
+                return Ok(new { Message = "Files uploaded successfully.", FileDetailsList = uploadedFileDetails });
             }
             catch (Exception ex)
             {

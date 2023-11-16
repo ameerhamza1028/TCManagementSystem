@@ -46,12 +46,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetAppointmentById")]
-        public ApiResponse<GetAllAppointmentResponseDTO> GetAppointmentById(long Id)
+        public ApiResponse<GetAllAppointmentRequestDTO> GetAppointmentById(long Id)
         {
-            ApiResponse<GetAllAppointmentResponseDTO> response = new ApiResponse<GetAllAppointmentResponseDTO>();
+            ApiResponse<GetAllAppointmentRequestDTO> response = new ApiResponse<GetAllAppointmentRequestDTO>();
             try
             {
-                GetAllAppointmentResponseDTO result = new GetAllAppointmentResponseDTO();
+                GetAllAppointmentRequestDTO result = new GetAllAppointmentRequestDTO();
                 result = _IAppointmentRepo.GetAppointmentById(Id);
                 response.Data = result;
             }

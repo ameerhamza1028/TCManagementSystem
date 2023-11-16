@@ -12,11 +12,7 @@ namespace PRJRepository.DTO.Appointment
 
         public long ClientId { get; set; }
 
-        public string? ClientName { get; set; }
-
-        public bool? IsClientAppointment { get; set; }
-
-        public bool? IsOther { get; set; }
+        public int? AppointmentType { get; set; }
 
         public bool? AllDay { get; set; }
 
@@ -28,11 +24,11 @@ namespace PRJRepository.DTO.Appointment
 
         public long? ClicianId { get; set; }
 
-        public long? LocationId { get; set; }
+        public string? Location { get; set; }
 
         public bool? Repeat { get; set; }
 
-        public long? VirtualLocationId { get; set; }
+        public string? VirtualLocationId { get; set; }
 
         public long? ServiceId { get; set; }
     }

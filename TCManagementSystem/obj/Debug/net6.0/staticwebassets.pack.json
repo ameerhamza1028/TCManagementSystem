@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\ImportClientUpload\\customer.docx",
+      "PackagePath": "staticwebassets\\ImportClientUpload\\customer.docx"
+    },
+    {
+      "Id": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\InsuranceUpload\\cashier.docx",
+      "PackagePath": "staticwebassets\\InsuranceUpload\\cashier.docx"
+    },
+    {
+      "Id": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\UserUpload\\HR-Emails.csv",
+      "PackagePath": "staticwebassets\\UserUpload\\HR-Emails.csv"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.TCManagementSystem.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.TCManagementSystem.props",
+      "PackagePath": "build\\TCManagementSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.TCManagementSystem.props",
+      "PackagePath": "buildMultiTargeting\\TCManagementSystem.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.TCManagementSystem.props",
+      "PackagePath": "buildTransitive\\TCManagementSystem.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

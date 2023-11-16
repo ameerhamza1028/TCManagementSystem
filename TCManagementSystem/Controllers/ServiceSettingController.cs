@@ -66,12 +66,12 @@ namespace TCManagementSystem.Controllers
 
         [HttpGet]
         [Route("GetServiceSettingById")]
-        public ApiResponse<GetAllServiceSettingRequestDTO> GetServiceSettingById(long Id)
+        public ApiResponse<EditServiceSettingResponseDTO> GetServiceSettingById(long Id)
         {
-            ApiResponse<GetAllServiceSettingRequestDTO> response = new ApiResponse<GetAllServiceSettingRequestDTO>();
+            ApiResponse<EditServiceSettingResponseDTO> response = new ApiResponse<EditServiceSettingResponseDTO>();
             try
             {
-                GetAllServiceSettingRequestDTO result = new GetAllServiceSettingRequestDTO();
+                EditServiceSettingResponseDTO result = new EditServiceSettingResponseDTO();
 
                 result = _IServiceSettingRepo.GetServiceSettingById(Id);
 

@@ -39,9 +39,10 @@ namespace PRJRepository.Repo
                 {
                     AvailableSlot AvailableSlot = _mapper.Map<AvailableSlot>(request);
 
-                    if (TimeSpan.TryParse(request.Time, out TimeSpan parsedTime))
+                    if (TimeSpan.TryParse(request.StartTime, out TimeSpan parsedTime1) && TimeSpan.TryParse(request.EndTime, out TimeSpan parsedTime2))
                     {
-                        AvailableSlot.Time = parsedTime;
+                        AvailableSlot.StartTime = parsedTime1;
+                        AvailableSlot.EndTime = parsedTime2;
                         AvailableSlot.IsActive = true;
                         AvailableSlot.CreationDate = DateTime.UtcNow;
                         _context.AvailableSlots.Add(AvailableSlot);
@@ -51,6 +52,7 @@ namespace PRJRepository.Repo
                     {
                         return false;
                     }
+
                 }
                 else
                 {
@@ -58,9 +60,9 @@ namespace PRJRepository.Repo
                     if (AvailableSlot != null)
                     {
                         _mapper.Map(request, AvailableSlot);
-                        if (TimeSpan.TryParse(request.Time, out TimeSpan parsedTime))
+                        if (TimeSpan.TryParse(request.StartTime, out TimeSpan parsedTime))
                         {
-                            AvailableSlot.Time = parsedTime;
+                            AvailableSlot.StartTime = parsedTime;
                             _context.SaveChanges();
                         }
                         else

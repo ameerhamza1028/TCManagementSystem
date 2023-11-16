@@ -18,10 +18,10 @@ namespace PRJRepository.Repo
             _mapper = mapper;
         }
 
-        public List<GetAllClientNameResponseDTO> GetAllClientNames()
+        public List<GetAllClientNameResponseDTO> GetAllClientNames(long Id)
         {
             List<GetAllClientNameResponseDTO> response = new List<GetAllClientNameResponseDTO>();  
-            List<Client> list = _context.Clients.ToList();
+            List<Client> list = _context.Clients.Where(x => x.ClinicId == Id).ToList();
             foreach (var item in list)
             {
                 GetAllClientNameResponseDTO name = new GetAllClientNameResponseDTO()
@@ -37,13 +37,14 @@ namespace PRJRepository.Repo
         public List<SaveEditClientResponseDTO> GetAllClient()
         {
             List<SaveEditClientResponseDTO> response = new List<SaveEditClientResponseDTO>();
-            List<Models.Client> list = _context.Clients.ToList();
+            List<Models.Client> list = _context.Clients.Where(x => x.IsActive == true).ToList();
             foreach (var editClient in list)
             {
                 Address address = new Address();
                 SaveEditClientResponseDTO clientResponse = new SaveEditClientResponseDTO
                 {
                     ClientId = editClient.ClientId,
+                    ClientType = editClient.ClientType,
                     FirstName = editClient.FirstName1,
                     LastName = editClient.LastName1,
                     ClinicianName = _context.Clinicians.Where(x => x.ClinicianId == editClient.PrimaryClinicianId).Select(x => x.ClinicianName).FirstOrDefault(),
@@ -123,6 +124,7 @@ namespace PRJRepository.Repo
                     phone.ClientId = client.ClientId;
                     phone.PhoneNumber = request.Phone1;
                     phone.ContactId = 0;
+                    phone.IsActive = true;
                     phone.PhoneType = request.PhoneType1;
                     _context.Phones.Add(phone);
                     _context.SaveChanges();
@@ -148,6 +150,7 @@ namespace PRJRepository.Repo
                     phone1.ClientId = client.ClientId;
                     phone1.PhoneNumber = request.Phone1;
                     phone1.ContactId = 0;
+                    phone1.IsActive = true;
                     phone1.PhoneType = request.PhoneType1;
                     _context.Phones.Add(phone1);
                     _context.SaveChanges();
@@ -164,6 +167,7 @@ namespace PRJRepository.Repo
                     phone2.ClientId = client.ClientId;
                     phone2.PhoneNumber = request.Phone2;
                     phone2.ContactId = editcontact.ContactId;
+                    phone2.IsActive = true;
                     phone2.PhoneType = request.PhoneType2;
                     _context.Phones.Add(phone2);
                     _context.SaveChanges();
@@ -178,6 +182,11 @@ namespace PRJRepository.Repo
                     edit.PrimaryClinicianId = request.PrimaryClinicianId;
                     edit.ClientEmail = request.Email1;
                     edit.LocationType = request.Location;
+                    edit.FirstName1 = request.FirstName2;
+                    edit.LastName1 = request.LastName2;
+                    edit.PrimaryClinicianId1 = request.PrimaryClinicianId2;
+                    edit.ClientEmail1 = request.Email2;
+                    edit.LocationType1 = request.Location2;
                     _context.EditClients.Add(edit);
                     _context.SaveChanges();
                     Phone phone1 = new Phone();
@@ -185,22 +194,15 @@ namespace PRJRepository.Repo
                     phone1.PhoneNumber = request.Phone1;
                     phone1.ContactId = 0;
                     phone1.PhoneType = request.PhoneType1;
+                    phone1.IsActive = true;
                     _context.Phones.Add(phone1);
-                    _context.SaveChanges();
-                    EditClient edit1 = new EditClient();
-                    edit1.ClientId = client.ClientId;
-                    edit1.FirstName = request.FirstName2;
-                    edit1.LastName = request.LastName2;
-                    edit1.PrimaryClinicianId = request.PrimaryClinicianId2;
-                    edit1.ClientEmail = request.Email2;
-                    edit1.LocationType = request.Location2;
-                    _context.EditClients.Add(edit1);
                     _context.SaveChanges();
                     Phone phone2 = new Phone();
                     phone2.ClientId = client.ClientId;
                     phone2.ContactId = 0;
                     phone2.PhoneNumber = request.Phone2;
                     phone2.PhoneType = request.PhoneType2;
+                    phone2.IsActive = true;
                     _context.Phones.Add(phone2);
                     _context.SaveChanges();
                     EditClientBilling editbilling = new EditClientBilling();
@@ -238,11 +240,14 @@ namespace PRJRepository.Repo
             try
             {
                Client client = _context.Clients.FirstOrDefault(x => x.ClientId == Id);
-               client.IsActive = false;
-               _context.SaveChanges();
+                if (client != null)
+                {
+                    client.IsActive = false;
+                    _context.SaveChanges();
 
-
-                return true;
+                    return true;
+                }
+                else { return false; }
             }
             catch
             {

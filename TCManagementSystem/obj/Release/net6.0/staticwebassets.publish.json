@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rKMSPt4aL/M1yarnYt70HOUGUJq2Rd6KI/8YjTPZxIM=",
+  "Hash": "ng+ys9sydhMuSoLRJo+3ECYaX+7oaghAMaZE3vy8cW8=",
   "Source": "TCManagementSystem",
   "BasePath": "_content/TCManagementSystem",
   "Mode": "Default",
@@ -15,5 +15,57 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\ImportClientUpload\\customer.docx",
+      "SourceId": "TCManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\",
+      "BasePath": "_content/TCManagementSystem",
+      "RelativePath": "ImportClientUpload/customer.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ImportClientUpload\\customer.docx"
+    },
+    {
+      "Identity": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\InsuranceUpload\\cashier.docx",
+      "SourceId": "TCManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\",
+      "BasePath": "_content/TCManagementSystem",
+      "RelativePath": "InsuranceUpload/cashier.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\InsuranceUpload\\cashier.docx"
+    },
+    {
+      "Identity": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\UserUpload\\HR-Emails.csv",
+      "SourceId": "TCManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\",
+      "BasePath": "_content/TCManagementSystem",
+      "RelativePath": "UserUpload/HR-Emails.csv",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UserUpload\\HR-Emails.csv"
+    }
+  ]
 }

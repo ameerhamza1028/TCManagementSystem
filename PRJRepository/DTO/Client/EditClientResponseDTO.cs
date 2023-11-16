@@ -39,7 +39,7 @@ namespace PRJRepository.DTO.Client
 
         public bool? IsReminderDayFive { get; set; }
 
-        public bool? IsReminderWeek1 { get; set; }
+        public bool? IsReminderWeek { get; set; }
 
         public string? LocationType { get; set; }
 
@@ -58,8 +58,6 @@ namespace PRJRepository.DTO.Client
         public int? EmploymentStatus { get; set; }
 
         public int? HumanRace { get; set; }
-
-        public int? ServiceId { get; set; }
 
         public string? FirstName1 { get; set; }
 
@@ -87,7 +85,7 @@ namespace PRJRepository.DTO.Client
 
         public bool? IsReminderDayFive1 { get; set; }
 
-        public bool? IsReminderWeek11 { get; set; }
+        public bool? IsReminderWeek1 { get; set; }
 
         public string? LocationType1 { get; set; }
 
@@ -95,7 +93,7 @@ namespace PRJRepository.DTO.Client
 
         public int? Day1 { get; set; }
 
-        public long? Year1 { get; set; }
+        public int? Year1 { get; set; }
 
         public int? Sex1 { get; set; }
 
@@ -106,11 +104,6 @@ namespace PRJRepository.DTO.Client
         public int? EmploymentStatus1 { get; set; }
 
         public int? HumanRace1 { get; set; }
-
-        public int? ServiceId1 { get; set; }
     }
-    
-
-    
 }
 

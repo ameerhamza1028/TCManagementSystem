@@ -7,7 +7,7 @@ public partial class AvailableSlot
 {
     public long AppointmntSlotId { get; set; }
 
-    public bool? AppointmentRequest { get; set; }
+    public bool? IsAppointmentRequest { get; set; }
 
     public string? Name { get; set; }
 
@@ -15,23 +15,27 @@ public partial class AvailableSlot
 
     public DateTime? SlotDate { get; set; }
 
-    public TimeSpan? Time { get; set; }
+    public TimeSpan? StartTime { get; set; }
+
+    public TimeSpan? EndTime { get; set; }
 
     public int? Duration { get; set; }
 
-    public bool? Repeat { get; set; }
+    public bool? IsRepeat { get; set; }
 
     public int? Weeks { get; set; }
 
     public int? Days { get; set; }
 
+    public int? EndAt { get; set; }
+
     public bool? Inperson { get; set; }
 
-    public long? InpersonlocationId { get; set; }
+    public string? InpersonlocationId { get; set; }
 
     public bool? Telehealth { get; set; }
 
-    public int? LocationId { get; set; }
+    public string? Location { get; set; }
 
     public long? ServiceId { get; set; }
 

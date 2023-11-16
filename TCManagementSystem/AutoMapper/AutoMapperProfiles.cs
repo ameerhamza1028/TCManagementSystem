@@ -62,6 +62,7 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<BillingSetting, GetAllBillingSettingRequestDTO>().ReverseMap();
             CreateMap<ServiceSetting, GetAllServiceSettingResponseDTO>().ReverseMap();
             CreateMap<ServiceSetting, GetAllServiceSettingRequestDTO>().ReverseMap();
+            CreateMap<ServiceSetting, EditServiceSettingResponseDTO>().ReverseMap();
             CreateMap<InsurranceSetting, GetAllInsurranceSettingResponseDTO>().ReverseMap();
             CreateMap<InsurranceSetting, GetAllInsurranceSettingRequestDTO>().ReverseMap();
             CreateMap<CalenderSetting, GetAllCalenderSettingResponseDTO>().ReverseMap();

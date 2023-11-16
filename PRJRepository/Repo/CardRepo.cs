@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllCardResponseDTO> GetAllCard(long Id)
         {
             List<GetAllCardResponseDTO> response = new List<GetAllCardResponseDTO>();
-            List<Card> list = _context.Cards.Where(x => x.ClientId == Id).ToList();
+            List<Card> list = _context.Cards.Where(x => x.ClientId == Id && x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllCardResponseDTO>>(list);
             return response;
         }
@@ -33,11 +33,13 @@ namespace PRJRepository.Repo
             try
             {
                 Card Card = _context.Cards.FirstOrDefault(x => x.CardId == Id);
-                Card.IsActive = false;
-                _context.SaveChanges();
-
-
-                return true;
+                if (Card != null)
+                {
+                    Card.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
             catch
             {

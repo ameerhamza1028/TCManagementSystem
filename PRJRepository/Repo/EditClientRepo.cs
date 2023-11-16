@@ -26,7 +26,7 @@ namespace PRJRepository.Repo
         public List<GetAllEditClientContactResponse> GetAllEditClientContact(long Id)
         {
             List<GetAllEditClientContactResponse> response = new List<GetAllEditClientContactResponse>();
-            List<Models.EditClientContact> list = _context.EditClientContacts.Where(x => x.ClientId == Id).ToList();
+            List<Models.EditClientContact> list = _context.EditClientContacts.Where(x => x.ClientId == Id && x.IsActive == true).ToList();
             foreach (var contact in list)
             {
                 GetAllEditClientContactResponse clientResponse = new GetAllEditClientContactResponse

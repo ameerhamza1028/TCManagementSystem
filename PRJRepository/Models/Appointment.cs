@@ -23,7 +23,7 @@ public partial class Appointment
 
     public string? Location { get; set; }
 
-    public bool? Repeat { get; set; }
+    public bool? IsRepeat { get; set; }
 
     public string? VirtualLocationId { get; set; }
 

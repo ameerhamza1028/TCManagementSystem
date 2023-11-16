@@ -28,14 +28,14 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllClientsNames")]
-        public ApiResponse<List<GetAllClientNameResponseDTO>> GetAllClientName()
+        [Route("GetAllClientsNamesByClinicId")]
+        public ApiResponse<List<GetAllClientNameResponseDTO>> GetAllClientName(long Id)
         {
             ApiResponse<List<GetAllClientNameResponseDTO>> response = new ApiResponse<List<GetAllClientNameResponseDTO>>();
             try
             {
                 List<GetAllClientNameResponseDTO> result = new List<GetAllClientNameResponseDTO>();
-                result = _IClientRepo.GetAllClientNames();
+                result = _IClientRepo.GetAllClientNames(Id);
                 response.Data = result;
             }
             catch (Exception ex)

@@ -30,7 +30,8 @@ namespace PRJRepository.Repo
                 {
                     ImportClientId = item.ImportClientId,
                     Name = item.FirstName + " " + item.LastName,
-                    FileName = item.FileUploadPath,
+                    FilePath = item.FileUploadPath,
+                    FileName = item.FileName,
                     Clinician = _context.Clinicians.Where(x => x.ClinicianId == item.PrimaryClinicianId).Select(x => x.ClinicianName).FirstOrDefault(),
                     ClientEmail = item.ClientEmail,
                     Intake = item.Intake,
@@ -46,7 +47,7 @@ namespace PRJRepository.Repo
         public GetAllImportClientRequestDTO GetImportClientById(long Id)
         {
             GetAllImportClientRequestDTO response = new GetAllImportClientRequestDTO();
-            ImportClient item = _context.ImportClients.Where(x => x.ImportClientId == Id).FirstOrDefault();
+            ImportClient item = _context.ImportClients.Where(x => x.ImportClientId == Id && x.IsActive == true).FirstOrDefault();
             response = _mapper.Map<GetAllImportClientRequestDTO>(item);
             return response;
         }
@@ -84,9 +85,13 @@ namespace PRJRepository.Repo
             try
             {
                 ImportClient ImportClient = _context.ImportClients.FirstOrDefault(x => x.ImportClientId == Id);
-                ImportClient.IsActive = false;
-                _context.SaveChanges();
-                return true;
+                if (ImportClient != null)
+                {
+                    ImportClient.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
             catch
             {

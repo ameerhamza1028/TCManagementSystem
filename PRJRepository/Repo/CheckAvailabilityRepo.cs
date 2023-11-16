@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public GetAllCheckAvailabilityResponseDTO GetCheckAvailability(GetAllCheckAvailabilityRequestDTO request)
         {
             GetAllCheckAvailabilityResponseDTO response = new GetAllCheckAvailabilityResponseDTO();
-            AvailableSlot slot = _context.AvailableSlots.Where(x => x.ClicianId == request.ClinicianId && x.SlotDate == request.SelectDate && x.LocationId == request.LocationId).FirstOrDefault();
+            AvailableSlot slot = _context.AvailableSlots.Where(x => x.ClicianId == request.ClinicianId && x.SlotDate == request.SelectDate && x.Location == request.Location).FirstOrDefault();
             response.SelectDate = slot.SlotDate;
             // response = _mapper.Map<GetAllCheckAvailabilityResponseDTO>(item);
             return response;

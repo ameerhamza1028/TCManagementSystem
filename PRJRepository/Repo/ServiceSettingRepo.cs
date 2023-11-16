@@ -39,11 +39,12 @@ namespace PRJRepository.Repo
         public List<GetAllServiceSettingResponseDTO> GetAllServiceSetting(long Id)
         {
             List<GetAllServiceSettingResponseDTO> response = new List<GetAllServiceSettingResponseDTO>();
-            List<ServiceSetting> list = _context.ServiceSettings.Where(x => x.ClinicId == Id).ToList();
+            List<ServiceSetting> list = _context.ServiceSettings.Where(x => x.ClinicId == Id && x.IsActive == true).ToList();
             foreach (var item in list)
             {
                 GetAllServiceSettingResponseDTO Settingresponse = new GetAllServiceSettingResponseDTO()
                 {
+                    ServiceName = item.ServiceName,
                     ServiceId = item.ServiceId,
                     Cptcode = item.Cptcode,
                     ServiceDescription = item.ServiceDescription,
@@ -58,11 +59,11 @@ namespace PRJRepository.Repo
         }
 
 
-        public GetAllServiceSettingRequestDTO GetServiceSettingById(long Id)
+        public EditServiceSettingResponseDTO GetServiceSettingById(long Id)
         {
-            GetAllServiceSettingRequestDTO response = new GetAllServiceSettingRequestDTO();
+            EditServiceSettingResponseDTO response = new EditServiceSettingResponseDTO();
             ServiceSetting item = _context.ServiceSettings.Where(x => x.ServiceId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllServiceSettingRequestDTO>(item);
+            response = _mapper.Map<EditServiceSettingResponseDTO>(item);
             return response;
         }
 
@@ -89,6 +90,12 @@ namespace PRJRepository.Repo
                         _context.ClinicianServices.Add(clinicianservice);
                         _context.SaveChanges();
                     }
+                }
+                else
+                {
+                    ServiceSetting = _context.ServiceSettings.Where(x => x.ServiceId == request.ServiceId).FirstOrDefault();
+                    ServiceSetting = _mapper.Map(request, ServiceSetting);
+                    _context.SaveChanges();
                 }
                 return true;
             }

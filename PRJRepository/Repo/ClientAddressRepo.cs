@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllClientAddressResponseDTO> GetAllClientAddress(long Id)
         {
             List<GetAllClientAddressResponseDTO> response = new List<GetAllClientAddressResponseDTO>();
-            List<Address> list = _context.Addresses.Where(x => x.ClientId == Id).ToList();
+            List<Address> list = _context.Addresses.Where(x => x.ClientId == Id && x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllClientAddressResponseDTO>>(list);
             return response;
         }
@@ -33,11 +33,16 @@ namespace PRJRepository.Repo
             try
             {
                 Address ClientAddress = _context.Addresses.FirstOrDefault(x => x.AddressId == Id);
-                ClientAddress.IsActive = false;
-                _context.SaveChanges();
-
-
-                return true;
+                if (ClientAddress != null)
+                {
+                    ClientAddress.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {

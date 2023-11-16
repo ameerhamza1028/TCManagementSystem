@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllPhoneResponseDTO> GetAllPhone(long Id)
         {
             List<GetAllPhoneResponseDTO> response = new List<GetAllPhoneResponseDTO>();
-            List<Phone> list = _context.Phones.Where(x => x.ClientId == Id).ToList();
+            List<Phone> list = _context.Phones.Where(x => x.ClientId == Id && x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllPhoneResponseDTO>>(list);
             return response;
         }
@@ -33,11 +33,13 @@ namespace PRJRepository.Repo
             try
             {
                 Phone Phone = _context.Phones.FirstOrDefault(x => x.PhoneId == Id);
-                Phone.IsActive = false;
-                _context.SaveChanges();
-
-
-                return true;
+                if (Phone != null)
+                {
+                    Phone.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
             catch
             {

@@ -35,7 +35,7 @@ public partial class EditClient
 
     public bool? IsReminderDayFive { get; set; }
 
-    public bool? IsReminderWeek1 { get; set; }
+    public bool? IsReminderWeek { get; set; }
 
     public string? LocationType { get; set; }
 
@@ -54,6 +54,52 @@ public partial class EditClient
     public int? EmploymentStatus { get; set; }
 
     public int? HumanRace { get; set; }
+
+    public string? FirstName1 { get; set; }
+
+    public string? MiddleName1 { get; set; }
+
+    public string? LastName1 { get; set; }
+
+    public string? Suffix1 { get; set; }
+
+    public string? NameToGoBy1 { get; set; }
+
+    public int? PrimaryClinicianId1 { get; set; }
+
+    public bool? IsAppointments1 { get; set; }
+
+    public bool? IsCompletingDocuments1 { get; set; }
+
+    public string? ClientEmail1 { get; set; }
+
+    public bool? IsReminderDayOne1 { get; set; }
+
+    public bool? IsReminderDayTwo1 { get; set; }
+
+    public bool? IsReminderDayThree1 { get; set; }
+
+    public bool? IsReminderDayFive1 { get; set; }
+
+    public bool? IsReminderWeek1 { get; set; }
+
+    public string? LocationType1 { get; set; }
+
+    public int? Month1 { get; set; }
+
+    public int? Day1 { get; set; }
+
+    public int? Year1 { get; set; }
+
+    public int? Sex1 { get; set; }
+
+    public string? GenderIdentity1 { get; set; }
+
+    public int? RelationshipStatus1 { get; set; }
+
+    public int? EmploymentStatus1 { get; set; }
+
+    public int? HumanRace1 { get; set; }
 
     public long? ModifiedBy { get; set; }
 

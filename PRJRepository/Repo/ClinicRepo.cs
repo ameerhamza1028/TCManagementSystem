@@ -18,7 +18,7 @@ namespace PRJRepository.Repo
         public List<GetAllClinicResponseDTO> GetAllClinic()
         {
             List<GetAllClinicResponseDTO> response = new List<GetAllClinicResponseDTO>();
-            List<Clinic> list = _context.Clinics.ToList();
+            List<Clinic> list = _context.Clinics.Where(x => x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllClinicResponseDTO>>(list);
             return response;
         }
@@ -64,9 +64,13 @@ namespace PRJRepository.Repo
             try
             {
                 Clinic clinic = _context.Clinics.FirstOrDefault(x => x.ClinicId == Id);
-                clinic.IsActive = false;
-                _context.SaveChanges();
-                return true;
+                if (clinic != null)
+                {
+                    clinic.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
             catch
             {

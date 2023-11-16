@@ -10,6 +10,8 @@ namespace PRJRepository.DTO.EditClient
     {
         public long? ClientId { get; set; }
 
+        public int? ClientType { get; set; }
+
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }

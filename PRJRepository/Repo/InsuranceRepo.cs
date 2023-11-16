@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllInsuranceResponseDTO> GetAllInsurance(long Id)
         {
             List<GetAllInsuranceResponseDTO> response = new List<GetAllInsuranceResponseDTO>();
-            List<Insurance> list = _context.Insurances.Where(x => x.ClientId == Id).ToList();
+            List<Insurance> list = _context.Insurances.Where(x => x.ClientId == Id && x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllInsuranceResponseDTO>>(list);
             return response;
         }
@@ -33,11 +33,13 @@ namespace PRJRepository.Repo
             try
             {
                 Insurance Insurance = _context.Insurances.FirstOrDefault(x => x.InsuranceId == Id);
-                Insurance.IsActive = false;
-                _context.SaveChanges();
-
-
-                return true;
+                if (Insurance != null)
+                {
+                    Insurance.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
             catch
             {

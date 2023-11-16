@@ -9,6 +9,8 @@ public partial class ImportClient
 
     public string? FileUploadPath { get; set; }
 
+    public string? FileName { get; set; }
+
     public int? ActiveClient { get; set; }
 
     public string? FirstName { get; set; }

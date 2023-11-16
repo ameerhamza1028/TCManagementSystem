@@ -24,11 +24,11 @@ namespace PRJRepository.Repo
             return response;
         }
 
-        public GetAllAppointmentResponseDTO GetAppointmentById(long Id)
+        public GetAllAppointmentRequestDTO GetAppointmentById(long Id)
         {
-            GetAllAppointmentResponseDTO response = new GetAllAppointmentResponseDTO();
+            GetAllAppointmentRequestDTO response = new GetAllAppointmentRequestDTO();
             Appointment item = _context.Appointments.Where(x => x.ClientId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllAppointmentResponseDTO>(item);
+            response = _mapper.Map<GetAllAppointmentRequestDTO>(item);
             return response;
         }
 

@@ -10,6 +10,8 @@ namespace PRJRepository.DTO.ServiceSetting
     {
         public long ServiceId { get; set; }
 
+        public string? ServiceName { get; set; }
+
         public string? ServiceDescription { get; set; }
 
         public int? Cptcode { get; set; }

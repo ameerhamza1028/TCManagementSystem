@@ -24,7 +24,7 @@ namespace PRJRepository.Repo
         public List<GetAllLicenseResponseDTO> GetLicenseById(long Id)
         {
             List<GetAllLicenseResponseDTO> response = new List<GetAllLicenseResponseDTO>();
-            List<License> list = _context.Licenses.Where(x => x.UserId == Id).ToList();
+            List<License> list = _context.Licenses.Where(x => x.UserId == Id && x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllLicenseResponseDTO>>(list);
             return response;
         }
@@ -35,9 +35,17 @@ namespace PRJRepository.Repo
             try
             {
                 License License = _context.Licenses.FirstOrDefault(x => x.LicenseId == Id);
-                License.IsActive = false;
-                _context.SaveChanges();
-                return true;
+                if (License != null)
+                {
+                    License.IsActive = false;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             catch
             {

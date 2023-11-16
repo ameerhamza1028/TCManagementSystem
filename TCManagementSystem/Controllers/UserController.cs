@@ -83,7 +83,7 @@ namespace TCManagementSystem.Controllers
 
         [HttpPost]
         [Route("UploadFiles")]
-        public async Task<IActionResult> UploadFiles(List<IFormFile> files)
+        public async Task<IActionResult> UploadFiles(List<IFormFile> files, [FromServices] IWebHostEnvironment hostingEnvironment)
         {
             try
             {
@@ -92,44 +92,39 @@ namespace TCManagementSystem.Controllers
                     return BadRequest("No files were selected for upload.");
                 }
 
-                string rootPath = "https://host1.farmacyapp.com/smb/file-manager/list/domainId/68";
+                // Get the root path for wwwroot folder
+                string rootPath = Path.Combine(hostingEnvironment.WebRootPath, "UserUpload");
 
-                // Create a list to store the file paths of the uploaded files.
-                List<string> uploadedFilePaths = new List<string>();
+                // Create a list to store the file information of the uploaded files.
+                List<object> uploadedFileDetails = new List<object>();
 
-                using (var httpClient = new HttpClient())
+                foreach (var file in files)
                 {
-                    foreach (var file in files)
+                    if (file.Length == 0)
                     {
-                        if (file.Length == 0)
-                        {
-                            continue;
-                        }
-                        string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                        string targetUrl = Path.Combine(rootPath, uniqueFileName);
-
-                        using (var stream = file.OpenReadStream())
-                        {
-                            using (var content = new StreamContent(stream))
-                            {
-                                using (var formData = new MultipartFormDataContent())
-                                {
-                                    formData.Add(content, "file", file.FileName);
-
-                                    var response = await httpClient.PostAsync(targetUrl, formData);
-
-                                    if (response.IsSuccessStatusCode)
-                                    {
-                                        uploadedFilePaths.Add(targetUrl);
-                                    }
-                                }
-                            }
-                        }
+                        continue;
                     }
+
+                    string uniqueFileName = file.FileName;
+                    string targetPath = Path.Combine(rootPath, uniqueFileName);
+
+                    using (var stream = new FileStream(targetPath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    // Add file information to the list
+                    var fileDetails = new
+                    {
+                        FileName = uniqueFileName,
+                        FilePath = targetPath
+                    };
+
+                    uploadedFileDetails.Add(fileDetails);
                 }
 
-                // Return the list of uploaded file URLs.
-                return Ok(new { Message = "Files uploaded successfully.", FilePathList = uploadedFilePaths });
+                // Return the list of uploaded file details.
+                return Ok(new { Message = "Files uploaded successfully.", FileDetailsList = uploadedFileDetails });
             }
             catch (Exception ex)
             {

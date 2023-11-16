@@ -9,6 +9,7 @@ namespace PRJRepository.DTO.User
     public class GetAllUserResponseDTO
     {
         public string? UserName { get; set; }
+        
         public int? UserType { get; set; }
 
         public long UserId { get; set; }

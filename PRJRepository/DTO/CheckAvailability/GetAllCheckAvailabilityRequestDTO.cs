@@ -14,10 +14,10 @@ namespace PRJRepository.DTO.CheckAvailability
 
         public long? ClinicianId { get; set; }
 
-        public int? LocationId { get; set; }
+        public string? Location { get; set; }
 
         public DateTime? SelectDate { get; set; }
 
-        public bool? InsurranceAccept { get; set; }
+        public int? InsurranceAccept { get; set; }
     }
 }

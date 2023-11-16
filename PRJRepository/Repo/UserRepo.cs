@@ -27,7 +27,7 @@ namespace PRJRepository.Repo
         public List<GetAllUserResponseDTO> GetAllUserByClinicId(long Id)
         {
             List<GetAllUserResponseDTO> response = new List<GetAllUserResponseDTO>();
-            List<TcUser> list = _context.TcUsers.Where(x => x.ClinicId == Id).ToList();
+            List<TcUser> list = _context.TcUsers.Where(x => x.ClinicId == Id && x.IsActive == true).ToList();
             response = _mapper.Map<List<GetAllUserResponseDTO>>(list);
             return response;
         }
@@ -160,8 +160,10 @@ namespace PRJRepository.Repo
                 {
                     user.IsActive = false;
                     _context.SaveChanges();
+                    return true;
                 }
-                return true;
+                else { return false; }
+                
             }
             catch
             {

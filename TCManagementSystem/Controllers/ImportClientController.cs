@@ -27,60 +27,46 @@ namespace TCManagementSystem.Controllers
         }
 
         [HttpPost]
-        [Route("UploadFiles")]
-        public async Task<IActionResult> UploadFiles(List<IFormFile> files)
+        [Route("UploadFile")]
+        public async Task<IActionResult> UploadFile(IFormFile file, [FromServices] IWebHostEnvironment hostingEnvironment)
         {
             try
             {
-                if (files == null || files.Count == 0)
+                if (file == null || file.Length == 0)
                 {
-                    return BadRequest("No files were selected for upload.");
+                    return BadRequest("No file selected for upload.");
                 }
 
-                string rootPath = "https://host1.farmacyapp.com/smb/file-manager/list/domainId/68";
+                // Get the root path for wwwroot folder
+                string rootPath = Path.Combine(hostingEnvironment.WebRootPath, "ImportClientUpload");
 
-                // Create a list to store the file paths of the uploaded files.
-                List<string> uploadedFilePaths = new List<string>();
+                // Generate a unique file name
+                string uniqueFileName = file.FileName;
+                string targetPath = Path.Combine(rootPath, uniqueFileName);
 
-                using (var httpClient = new HttpClient())
+                using (var stream = new FileStream(targetPath, FileMode.Create))
                 {
-                    foreach (var file in files)
-                    {
-                        if (file.Length == 0)
-                        {
-                            continue;
-                        }
-                        string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                        string targetUrl = Path.Combine(rootPath, uniqueFileName);
-
-                        using (var stream = file.OpenReadStream())
-                        {
-                            using (var content = new StreamContent(stream))
-                            {
-                                using (var formData = new MultipartFormDataContent())
-                                {
-                                    formData.Add(content, "file", file.FileName);
-
-                                    var response = await httpClient.PostAsync(targetUrl, formData);
-
-                                    if (response.IsSuccessStatusCode)
-                                    {
-                                        uploadedFilePaths.Add(targetUrl);
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    await file.CopyToAsync(stream);
                 }
 
-                // Return the list of uploaded file URLs.
-                return Ok(new { Message = "Files uploaded successfully.", FilePathList = uploadedFilePaths });
+                // Return file information
+                var fileDetails = new
+                {
+                    FileName = uniqueFileName,
+                    FilePath = targetPath
+                };
+
+                return Ok(new { Message = "File uploaded successfully.", FileDetails = fileDetails });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+
+
+
 
         [HttpGet]
         [Route("GetAllImportClient")]
