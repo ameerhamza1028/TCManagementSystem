@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jdSgs1JZoQPwagf6KUsZvOf769ohjf7GmZalqGmcGCDlY3yXw4MRAmHfZpxJq76TpF3YCNBq4s6kwJnEwDEznQ==",
+  "dgSpecHash": "aJUv7enFvTqmLgzz7kqoxvKenPG3Joj0Ko88gJvZ2JkpaKsR/uEaDb8ezTE+XtyE98O8GueNLDfOGrxUjcEm+Q==",
   "success": true,
   "projectFilePath": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\TCManagementSystem.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\hamza\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\dapper\\2.1.15\\dapper.2.1.15.nupkg.sha512",
+    "C:\\Users\\hamza\\.nuget\\packages\\htmlagilitypack\\1.11.54\\htmlagilitypack.1.11.54.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.24\\microsoft.aspnetcore.authentication.jwtbearer.6.0.24.nupkg.sha512",
     "C:\\Users\\hamza\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

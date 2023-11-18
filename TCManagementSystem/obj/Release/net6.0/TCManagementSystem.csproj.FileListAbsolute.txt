@@ -93,3 +93,4 @@ D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\TCManagementSystem.genruntimeconfig.cache
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\ref\TCManagementSystem.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Release\net6.0\TCManagementSystem.staticwebassets.runtime.json
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\bin\Release\net6.0\HtmlAgilityPack.dll

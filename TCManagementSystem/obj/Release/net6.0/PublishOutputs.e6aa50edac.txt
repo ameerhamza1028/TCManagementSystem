@@ -7,6 +7,7 @@ D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\Azure.Core.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\Azure.Identity.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\Dapper.dll
+D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\HtmlAgilityPack.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Web API Using Visual Sudio\TCManagementSystem\TCManagementSystem\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll

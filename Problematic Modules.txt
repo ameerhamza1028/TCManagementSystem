@@ -1,0 +1,42 @@
+1. Client(As Couple)
+	1. Change in the display client table. (Done)
+	2. Change in the edit client form. (Done)
+	3. Change in the client chart. (Not done yet because it makes the code of client chart double that is not good practice).
+	4. Change in backend according to the front end as mentioned above.  
+
+2. Billing Setting
+	1. Discuss the Billing Setting Form in detail.
+
+3. Insurance Setting
+	1. Discuss the Insurance Setting Form in detail.
+	
+4. Invoices
+	1. Need the invoives tempelates.
+	
+5. CPTCode
+	1. Need list of required CPTCode.
+	
+6. Clinic -> Users -> Fee Schedule -> View Price Model
+	1. Need list of forms and categories.
+	
+7. People -> Client -> Client Chart -> TAB Note -> Progress Notes 
+	1. Add / Edit Progress Note missing form templates
+	
+8. People- Client - Client Chart - TAB Note -Diagnosis and Treatment Notes 
+	1. Add / Edit Diagnosis and Treatment Note missing form templates
+	
+9. Setting - Template Designer - Communication - Add Template - Type 
+	1. Portal Document is missing question type fields
+	
+10. Setting - Template Designer - Clinical Doc - Add Template - 
+	1. Provide More Information related to Question field Whether its a dynamic form where we set question and answers / only question or pre build form. Provide fields form it. 
+	2. From where are we sending this form to client
+	
+11. Setting - Template Designer - Clinical Doc  - Add Template - (Field) Import Document 
+	1. What does this field do and form where are we importing doc from
+	
+12. View All Notification Screen is missing and where are Reminders are coming form and how are we sending them 
+	2. Role  : Clinic Admin & Clinician
+
+	
+

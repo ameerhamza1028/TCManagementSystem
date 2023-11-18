@@ -89,6 +89,7 @@ namespace PRJRepository.Repo
                             phone.ClientId = edit.ClientId;
                             phone.IsActive = true;
                             phone.CreactionDate = DateTime.UtcNow;
+                            phone.ContactId = 0;
                             _context.Phones.Add(phone);
                             _context.SaveChanges();
                         }

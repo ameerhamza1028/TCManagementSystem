@@ -24,4 +24,6 @@ public partial class Phone
     public bool? IsActive { get; set; }
 
     public long? ContactId { get; set; }
+
+    public int? CouplePhoneId { get; set; }
 }

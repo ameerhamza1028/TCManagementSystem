@@ -12,15 +12,19 @@ namespace PRJRepository.DTO.EditClient
 
         public int? ClientType { get; set; }
 
-        public string? FirstName { get; set; }
+        public string? Name1 { get; set; }
 
-        public string? LastName { get; set; }
+        public string? Name2 { get; set; }
 
         public string? ClinicianName { get; set; }
 
-        public string? PhoneNumber { get; set; }
+        public string? PhoneNumber1 { get; set; }
 
-        public string? ClientEmail { get; set; }
+        public string? PhoneNumber2 { get; set; }
+
+        public string? ClientEmail1 { get; set; }
+
+        public string? ClientEmail2 { get; set; }
 
         public string? Address { get; set; }
 

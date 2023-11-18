@@ -17,6 +17,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<Address> Addresses { get; set; }
 
+    public virtual DbSet<AdminNote> AdminNotes { get; set; }
+
     public virtual DbSet<Appointment> Appointments { get; set; }
 
     public virtual DbSet<AppointmentPayment> AppointmentPayments { get; set; }
@@ -88,9 +90,8 @@ public partial class TcemrProdContext : DbContext
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=67.225.177.73;User Id=thequatumz-db-admin;Password=@dmin123;Database=TCEMR_Prod;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -103,6 +104,17 @@ public partial class TcemrProdContext : DbContext
                 .HasColumnName("Address");
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.ZipCode).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<AdminNote>(entity =>
+        {
+            entity.HasKey(e => e.NoteId).HasName("PK_ClientNote");
+
+            entity.ToTable("AdminNote");
+
+            entity.Property(e => e.CreactionDate).HasColumnType("date");
+            entity.Property(e => e.Note).HasMaxLength(1000);
+            entity.Property(e => e.NoteTitle).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Appointment>(entity =>

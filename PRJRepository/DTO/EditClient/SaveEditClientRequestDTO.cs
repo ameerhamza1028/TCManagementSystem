@@ -121,6 +121,8 @@ namespace PRJRepository.DTO.EditClient
         public bool? IsSendTextMessage { get; set; }
 
         public bool? IsSendVoiceMessage { get; set; }
+
+        public int? CouplePhoneId {  get; set; }
     }
 
     public class Address1DTO

@@ -9,6 +9,7 @@ using PRJRepository.DTO.Card;
 using PRJRepository.DTO.Client;
 using PRJRepository.DTO.ClientAddress;
 using PRJRepository.DTO.ClientForm;
+using PRJRepository.DTO.ClientNote;
 using PRJRepository.DTO.Clinic;
 using PRJRepository.DTO.Clinician;
 using PRJRepository.DTO.ClinicLocation;
@@ -116,6 +117,8 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<ImportClient, GetAllImportClientRequestDTO>().ReverseMap();
             CreateMap<ClinicianService, GetAllClinicianServiceResponseDTO>().ReverseMap();
             CreateMap<Clinician, GetAllClinicianResponseDTO>().ReverseMap();
+            CreateMap<AdminNote, GetAllAdminNoteResponseDTO>().ReverseMap();
+            CreateMap<AdminNote, GetAllAdminNoteRequestDTO>().ReverseMap();
         }
     }
 }

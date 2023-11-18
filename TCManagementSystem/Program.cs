@@ -101,6 +101,7 @@ internal class Program
         builder.Services.AddTransient<IImportClientRepo, ImportClientRepo>();
         builder.Services.AddTransient<ICPTCodeRepo, CPTCodeRepo>();
         builder.Services.AddTransient<IClinicianRepo, ClinicianRepo>();
+        builder.Services.AddTransient<IAdminNoteRepo, AdminNoteRepo>();
 
 
 
