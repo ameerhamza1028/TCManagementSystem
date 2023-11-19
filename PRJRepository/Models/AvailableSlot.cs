@@ -19,6 +19,8 @@ public partial class AvailableSlot
 
     public TimeSpan? EndTime { get; set; }
 
+    public TimeSpan? TotalTime { get; set; }
+
     public int? Duration { get; set; }
 
     public bool? IsRepeat { get; set; }

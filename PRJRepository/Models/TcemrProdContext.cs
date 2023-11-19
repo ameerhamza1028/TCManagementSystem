@@ -154,6 +154,7 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(200);
             entity.Property(e => e.SlotDate).HasColumnType("date");
             entity.Property(e => e.StartTime).HasPrecision(2);
+            entity.Property(e => e.TotalTime).HasPrecision(2);
         });
 
         modelBuilder.Entity<BillingSetting>(entity =>

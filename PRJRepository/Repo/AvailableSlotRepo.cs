@@ -43,17 +43,31 @@ namespace PRJRepository.Repo
                     {
                         AvailableSlot.StartTime = parsedTime1;
                         AvailableSlot.EndTime = parsedTime2;
-                        AvailableSlot.IsActive = true;
-                        AvailableSlot.CreationDate = DateTime.UtcNow;
-                        _context.AvailableSlots.Add(AvailableSlot);
+                        TimeSpan totalDuration = parsedTime2 - parsedTime1;
+                        TimeSpan slotDuration = TimeSpan.FromMinutes((double)request.Duration);
+                        int numberOfSlots = (int)(totalDuration.TotalMinutes / slotDuration.TotalMinutes);
+                        for (int i = 0; i < numberOfSlots; i++)
+                        {
+                            AvailableSlot slot = new AvailableSlot
+                            {
+                                StartTime = parsedTime1.Add(TimeSpan.FromMinutes(i * slotDuration.TotalMinutes)),
+                                EndTime = parsedTime1.Add(TimeSpan.FromMinutes((i + 1) * slotDuration.TotalMinutes)),
+                                TotalTime = slotDuration,
+                                IsActive = true,
+                                CreationDate = DateTime.UtcNow
+                            };
+
+                            _context.AvailableSlots.Add(slot);
+                        }
+
                         _context.SaveChanges();
                     }
                     else
                     {
                         return false;
                     }
-
                 }
+
                 else
                 {
                     AvailableSlot AvailableSlot = _context.AvailableSlots.FirstOrDefault(x => x.AppointmntSlotId == request.AppointmntSlotId);
