@@ -38,5 +38,9 @@
 12. View All Notification Screen is missing and where are Reminders are coming form and how are we sending them 
 	2. Role  : Clinic Admin & Clinician
 
+13 Client - EditClient - Uploads 
+	1. Explain the use of Date field in Add Document Form.
+	2. Explian the Issue and Expiry date in the Document Table
+
 	
 

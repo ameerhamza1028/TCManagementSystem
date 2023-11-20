@@ -25,7 +25,13 @@ namespace PRJRepository.Repo
         {
             GetAllClientFormResponseDTO response = new GetAllClientFormResponseDTO();
             ClientForm item = _context.ClientForms.Where(x => x.FormId == Id).FirstOrDefault();
-            response = _mapper.Map<GetAllClientFormResponseDTO>(item);
+            if(item != null)
+            {
+                response.FormId = item.FormId;
+                response.ClientId = item.ClientId;
+                response.Form = JsonSerializer.Deserialize<JsonForm>(item.FormJson);
+                response.FormNumber = item.FormNumber;
+            }
             return response;
         }
 
@@ -38,7 +44,7 @@ namespace PRJRepository.Repo
                 {
                     ClientForm = _mapper.Map<ClientForm>(request);
                     ClientForm.CreationDate = DateTime.UtcNow;
-                    ClientForm.FormJson = JsonSerializer.Serialize(request);
+                    ClientForm.FormJson = JsonSerializer.Serialize(request.FormJson);
                     _context.ClientForms.Add(ClientForm);
                     _context.SaveChanges();
                 }
@@ -48,7 +54,7 @@ namespace PRJRepository.Repo
                     if (ClientForm != null)
                     {
                         ClientForm = _mapper.Map(request, ClientForm);
-                        ClientForm.FormJson = JsonSerializer.Serialize(request); 
+                        ClientForm.FormJson = JsonSerializer.Serialize(request.FormJson);
                         _context.SaveChanges();
                     }
                 }

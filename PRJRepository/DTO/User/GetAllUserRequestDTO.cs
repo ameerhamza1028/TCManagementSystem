@@ -26,7 +26,7 @@ namespace PRJRepository.DTO.User
 
         public int? StateId { get; set; }
 
-        public long? ZipCode { get; set; }
+        public string? ZipCode { get; set; }
 
         public string? Phone { get; set; }
 

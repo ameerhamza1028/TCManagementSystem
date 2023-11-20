@@ -17,6 +17,7 @@ using PRJRepository.DTO.Country;
 using PRJRepository.DTO.CPTCode;
 using PRJRepository.DTO.Currency;
 using PRJRepository.DTO.EditClient;
+using PRJRepository.DTO.EditClientDocument;
 using PRJRepository.DTO.Email;
 using PRJRepository.DTO.ImportClient;
 using PRJRepository.DTO.Insurance;
@@ -119,6 +120,8 @@ namespace TCManagementSystem.AutoMapper
             CreateMap<Clinician, GetAllClinicianResponseDTO>().ReverseMap();
             CreateMap<AdminNote, GetAllAdminNoteResponseDTO>().ReverseMap();
             CreateMap<AdminNote, GetAllAdminNoteRequestDTO>().ReverseMap();
+            CreateMap<EditClientDocument, EditClientDocumentResponseDTO>().ReverseMap();
+            CreateMap<EditClientDocument, EditClientDocumentRequestDTO>().ReverseMap();
         }
     }
 }

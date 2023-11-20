@@ -102,6 +102,7 @@ internal class Program
         builder.Services.AddTransient<ICPTCodeRepo, CPTCodeRepo>();
         builder.Services.AddTransient<IClinicianRepo, ClinicianRepo>();
         builder.Services.AddTransient<IAdminNoteRepo, AdminNoteRepo>();
+        builder.Services.AddTransient<IEditClientDocumentRepo, EditClientDocumentRepo>();
 
 
 

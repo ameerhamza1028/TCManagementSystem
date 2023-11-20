@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GAd/nLzlXg+G+4PM2Yfa5qNH2767hEA8O+8F9rNJ9bw=",
+  "Hash": "6LObczW/17EB0KNIUI2u3CGSazH6mjngYwqzWvVtn1E=",
   "Source": "TCManagementSystem",
   "BasePath": "_content/TCManagementSystem",
   "Mode": "Default",
@@ -16,6 +16,23 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\EditClientDocumentUpload\\customer.docx",
+      "SourceId": "TCManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\",
+      "BasePath": "_content/TCManagementSystem",
+      "RelativePath": "EditClientDocumentUpload/customer.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\EditClientDocumentUpload\\customer.docx"
+    },
     {
       "Identity": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\ImportClientUpload\\customer.docx",
       "SourceId": "TCManagementSystem",

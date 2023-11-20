@@ -23,7 +23,7 @@ namespace PRJRepository.Repo
         public List<GetAllImportClientResponseDTO> GetAllImportClient()
         {
             List<GetAllImportClientResponseDTO> response = new List<GetAllImportClientResponseDTO>();
-            List<ImportClient> list = _context.ImportClients.ToList();
+            List<ImportClient> list = _context.ImportClients.Where(x => x.IsActive == true).ToList();
             foreach (var item in list)
             {
                 GetAllImportClientResponseDTO import = new GetAllImportClientResponseDTO()

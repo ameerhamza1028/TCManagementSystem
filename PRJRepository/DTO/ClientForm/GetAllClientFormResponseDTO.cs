@@ -11,13 +11,9 @@ namespace PRJRepository.DTO.ClientForm
         public long FormId { get; set; }
 
         public long? ClientId { get; set; }
-
-        public string? FormJson { get; set; }
+        
+        public JsonForm? Form { get; set; }
 
         public long? FormNumber { get; set; }
-
-        public DateTime? CreationDate { get; set; }
-
-        public long? CreatedBy { get; set; }
     }
 }

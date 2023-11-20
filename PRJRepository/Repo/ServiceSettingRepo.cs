@@ -50,7 +50,7 @@ namespace PRJRepository.Repo
                     ServiceDescription = item.ServiceDescription,
                     Duration = item.Duration,
                     RatePerUnit = item.RatePerUnit,
-                    ClinicianCount = _context.ClinicianServices.Where(x => x.ServiceId == item.ServiceId).Count(),
+                    ClinicianCount = _context.ClinicianServices.Where(x => x.ServiceId == item.ServiceId && x.IsActive == true).Count(),
 
                 };
                 response.Add(Settingresponse);
@@ -87,6 +87,7 @@ namespace PRJRepository.Repo
                         clinicianservice.ClinicianId = list.ClinicianId;
                         clinicianservice.ClinicianName = _context.Clinicians.Where(x => x.ClinicianId == list.ClinicianId).Select(x => x.ClinicianName).FirstOrDefault();
                         clinicianservice.ServiceId = ServiceSetting.ServiceId;
+                        clinicianservice.IsActive = true;
                         _context.ClinicianServices.Add(clinicianservice);
                         _context.SaveChanges();
                     }
@@ -96,6 +97,23 @@ namespace PRJRepository.Repo
                     ServiceSetting = _context.ServiceSettings.Where(x => x.ServiceId == request.ServiceId).FirstOrDefault();
                     ServiceSetting = _mapper.Map(request, ServiceSetting);
                     _context.SaveChanges();
+                    List<ClinicianService> list1 = _context.ClinicianServices.Where(x => x.ServiceId == ServiceSetting.ServiceId).ToList();
+                    foreach (var item in list1)
+                    {
+                        item.IsActive = false;
+                        _context.SaveChanges();
+                    }
+                    List<ClinicianDTO> clinicianList = request.Clinician;
+                    foreach (var list in clinicianList)
+                    {
+                        ClinicianService clinicianservice = new ClinicianService();
+                        clinicianservice.ClinicianId = list.ClinicianId;
+                        clinicianservice.ClinicianName = _context.Clinicians.Where(x => x.ClinicianId == list.ClinicianId).Select(x => x.ClinicianName).FirstOrDefault();
+                        clinicianservice.ServiceId = ServiceSetting.ServiceId;
+                        clinicianservice.IsActive = true;
+                        _context.ClinicianServices.Add(clinicianservice);
+                        _context.SaveChanges();
+                    }
                 }
                 return true;
             }
@@ -131,7 +149,7 @@ namespace PRJRepository.Repo
         public List<GetAllClinicianServiceResponseDTO> GetClinicianServices(long Id)
         {
             List<GetAllClinicianServiceResponseDTO> response = new List<GetAllClinicianServiceResponseDTO>();
-            List<ClinicianService> list = _context.ClinicianServices.Where(x => x.ServiceId == Id).ToList();
+            List<ClinicianService> list = _context.ClinicianServices.Where(x => x.ServiceId == Id && x.IsActive == true).ToList();
             foreach (var item in list)
             {
                 GetAllClinicianServiceResponseDTO clinicianresponse = new GetAllClinicianServiceResponseDTO()

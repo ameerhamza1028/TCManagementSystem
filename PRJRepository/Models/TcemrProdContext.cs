@@ -59,6 +59,8 @@ public partial class TcemrProdContext : DbContext
 
     public virtual DbSet<EditClientContact> EditClientContacts { get; set; }
 
+    public virtual DbSet<EditClientDocument> EditClientDocuments { get; set; }
+
     public virtual DbSet<Email> Emails { get; set; }
 
     public virtual DbSet<ImportClient> ImportClients { get; set; }
@@ -402,6 +404,18 @@ public partial class TcemrProdContext : DbContext
             entity.Property(e => e.ContactSuffix).HasMaxLength(200);
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.Notes).HasMaxLength(500);
+        });
+
+        modelBuilder.Entity<EditClientDocument>(entity =>
+        {
+            entity.ToTable("EditClientDocument");
+
+            entity.Property(e => e.CreationDate).HasColumnType("date");
+            entity.Property(e => e.Date).HasColumnType("date");
+            entity.Property(e => e.Description).HasMaxLength(1000);
+            entity.Property(e => e.FileName).HasMaxLength(200);
+            entity.Property(e => e.FilePath).HasMaxLength(200);
+            entity.Property(e => e.Title).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Email>(entity =>

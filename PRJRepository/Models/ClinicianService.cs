@@ -12,4 +12,6 @@ public partial class ClinicianService
     public string? ClinicianName { get; set; }
 
     public long? ServiceId { get; set; }
+
+    public bool? IsActive { get; set; }
 }

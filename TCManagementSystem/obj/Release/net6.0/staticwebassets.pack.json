@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\EditClientDocumentUpload\\customer.docx",
+      "PackagePath": "staticwebassets\\EditClientDocumentUpload\\customer.docx"
+    },
+    {
       "Id": "D:\\Web API Using Visual Sudio\\TCManagementSystem\\TCManagementSystem\\wwwroot\\ImportClientUpload\\customer.docx",
       "PackagePath": "staticwebassets\\ImportClientUpload\\customer.docx"
     },
